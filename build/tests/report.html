@@ -46,14 +46,27 @@
                     border-width: var(--bs-accordion-border-width);
                 }
             }
+            .anchor {
+                color: black;
+                opacity: 0;
+                text-decoration: none;
+                margin-left: 0.5em;
+                margin-right: 0.5em;
+            }
+            .anchor-container:hover .anchor {
+                opacity: 60%;
+            }
+            .anchor-container:hover .anchor:hover {
+                opacity: 100%;
+            }
         </style>
     </head>
     <body>
         <div class="container">
             <h1 class="title">Building blocks validation report</h1>
-            <small class="datetime">Generated at 2025-12-18T16:57:34.524179+00:00</small>
-                <p class="summary fw-semibold text-success">
-                    Number of passing building blocks: 5 / 5 (100%)
+            <small class="datetime">Generated at 2026-08-18T23:44:03.966864+00:00</small>
+                <p class="summary fw-semibold text-danger">
+                    Number of passing building blocks: 1 / 5 (20%)
                 </p>
             <div class="text-end small" id="expand-collapse">
                 <a href="#" class="expand-all">Expand all</a>
@@ -61,101 +74,1506 @@
             </div>
                 <div class="accordion mt-2" id="bblock-reports">
                         <div class="accordion-item bblock-report" data-bblock-id="eoap.cct.bbox" id="bblock-eoap.cct.bbox">
-                            <h2 class="accordion-header bblock-title">
-                                <button class="accordion-button collapsed" type="button"
+                            <h2 class="accordion-header bblock-title anchor-container">
+                                <button class="accordion-button " type="button"
                                     data-bs-toggle="collapse"
                                     data-bs-target="#bblock-collapse-eoap\.cct\.bbox">
                                     <div class="flex-fill">
                                         eaop-cct:OGC-BoundingBox
                                         <small class="ms-2 bblock-id">eoap.cct.bbox</small>
+                                        <a class="anchor" href="#bblock-eoap.cct.bbox">¶</a>
                                     </div>
 
-                                    <span class="badge text-bg-success me-2">
-                                            Passed
-                                            (no tests)
+                                    <span class="badge text-bg-danger me-2">
+                                            Tests Failed
+                                            (0% passed)
                                     </span>
                                 </button>
                             </h2>
-                            <div class="accordion-collapse collapse " id="bblock-collapse-eoap.cct.bbox">
+                            <div class="accordion-collapse collapse show" id="bblock-collapse-eoap.cct.bbox">
                                 <div class="accordion-body">
-                                        <div class="alert alert-info mb-0">No tests were found for this building block.</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item bblock-report" data-bblock-id="eoap.cct.string-format" id="bblock-eoap.cct.string-format">
-                            <h2 class="accordion-header bblock-title">
-                                <button class="accordion-button collapsed" type="button"
-                                    data-bs-toggle="collapse"
-                                    data-bs-target="#bblock-collapse-eoap\.cct\.string-format">
-                                    <div class="flex-fill">
-                                        eaop-cct:String-Format
-                                        <small class="ms-2 bblock-id">eoap.cct.string-format</small>
-                                    </div>
+                                        <p class="summary fw-semibold text-danger">
+                                            Test passed: 0 / 2
+                                        </p>
+                                        <div class="card mb-2 validation-item " id="item-eoap.cct.bbox-1">
+                                            <div class="card-body">
+                                                <div class="card-title mb-0 anchor-container">
+                                                    <button type="button" class="btn btn-sm btn-primary collapsed"
+                                                            data-bs-toggle="collapse" data-bs-target="#uid-1"
+                                                            aria-expanded="false" aria-controls="uid-1"
+                                                            style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
+                                                        <i class="bi bi-caret-right-fill caret"></i>
+                                                        Details
+                                                    </button>
+                                                    <a href="cct/bbox/example_1_1.yaml" target="_blank">example_1_1.yaml</a>
+                                                    <span class="badge bg-secondary example">Example</span>
+                                                    <a class="anchor" href="#item-eoap.cct.bbox-1">¶</a>
+                                                    <div class="float-end">
+                                                            <span class="badge text-bg-danger me-2">Failed</span>
+                                                    </div>
+                                                </div>
+                                                <div class="card-text mt-2 validation-text collapse" id="uid-1">
+                                                    <div class="validation-text-inner">
+                                                                    <div class="font-monospace subsection-title mt-2">Files</div>
+                                                                
+                                                                    
+                                                                    <div class="font-monospace entry-message section-files ">Using examples/bbox-2d.yaml from examples</div>
+                                                                    <div class="font-monospace subsection-title mt-2">Unknown errors</div>
+                                                                
+                                                                    
+                                                                    <div class="font-monospace entry-message section-unknown text-danger">Traceback (most recent call last):
+,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 200, in validate
+    validate_json(json_doc, schema_validator)
+,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 44, in validate_json
+    error = jsonschema.exceptions.best_match(validator.iter_errors(instance))
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/exceptions.py&quot;, line 384, in best_match
+    best = next(errors, None)
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 288, in iter_errors
+    for error in errors:
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/_validators.py&quot;, line 298, in ref
+    yield from validator.descend(instance, resolved)
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 305, in descend
+    for error in self.evolve(schema=schema).iter_errors(instance):
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 278, in iter_errors
+    scope = id_of(_schema)
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 101, in _id_of
+    return schema.get(&quot;$id&quot;, &quot;&quot;)
+,AttributeError: &#x27;list&#x27; object has no attribute &#x27;get&#x27;
+,
+During handling of the above exception, another exception occurred:
 
-                                    <span class="badge text-bg-success me-2">
-                                            Passed
-                                            (no tests)
-                                    </span>
-                                </button>
-                            </h2>
-                            <div class="accordion-collapse collapse " id="bblock-collapse-eoap.cct.string-format">
-                                <div class="accordion-body">
-                                        <div class="alert alert-info mb-0">No tests were found for this building block.</div>
+,Traceback (most recent call last):
+,  File &quot;/src/ogc/bblocks/validate.py&quot;, line 301, in _validate_resource
+    result = validator.validate(filename, output_filename, report,
+,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 221, in validate
+    &#x27;errorMessage&#x27;: e.message,
+,AttributeError: &#x27;AttributeError&#x27; object has no attribute &#x27;message&#x27;
+</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card mb-2 validation-item " id="item-eoap.cct.bbox-2">
+                                            <div class="card-body">
+                                                <div class="card-title mb-0 anchor-container">
+                                                    <button type="button" class="btn btn-sm btn-primary collapsed"
+                                                            data-bs-toggle="collapse" data-bs-target="#uid-2"
+                                                            aria-expanded="false" aria-controls="uid-2"
+                                                            style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
+                                                        <i class="bi bi-caret-right-fill caret"></i>
+                                                        Details
+                                                    </button>
+                                                    <a href="cct/bbox/example_2_1.yaml" target="_blank">example_2_1.yaml</a>
+                                                    <span class="badge bg-secondary example">Example</span>
+                                                    <a class="anchor" href="#item-eoap.cct.bbox-2">¶</a>
+                                                    <div class="float-end">
+                                                            <span class="badge text-bg-danger me-2">Failed</span>
+                                                    </div>
+                                                </div>
+                                                <div class="card-text mt-2 validation-text collapse" id="uid-2">
+                                                    <div class="validation-text-inner">
+                                                                    <div class="font-monospace subsection-title mt-2">Files</div>
+                                                                
+                                                                    
+                                                                    <div class="font-monospace entry-message section-files ">Using examples/bbox-3d.yaml from examples</div>
+                                                                    <div class="font-monospace subsection-title mt-2">Unknown errors</div>
+                                                                
+                                                                    
+                                                                    <div class="font-monospace entry-message section-unknown text-danger">Traceback (most recent call last):
+,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 200, in validate
+    validate_json(json_doc, schema_validator)
+,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 44, in validate_json
+    error = jsonschema.exceptions.best_match(validator.iter_errors(instance))
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/exceptions.py&quot;, line 384, in best_match
+    best = next(errors, None)
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 288, in iter_errors
+    for error in errors:
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/_validators.py&quot;, line 298, in ref
+    yield from validator.descend(instance, resolved)
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 305, in descend
+    for error in self.evolve(schema=schema).iter_errors(instance):
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 278, in iter_errors
+    scope = id_of(_schema)
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 101, in _id_of
+    return schema.get(&quot;$id&quot;, &quot;&quot;)
+,AttributeError: &#x27;list&#x27; object has no attribute &#x27;get&#x27;
+,
+During handling of the above exception, another exception occurred:
+
+,Traceback (most recent call last):
+,  File &quot;/src/ogc/bblocks/validate.py&quot;, line 301, in _validate_resource
+    result = validator.validate(filename, output_filename, report,
+,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 221, in validate
+    &#x27;errorMessage&#x27;: e.message,
+,AttributeError: &#x27;AttributeError&#x27; object has no attribute &#x27;message&#x27;
+</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                 </div>
                             </div>
                         </div>
                         <div class="accordion-item bblock-report" data-bblock-id="eoap.cct.geojson" id="bblock-eoap.cct.geojson">
-                            <h2 class="accordion-header bblock-title">
-                                <button class="accordion-button collapsed" type="button"
+                            <h2 class="accordion-header bblock-title anchor-container">
+                                <button class="accordion-button " type="button"
                                     data-bs-toggle="collapse"
                                     data-bs-target="#bblock-collapse-eoap\.cct\.geojson">
                                     <div class="flex-fill">
                                         eaop-cct:GeoJSON
                                         <small class="ms-2 bblock-id">eoap.cct.geojson</small>
+                                        <a class="anchor" href="#bblock-eoap.cct.geojson">¶</a>
                                     </div>
 
-                                    <span class="badge text-bg-success me-2">
-                                            Passed
-                                            (no tests)
+                                    <span class="badge text-bg-danger me-2">
+                                            Tests Failed
+                                            (0% passed)
                                     </span>
                                 </button>
                             </h2>
-                            <div class="accordion-collapse collapse " id="bblock-collapse-eoap.cct.geojson">
+                            <div class="accordion-collapse collapse show" id="bblock-collapse-eoap.cct.geojson">
                                 <div class="accordion-body">
-                                        <div class="alert alert-info mb-0">No tests were found for this building block.</div>
+                                        <p class="summary fw-semibold text-danger">
+                                            Test passed: 0 / 3
+                                        </p>
+                                        <div class="card mb-2 validation-item " id="item-eoap.cct.geojson-1">
+                                            <div class="card-body">
+                                                <div class="card-title mb-0 anchor-container">
+                                                    <button type="button" class="btn btn-sm btn-primary collapsed"
+                                                            data-bs-toggle="collapse" data-bs-target="#uid-3"
+                                                            aria-expanded="false" aria-controls="uid-3"
+                                                            style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
+                                                        <i class="bi bi-caret-right-fill caret"></i>
+                                                        Details
+                                                    </button>
+                                                    <a href="cct/geojson/example_1_1.yaml" target="_blank">example_1_1.yaml</a>
+                                                    <span class="badge bg-secondary example">Example</span>
+                                                    <a class="anchor" href="#item-eoap.cct.geojson-1">¶</a>
+                                                    <div class="float-end">
+                                                            <span class="badge text-bg-danger me-2">Failed</span>
+                                                    </div>
+                                                </div>
+                                                <div class="card-text mt-2 validation-text collapse" id="uid-3">
+                                                    <div class="validation-text-inner">
+                                                                    <div class="font-monospace subsection-title mt-2">Files</div>
+                                                                
+                                                                    
+                                                                    <div class="font-monospace entry-message section-files ">Using examples/point.yaml from examples</div>
+                                                                    <div class="font-monospace subsection-title mt-2">Unknown errors</div>
+                                                                
+                                                                    
+                                                                    <div class="font-monospace entry-message section-unknown text-danger">Traceback (most recent call last):
+,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 200, in validate
+    validate_json(json_doc, schema_validator)
+,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 44, in validate_json
+    error = jsonschema.exceptions.best_match(validator.iter_errors(instance))
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/exceptions.py&quot;, line 384, in best_match
+    best = next(errors, None)
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 288, in iter_errors
+    for error in errors:
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/_validators.py&quot;, line 298, in ref
+    yield from validator.descend(instance, resolved)
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 305, in descend
+    for error in self.evolve(schema=schema).iter_errors(instance):
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 278, in iter_errors
+    scope = id_of(_schema)
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 101, in _id_of
+    return schema.get(&quot;$id&quot;, &quot;&quot;)
+,AttributeError: &#x27;list&#x27; object has no attribute &#x27;get&#x27;
+,
+During handling of the above exception, another exception occurred:
+
+,Traceback (most recent call last):
+,  File &quot;/src/ogc/bblocks/validate.py&quot;, line 301, in _validate_resource
+    result = validator.validate(filename, output_filename, report,
+,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 221, in validate
+    &#x27;errorMessage&#x27;: e.message,
+,AttributeError: &#x27;AttributeError&#x27; object has no attribute &#x27;message&#x27;
+</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card mb-2 validation-item " id="item-eoap.cct.geojson-2">
+                                            <div class="card-body">
+                                                <div class="card-title mb-0 anchor-container">
+                                                    <button type="button" class="btn btn-sm btn-primary collapsed"
+                                                            data-bs-toggle="collapse" data-bs-target="#uid-4"
+                                                            aria-expanded="false" aria-controls="uid-4"
+                                                            style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
+                                                        <i class="bi bi-caret-right-fill caret"></i>
+                                                        Details
+                                                    </button>
+                                                    <a href="cct/geojson/example_2_1.yaml" target="_blank">example_2_1.yaml</a>
+                                                    <span class="badge bg-secondary example">Example</span>
+                                                    <a class="anchor" href="#item-eoap.cct.geojson-2">¶</a>
+                                                    <div class="float-end">
+                                                            <span class="badge text-bg-danger me-2">Failed</span>
+                                                    </div>
+                                                </div>
+                                                <div class="card-text mt-2 validation-text collapse" id="uid-4">
+                                                    <div class="validation-text-inner">
+                                                                    <div class="font-monospace subsection-title mt-2">Files</div>
+                                                                
+                                                                    
+                                                                    <div class="font-monospace entry-message section-files ">Using examples/feature.yaml from examples</div>
+                                                                    <div class="font-monospace subsection-title mt-2">Unknown errors</div>
+                                                                
+                                                                    
+                                                                    <div class="font-monospace entry-message section-unknown text-danger">Traceback (most recent call last):
+,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 200, in validate
+    validate_json(json_doc, schema_validator)
+,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 44, in validate_json
+    error = jsonschema.exceptions.best_match(validator.iter_errors(instance))
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/exceptions.py&quot;, line 384, in best_match
+    best = next(errors, None)
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 288, in iter_errors
+    for error in errors:
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/_validators.py&quot;, line 298, in ref
+    yield from validator.descend(instance, resolved)
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 305, in descend
+    for error in self.evolve(schema=schema).iter_errors(instance):
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 278, in iter_errors
+    scope = id_of(_schema)
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 101, in _id_of
+    return schema.get(&quot;$id&quot;, &quot;&quot;)
+,AttributeError: &#x27;list&#x27; object has no attribute &#x27;get&#x27;
+,
+During handling of the above exception, another exception occurred:
+
+,Traceback (most recent call last):
+,  File &quot;/src/ogc/bblocks/validate.py&quot;, line 301, in _validate_resource
+    result = validator.validate(filename, output_filename, report,
+,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 221, in validate
+    &#x27;errorMessage&#x27;: e.message,
+,AttributeError: &#x27;AttributeError&#x27; object has no attribute &#x27;message&#x27;
+</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card mb-2 validation-item " id="item-eoap.cct.geojson-3">
+                                            <div class="card-body">
+                                                <div class="card-title mb-0 anchor-container">
+                                                    <button type="button" class="btn btn-sm btn-primary collapsed"
+                                                            data-bs-toggle="collapse" data-bs-target="#uid-5"
+                                                            aria-expanded="false" aria-controls="uid-5"
+                                                            style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
+                                                        <i class="bi bi-caret-right-fill caret"></i>
+                                                        Details
+                                                    </button>
+                                                    <a href="cct/geojson/example_3_1.yaml" target="_blank">example_3_1.yaml</a>
+                                                    <span class="badge bg-secondary example">Example</span>
+                                                    <a class="anchor" href="#item-eoap.cct.geojson-3">¶</a>
+                                                    <div class="float-end">
+                                                            <span class="badge text-bg-danger me-2">Failed</span>
+                                                    </div>
+                                                </div>
+                                                <div class="card-text mt-2 validation-text collapse" id="uid-5">
+                                                    <div class="validation-text-inner">
+                                                                    <div class="font-monospace subsection-title mt-2">Files</div>
+                                                                
+                                                                    
+                                                                    <div class="font-monospace entry-message section-files ">Using examples/polygon.yaml from examples</div>
+                                                                    <div class="font-monospace subsection-title mt-2">Unknown errors</div>
+                                                                
+                                                                    
+                                                                    <div class="font-monospace entry-message section-unknown text-danger">Traceback (most recent call last):
+,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 200, in validate
+    validate_json(json_doc, schema_validator)
+,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 44, in validate_json
+    error = jsonschema.exceptions.best_match(validator.iter_errors(instance))
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/exceptions.py&quot;, line 384, in best_match
+    best = next(errors, None)
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 288, in iter_errors
+    for error in errors:
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/_validators.py&quot;, line 298, in ref
+    yield from validator.descend(instance, resolved)
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 305, in descend
+    for error in self.evolve(schema=schema).iter_errors(instance):
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 278, in iter_errors
+    scope = id_of(_schema)
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 101, in _id_of
+    return schema.get(&quot;$id&quot;, &quot;&quot;)
+,AttributeError: &#x27;list&#x27; object has no attribute &#x27;get&#x27;
+,
+During handling of the above exception, another exception occurred:
+
+,Traceback (most recent call last):
+,  File &quot;/src/ogc/bblocks/validate.py&quot;, line 301, in _validate_resource
+    result = validator.validate(filename, output_filename, report,
+,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 221, in validate
+    &#x27;errorMessage&#x27;: e.message,
+,AttributeError: &#x27;AttributeError&#x27; object has no attribute &#x27;message&#x27;
+</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item bblock-report" data-bblock-id="eoap.cct.string-format" id="bblock-eoap.cct.string-format">
+                            <h2 class="accordion-header bblock-title anchor-container">
+                                <button class="accordion-button " type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#bblock-collapse-eoap\.cct\.string-format">
+                                    <div class="flex-fill">
+                                        eaop-cct:String-Format
+                                        <small class="ms-2 bblock-id">eoap.cct.string-format</small>
+                                        <a class="anchor" href="#bblock-eoap.cct.string-format">¶</a>
+                                    </div>
+
+                                    <span class="badge text-bg-danger me-2">
+                                            Tests Failed
+                                            (0% passed)
+                                    </span>
+                                </button>
+                            </h2>
+                            <div class="accordion-collapse collapse show" id="bblock-collapse-eoap.cct.string-format">
+                                <div class="accordion-body">
+                                        <p class="summary fw-semibold text-danger">
+                                            Test passed: 0 / 17
+                                        </p>
+                                        <div class="card mb-2 validation-item " id="item-eoap.cct.string-format-1">
+                                            <div class="card-body">
+                                                <div class="card-title mb-0 anchor-container">
+                                                    <button type="button" class="btn btn-sm btn-primary collapsed"
+                                                            data-bs-toggle="collapse" data-bs-target="#uid-6"
+                                                            aria-expanded="false" aria-controls="uid-6"
+                                                            style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
+                                                        <i class="bi bi-caret-right-fill caret"></i>
+                                                        Details
+                                                    </button>
+                                                    <a href="cct/string-format/example_1_1.yaml" target="_blank">example_1_1.yaml</a>
+                                                    <span class="badge bg-secondary example">Example</span>
+                                                    <a class="anchor" href="#item-eoap.cct.string-format-1">¶</a>
+                                                    <div class="float-end">
+                                                            <span class="badge text-bg-danger me-2">Failed</span>
+                                                    </div>
+                                                </div>
+                                                <div class="card-text mt-2 validation-text collapse" id="uid-6">
+                                                    <div class="validation-text-inner">
+                                                                    <div class="font-monospace subsection-title mt-2">Files</div>
+                                                                
+                                                                    
+                                                                    <div class="font-monospace entry-message section-files ">Using examples/date.yaml from examples</div>
+                                                                    <div class="font-monospace subsection-title mt-2">Unknown errors</div>
+                                                                
+                                                                    
+                                                                    <div class="font-monospace entry-message section-unknown text-danger">Traceback (most recent call last):
+,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 200, in validate
+    validate_json(json_doc, schema_validator)
+,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 44, in validate_json
+    error = jsonschema.exceptions.best_match(validator.iter_errors(instance))
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/exceptions.py&quot;, line 384, in best_match
+    best = next(errors, None)
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 288, in iter_errors
+    for error in errors:
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/_validators.py&quot;, line 298, in ref
+    yield from validator.descend(instance, resolved)
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 305, in descend
+    for error in self.evolve(schema=schema).iter_errors(instance):
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 278, in iter_errors
+    scope = id_of(_schema)
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 101, in _id_of
+    return schema.get(&quot;$id&quot;, &quot;&quot;)
+,AttributeError: &#x27;list&#x27; object has no attribute &#x27;get&#x27;
+,
+During handling of the above exception, another exception occurred:
+
+,Traceback (most recent call last):
+,  File &quot;/src/ogc/bblocks/validate.py&quot;, line 301, in _validate_resource
+    result = validator.validate(filename, output_filename, report,
+,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 221, in validate
+    &#x27;errorMessage&#x27;: e.message,
+,AttributeError: &#x27;AttributeError&#x27; object has no attribute &#x27;message&#x27;
+</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card mb-2 validation-item " id="item-eoap.cct.string-format-2">
+                                            <div class="card-body">
+                                                <div class="card-title mb-0 anchor-container">
+                                                    <button type="button" class="btn btn-sm btn-primary collapsed"
+                                                            data-bs-toggle="collapse" data-bs-target="#uid-7"
+                                                            aria-expanded="false" aria-controls="uid-7"
+                                                            style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
+                                                        <i class="bi bi-caret-right-fill caret"></i>
+                                                        Details
+                                                    </button>
+                                                    <a href="cct/string-format/example_2_1.yaml" target="_blank">example_2_1.yaml</a>
+                                                    <span class="badge bg-secondary example">Example</span>
+                                                    <a class="anchor" href="#item-eoap.cct.string-format-2">¶</a>
+                                                    <div class="float-end">
+                                                            <span class="badge text-bg-danger me-2">Failed</span>
+                                                    </div>
+                                                </div>
+                                                <div class="card-text mt-2 validation-text collapse" id="uid-7">
+                                                    <div class="validation-text-inner">
+                                                                    <div class="font-monospace subsection-title mt-2">Files</div>
+                                                                
+                                                                    
+                                                                    <div class="font-monospace entry-message section-files ">Using examples/datetime.yaml from examples</div>
+                                                                    <div class="font-monospace subsection-title mt-2">Unknown errors</div>
+                                                                
+                                                                    
+                                                                    <div class="font-monospace entry-message section-unknown text-danger">Traceback (most recent call last):
+,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 200, in validate
+    validate_json(json_doc, schema_validator)
+,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 44, in validate_json
+    error = jsonschema.exceptions.best_match(validator.iter_errors(instance))
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/exceptions.py&quot;, line 384, in best_match
+    best = next(errors, None)
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 288, in iter_errors
+    for error in errors:
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/_validators.py&quot;, line 298, in ref
+    yield from validator.descend(instance, resolved)
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 305, in descend
+    for error in self.evolve(schema=schema).iter_errors(instance):
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 278, in iter_errors
+    scope = id_of(_schema)
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 101, in _id_of
+    return schema.get(&quot;$id&quot;, &quot;&quot;)
+,AttributeError: &#x27;list&#x27; object has no attribute &#x27;get&#x27;
+,
+During handling of the above exception, another exception occurred:
+
+,Traceback (most recent call last):
+,  File &quot;/src/ogc/bblocks/validate.py&quot;, line 301, in _validate_resource
+    result = validator.validate(filename, output_filename, report,
+,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 221, in validate
+    &#x27;errorMessage&#x27;: e.message,
+,AttributeError: &#x27;AttributeError&#x27; object has no attribute &#x27;message&#x27;
+</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card mb-2 validation-item " id="item-eoap.cct.string-format-3">
+                                            <div class="card-body">
+                                                <div class="card-title mb-0 anchor-container">
+                                                    <button type="button" class="btn btn-sm btn-primary collapsed"
+                                                            data-bs-toggle="collapse" data-bs-target="#uid-8"
+                                                            aria-expanded="false" aria-controls="uid-8"
+                                                            style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
+                                                        <i class="bi bi-caret-right-fill caret"></i>
+                                                        Details
+                                                    </button>
+                                                    <a href="cct/string-format/example_3_1.yaml" target="_blank">example_3_1.yaml</a>
+                                                    <span class="badge bg-secondary example">Example</span>
+                                                    <a class="anchor" href="#item-eoap.cct.string-format-3">¶</a>
+                                                    <div class="float-end">
+                                                            <span class="badge text-bg-danger me-2">Failed</span>
+                                                    </div>
+                                                </div>
+                                                <div class="card-text mt-2 validation-text collapse" id="uid-8">
+                                                    <div class="validation-text-inner">
+                                                                    <div class="font-monospace subsection-title mt-2">Files</div>
+                                                                
+                                                                    
+                                                                    <div class="font-monospace entry-message section-files ">Using examples/time.yaml from examples</div>
+                                                                    <div class="font-monospace subsection-title mt-2">Unknown errors</div>
+                                                                
+                                                                    
+                                                                    <div class="font-monospace entry-message section-unknown text-danger">Traceback (most recent call last):
+,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 200, in validate
+    validate_json(json_doc, schema_validator)
+,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 44, in validate_json
+    error = jsonschema.exceptions.best_match(validator.iter_errors(instance))
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/exceptions.py&quot;, line 384, in best_match
+    best = next(errors, None)
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 288, in iter_errors
+    for error in errors:
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/_validators.py&quot;, line 298, in ref
+    yield from validator.descend(instance, resolved)
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 305, in descend
+    for error in self.evolve(schema=schema).iter_errors(instance):
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 278, in iter_errors
+    scope = id_of(_schema)
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 101, in _id_of
+    return schema.get(&quot;$id&quot;, &quot;&quot;)
+,AttributeError: &#x27;list&#x27; object has no attribute &#x27;get&#x27;
+,
+During handling of the above exception, another exception occurred:
+
+,Traceback (most recent call last):
+,  File &quot;/src/ogc/bblocks/validate.py&quot;, line 301, in _validate_resource
+    result = validator.validate(filename, output_filename, report,
+,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 221, in validate
+    &#x27;errorMessage&#x27;: e.message,
+,AttributeError: &#x27;AttributeError&#x27; object has no attribute &#x27;message&#x27;
+</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card mb-2 validation-item " id="item-eoap.cct.string-format-4">
+                                            <div class="card-body">
+                                                <div class="card-title mb-0 anchor-container">
+                                                    <button type="button" class="btn btn-sm btn-primary collapsed"
+                                                            data-bs-toggle="collapse" data-bs-target="#uid-9"
+                                                            aria-expanded="false" aria-controls="uid-9"
+                                                            style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
+                                                        <i class="bi bi-caret-right-fill caret"></i>
+                                                        Details
+                                                    </button>
+                                                    <a href="cct/string-format/example_4_1.yaml" target="_blank">example_4_1.yaml</a>
+                                                    <span class="badge bg-secondary example">Example</span>
+                                                    <a class="anchor" href="#item-eoap.cct.string-format-4">¶</a>
+                                                    <div class="float-end">
+                                                            <span class="badge text-bg-danger me-2">Failed</span>
+                                                    </div>
+                                                </div>
+                                                <div class="card-text mt-2 validation-text collapse" id="uid-9">
+                                                    <div class="validation-text-inner">
+                                                                    <div class="font-monospace subsection-title mt-2">Files</div>
+                                                                
+                                                                    
+                                                                    <div class="font-monospace entry-message section-files ">Using examples/duration.yaml from examples</div>
+                                                                    <div class="font-monospace subsection-title mt-2">Unknown errors</div>
+                                                                
+                                                                    
+                                                                    <div class="font-monospace entry-message section-unknown text-danger">Traceback (most recent call last):
+,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 200, in validate
+    validate_json(json_doc, schema_validator)
+,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 44, in validate_json
+    error = jsonschema.exceptions.best_match(validator.iter_errors(instance))
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/exceptions.py&quot;, line 384, in best_match
+    best = next(errors, None)
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 288, in iter_errors
+    for error in errors:
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/_validators.py&quot;, line 298, in ref
+    yield from validator.descend(instance, resolved)
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 305, in descend
+    for error in self.evolve(schema=schema).iter_errors(instance):
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 278, in iter_errors
+    scope = id_of(_schema)
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 101, in _id_of
+    return schema.get(&quot;$id&quot;, &quot;&quot;)
+,AttributeError: &#x27;list&#x27; object has no attribute &#x27;get&#x27;
+,
+During handling of the above exception, another exception occurred:
+
+,Traceback (most recent call last):
+,  File &quot;/src/ogc/bblocks/validate.py&quot;, line 301, in _validate_resource
+    result = validator.validate(filename, output_filename, report,
+,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 221, in validate
+    &#x27;errorMessage&#x27;: e.message,
+,AttributeError: &#x27;AttributeError&#x27; object has no attribute &#x27;message&#x27;
+</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card mb-2 validation-item " id="item-eoap.cct.string-format-5">
+                                            <div class="card-body">
+                                                <div class="card-title mb-0 anchor-container">
+                                                    <button type="button" class="btn btn-sm btn-primary collapsed"
+                                                            data-bs-toggle="collapse" data-bs-target="#uid-10"
+                                                            aria-expanded="false" aria-controls="uid-10"
+                                                            style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
+                                                        <i class="bi bi-caret-right-fill caret"></i>
+                                                        Details
+                                                    </button>
+                                                    <a href="cct/string-format/example_5_1.yaml" target="_blank">example_5_1.yaml</a>
+                                                    <span class="badge bg-secondary example">Example</span>
+                                                    <a class="anchor" href="#item-eoap.cct.string-format-5">¶</a>
+                                                    <div class="float-end">
+                                                            <span class="badge text-bg-danger me-2">Failed</span>
+                                                    </div>
+                                                </div>
+                                                <div class="card-text mt-2 validation-text collapse" id="uid-10">
+                                                    <div class="validation-text-inner">
+                                                                    <div class="font-monospace subsection-title mt-2">Files</div>
+                                                                
+                                                                    
+                                                                    <div class="font-monospace entry-message section-files ">Using examples/uri.yaml from examples</div>
+                                                                    <div class="font-monospace subsection-title mt-2">Unknown errors</div>
+                                                                
+                                                                    
+                                                                    <div class="font-monospace entry-message section-unknown text-danger">Traceback (most recent call last):
+,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 200, in validate
+    validate_json(json_doc, schema_validator)
+,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 44, in validate_json
+    error = jsonschema.exceptions.best_match(validator.iter_errors(instance))
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/exceptions.py&quot;, line 384, in best_match
+    best = next(errors, None)
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 288, in iter_errors
+    for error in errors:
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/_validators.py&quot;, line 298, in ref
+    yield from validator.descend(instance, resolved)
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 305, in descend
+    for error in self.evolve(schema=schema).iter_errors(instance):
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 278, in iter_errors
+    scope = id_of(_schema)
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 101, in _id_of
+    return schema.get(&quot;$id&quot;, &quot;&quot;)
+,AttributeError: &#x27;list&#x27; object has no attribute &#x27;get&#x27;
+,
+During handling of the above exception, another exception occurred:
+
+,Traceback (most recent call last):
+,  File &quot;/src/ogc/bblocks/validate.py&quot;, line 301, in _validate_resource
+    result = validator.validate(filename, output_filename, report,
+,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 221, in validate
+    &#x27;errorMessage&#x27;: e.message,
+,AttributeError: &#x27;AttributeError&#x27; object has no attribute &#x27;message&#x27;
+</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card mb-2 validation-item " id="item-eoap.cct.string-format-6">
+                                            <div class="card-body">
+                                                <div class="card-title mb-0 anchor-container">
+                                                    <button type="button" class="btn btn-sm btn-primary collapsed"
+                                                            data-bs-toggle="collapse" data-bs-target="#uid-11"
+                                                            aria-expanded="false" aria-controls="uid-11"
+                                                            style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
+                                                        <i class="bi bi-caret-right-fill caret"></i>
+                                                        Details
+                                                    </button>
+                                                    <a href="cct/string-format/example_6_1.yaml" target="_blank">example_6_1.yaml</a>
+                                                    <span class="badge bg-secondary example">Example</span>
+                                                    <a class="anchor" href="#item-eoap.cct.string-format-6">¶</a>
+                                                    <div class="float-end">
+                                                            <span class="badge text-bg-danger me-2">Failed</span>
+                                                    </div>
+                                                </div>
+                                                <div class="card-text mt-2 validation-text collapse" id="uid-11">
+                                                    <div class="validation-text-inner">
+                                                                    <div class="font-monospace subsection-title mt-2">Files</div>
+                                                                
+                                                                    
+                                                                    <div class="font-monospace entry-message section-files ">Using examples/uri-reference.yaml from examples</div>
+                                                                    <div class="font-monospace subsection-title mt-2">Unknown errors</div>
+                                                                
+                                                                    
+                                                                    <div class="font-monospace entry-message section-unknown text-danger">Traceback (most recent call last):
+,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 200, in validate
+    validate_json(json_doc, schema_validator)
+,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 44, in validate_json
+    error = jsonschema.exceptions.best_match(validator.iter_errors(instance))
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/exceptions.py&quot;, line 384, in best_match
+    best = next(errors, None)
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 288, in iter_errors
+    for error in errors:
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/_validators.py&quot;, line 298, in ref
+    yield from validator.descend(instance, resolved)
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 305, in descend
+    for error in self.evolve(schema=schema).iter_errors(instance):
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 278, in iter_errors
+    scope = id_of(_schema)
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 101, in _id_of
+    return schema.get(&quot;$id&quot;, &quot;&quot;)
+,AttributeError: &#x27;list&#x27; object has no attribute &#x27;get&#x27;
+,
+During handling of the above exception, another exception occurred:
+
+,Traceback (most recent call last):
+,  File &quot;/src/ogc/bblocks/validate.py&quot;, line 301, in _validate_resource
+    result = validator.validate(filename, output_filename, report,
+,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 221, in validate
+    &#x27;errorMessage&#x27;: e.message,
+,AttributeError: &#x27;AttributeError&#x27; object has no attribute &#x27;message&#x27;
+</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card mb-2 validation-item " id="item-eoap.cct.string-format-7">
+                                            <div class="card-body">
+                                                <div class="card-title mb-0 anchor-container">
+                                                    <button type="button" class="btn btn-sm btn-primary collapsed"
+                                                            data-bs-toggle="collapse" data-bs-target="#uid-12"
+                                                            aria-expanded="false" aria-controls="uid-12"
+                                                            style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
+                                                        <i class="bi bi-caret-right-fill caret"></i>
+                                                        Details
+                                                    </button>
+                                                    <a href="cct/string-format/example_7_1.yaml" target="_blank">example_7_1.yaml</a>
+                                                    <span class="badge bg-secondary example">Example</span>
+                                                    <a class="anchor" href="#item-eoap.cct.string-format-7">¶</a>
+                                                    <div class="float-end">
+                                                            <span class="badge text-bg-danger me-2">Failed</span>
+                                                    </div>
+                                                </div>
+                                                <div class="card-text mt-2 validation-text collapse" id="uid-12">
+                                                    <div class="validation-text-inner">
+                                                                    <div class="font-monospace subsection-title mt-2">Files</div>
+                                                                
+                                                                    
+                                                                    <div class="font-monospace entry-message section-files ">Using examples/uri-template.yaml from examples</div>
+                                                                    <div class="font-monospace subsection-title mt-2">Unknown errors</div>
+                                                                
+                                                                    
+                                                                    <div class="font-monospace entry-message section-unknown text-danger">Traceback (most recent call last):
+,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 200, in validate
+    validate_json(json_doc, schema_validator)
+,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 44, in validate_json
+    error = jsonschema.exceptions.best_match(validator.iter_errors(instance))
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/exceptions.py&quot;, line 384, in best_match
+    best = next(errors, None)
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 288, in iter_errors
+    for error in errors:
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/_validators.py&quot;, line 298, in ref
+    yield from validator.descend(instance, resolved)
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 305, in descend
+    for error in self.evolve(schema=schema).iter_errors(instance):
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 278, in iter_errors
+    scope = id_of(_schema)
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 101, in _id_of
+    return schema.get(&quot;$id&quot;, &quot;&quot;)
+,AttributeError: &#x27;list&#x27; object has no attribute &#x27;get&#x27;
+,
+During handling of the above exception, another exception occurred:
+
+,Traceback (most recent call last):
+,  File &quot;/src/ogc/bblocks/validate.py&quot;, line 301, in _validate_resource
+    result = validator.validate(filename, output_filename, report,
+,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 221, in validate
+    &#x27;errorMessage&#x27;: e.message,
+,AttributeError: &#x27;AttributeError&#x27; object has no attribute &#x27;message&#x27;
+</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card mb-2 validation-item " id="item-eoap.cct.string-format-8">
+                                            <div class="card-body">
+                                                <div class="card-title mb-0 anchor-container">
+                                                    <button type="button" class="btn btn-sm btn-primary collapsed"
+                                                            data-bs-toggle="collapse" data-bs-target="#uid-13"
+                                                            aria-expanded="false" aria-controls="uid-13"
+                                                            style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
+                                                        <i class="bi bi-caret-right-fill caret"></i>
+                                                        Details
+                                                    </button>
+                                                    <a href="cct/string-format/example_8_1.yaml" target="_blank">example_8_1.yaml</a>
+                                                    <span class="badge bg-secondary example">Example</span>
+                                                    <a class="anchor" href="#item-eoap.cct.string-format-8">¶</a>
+                                                    <div class="float-end">
+                                                            <span class="badge text-bg-danger me-2">Failed</span>
+                                                    </div>
+                                                </div>
+                                                <div class="card-text mt-2 validation-text collapse" id="uid-13">
+                                                    <div class="validation-text-inner">
+                                                                    <div class="font-monospace subsection-title mt-2">Files</div>
+                                                                
+                                                                    
+                                                                    <div class="font-monospace entry-message section-files ">Using examples/iri.yaml from examples</div>
+                                                                    <div class="font-monospace subsection-title mt-2">Unknown errors</div>
+                                                                
+                                                                    
+                                                                    <div class="font-monospace entry-message section-unknown text-danger">Traceback (most recent call last):
+,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 200, in validate
+    validate_json(json_doc, schema_validator)
+,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 44, in validate_json
+    error = jsonschema.exceptions.best_match(validator.iter_errors(instance))
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/exceptions.py&quot;, line 384, in best_match
+    best = next(errors, None)
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 288, in iter_errors
+    for error in errors:
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/_validators.py&quot;, line 298, in ref
+    yield from validator.descend(instance, resolved)
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 305, in descend
+    for error in self.evolve(schema=schema).iter_errors(instance):
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 278, in iter_errors
+    scope = id_of(_schema)
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 101, in _id_of
+    return schema.get(&quot;$id&quot;, &quot;&quot;)
+,AttributeError: &#x27;list&#x27; object has no attribute &#x27;get&#x27;
+,
+During handling of the above exception, another exception occurred:
+
+,Traceback (most recent call last):
+,  File &quot;/src/ogc/bblocks/validate.py&quot;, line 301, in _validate_resource
+    result = validator.validate(filename, output_filename, report,
+,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 221, in validate
+    &#x27;errorMessage&#x27;: e.message,
+,AttributeError: &#x27;AttributeError&#x27; object has no attribute &#x27;message&#x27;
+</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card mb-2 validation-item " id="item-eoap.cct.string-format-9">
+                                            <div class="card-body">
+                                                <div class="card-title mb-0 anchor-container">
+                                                    <button type="button" class="btn btn-sm btn-primary collapsed"
+                                                            data-bs-toggle="collapse" data-bs-target="#uid-14"
+                                                            aria-expanded="false" aria-controls="uid-14"
+                                                            style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
+                                                        <i class="bi bi-caret-right-fill caret"></i>
+                                                        Details
+                                                    </button>
+                                                    <a href="cct/string-format/example_9_1.yaml" target="_blank">example_9_1.yaml</a>
+                                                    <span class="badge bg-secondary example">Example</span>
+                                                    <a class="anchor" href="#item-eoap.cct.string-format-9">¶</a>
+                                                    <div class="float-end">
+                                                            <span class="badge text-bg-danger me-2">Failed</span>
+                                                    </div>
+                                                </div>
+                                                <div class="card-text mt-2 validation-text collapse" id="uid-14">
+                                                    <div class="validation-text-inner">
+                                                                    <div class="font-monospace subsection-title mt-2">Files</div>
+                                                                
+                                                                    
+                                                                    <div class="font-monospace entry-message section-files ">Using examples/email.yaml from examples</div>
+                                                                    <div class="font-monospace subsection-title mt-2">Unknown errors</div>
+                                                                
+                                                                    
+                                                                    <div class="font-monospace entry-message section-unknown text-danger">Traceback (most recent call last):
+,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 200, in validate
+    validate_json(json_doc, schema_validator)
+,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 44, in validate_json
+    error = jsonschema.exceptions.best_match(validator.iter_errors(instance))
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/exceptions.py&quot;, line 384, in best_match
+    best = next(errors, None)
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 288, in iter_errors
+    for error in errors:
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/_validators.py&quot;, line 298, in ref
+    yield from validator.descend(instance, resolved)
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 305, in descend
+    for error in self.evolve(schema=schema).iter_errors(instance):
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 278, in iter_errors
+    scope = id_of(_schema)
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 101, in _id_of
+    return schema.get(&quot;$id&quot;, &quot;&quot;)
+,AttributeError: &#x27;list&#x27; object has no attribute &#x27;get&#x27;
+,
+During handling of the above exception, another exception occurred:
+
+,Traceback (most recent call last):
+,  File &quot;/src/ogc/bblocks/validate.py&quot;, line 301, in _validate_resource
+    result = validator.validate(filename, output_filename, report,
+,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 221, in validate
+    &#x27;errorMessage&#x27;: e.message,
+,AttributeError: &#x27;AttributeError&#x27; object has no attribute &#x27;message&#x27;
+</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card mb-2 validation-item " id="item-eoap.cct.string-format-10">
+                                            <div class="card-body">
+                                                <div class="card-title mb-0 anchor-container">
+                                                    <button type="button" class="btn btn-sm btn-primary collapsed"
+                                                            data-bs-toggle="collapse" data-bs-target="#uid-15"
+                                                            aria-expanded="false" aria-controls="uid-15"
+                                                            style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
+                                                        <i class="bi bi-caret-right-fill caret"></i>
+                                                        Details
+                                                    </button>
+                                                    <a href="cct/string-format/example_10_1.yaml" target="_blank">example_10_1.yaml</a>
+                                                    <span class="badge bg-secondary example">Example</span>
+                                                    <a class="anchor" href="#item-eoap.cct.string-format-10">¶</a>
+                                                    <div class="float-end">
+                                                            <span class="badge text-bg-danger me-2">Failed</span>
+                                                    </div>
+                                                </div>
+                                                <div class="card-text mt-2 validation-text collapse" id="uid-15">
+                                                    <div class="validation-text-inner">
+                                                                    <div class="font-monospace subsection-title mt-2">Files</div>
+                                                                
+                                                                    
+                                                                    <div class="font-monospace entry-message section-files ">Using examples/idn-email.yaml from examples</div>
+                                                                    <div class="font-monospace subsection-title mt-2">Unknown errors</div>
+                                                                
+                                                                    
+                                                                    <div class="font-monospace entry-message section-unknown text-danger">Traceback (most recent call last):
+,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 200, in validate
+    validate_json(json_doc, schema_validator)
+,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 44, in validate_json
+    error = jsonschema.exceptions.best_match(validator.iter_errors(instance))
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/exceptions.py&quot;, line 384, in best_match
+    best = next(errors, None)
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 288, in iter_errors
+    for error in errors:
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/_validators.py&quot;, line 298, in ref
+    yield from validator.descend(instance, resolved)
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 305, in descend
+    for error in self.evolve(schema=schema).iter_errors(instance):
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 278, in iter_errors
+    scope = id_of(_schema)
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 101, in _id_of
+    return schema.get(&quot;$id&quot;, &quot;&quot;)
+,AttributeError: &#x27;list&#x27; object has no attribute &#x27;get&#x27;
+,
+During handling of the above exception, another exception occurred:
+
+,Traceback (most recent call last):
+,  File &quot;/src/ogc/bblocks/validate.py&quot;, line 301, in _validate_resource
+    result = validator.validate(filename, output_filename, report,
+,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 221, in validate
+    &#x27;errorMessage&#x27;: e.message,
+,AttributeError: &#x27;AttributeError&#x27; object has no attribute &#x27;message&#x27;
+</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card mb-2 validation-item " id="item-eoap.cct.string-format-11">
+                                            <div class="card-body">
+                                                <div class="card-title mb-0 anchor-container">
+                                                    <button type="button" class="btn btn-sm btn-primary collapsed"
+                                                            data-bs-toggle="collapse" data-bs-target="#uid-16"
+                                                            aria-expanded="false" aria-controls="uid-16"
+                                                            style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
+                                                        <i class="bi bi-caret-right-fill caret"></i>
+                                                        Details
+                                                    </button>
+                                                    <a href="cct/string-format/example_11_1.yaml" target="_blank">example_11_1.yaml</a>
+                                                    <span class="badge bg-secondary example">Example</span>
+                                                    <a class="anchor" href="#item-eoap.cct.string-format-11">¶</a>
+                                                    <div class="float-end">
+                                                            <span class="badge text-bg-danger me-2">Failed</span>
+                                                    </div>
+                                                </div>
+                                                <div class="card-text mt-2 validation-text collapse" id="uid-16">
+                                                    <div class="validation-text-inner">
+                                                                    <div class="font-monospace subsection-title mt-2">Files</div>
+                                                                
+                                                                    
+                                                                    <div class="font-monospace entry-message section-files ">Using examples/hostname.yaml from examples</div>
+                                                                    <div class="font-monospace subsection-title mt-2">Unknown errors</div>
+                                                                
+                                                                    
+                                                                    <div class="font-monospace entry-message section-unknown text-danger">Traceback (most recent call last):
+,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 200, in validate
+    validate_json(json_doc, schema_validator)
+,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 44, in validate_json
+    error = jsonschema.exceptions.best_match(validator.iter_errors(instance))
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/exceptions.py&quot;, line 384, in best_match
+    best = next(errors, None)
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 288, in iter_errors
+    for error in errors:
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/_validators.py&quot;, line 298, in ref
+    yield from validator.descend(instance, resolved)
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 305, in descend
+    for error in self.evolve(schema=schema).iter_errors(instance):
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 278, in iter_errors
+    scope = id_of(_schema)
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 101, in _id_of
+    return schema.get(&quot;$id&quot;, &quot;&quot;)
+,AttributeError: &#x27;list&#x27; object has no attribute &#x27;get&#x27;
+,
+During handling of the above exception, another exception occurred:
+
+,Traceback (most recent call last):
+,  File &quot;/src/ogc/bblocks/validate.py&quot;, line 301, in _validate_resource
+    result = validator.validate(filename, output_filename, report,
+,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 221, in validate
+    &#x27;errorMessage&#x27;: e.message,
+,AttributeError: &#x27;AttributeError&#x27; object has no attribute &#x27;message&#x27;
+</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card mb-2 validation-item " id="item-eoap.cct.string-format-12">
+                                            <div class="card-body">
+                                                <div class="card-title mb-0 anchor-container">
+                                                    <button type="button" class="btn btn-sm btn-primary collapsed"
+                                                            data-bs-toggle="collapse" data-bs-target="#uid-17"
+                                                            aria-expanded="false" aria-controls="uid-17"
+                                                            style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
+                                                        <i class="bi bi-caret-right-fill caret"></i>
+                                                        Details
+                                                    </button>
+                                                    <a href="cct/string-format/example_12_1.yaml" target="_blank">example_12_1.yaml</a>
+                                                    <span class="badge bg-secondary example">Example</span>
+                                                    <a class="anchor" href="#item-eoap.cct.string-format-12">¶</a>
+                                                    <div class="float-end">
+                                                            <span class="badge text-bg-danger me-2">Failed</span>
+                                                    </div>
+                                                </div>
+                                                <div class="card-text mt-2 validation-text collapse" id="uid-17">
+                                                    <div class="validation-text-inner">
+                                                                    <div class="font-monospace subsection-title mt-2">Files</div>
+                                                                
+                                                                    
+                                                                    <div class="font-monospace entry-message section-files ">Using examples/idn-hostname.yaml from examples</div>
+                                                                    <div class="font-monospace subsection-title mt-2">Unknown errors</div>
+                                                                
+                                                                    
+                                                                    <div class="font-monospace entry-message section-unknown text-danger">Traceback (most recent call last):
+,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 200, in validate
+    validate_json(json_doc, schema_validator)
+,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 44, in validate_json
+    error = jsonschema.exceptions.best_match(validator.iter_errors(instance))
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/exceptions.py&quot;, line 384, in best_match
+    best = next(errors, None)
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 288, in iter_errors
+    for error in errors:
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/_validators.py&quot;, line 298, in ref
+    yield from validator.descend(instance, resolved)
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 305, in descend
+    for error in self.evolve(schema=schema).iter_errors(instance):
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 278, in iter_errors
+    scope = id_of(_schema)
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 101, in _id_of
+    return schema.get(&quot;$id&quot;, &quot;&quot;)
+,AttributeError: &#x27;list&#x27; object has no attribute &#x27;get&#x27;
+,
+During handling of the above exception, another exception occurred:
+
+,Traceback (most recent call last):
+,  File &quot;/src/ogc/bblocks/validate.py&quot;, line 301, in _validate_resource
+    result = validator.validate(filename, output_filename, report,
+,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 221, in validate
+    &#x27;errorMessage&#x27;: e.message,
+,AttributeError: &#x27;AttributeError&#x27; object has no attribute &#x27;message&#x27;
+</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card mb-2 validation-item " id="item-eoap.cct.string-format-13">
+                                            <div class="card-body">
+                                                <div class="card-title mb-0 anchor-container">
+                                                    <button type="button" class="btn btn-sm btn-primary collapsed"
+                                                            data-bs-toggle="collapse" data-bs-target="#uid-18"
+                                                            aria-expanded="false" aria-controls="uid-18"
+                                                            style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
+                                                        <i class="bi bi-caret-right-fill caret"></i>
+                                                        Details
+                                                    </button>
+                                                    <a href="cct/string-format/example_13_1.yaml" target="_blank">example_13_1.yaml</a>
+                                                    <span class="badge bg-secondary example">Example</span>
+                                                    <a class="anchor" href="#item-eoap.cct.string-format-13">¶</a>
+                                                    <div class="float-end">
+                                                            <span class="badge text-bg-danger me-2">Failed</span>
+                                                    </div>
+                                                </div>
+                                                <div class="card-text mt-2 validation-text collapse" id="uid-18">
+                                                    <div class="validation-text-inner">
+                                                                    <div class="font-monospace subsection-title mt-2">Files</div>
+                                                                
+                                                                    
+                                                                    <div class="font-monospace entry-message section-files ">Using examples/ipv4.yaml from examples</div>
+                                                                    <div class="font-monospace subsection-title mt-2">Unknown errors</div>
+                                                                
+                                                                    
+                                                                    <div class="font-monospace entry-message section-unknown text-danger">Traceback (most recent call last):
+,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 200, in validate
+    validate_json(json_doc, schema_validator)
+,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 44, in validate_json
+    error = jsonschema.exceptions.best_match(validator.iter_errors(instance))
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/exceptions.py&quot;, line 384, in best_match
+    best = next(errors, None)
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 288, in iter_errors
+    for error in errors:
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/_validators.py&quot;, line 298, in ref
+    yield from validator.descend(instance, resolved)
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 305, in descend
+    for error in self.evolve(schema=schema).iter_errors(instance):
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 278, in iter_errors
+    scope = id_of(_schema)
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 101, in _id_of
+    return schema.get(&quot;$id&quot;, &quot;&quot;)
+,AttributeError: &#x27;list&#x27; object has no attribute &#x27;get&#x27;
+,
+During handling of the above exception, another exception occurred:
+
+,Traceback (most recent call last):
+,  File &quot;/src/ogc/bblocks/validate.py&quot;, line 301, in _validate_resource
+    result = validator.validate(filename, output_filename, report,
+,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 221, in validate
+    &#x27;errorMessage&#x27;: e.message,
+,AttributeError: &#x27;AttributeError&#x27; object has no attribute &#x27;message&#x27;
+</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card mb-2 validation-item " id="item-eoap.cct.string-format-14">
+                                            <div class="card-body">
+                                                <div class="card-title mb-0 anchor-container">
+                                                    <button type="button" class="btn btn-sm btn-primary collapsed"
+                                                            data-bs-toggle="collapse" data-bs-target="#uid-19"
+                                                            aria-expanded="false" aria-controls="uid-19"
+                                                            style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
+                                                        <i class="bi bi-caret-right-fill caret"></i>
+                                                        Details
+                                                    </button>
+                                                    <a href="cct/string-format/example_14_1.yaml" target="_blank">example_14_1.yaml</a>
+                                                    <span class="badge bg-secondary example">Example</span>
+                                                    <a class="anchor" href="#item-eoap.cct.string-format-14">¶</a>
+                                                    <div class="float-end">
+                                                            <span class="badge text-bg-danger me-2">Failed</span>
+                                                    </div>
+                                                </div>
+                                                <div class="card-text mt-2 validation-text collapse" id="uid-19">
+                                                    <div class="validation-text-inner">
+                                                                    <div class="font-monospace subsection-title mt-2">Files</div>
+                                                                
+                                                                    
+                                                                    <div class="font-monospace entry-message section-files ">Using examples/ipv6.yaml from examples</div>
+                                                                    <div class="font-monospace subsection-title mt-2">Unknown errors</div>
+                                                                
+                                                                    
+                                                                    <div class="font-monospace entry-message section-unknown text-danger">Traceback (most recent call last):
+,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 200, in validate
+    validate_json(json_doc, schema_validator)
+,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 44, in validate_json
+    error = jsonschema.exceptions.best_match(validator.iter_errors(instance))
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/exceptions.py&quot;, line 384, in best_match
+    best = next(errors, None)
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 288, in iter_errors
+    for error in errors:
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/_validators.py&quot;, line 298, in ref
+    yield from validator.descend(instance, resolved)
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 305, in descend
+    for error in self.evolve(schema=schema).iter_errors(instance):
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 278, in iter_errors
+    scope = id_of(_schema)
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 101, in _id_of
+    return schema.get(&quot;$id&quot;, &quot;&quot;)
+,AttributeError: &#x27;list&#x27; object has no attribute &#x27;get&#x27;
+,
+During handling of the above exception, another exception occurred:
+
+,Traceback (most recent call last):
+,  File &quot;/src/ogc/bblocks/validate.py&quot;, line 301, in _validate_resource
+    result = validator.validate(filename, output_filename, report,
+,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 221, in validate
+    &#x27;errorMessage&#x27;: e.message,
+,AttributeError: &#x27;AttributeError&#x27; object has no attribute &#x27;message&#x27;
+</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card mb-2 validation-item " id="item-eoap.cct.string-format-15">
+                                            <div class="card-body">
+                                                <div class="card-title mb-0 anchor-container">
+                                                    <button type="button" class="btn btn-sm btn-primary collapsed"
+                                                            data-bs-toggle="collapse" data-bs-target="#uid-20"
+                                                            aria-expanded="false" aria-controls="uid-20"
+                                                            style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
+                                                        <i class="bi bi-caret-right-fill caret"></i>
+                                                        Details
+                                                    </button>
+                                                    <a href="cct/string-format/example_15_1.yaml" target="_blank">example_15_1.yaml</a>
+                                                    <span class="badge bg-secondary example">Example</span>
+                                                    <a class="anchor" href="#item-eoap.cct.string-format-15">¶</a>
+                                                    <div class="float-end">
+                                                            <span class="badge text-bg-danger me-2">Failed</span>
+                                                    </div>
+                                                </div>
+                                                <div class="card-text mt-2 validation-text collapse" id="uid-20">
+                                                    <div class="validation-text-inner">
+                                                                    <div class="font-monospace subsection-title mt-2">Files</div>
+                                                                
+                                                                    
+                                                                    <div class="font-monospace entry-message section-files ">Using examples/json-pointer.yaml from examples</div>
+                                                                    <div class="font-monospace subsection-title mt-2">Unknown errors</div>
+                                                                
+                                                                    
+                                                                    <div class="font-monospace entry-message section-unknown text-danger">Traceback (most recent call last):
+,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 200, in validate
+    validate_json(json_doc, schema_validator)
+,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 44, in validate_json
+    error = jsonschema.exceptions.best_match(validator.iter_errors(instance))
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/exceptions.py&quot;, line 384, in best_match
+    best = next(errors, None)
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 288, in iter_errors
+    for error in errors:
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/_validators.py&quot;, line 298, in ref
+    yield from validator.descend(instance, resolved)
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 305, in descend
+    for error in self.evolve(schema=schema).iter_errors(instance):
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 278, in iter_errors
+    scope = id_of(_schema)
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 101, in _id_of
+    return schema.get(&quot;$id&quot;, &quot;&quot;)
+,AttributeError: &#x27;list&#x27; object has no attribute &#x27;get&#x27;
+,
+During handling of the above exception, another exception occurred:
+
+,Traceback (most recent call last):
+,  File &quot;/src/ogc/bblocks/validate.py&quot;, line 301, in _validate_resource
+    result = validator.validate(filename, output_filename, report,
+,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 221, in validate
+    &#x27;errorMessage&#x27;: e.message,
+,AttributeError: &#x27;AttributeError&#x27; object has no attribute &#x27;message&#x27;
+</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card mb-2 validation-item " id="item-eoap.cct.string-format-16">
+                                            <div class="card-body">
+                                                <div class="card-title mb-0 anchor-container">
+                                                    <button type="button" class="btn btn-sm btn-primary collapsed"
+                                                            data-bs-toggle="collapse" data-bs-target="#uid-21"
+                                                            aria-expanded="false" aria-controls="uid-21"
+                                                            style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
+                                                        <i class="bi bi-caret-right-fill caret"></i>
+                                                        Details
+                                                    </button>
+                                                    <a href="cct/string-format/example_16_1.yaml" target="_blank">example_16_1.yaml</a>
+                                                    <span class="badge bg-secondary example">Example</span>
+                                                    <a class="anchor" href="#item-eoap.cct.string-format-16">¶</a>
+                                                    <div class="float-end">
+                                                            <span class="badge text-bg-danger me-2">Failed</span>
+                                                    </div>
+                                                </div>
+                                                <div class="card-text mt-2 validation-text collapse" id="uid-21">
+                                                    <div class="validation-text-inner">
+                                                                    <div class="font-monospace subsection-title mt-2">Files</div>
+                                                                
+                                                                    
+                                                                    <div class="font-monospace entry-message section-files ">Using examples/relative-json-pointer.yaml from examples</div>
+                                                                    <div class="font-monospace subsection-title mt-2">Unknown errors</div>
+                                                                
+                                                                    
+                                                                    <div class="font-monospace entry-message section-unknown text-danger">Traceback (most recent call last):
+,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 200, in validate
+    validate_json(json_doc, schema_validator)
+,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 44, in validate_json
+    error = jsonschema.exceptions.best_match(validator.iter_errors(instance))
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/exceptions.py&quot;, line 384, in best_match
+    best = next(errors, None)
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 288, in iter_errors
+    for error in errors:
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/_validators.py&quot;, line 298, in ref
+    yield from validator.descend(instance, resolved)
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 305, in descend
+    for error in self.evolve(schema=schema).iter_errors(instance):
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 278, in iter_errors
+    scope = id_of(_schema)
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 101, in _id_of
+    return schema.get(&quot;$id&quot;, &quot;&quot;)
+,AttributeError: &#x27;list&#x27; object has no attribute &#x27;get&#x27;
+,
+During handling of the above exception, another exception occurred:
+
+,Traceback (most recent call last):
+,  File &quot;/src/ogc/bblocks/validate.py&quot;, line 301, in _validate_resource
+    result = validator.validate(filename, output_filename, report,
+,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 221, in validate
+    &#x27;errorMessage&#x27;: e.message,
+,AttributeError: &#x27;AttributeError&#x27; object has no attribute &#x27;message&#x27;
+</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card mb-2 validation-item " id="item-eoap.cct.string-format-17">
+                                            <div class="card-body">
+                                                <div class="card-title mb-0 anchor-container">
+                                                    <button type="button" class="btn btn-sm btn-primary collapsed"
+                                                            data-bs-toggle="collapse" data-bs-target="#uid-22"
+                                                            aria-expanded="false" aria-controls="uid-22"
+                                                            style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
+                                                        <i class="bi bi-caret-right-fill caret"></i>
+                                                        Details
+                                                    </button>
+                                                    <a href="cct/string-format/example_17_1.yaml" target="_blank">example_17_1.yaml</a>
+                                                    <span class="badge bg-secondary example">Example</span>
+                                                    <a class="anchor" href="#item-eoap.cct.string-format-17">¶</a>
+                                                    <div class="float-end">
+                                                            <span class="badge text-bg-danger me-2">Failed</span>
+                                                    </div>
+                                                </div>
+                                                <div class="card-text mt-2 validation-text collapse" id="uid-22">
+                                                    <div class="validation-text-inner">
+                                                                    <div class="font-monospace subsection-title mt-2">Files</div>
+                                                                
+                                                                    
+                                                                    <div class="font-monospace entry-message section-files ">Using examples/uuid.yaml from examples</div>
+                                                                    <div class="font-monospace subsection-title mt-2">Unknown errors</div>
+                                                                
+                                                                    
+                                                                    <div class="font-monospace entry-message section-unknown text-danger">Traceback (most recent call last):
+,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 200, in validate
+    validate_json(json_doc, schema_validator)
+,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 44, in validate_json
+    error = jsonschema.exceptions.best_match(validator.iter_errors(instance))
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/exceptions.py&quot;, line 384, in best_match
+    best = next(errors, None)
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 288, in iter_errors
+    for error in errors:
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/_validators.py&quot;, line 298, in ref
+    yield from validator.descend(instance, resolved)
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 305, in descend
+    for error in self.evolve(schema=schema).iter_errors(instance):
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 278, in iter_errors
+    scope = id_of(_schema)
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 101, in _id_of
+    return schema.get(&quot;$id&quot;, &quot;&quot;)
+,AttributeError: &#x27;list&#x27; object has no attribute &#x27;get&#x27;
+,
+During handling of the above exception, another exception occurred:
+
+,Traceback (most recent call last):
+,  File &quot;/src/ogc/bblocks/validate.py&quot;, line 301, in _validate_resource
+    result = validator.validate(filename, output_filename, report,
+,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 221, in validate
+    &#x27;errorMessage&#x27;: e.message,
+,AttributeError: &#x27;AttributeError&#x27; object has no attribute &#x27;message&#x27;
+</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                 </div>
                             </div>
                         </div>
                         <div class="accordion-item bblock-report" data-bblock-id="eoap.cct.stac" id="bblock-eoap.cct.stac">
-                            <h2 class="accordion-header bblock-title">
-                                <button class="accordion-button collapsed" type="button"
+                            <h2 class="accordion-header bblock-title anchor-container">
+                                <button class="accordion-button " type="button"
                                     data-bs-toggle="collapse"
                                     data-bs-target="#bblock-collapse-eoap\.cct\.stac">
                                     <div class="flex-fill">
                                         eaop-cct:STAC
                                         <small class="ms-2 bblock-id">eoap.cct.stac</small>
+                                        <a class="anchor" href="#bblock-eoap.cct.stac">¶</a>
                                     </div>
 
-                                    <span class="badge text-bg-success me-2">
-                                            Passed
-                                            (no tests)
+                                    <span class="badge text-bg-danger me-2">
+                                            Tests Failed
+                                            (0% passed)
                                     </span>
                                 </button>
                             </h2>
-                            <div class="accordion-collapse collapse " id="bblock-collapse-eoap.cct.stac">
+                            <div class="accordion-collapse collapse show" id="bblock-collapse-eoap.cct.stac">
                                 <div class="accordion-body">
-                                        <div class="alert alert-info mb-0">No tests were found for this building block.</div>
+                                        <p class="summary fw-semibold text-danger">
+                                            Test passed: 0 / 2
+                                        </p>
+                                        <div class="card mb-2 validation-item " id="item-eoap.cct.stac-1">
+                                            <div class="card-body">
+                                                <div class="card-title mb-0 anchor-container">
+                                                    <button type="button" class="btn btn-sm btn-primary collapsed"
+                                                            data-bs-toggle="collapse" data-bs-target="#uid-23"
+                                                            aria-expanded="false" aria-controls="uid-23"
+                                                            style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
+                                                        <i class="bi bi-caret-right-fill caret"></i>
+                                                        Details
+                                                    </button>
+                                                    <a href="cct/stac/example_1_1.yaml" target="_blank">example_1_1.yaml</a>
+                                                    <span class="badge bg-secondary example">Example</span>
+                                                    <a class="anchor" href="#item-eoap.cct.stac-1">¶</a>
+                                                    <div class="float-end">
+                                                            <span class="badge text-bg-danger me-2">Failed</span>
+                                                    </div>
+                                                </div>
+                                                <div class="card-text mt-2 validation-text collapse" id="uid-23">
+                                                    <div class="validation-text-inner">
+                                                                    <div class="font-monospace subsection-title mt-2">Files</div>
+                                                                
+                                                                    
+                                                                    <div class="font-monospace entry-message section-files ">Using examples/item.yaml from examples</div>
+                                                                    <div class="font-monospace subsection-title mt-2">Unknown errors</div>
+                                                                
+                                                                    
+                                                                    <div class="font-monospace entry-message section-unknown text-danger">Traceback (most recent call last):
+,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 200, in validate
+    validate_json(json_doc, schema_validator)
+,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 44, in validate_json
+    error = jsonschema.exceptions.best_match(validator.iter_errors(instance))
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/exceptions.py&quot;, line 384, in best_match
+    best = next(errors, None)
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 288, in iter_errors
+    for error in errors:
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/_validators.py&quot;, line 298, in ref
+    yield from validator.descend(instance, resolved)
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 305, in descend
+    for error in self.evolve(schema=schema).iter_errors(instance):
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 278, in iter_errors
+    scope = id_of(_schema)
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 101, in _id_of
+    return schema.get(&quot;$id&quot;, &quot;&quot;)
+,AttributeError: &#x27;list&#x27; object has no attribute &#x27;get&#x27;
+,
+During handling of the above exception, another exception occurred:
+
+,Traceback (most recent call last):
+,  File &quot;/src/ogc/bblocks/validate.py&quot;, line 301, in _validate_resource
+    result = validator.validate(filename, output_filename, report,
+,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 221, in validate
+    &#x27;errorMessage&#x27;: e.message,
+,AttributeError: &#x27;AttributeError&#x27; object has no attribute &#x27;message&#x27;
+</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card mb-2 validation-item " id="item-eoap.cct.stac-2">
+                                            <div class="card-body">
+                                                <div class="card-title mb-0 anchor-container">
+                                                    <button type="button" class="btn btn-sm btn-primary collapsed"
+                                                            data-bs-toggle="collapse" data-bs-target="#uid-24"
+                                                            aria-expanded="false" aria-controls="uid-24"
+                                                            style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
+                                                        <i class="bi bi-caret-right-fill caret"></i>
+                                                        Details
+                                                    </button>
+                                                    <a href="cct/stac/example_2_1.yaml" target="_blank">example_2_1.yaml</a>
+                                                    <span class="badge bg-secondary example">Example</span>
+                                                    <a class="anchor" href="#item-eoap.cct.stac-2">¶</a>
+                                                    <div class="float-end">
+                                                            <span class="badge text-bg-danger me-2">Failed</span>
+                                                    </div>
+                                                </div>
+                                                <div class="card-text mt-2 validation-text collapse" id="uid-24">
+                                                    <div class="validation-text-inner">
+                                                                    <div class="font-monospace subsection-title mt-2">Files</div>
+                                                                
+                                                                    
+                                                                    <div class="font-monospace entry-message section-files ">Using examples/catalog.yaml from examples</div>
+                                                                    <div class="font-monospace subsection-title mt-2">Unknown errors</div>
+                                                                
+                                                                    
+                                                                    <div class="font-monospace entry-message section-unknown text-danger">Traceback (most recent call last):
+,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 200, in validate
+    validate_json(json_doc, schema_validator)
+,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 44, in validate_json
+    error = jsonschema.exceptions.best_match(validator.iter_errors(instance))
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/exceptions.py&quot;, line 384, in best_match
+    best = next(errors, None)
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 288, in iter_errors
+    for error in errors:
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/_validators.py&quot;, line 298, in ref
+    yield from validator.descend(instance, resolved)
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 305, in descend
+    for error in self.evolve(schema=schema).iter_errors(instance):
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 278, in iter_errors
+    scope = id_of(_schema)
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 101, in _id_of
+    return schema.get(&quot;$id&quot;, &quot;&quot;)
+,AttributeError: &#x27;list&#x27; object has no attribute &#x27;get&#x27;
+,
+During handling of the above exception, another exception occurred:
+
+,Traceback (most recent call last):
+,  File &quot;/src/ogc/bblocks/validate.py&quot;, line 301, in _validate_resource
+    result = validator.validate(filename, output_filename, report,
+,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 221, in validate
+    &#x27;errorMessage&#x27;: e.message,
+,AttributeError: &#x27;AttributeError&#x27; object has no attribute &#x27;message&#x27;
+</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                 </div>
                             </div>
                         </div>
                         <div class="accordion-item bblock-report" data-bblock-id="eoap.cct.cwl-to-ogcprocess" id="bblock-eoap.cct.cwl-to-ogcprocess">
-                            <h2 class="accordion-header bblock-title">
+                            <h2 class="accordion-header bblock-title anchor-container">
                                 <button class="accordion-button collapsed" type="button"
                                     data-bs-toggle="collapse"
                                     data-bs-target="#bblock-collapse-eoap\.cct\.cwl-to-ogcprocess">
                                     <div class="flex-fill">
                                         CWL to OGC API Processes Profile
                                         <small class="ms-2 bblock-id">eoap.cct.cwl-to-ogcprocess</small>
+                                        <a class="anchor" href="#bblock-eoap.cct.cwl-to-ogcprocess">¶</a>
                                     </div>
 
                                     <span class="badge text-bg-success me-2">
@@ -169,361 +1587,469 @@
                                         <p class="summary fw-semibold text-success">
                                             Test passed: 12 / 12
                                         </p>
-                                        <div class="card mb-2 validation-item ">
+                                        <div class="card mb-2 validation-item " id="item-eoap.cct.cwl-to-ogcprocess-1">
                                             <div class="card-body">
-                                                <div class="card-title mb-0">
+                                                <div class="card-title mb-0 anchor-container">
                                                     <button type="button" class="btn btn-sm btn-primary collapsed"
-                                                            data-bs-toggle="collapse" data-bs-target="#uid-1"
-                                                            aria-expanded="false" aria-controls="uid-1"
+                                                            data-bs-toggle="collapse" data-bs-target="#uid-25"
+                                                            aria-expanded="false" aria-controls="uid-25"
                                                             style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
                                                         <i class="bi bi-caret-right-fill caret"></i>
                                                         Details
                                                     </button>
                                                     <a href="cct/cwl-to-ogcprocess/example_1_1.yaml" target="_blank">example_1_1.yaml</a>
                                                     <span class="badge bg-secondary example">Example</span>
+                                                    <a class="anchor" href="#item-eoap.cct.cwl-to-ogcprocess-1">¶</a>
                                                     <div class="float-end">
                                                             <span class="badge text-bg-success me-2">Passed</span>
                                                     </div>
                                                 </div>
-                                                <div class="card-text mt-2 validation-text collapse" id="uid-1">
+                                                <div class="card-text mt-2 validation-text collapse" id="uid-25">
                                                     <div class="validation-text-inner">
                                                                     <div class="font-monospace subsection-title mt-2">Files</div>
-                                                                    <div class="font-monospace entry-message section-files ">Using example_1_1.yaml (example_1_1) from examples</div>
+                                                                
+                                                                    
+                                                                    <div class="font-monospace entry-message section-files ">Using examples/bbox-workflow.cwl from examples</div>
                                                                     <div class="font-monospace subsection-title mt-2">JSON Schema</div>
+                                                                
+                                                                    
                                                                     <div class="font-monospace entry-message section-json_schema ">Validation passed</div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="card mb-2 validation-item ">
+                                        <div class="card mb-2 validation-item " id="item-eoap.cct.cwl-to-ogcprocess-2">
                                             <div class="card-body">
-                                                <div class="card-title mb-0">
+                                                <div class="card-title mb-0 anchor-container">
                                                     <button type="button" class="btn btn-sm btn-primary collapsed"
-                                                            data-bs-toggle="collapse" data-bs-target="#uid-2"
-                                                            aria-expanded="false" aria-controls="uid-2"
+                                                            data-bs-toggle="collapse" data-bs-target="#uid-26"
+                                                            aria-expanded="false" aria-controls="uid-26"
                                                             style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
                                                         <i class="bi bi-caret-right-fill caret"></i>
                                                         Details
                                                     </button>
                                                     <a href="cct/cwl-to-ogcprocess/example_1_2.json" target="_blank">example_1_2.json</a>
                                                     <span class="badge bg-secondary example">Example</span>
+                                                    <a class="anchor" href="#item-eoap.cct.cwl-to-ogcprocess-2">¶</a>
                                                     <div class="float-end">
                                                             <span class="badge text-bg-success me-2">Passed</span>
                                                     </div>
                                                 </div>
-                                                <div class="card-text mt-2 validation-text collapse" id="uid-2">
+                                                <div class="card-text mt-2 validation-text collapse" id="uid-26">
                                                     <div class="validation-text-inner">
                                                                     <div class="font-monospace subsection-title mt-2">Files</div>
-                                                                    <div class="font-monospace entry-message section-files ">Using example_1_2.json (example_1_2) from examples</div>
+                                                                
+                                                                    
+                                                                    <div class="font-monospace entry-message section-files ">Using examples/bbox-workflow.json from examples</div>
+                                                                    
                                                                     <div class="font-monospace entry-message section-files ">JSON-LD context is present - uplifting</div>
+                                                                    
                                                                     <div class="font-monospace entry-message section-files ">Output JSON-LD example_1_2.jsonld created</div>
+                                                                    
                                                                     <div class="font-monospace entry-message section-files ">Output Turtle example_1_2.ttl created</div>
                                                                     <div class="font-monospace subsection-title mt-2">JSON Schema</div>
+                                                                
+                                                                    
                                                                     <div class="font-monospace entry-message section-json_schema ">Validation passed</div>
                                                                     <div class="font-monospace subsection-title mt-2">Semantic Uplift</div>
+                                                                
+                                                                    
                                                                     <div class="font-monospace entry-message section-semantic_uplift ">Running post-uplift shacl transform step from semantic-uplift/cwl-to-ogcprocess.shacl</div>
+                                                                    
                                                                     <div class="font-monospace entry-message section-semantic_uplift ">Running post-uplift shacl transform step from semantic-uplift/cwl-inputs-to-ogcprocess.shacl</div>
+                                                                    
                                                                     <div class="font-monospace entry-message section-semantic_uplift ">Running post-uplift shacl transform step from semantic-uplift/cwl-outputs-to-ogcprocess.shacl</div>
+                                                                    
                                                                     <div class="font-monospace entry-message section-semantic_uplift ">Running post-uplift shacl transform step from semantic-uplift/eoap-types-to-ogcschemas.shacl</div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="card mb-2 validation-item ">
+                                        <div class="card mb-2 validation-item " id="item-eoap.cct.cwl-to-ogcprocess-3">
                                             <div class="card-body">
-                                                <div class="card-title mb-0">
+                                                <div class="card-title mb-0 anchor-container">
                                                     <button type="button" class="btn btn-sm btn-primary collapsed"
-                                                            data-bs-toggle="collapse" data-bs-target="#uid-3"
-                                                            aria-expanded="false" aria-controls="uid-3"
+                                                            data-bs-toggle="collapse" data-bs-target="#uid-27"
+                                                            aria-expanded="false" aria-controls="uid-27"
                                                             style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
                                                         <i class="bi bi-caret-right-fill caret"></i>
                                                         Details
                                                     </button>
                                                     <a href="cct/cwl-to-ogcprocess/example_2_1.yaml" target="_blank">example_2_1.yaml</a>
                                                     <span class="badge bg-secondary example">Example</span>
+                                                    <a class="anchor" href="#item-eoap.cct.cwl-to-ogcprocess-3">¶</a>
                                                     <div class="float-end">
                                                             <span class="badge text-bg-success me-2">Passed</span>
                                                     </div>
                                                 </div>
-                                                <div class="card-text mt-2 validation-text collapse" id="uid-3">
+                                                <div class="card-text mt-2 validation-text collapse" id="uid-27">
                                                     <div class="validation-text-inner">
                                                                     <div class="font-monospace subsection-title mt-2">Files</div>
-                                                                    <div class="font-monospace entry-message section-files ">Using example_2_1.yaml (example_2_1) from examples</div>
+                                                                
+                                                                    
+                                                                    <div class="font-monospace entry-message section-files ">Using examples/feature-workflow.cwl from examples</div>
                                                                     <div class="font-monospace subsection-title mt-2">JSON Schema</div>
+                                                                
+                                                                    
                                                                     <div class="font-monospace entry-message section-json_schema ">Validation passed</div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="card mb-2 validation-item ">
+                                        <div class="card mb-2 validation-item " id="item-eoap.cct.cwl-to-ogcprocess-4">
                                             <div class="card-body">
-                                                <div class="card-title mb-0">
+                                                <div class="card-title mb-0 anchor-container">
                                                     <button type="button" class="btn btn-sm btn-primary collapsed"
-                                                            data-bs-toggle="collapse" data-bs-target="#uid-4"
-                                                            aria-expanded="false" aria-controls="uid-4"
+                                                            data-bs-toggle="collapse" data-bs-target="#uid-28"
+                                                            aria-expanded="false" aria-controls="uid-28"
                                                             style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
                                                         <i class="bi bi-caret-right-fill caret"></i>
                                                         Details
                                                     </button>
                                                     <a href="cct/cwl-to-ogcprocess/example_2_2.json" target="_blank">example_2_2.json</a>
                                                     <span class="badge bg-secondary example">Example</span>
+                                                    <a class="anchor" href="#item-eoap.cct.cwl-to-ogcprocess-4">¶</a>
                                                     <div class="float-end">
                                                             <span class="badge text-bg-success me-2">Passed</span>
                                                     </div>
                                                 </div>
-                                                <div class="card-text mt-2 validation-text collapse" id="uid-4">
+                                                <div class="card-text mt-2 validation-text collapse" id="uid-28">
                                                     <div class="validation-text-inner">
                                                                     <div class="font-monospace subsection-title mt-2">Files</div>
-                                                                    <div class="font-monospace entry-message section-files ">Using example_2_2.json (example_2_2) from examples</div>
+                                                                
+                                                                    
+                                                                    <div class="font-monospace entry-message section-files ">Using examples/feature-workflow.json from examples</div>
+                                                                    
                                                                     <div class="font-monospace entry-message section-files ">JSON-LD context is present - uplifting</div>
+                                                                    
                                                                     <div class="font-monospace entry-message section-files ">Output JSON-LD example_2_2.jsonld created</div>
+                                                                    
                                                                     <div class="font-monospace entry-message section-files ">Output Turtle example_2_2.ttl created</div>
                                                                     <div class="font-monospace subsection-title mt-2">JSON Schema</div>
+                                                                
+                                                                    
                                                                     <div class="font-monospace entry-message section-json_schema ">Validation passed</div>
                                                                     <div class="font-monospace subsection-title mt-2">Semantic Uplift</div>
+                                                                
+                                                                    
                                                                     <div class="font-monospace entry-message section-semantic_uplift ">Running post-uplift shacl transform step from semantic-uplift/cwl-to-ogcprocess.shacl</div>
+                                                                    
                                                                     <div class="font-monospace entry-message section-semantic_uplift ">Running post-uplift shacl transform step from semantic-uplift/cwl-inputs-to-ogcprocess.shacl</div>
+                                                                    
                                                                     <div class="font-monospace entry-message section-semantic_uplift ">Running post-uplift shacl transform step from semantic-uplift/cwl-outputs-to-ogcprocess.shacl</div>
+                                                                    
                                                                     <div class="font-monospace entry-message section-semantic_uplift ">Running post-uplift shacl transform step from semantic-uplift/eoap-types-to-ogcschemas.shacl</div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="card mb-2 validation-item ">
+                                        <div class="card mb-2 validation-item " id="item-eoap.cct.cwl-to-ogcprocess-5">
                                             <div class="card-body">
-                                                <div class="card-title mb-0">
+                                                <div class="card-title mb-0 anchor-container">
                                                     <button type="button" class="btn btn-sm btn-primary collapsed"
-                                                            data-bs-toggle="collapse" data-bs-target="#uid-5"
-                                                            aria-expanded="false" aria-controls="uid-5"
+                                                            data-bs-toggle="collapse" data-bs-target="#uid-29"
+                                                            aria-expanded="false" aria-controls="uid-29"
                                                             style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
                                                         <i class="bi bi-caret-right-fill caret"></i>
                                                         Details
                                                     </button>
                                                     <a href="cct/cwl-to-ogcprocess/example_3_1.yaml" target="_blank">example_3_1.yaml</a>
                                                     <span class="badge bg-secondary example">Example</span>
+                                                    <a class="anchor" href="#item-eoap.cct.cwl-to-ogcprocess-5">¶</a>
                                                     <div class="float-end">
                                                             <span class="badge text-bg-success me-2">Passed</span>
                                                     </div>
                                                 </div>
-                                                <div class="card-text mt-2 validation-text collapse" id="uid-5">
+                                                <div class="card-text mt-2 validation-text collapse" id="uid-29">
                                                     <div class="validation-text-inner">
                                                                     <div class="font-monospace subsection-title mt-2">Files</div>
-                                                                    <div class="font-monospace entry-message section-files ">Using example_3_1.yaml (example_3_1) from examples</div>
+                                                                
+                                                                    
+                                                                    <div class="font-monospace entry-message section-files ">Using examples/item-workflow.cwl from examples</div>
                                                                     <div class="font-monospace subsection-title mt-2">JSON Schema</div>
+                                                                
+                                                                    
                                                                     <div class="font-monospace entry-message section-json_schema ">Validation passed</div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="card mb-2 validation-item ">
+                                        <div class="card mb-2 validation-item " id="item-eoap.cct.cwl-to-ogcprocess-6">
                                             <div class="card-body">
-                                                <div class="card-title mb-0">
+                                                <div class="card-title mb-0 anchor-container">
                                                     <button type="button" class="btn btn-sm btn-primary collapsed"
-                                                            data-bs-toggle="collapse" data-bs-target="#uid-6"
-                                                            aria-expanded="false" aria-controls="uid-6"
+                                                            data-bs-toggle="collapse" data-bs-target="#uid-30"
+                                                            aria-expanded="false" aria-controls="uid-30"
                                                             style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
                                                         <i class="bi bi-caret-right-fill caret"></i>
                                                         Details
                                                     </button>
                                                     <a href="cct/cwl-to-ogcprocess/example_3_2.json" target="_blank">example_3_2.json</a>
                                                     <span class="badge bg-secondary example">Example</span>
+                                                    <a class="anchor" href="#item-eoap.cct.cwl-to-ogcprocess-6">¶</a>
                                                     <div class="float-end">
                                                             <span class="badge text-bg-success me-2">Passed</span>
                                                     </div>
                                                 </div>
-                                                <div class="card-text mt-2 validation-text collapse" id="uid-6">
+                                                <div class="card-text mt-2 validation-text collapse" id="uid-30">
                                                     <div class="validation-text-inner">
                                                                     <div class="font-monospace subsection-title mt-2">Files</div>
-                                                                    <div class="font-monospace entry-message section-files ">Using example_3_2.json (example_3_2) from examples</div>
+                                                                
+                                                                    
+                                                                    <div class="font-monospace entry-message section-files ">Using examples/item-workflow.json from examples</div>
+                                                                    
                                                                     <div class="font-monospace entry-message section-files ">JSON-LD context is present - uplifting</div>
+                                                                    
                                                                     <div class="font-monospace entry-message section-files ">Output JSON-LD example_3_2.jsonld created</div>
+                                                                    
                                                                     <div class="font-monospace entry-message section-files ">Output Turtle example_3_2.ttl created</div>
                                                                     <div class="font-monospace subsection-title mt-2">JSON Schema</div>
+                                                                
+                                                                    
                                                                     <div class="font-monospace entry-message section-json_schema ">Validation passed</div>
                                                                     <div class="font-monospace subsection-title mt-2">Semantic Uplift</div>
+                                                                
+                                                                    
                                                                     <div class="font-monospace entry-message section-semantic_uplift ">Running post-uplift shacl transform step from semantic-uplift/cwl-to-ogcprocess.shacl</div>
+                                                                    
                                                                     <div class="font-monospace entry-message section-semantic_uplift ">Running post-uplift shacl transform step from semantic-uplift/cwl-inputs-to-ogcprocess.shacl</div>
+                                                                    
                                                                     <div class="font-monospace entry-message section-semantic_uplift ">Running post-uplift shacl transform step from semantic-uplift/cwl-outputs-to-ogcprocess.shacl</div>
+                                                                    
                                                                     <div class="font-monospace entry-message section-semantic_uplift ">Running post-uplift shacl transform step from semantic-uplift/eoap-types-to-ogcschemas.shacl</div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="card mb-2 validation-item ">
+                                        <div class="card mb-2 validation-item " id="item-eoap.cct.cwl-to-ogcprocess-7">
                                             <div class="card-body">
-                                                <div class="card-title mb-0">
+                                                <div class="card-title mb-0 anchor-container">
                                                     <button type="button" class="btn btn-sm btn-primary collapsed"
-                                                            data-bs-toggle="collapse" data-bs-target="#uid-7"
-                                                            aria-expanded="false" aria-controls="uid-7"
+                                                            data-bs-toggle="collapse" data-bs-target="#uid-31"
+                                                            aria-expanded="false" aria-controls="uid-31"
                                                             style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
                                                         <i class="bi bi-caret-right-fill caret"></i>
                                                         Details
                                                     </button>
                                                     <a href="cct/cwl-to-ogcprocess/example_4_1.yaml" target="_blank">example_4_1.yaml</a>
                                                     <span class="badge bg-secondary example">Example</span>
+                                                    <a class="anchor" href="#item-eoap.cct.cwl-to-ogcprocess-7">¶</a>
                                                     <div class="float-end">
                                                             <span class="badge text-bg-success me-2">Passed</span>
                                                     </div>
                                                 </div>
-                                                <div class="card-text mt-2 validation-text collapse" id="uid-7">
+                                                <div class="card-text mt-2 validation-text collapse" id="uid-31">
                                                     <div class="validation-text-inner">
                                                                     <div class="font-monospace subsection-title mt-2">Files</div>
-                                                                    <div class="font-monospace entry-message section-files ">Using example_4_1.yaml (example_4_1) from examples</div>
+                                                                
+                                                                    
+                                                                    <div class="font-monospace entry-message section-files ">Using examples/water-bodies-workflow.cwl from examples</div>
                                                                     <div class="font-monospace subsection-title mt-2">JSON Schema</div>
+                                                                
+                                                                    
                                                                     <div class="font-monospace entry-message section-json_schema ">Validation passed</div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="card mb-2 validation-item ">
+                                        <div class="card mb-2 validation-item " id="item-eoap.cct.cwl-to-ogcprocess-8">
                                             <div class="card-body">
-                                                <div class="card-title mb-0">
+                                                <div class="card-title mb-0 anchor-container">
                                                     <button type="button" class="btn btn-sm btn-primary collapsed"
-                                                            data-bs-toggle="collapse" data-bs-target="#uid-8"
-                                                            aria-expanded="false" aria-controls="uid-8"
+                                                            data-bs-toggle="collapse" data-bs-target="#uid-32"
+                                                            aria-expanded="false" aria-controls="uid-32"
                                                             style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
                                                         <i class="bi bi-caret-right-fill caret"></i>
                                                         Details
                                                     </button>
                                                     <a href="cct/cwl-to-ogcprocess/example_4_2.json" target="_blank">example_4_2.json</a>
                                                     <span class="badge bg-secondary example">Example</span>
+                                                    <a class="anchor" href="#item-eoap.cct.cwl-to-ogcprocess-8">¶</a>
                                                     <div class="float-end">
                                                             <span class="badge text-bg-success me-2">Passed</span>
                                                     </div>
                                                 </div>
-                                                <div class="card-text mt-2 validation-text collapse" id="uid-8">
+                                                <div class="card-text mt-2 validation-text collapse" id="uid-32">
                                                     <div class="validation-text-inner">
                                                                     <div class="font-monospace subsection-title mt-2">Files</div>
-                                                                    <div class="font-monospace entry-message section-files ">Using example_4_2.json (example_4_2) from examples</div>
+                                                                
+                                                                    
+                                                                    <div class="font-monospace entry-message section-files ">Using examples/water-bodies-workflow.json from examples</div>
+                                                                    
                                                                     <div class="font-monospace entry-message section-files ">JSON-LD context is present - uplifting</div>
+                                                                    
                                                                     <div class="font-monospace entry-message section-files ">Output JSON-LD example_4_2.jsonld created</div>
+                                                                    
                                                                     <div class="font-monospace entry-message section-files ">Output Turtle example_4_2.ttl created</div>
                                                                     <div class="font-monospace subsection-title mt-2">JSON Schema</div>
+                                                                
+                                                                    
                                                                     <div class="font-monospace entry-message section-json_schema ">Validation passed</div>
                                                                     <div class="font-monospace subsection-title mt-2">Semantic Uplift</div>
+                                                                
+                                                                    
                                                                     <div class="font-monospace entry-message section-semantic_uplift ">Running post-uplift shacl transform step from semantic-uplift/cwl-to-ogcprocess.shacl</div>
+                                                                    
                                                                     <div class="font-monospace entry-message section-semantic_uplift ">Running post-uplift shacl transform step from semantic-uplift/cwl-inputs-to-ogcprocess.shacl</div>
+                                                                    
                                                                     <div class="font-monospace entry-message section-semantic_uplift ">Running post-uplift shacl transform step from semantic-uplift/cwl-outputs-to-ogcprocess.shacl</div>
+                                                                    
                                                                     <div class="font-monospace entry-message section-semantic_uplift ">Running post-uplift shacl transform step from semantic-uplift/eoap-types-to-ogcschemas.shacl</div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="card mb-2 validation-item ">
+                                        <div class="card mb-2 validation-item " id="item-eoap.cct.cwl-to-ogcprocess-9">
                                             <div class="card-body">
-                                                <div class="card-title mb-0">
+                                                <div class="card-title mb-0 anchor-container">
                                                     <button type="button" class="btn btn-sm btn-primary collapsed"
-                                                            data-bs-toggle="collapse" data-bs-target="#uid-9"
-                                                            aria-expanded="false" aria-controls="uid-9"
+                                                            data-bs-toggle="collapse" data-bs-target="#uid-33"
+                                                            aria-expanded="false" aria-controls="uid-33"
                                                             style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
                                                         <i class="bi bi-caret-right-fill caret"></i>
                                                         Details
                                                     </button>
                                                     <a href="cct/cwl-to-ogcprocess/example_5_1.yaml" target="_blank">example_5_1.yaml</a>
                                                     <span class="badge bg-secondary example">Example</span>
+                                                    <a class="anchor" href="#item-eoap.cct.cwl-to-ogcprocess-9">¶</a>
                                                     <div class="float-end">
                                                             <span class="badge text-bg-success me-2">Passed</span>
                                                     </div>
                                                 </div>
-                                                <div class="card-text mt-2 validation-text collapse" id="uid-9">
+                                                <div class="card-text mt-2 validation-text collapse" id="uid-33">
                                                     <div class="validation-text-inner">
                                                                     <div class="font-monospace subsection-title mt-2">Files</div>
-                                                                    <div class="font-monospace entry-message section-files ">Using example_5_1.yaml (example_5_1) from examples</div>
+                                                                
+                                                                    
+                                                                    <div class="font-monospace entry-message section-files ">Using examples/mangrove-workflow.cwl from examples</div>
                                                                     <div class="font-monospace subsection-title mt-2">JSON Schema</div>
+                                                                
+                                                                    
                                                                     <div class="font-monospace entry-message section-json_schema ">Validation passed</div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="card mb-2 validation-item ">
+                                        <div class="card mb-2 validation-item " id="item-eoap.cct.cwl-to-ogcprocess-10">
                                             <div class="card-body">
-                                                <div class="card-title mb-0">
+                                                <div class="card-title mb-0 anchor-container">
                                                     <button type="button" class="btn btn-sm btn-primary collapsed"
-                                                            data-bs-toggle="collapse" data-bs-target="#uid-10"
-                                                            aria-expanded="false" aria-controls="uid-10"
+                                                            data-bs-toggle="collapse" data-bs-target="#uid-34"
+                                                            aria-expanded="false" aria-controls="uid-34"
                                                             style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
                                                         <i class="bi bi-caret-right-fill caret"></i>
                                                         Details
                                                     </button>
                                                     <a href="cct/cwl-to-ogcprocess/example_5_2.json" target="_blank">example_5_2.json</a>
                                                     <span class="badge bg-secondary example">Example</span>
+                                                    <a class="anchor" href="#item-eoap.cct.cwl-to-ogcprocess-10">¶</a>
                                                     <div class="float-end">
                                                             <span class="badge text-bg-success me-2">Passed</span>
                                                     </div>
                                                 </div>
-                                                <div class="card-text mt-2 validation-text collapse" id="uid-10">
+                                                <div class="card-text mt-2 validation-text collapse" id="uid-34">
                                                     <div class="validation-text-inner">
                                                                     <div class="font-monospace subsection-title mt-2">Files</div>
-                                                                    <div class="font-monospace entry-message section-files ">Using example_5_2.json (example_5_2) from examples</div>
+                                                                
+                                                                    
+                                                                    <div class="font-monospace entry-message section-files ">Using examples/mangrove-workflow.json from examples</div>
+                                                                    
                                                                     <div class="font-monospace entry-message section-files ">JSON-LD context is present - uplifting</div>
+                                                                    
                                                                     <div class="font-monospace entry-message section-files ">Output JSON-LD example_5_2.jsonld created</div>
+                                                                    
                                                                     <div class="font-monospace entry-message section-files ">Output Turtle example_5_2.ttl created</div>
                                                                     <div class="font-monospace subsection-title mt-2">JSON Schema</div>
+                                                                
+                                                                    
                                                                     <div class="font-monospace entry-message section-json_schema ">Validation passed</div>
                                                                     <div class="font-monospace subsection-title mt-2">Semantic Uplift</div>
+                                                                
+                                                                    
                                                                     <div class="font-monospace entry-message section-semantic_uplift ">Running post-uplift shacl transform step from semantic-uplift/cwl-to-ogcprocess.shacl</div>
+                                                                    
                                                                     <div class="font-monospace entry-message section-semantic_uplift ">Running post-uplift shacl transform step from semantic-uplift/cwl-inputs-to-ogcprocess.shacl</div>
+                                                                    
                                                                     <div class="font-monospace entry-message section-semantic_uplift ">Running post-uplift shacl transform step from semantic-uplift/cwl-outputs-to-ogcprocess.shacl</div>
+                                                                    
                                                                     <div class="font-monospace entry-message section-semantic_uplift ">Running post-uplift shacl transform step from semantic-uplift/eoap-types-to-ogcschemas.shacl</div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="card mb-2 validation-item ">
+                                        <div class="card mb-2 validation-item " id="item-eoap.cct.cwl-to-ogcprocess-11">
                                             <div class="card-body">
-                                                <div class="card-title mb-0">
+                                                <div class="card-title mb-0 anchor-container">
                                                     <button type="button" class="btn btn-sm btn-primary collapsed"
-                                                            data-bs-toggle="collapse" data-bs-target="#uid-11"
-                                                            aria-expanded="false" aria-controls="uid-11"
+                                                            data-bs-toggle="collapse" data-bs-target="#uid-35"
+                                                            aria-expanded="false" aria-controls="uid-35"
                                                             style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
                                                         <i class="bi bi-caret-right-fill caret"></i>
                                                         Details
                                                     </button>
                                                     <a href="cct/cwl-to-ogcprocess/example_6_1.yaml" target="_blank">example_6_1.yaml</a>
                                                     <span class="badge bg-secondary example">Example</span>
+                                                    <a class="anchor" href="#item-eoap.cct.cwl-to-ogcprocess-11">¶</a>
                                                     <div class="float-end">
                                                             <span class="badge text-bg-success me-2">Passed</span>
                                                     </div>
                                                 </div>
-                                                <div class="card-text mt-2 validation-text collapse" id="uid-11">
+                                                <div class="card-text mt-2 validation-text collapse" id="uid-35">
                                                     <div class="validation-text-inner">
                                                                     <div class="font-monospace subsection-title mt-2">Files</div>
-                                                                    <div class="font-monospace entry-message section-files ">Using example_6_1.yaml (example_6_1) from examples</div>
+                                                                
+                                                                    
+                                                                    <div class="font-monospace entry-message section-files ">Using examples/cvi-workflow.cwl from examples</div>
                                                                     <div class="font-monospace subsection-title mt-2">JSON Schema</div>
+                                                                
+                                                                    
                                                                     <div class="font-monospace entry-message section-json_schema ">Validation passed</div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="card mb-2 validation-item ">
+                                        <div class="card mb-2 validation-item " id="item-eoap.cct.cwl-to-ogcprocess-12">
                                             <div class="card-body">
-                                                <div class="card-title mb-0">
+                                                <div class="card-title mb-0 anchor-container">
                                                     <button type="button" class="btn btn-sm btn-primary collapsed"
-                                                            data-bs-toggle="collapse" data-bs-target="#uid-12"
-                                                            aria-expanded="false" aria-controls="uid-12"
+                                                            data-bs-toggle="collapse" data-bs-target="#uid-36"
+                                                            aria-expanded="false" aria-controls="uid-36"
                                                             style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
                                                         <i class="bi bi-caret-right-fill caret"></i>
                                                         Details
                                                     </button>
                                                     <a href="cct/cwl-to-ogcprocess/example_6_2.json" target="_blank">example_6_2.json</a>
                                                     <span class="badge bg-secondary example">Example</span>
+                                                    <a class="anchor" href="#item-eoap.cct.cwl-to-ogcprocess-12">¶</a>
                                                     <div class="float-end">
                                                             <span class="badge text-bg-success me-2">Passed</span>
                                                     </div>
                                                 </div>
-                                                <div class="card-text mt-2 validation-text collapse" id="uid-12">
+                                                <div class="card-text mt-2 validation-text collapse" id="uid-36">
                                                     <div class="validation-text-inner">
                                                                     <div class="font-monospace subsection-title mt-2">Files</div>
-                                                                    <div class="font-monospace entry-message section-files ">Using example_6_2.json (example_6_2) from examples</div>
+                                                                
+                                                                    
+                                                                    <div class="font-monospace entry-message section-files ">Using examples/cvi-workflow.json from examples</div>
+                                                                    
                                                                     <div class="font-monospace entry-message section-files ">JSON-LD context is present - uplifting</div>
+                                                                    
                                                                     <div class="font-monospace entry-message section-files ">Output JSON-LD example_6_2.jsonld created</div>
+                                                                    
                                                                     <div class="font-monospace entry-message section-files ">Output Turtle example_6_2.ttl created</div>
                                                                     <div class="font-monospace subsection-title mt-2">JSON Schema</div>
+                                                                
+                                                                    
                                                                     <div class="font-monospace entry-message section-json_schema ">Validation passed</div>
                                                                     <div class="font-monospace subsection-title mt-2">Semantic Uplift</div>
+                                                                
+                                                                    
                                                                     <div class="font-monospace entry-message section-semantic_uplift ">Running post-uplift shacl transform step from semantic-uplift/cwl-to-ogcprocess.shacl</div>
+                                                                    
                                                                     <div class="font-monospace entry-message section-semantic_uplift ">Running post-uplift shacl transform step from semantic-uplift/cwl-inputs-to-ogcprocess.shacl</div>
+                                                                    
                                                                     <div class="font-monospace entry-message section-semantic_uplift ">Running post-uplift shacl transform step from semantic-uplift/cwl-outputs-to-ogcprocess.shacl</div>
+                                                                    
                                                                     <div class="font-monospace entry-message section-semantic_uplift ">Running post-uplift shacl transform step from semantic-uplift/eoap-types-to-ogcschemas.shacl</div>
                                                     </div>
                                                 </div>
@@ -546,13 +2072,20 @@
                         accordionEntries.forEach(e => e.classList.remove('show'));
                     }
                 });
-                if (location.hash.startsWith('#bblock-')) {
+                if (/^#(bblock|item)-/.test(location.hash)) {
                     const highlight = document.querySelector(location.hash.replaceAll('.', '\\.'));
                     if (highlight) {
                         highlight.querySelector('.accordion-collapse').classList.add('show');
                         highlight.classList.add('highlighted');
                     }
                 }
+                document.addEventListener('click', ev => {
+                    if (!ev.target.classList.contains('anchor') || !ev.target.href) {
+                      return;
+                    }
+                    ev.stopPropagation();
+                    navigator?.clipboard?.writeText(ev.target.href);
+                });
             });
         </script>
     </body>

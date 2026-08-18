@@ -8,7 +8,7 @@
   "description": "This building block defines a CWL custom type for OGC bounding boxes. The BoundingBox type represents spatial extents using coordinate arrays and optional coordinate reference system (CRS) specifications, conforming to OGC API standards.\n\n## Relationship to OGC API - Processes\n\nWhen used in process descriptions, bounding boxes map to the bbox schema (inline):\n\n```json\n{\n  \"id\": \"area_of_interest\",\n  \"title\": \"Area of Interest\",\n  \"schema\": {\n    \"type\": \"object\",\n    \"required\": [\"bbox\"],\n    \"properties\": {\n      \"bbox\": {\n        \"type\": \"array\",\n        \"items\": {\"type\": \"number\"},\n        \"minItems\": 4,\n        \"maxItems\": 6\n      },\n      \"crs\": {\n        \"type\": \"string\",\n        \"enum\": [\"CRS84\", \"CRS84h\"],\n        \"default\": \"CRS84\"\n      }\n    }\n  }\n}\n```\n\nAnother example using Table 13 from OGC API - Processes - Part 1: Core:\n\n```json\n{\n  \"id\": \"area_of_interest\",\n  \"title\": \"Area of Interest\",\n  \"description\": \"Spatial extent for processing operations\",\n  \"schema\": {\n    \"allOf\": [\n      {\n        \"format\": \"ogc-bbox\"\n      },\n      {\n        \"$ref\": \"https://schemas.opengis.net/ogcapi/processes/part1/1.0/openapi/schemas/bbox.yaml\"\n      }\n    ]\n  },\n  \"example\": {\n    \"bbox\": [-5.0, 51.0, -4.0, 52.0],\n    \"crs\": \"CRS84\"\n  }\n}\n```\n\nThis approach leverages the standard OGC API - Processes bbox schema while adding the `ogc-bbox` format hint for enhanced validation and tooling support.\n\n\n## Usage in CWL Workflows\n\nTo use the OGC BoundingBox custom type in a CWL workflow:\n\n```yaml\ncwlVersion: v1.0\nclass: CommandLineTool\n\nrequirements:\n  SchemaDefRequirement:\n    types:\n      - $import: https://eoap.github.io/schemas/cwl/bbox.yaml\n\ninputs:\n  area_of_interest:\n    type: eoap:bbox#BBox\n    doc: \"Spatial extent for processing\"\n    inputBinding:\n      position: 1\n      valueFrom: $(self.bbox.join(','))\n\n  elevation_range:\n    type: eoap:bbox#BBox3D\n    doc: \"3D spatial extent with elevation\"\n    inputBinding:\n      position: 2\n```\n",
   "status": "under-development",
   "dateTimeAddition": "2025-12-17T00:00:00Z",
-  "dateOfLastChange": "2025-12-18",
+  "dateOfLastChange": "2026-08-18",
   "version": "1.0",
   "itemClass": "schema",
   "register": "eoap-cct",
@@ -52,8 +52,8 @@
   },
   "sourceLdContext": "https://geolabs.github.io/bblocks-eoap-cct/_sources/bbox/context.jsonld",
   "sourceFiles": "https://geolabs.github.io/bblocks-eoap-cct/_sources/bbox/",
-  "rdfData": [],
-  "validationPassed": true,
+  "validationPassed": false,
+  "testOutputs": "https://github.com/GeoLabs/bblocks-eoap-cct/blob/master/build/tests/cct/bbox/",
   "examples": [
     {
       "title": "2D BBox (CRS84)",
@@ -61,9 +61,10 @@
       "snippets": [
         {
           "language": "yaml",
-          "ref": "examples/bbox-2d.yaml",
-          "code": "bbox: [-5.0, 51.0, -4.0, 52.0]\ncrs: CRS84\n",
-          "url": "https://geolabs.github.io/bblocks-eoap-cct/build/tests/cct/bbox/example_1_1.yaml"
+          "ref": "https://geolabs.github.io/bblocks-eoap-cct/_sources/bbox/examples/bbox-2d.yaml",
+          "url": "https://geolabs.github.io/bblocks-eoap-cct/build/tests/cct/bbox/example_1_1.yaml",
+          "sizeBytes": 42,
+          "code": "bbox: [-5.0, 51.0, -4.0, 52.0]\ncrs: CRS84\n"
         }
       ]
     },
@@ -73,9 +74,10 @@
       "snippets": [
         {
           "language": "yaml",
-          "ref": "examples/bbox-3d.yaml",
-          "code": "bbox: [-5.0, 51.0, 100.0, -4.0, 52.0, 500.0]\ncrs: CRS84h\n",
-          "url": "https://geolabs.github.io/bblocks-eoap-cct/build/tests/cct/bbox/example_2_1.yaml"
+          "ref": "https://geolabs.github.io/bblocks-eoap-cct/_sources/bbox/examples/bbox-3d.yaml",
+          "url": "https://geolabs.github.io/bblocks-eoap-cct/build/tests/cct/bbox/example_2_1.yaml",
+          "sizeBytes": 57,
+          "code": "bbox: [-5.0, 51.0, 100.0, -4.0, 52.0, 500.0]\ncrs: CRS84h\n"
         }
       ]
     }

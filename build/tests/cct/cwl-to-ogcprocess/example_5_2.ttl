@@ -1,55 +1,35 @@
 @prefix cwl: <https://w3id.org/cwl/cwl#> .
 @prefix dct: <http://purl.org/dc/terms/> .
-@prefix geo: <http://www.opengis.net/ont/geosparql#> .
-@prefix ns1: <s:> .
-@prefix ns2: <rdf:> .
-@prefix ogcproc: <http://www.opengis.net/def/ogcapi/processes/> .
+@prefix ns1: <rdf:> .
+@prefix ns2: <s:> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 [] cwl:cwlVersion <file:///github/workspace/v1.0> ;
-    cwl:graph [ dct:identifier <file:///github/workspace/parse_aoi> ;
-            ogcproc:input _:Nf5d5d694bb884a2394e9e5dce8ff8d45 ;
-            ogcproc:output _:N03e9060013c34e5da2a266021544a430 ;
-            cwl:arguments ( "--" ) ;
-            cwl:baseCommand "\"echo\""^^rdf:JSON ;
-            cwl:hints [ cwl:DockerRequirement [ cwl:dockerPull "alpine:3.22.2"^^xsd:string ] ] ;
-            cwl:input _:Nf5d5d694bb884a2394e9e5dce8ff8d45 ;
-            cwl:output _:N03e9060013c34e5da2a266021544a430 ;
-            cwl:requirements [ cwl:InlineJavascriptRequirement [ ] ;
-                    cwl:ResourceRequirement [ cwl:coresMax 1 ;
-                            cwl:ramMax 512 ] ;
-                    cwl:SchemaDefRequirement [ cwl:types [ cwl:import <https://raw.githubusercontent.com/eoap/schemas/main/ogc.yaml> ] ] ] ;
-            ns2:type <file:///github/workspace/CommandLineTool> ],
-        [ dct:identifier <file:///github/workspace/mangrove_cli> ;
-            ogcproc:input _:Nd6941b6cfcd648dab4db1173e56e4567 ;
-            ogcproc:output _:N49038c7da2824c119ccf86c71fd3d1ac ;
-            cwl:arguments ( "--" ) ;
-            cwl:baseCommand "\"/app/cwl/bin/mangrove_workflow_for_cwl\""^^rdf:JSON ;
-            cwl:hints [ cwl:DockerRequirement [ cwl:dockerPull "ghcr.io/geolabs/kindgrove/mangrove-cwl:v0.0.1-rc7"^^xsd:string ] ] ;
-            cwl:input _:Nd6941b6cfcd648dab4db1173e56e4567 ;
-            cwl:output _:N49038c7da2824c119ccf86c71fd3d1ac ;
-            cwl:requirements [ cwl:InlineJavascriptRequirement [ ] ;
-                    cwl:ResourceRequirement [ cwl:coresMax 1 ;
-                            cwl:ramMax 512 ] ] ;
-            ns2:type <file:///github/workspace/CommandLineTool> ],
-        [ rdfs:label "Mangrove Biomass Workflow"^^xsd:string ;
+    cwl:graph [ rdfs:label "Mangrove Biomass Workflow"^^xsd:string ;
             dct:identifier <file:///github/workspace/mangrove-workflow> ;
-            ogcproc:input _:Nf40e91469d214f6e9c17a47f99da6756 ;
-            ogcproc:output _:N2dfe5fb1f1a74c6b80dfa2169976080b ;
             rdfs:comment """Workflow for Mangrove Biomass Analysis
   
 This workflow orchestrates the mangrove biomass estimation process using
 Sentinel-2 imagery. It wraps the mangrove_workflow.cwl tool to provide
 a reusable workflow for analyzing different study areas.
 """^^xsd:string ;
-            cwl:input _:Nf40e91469d214f6e9c17a47f99da6756 ;
-            cwl:output _:N2dfe5fb1f1a74c6b80dfa2169976080b ;
+            cwl:input ( [ cwl:aoi [ rdfs:label "Area of Interest"^^xsd:string ;
+                                rdfs:comment "Area of interest as a bounding box"^^xsd:string ;
+                                cwl:type <https://raw.githubusercontent.com/eoap/schemas/main/ogc.yaml#BBox> ] ;
+                        cwl:cloud_cover_max [ rdfs:label "Maximum Cloud Cover"^^xsd:string ;
+                                rdfs:comment "Maximum acceptable cloud cover percentage (0-100)"^^xsd:string ;
+                                cwl:type <file:///github/workspace/float> ] ;
+                        cwl:days_back [ rdfs:label "Days Back"^^xsd:string ;
+                                rdfs:comment "Number of days to search backwards from current date"^^xsd:string ;
+                                cwl:type <file:///github/workspace/int> ] ] ) ;
+            cwl:output ( [ cwl:stac [ cwl:outputSource <file:///github/workspace/step_1/result> ;
+                                cwl:type <file:///github/workspace/Directory> ] ] ) ;
             cwl:requirements [ cwl:InlineJavascriptRequirement [ ] ;
                     cwl:ScatterFeatureRequirement [ ] ;
-                    cwl:SchemaDefRequirement [ cwl:types [ cwl:import <https://raw.githubusercontent.com/eoap/schemas/main/stac.yaml> ],
-                                [ cwl:import <https://raw.githubusercontent.com/eoap/schemas/main/ogc.yaml> ] ] ;
+                    cwl:SchemaDefRequirement [ cwl:types [ cwl:import <https://raw.githubusercontent.com/eoap/schemas/main/ogc.yaml> ],
+                                [ cwl:import <https://raw.githubusercontent.com/eoap/schemas/main/stac.yaml> ] ] ;
                     cwl:StepInputExpressionRequirement [ ] ;
                     cwl:SubworkflowFeatureRequirement [ ] ] ;
             cwl:steps [ cwl:parse_aoi [ cwl:in [ cwl:aoi "aoi" ] ;
@@ -64,126 +44,64 @@ a reusable workflow for analyzing different study areas.
                                     cwl:west "parse_aoi/west" ] ;
                             cwl:out ( "result" ) ;
                             cwl:run <file:///github/workspace/#mangrove_cli> ] ] ;
-            ns2:type <file:///github/workspace/Workflow> ] ;
+            ns1:type <file:///github/workspace/Workflow> ],
+        [ dct:identifier <file:///github/workspace/mangrove_cli> ;
+            cwl:arguments ( "--" ) ;
+            cwl:baseCommand "\"/app/cwl/bin/mangrove_workflow_for_cwl\""^^rdf:JSON ;
+            cwl:hints [ cwl:DockerRequirement [ cwl:dockerPull "ghcr.io/geolabs/kindgrove/mangrove-cwl:v0.0.1-rc7"^^xsd:string ] ] ;
+            cwl:input ( [ cwl:cloud_cover_max [ cwl:inputBinding [ cwl:prefix "--cloud_cover_max"^^xsd:string ] ;
+                                cwl:type <file:///github/workspace/float> ] ;
+                        cwl:days_back [ cwl:inputBinding [ cwl:prefix "--days_back"^^xsd:string ] ;
+                                cwl:type <file:///github/workspace/int> ] ;
+                        cwl:east [ cwl:inputBinding [ cwl:prefix "--east"^^xsd:string ] ;
+                                cwl:type <file:///github/workspace/float> ] ;
+                        cwl:north [ cwl:inputBinding [ cwl:prefix "--north"^^xsd:string ] ;
+                                cwl:type <file:///github/workspace/float> ] ;
+                        cwl:output_dir [ cwl:inputBinding [ cwl:prefix "--output_dir"^^xsd:string ] ;
+                                cwl:type <file:///github/workspace/string> ] ;
+                        cwl:south [ cwl:inputBinding [ cwl:prefix "--south"^^xsd:string ] ;
+                                cwl:type <file:///github/workspace/float> ] ;
+                        cwl:west [ cwl:inputBinding [ cwl:prefix "--west"^^xsd:string ] ;
+                                cwl:type <file:///github/workspace/float> ] ] ) ;
+            cwl:output ( [ cwl:result [ cwl:outputBinding [ cwl:glob "outputs"^^xsd:string ] ;
+                                cwl:type <file:///github/workspace/Directory> ] ] ) ;
+            cwl:requirements [ cwl:InlineJavascriptRequirement [ ] ;
+                    cwl:ResourceRequirement [ cwl:coresMax 1 ;
+                            cwl:ramMax 512 ] ] ;
+            ns1:type <file:///github/workspace/CommandLineTool> ],
+        [ dct:identifier <file:///github/workspace/parse_aoi> ;
+            cwl:arguments ( "--" ) ;
+            cwl:baseCommand "\"echo\""^^rdf:JSON ;
+            cwl:hints [ cwl:DockerRequirement [ cwl:dockerPull "alpine:3.22.2"^^xsd:string ] ] ;
+            cwl:input ( [ cwl:aoi [ rdfs:label "Area of interest"^^xsd:string ;
+                                rdfs:comment "Area of interest defined as a bounding box"^^xsd:string ;
+                                cwl:type <https://raw.githubusercontent.com/eoap/schemas/main/ogc.yaml#BBox> ] ] ) ;
+            cwl:output ( [ cwl:east [ cwl:outputBinding [ cwl:outputEval "$(inputs.aoi.bbox[2])"^^xsd:string ] ;
+                                cwl:type <file:///github/workspace/float> ] ;
+                        cwl:north [ cwl:outputBinding [ cwl:outputEval "$(inputs.aoi.bbox[3])"^^xsd:string ] ;
+                                cwl:type <file:///github/workspace/float> ] ;
+                        cwl:output_dir [ cwl:outputBinding [ cwl:outputEval "$(\"outputs\")"^^xsd:string ] ;
+                                cwl:type <file:///github/workspace/string> ] ;
+                        cwl:south [ cwl:outputBinding [ cwl:outputEval "$(inputs.aoi.bbox[1])"^^xsd:string ] ;
+                                cwl:type <file:///github/workspace/float> ] ;
+                        cwl:west [ cwl:outputBinding [ cwl:outputEval "$(inputs.aoi.bbox[0])"^^xsd:string ] ;
+                                cwl:type <file:///github/workspace/float> ] ] ) ;
+            cwl:requirements [ cwl:InlineJavascriptRequirement [ ] ;
+                    cwl:ResourceRequirement [ cwl:coresMax 1 ;
+                            cwl:ramMax 512 ] ;
+                    cwl:SchemaDefRequirement [ cwl:types [ cwl:import <https://raw.githubusercontent.com/eoap/schemas/main/ogc.yaml> ] ] ] ;
+            ns1:type <file:///github/workspace/CommandLineTool> ] ;
     cwl:namespaces "{\"s\":\"https://schema.org/\"}"^^rdf:JSON ;
     cwl:schemas "http://schema.org/version/9.0/schemaorg-current-http.rdf" ;
-    ns1:author [ ns2:type ns1:Person ;
-            ns1:name "Cameron Sajedi" ] ;
-    ns1:codeRepository "https://github.com/starling-foundries/KindGrove" ;
-    ns1:contributor [ ns2:type ns1:Person ;
-            ns1:identifier "https://orcid.org/0000-0002-9617-8641" ;
-            ns1:name "Gérald Fenoy" ] ;
-    ns1:keywords "OSPD",
+    ns2:author [ ns1:type ns2:Person ;
+            ns2:name "Cameron Sajedi" ] ;
+    ns2:codeRepository "https://github.com/starling-foundries/KindGrove" ;
+    ns2:contributor [ ns1:type ns2:Person ;
+            ns2:identifier "https://orcid.org/0000-0002-9617-8641" ;
+            ns2:name "Gérald Fenoy" ] ;
+    ns2:keywords "OSPD",
         "biomass",
         "mangrove" ;
-    ns1:license "https://github.com/starling-foundries/KindGrove?tab=MIT-1-ov-file#readme" ;
-    ns1:softwareVersion "0.0.1" .
-
-_:N0860f139664d423585d8aea575c6c044 cwl:outputEval "$(inputs.aoi.bbox[2])"^^xsd:string .
-
-_:N1419faf3ec264e5fb132f09d512843be cwl:glob "outputs"^^xsd:string .
-
-_:N15ca917121d94e55a2b7ec5a6ff464ac cwl:prefix "--west"^^xsd:string .
-
-_:N1f0da69914c04129a3d5da533929310a cwl:aoi [ rdfs:label "Area of Interest"^^xsd:string ;
-            ogcproc:itemsType "number"^^xsd:string ;
-            ogcproc:maxItems 6 ;
-            ogcproc:minItems 4 ;
-            ogcproc:schemaType "array"^^xsd:string ;
-            rdfs:comment "Area of interest as a bounding box"^^xsd:string ;
-            rdfs:seeAlso geo:BoundingBox ;
-            cwl:type <https://raw.githubusercontent.com/eoap/schemas/main/ogc.yaml#BBox> ] ;
-    cwl:cloud_cover_max [ rdfs:label "Maximum Cloud Cover"^^xsd:string ;
-            rdfs:comment "Maximum acceptable cloud cover percentage (0-100)"^^xsd:string ;
-            cwl:type <file:///github/workspace/float> ] ;
-    cwl:days_back [ rdfs:label "Days Back"^^xsd:string ;
-            rdfs:comment "Number of days to search backwards from current date"^^xsd:string ;
-            cwl:type <file:///github/workspace/int> ] .
-
-_:N2291cb9eda7c42798ffc1d9c9d0f04bd cwl:inputBinding [ cwl:prefix "--south"^^xsd:string ] ;
-    cwl:type <file:///github/workspace/float> .
-
-_:N23d961bedc014f29be200bb5d3221b88 cwl:inputBinding [ cwl:prefix "--output_dir"^^xsd:string ] ;
-    cwl:type <file:///github/workspace/string> .
-
-_:N242216cdd7534e8daeba1d909ed4de2e cwl:aoi [ rdfs:label "Area of interest"^^xsd:string ;
-            ogcproc:itemsType "number"^^xsd:string ;
-            ogcproc:maxItems 6 ;
-            ogcproc:minItems 4 ;
-            ogcproc:schemaType "array"^^xsd:string ;
-            rdfs:comment "Area of interest defined as a bounding box"^^xsd:string ;
-            rdfs:seeAlso geo:BoundingBox ;
-            cwl:type <https://raw.githubusercontent.com/eoap/schemas/main/ogc.yaml#BBox> ] .
-
-_:N29d6d99489624e608e43dc5bcce181ce cwl:outputEval "$(\"outputs\")"^^xsd:string .
-
-_:N2ebd5c95d447465e8e4c430571627e37 cwl:prefix "--east"^^xsd:string .
-
-_:N30c864f5353a445394bd49b57e9549a5 cwl:outputBinding _:N1419faf3ec264e5fb132f09d512843be ;
-    cwl:type <file:///github/workspace/Directory> .
-
-_:N39339c5467be4f199597f2ff9f6bd619 cwl:prefix "--north"^^xsd:string .
-
-_:N41820769fcf34776b6fa6a7107c7ff70 cwl:inputBinding _:N2ebd5c95d447465e8e4c430571627e37 ;
-    cwl:type <file:///github/workspace/float> .
-
-_:N53fd664769d249af8381b6d62a9dea66 cwl:outputBinding _:N0860f139664d423585d8aea575c6c044 ;
-    cwl:type <file:///github/workspace/float> .
-
-_:N57e3289c61f64fb68d16a631beb67557 cwl:outputBinding [ cwl:outputEval "$(inputs.aoi.bbox[3])"^^xsd:string ] ;
-    cwl:type <file:///github/workspace/float> .
-
-_:N59b6d7be64514891bc2e64221e7d8173 cwl:outputEval "$(inputs.aoi.bbox[0])"^^xsd:string .
-
-_:N5a63d3d3e87a4e80affb425036b5670a cwl:outputBinding [ cwl:outputEval "$(inputs.aoi.bbox[1])"^^xsd:string ] ;
-    cwl:type <file:///github/workspace/float> .
-
-_:N659aff3a729744b4a34ee1972376b7d9 cwl:cloud_cover_max [ cwl:inputBinding [ cwl:prefix "--cloud_cover_max"^^xsd:string ] ;
-            cwl:type <file:///github/workspace/float> ] ;
-    cwl:days_back [ cwl:inputBinding [ cwl:prefix "--days_back"^^xsd:string ] ;
-            cwl:type <file:///github/workspace/int> ] ;
-    cwl:east _:N41820769fcf34776b6fa6a7107c7ff70 ;
-    cwl:north [ cwl:inputBinding _:N39339c5467be4f199597f2ff9f6bd619 ;
-            cwl:type <file:///github/workspace/float> ] ;
-    cwl:output_dir _:N23d961bedc014f29be200bb5d3221b88 ;
-    cwl:south _:N2291cb9eda7c42798ffc1d9c9d0f04bd ;
-    cwl:west [ cwl:inputBinding _:N15ca917121d94e55a2b7ec5a6ff464ac ;
-            cwl:type <file:///github/workspace/float> ] .
-
-_:N69ce2c0f25f042b68216b23c3493f8d7 cwl:result _:N30c864f5353a445394bd49b57e9549a5 .
-
-_:N76bed7a771334d18ac4ce82963f7ecc8 cwl:stac [ cwl:outputSource <file:///github/workspace/step_1/result> ;
-            cwl:type <file:///github/workspace/Directory> ] .
-
-_:N9b3cc93176c84e46923c0345ebf87f73 cwl:east _:N53fd664769d249af8381b6d62a9dea66 ;
-    cwl:north _:N57e3289c61f64fb68d16a631beb67557 ;
-    cwl:output_dir [ cwl:outputBinding _:N29d6d99489624e608e43dc5bcce181ce ;
-            cwl:type <file:///github/workspace/string> ] ;
-    cwl:south _:N5a63d3d3e87a4e80affb425036b5670a ;
-    cwl:west [ cwl:outputBinding _:N59b6d7be64514891bc2e64221e7d8173 ;
-            cwl:type <file:///github/workspace/float> ] .
-
-_:N03e9060013c34e5da2a266021544a430 a ogcproc:OutputDescription ;
-    rdf:first _:N9b3cc93176c84e46923c0345ebf87f73 ;
-    rdf:rest () .
-
-_:N2dfe5fb1f1a74c6b80dfa2169976080b a ogcproc:OutputDescription ;
-    rdf:first _:N76bed7a771334d18ac4ce82963f7ecc8 ;
-    rdf:rest () .
-
-_:N49038c7da2824c119ccf86c71fd3d1ac a ogcproc:OutputDescription ;
-    rdf:first _:N69ce2c0f25f042b68216b23c3493f8d7 ;
-    rdf:rest () .
-
-_:Nd6941b6cfcd648dab4db1173e56e4567 a ogcproc:InputDescription ;
-    rdf:first _:N659aff3a729744b4a34ee1972376b7d9 ;
-    rdf:rest () .
-
-_:Nf40e91469d214f6e9c17a47f99da6756 a ogcproc:InputDescription ;
-    rdf:first _:N1f0da69914c04129a3d5da533929310a ;
-    rdf:rest () .
-
-_:Nf5d5d694bb884a2394e9e5dce8ff8d45 a ogcproc:InputDescription ;
-    rdf:first _:N242216cdd7534e8daeba1d909ed4de2e ;
-    rdf:rest () .
+    ns2:license "https://github.com/starling-foundries/KindGrove?tab=MIT-1-ov-file#readme" ;
+    ns2:softwareVersion "0.0.1" .
 

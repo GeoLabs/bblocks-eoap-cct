@@ -3,6 +3,21 @@
   "version": "1.0.0",
   "title": "STAC Item Processing Workflow",
   "description": "Workflow that processes STAC Item input and generates output",
+  "mutable": true,
+  "metadata": [
+    {
+      "role": "https://schema.org/name",
+      "value": "STAC Item Processing Workflow"
+    },
+    {
+      "role": "https://schema.org/description",
+      "value": "Workflow that processes STAC Item input and generates output"
+    },
+    {
+      "role": "https://schema.org/softwareVersion",
+      "value": "1.0.0"
+    }
+  ],
   "inputs": {
     "stac_item": {
       "title": "STAC Item",
@@ -62,7 +77,7 @@
   },
   "jobControlOptions": [
     "async-execute",
-    "sync-execute"
+    "dismiss"
   ],
   "outputTransmission": [
     "value",

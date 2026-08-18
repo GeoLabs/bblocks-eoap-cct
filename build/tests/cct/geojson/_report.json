@@ -2,13 +2,119 @@
   "title": "Validation report for eoap.cct.geojson - eaop-cct:GeoJSON",
   "bblockName": "eaop-cct:GeoJSON",
   "bblockId": "eoap.cct.geojson",
-  "generated": "2025-12-18T16:57:32.004747+00:00",
-  "result": true,
-  "items": [],
+  "generated": "2026-08-18T23:44:01.842382+00:00",
+  "result": false,
+  "items": [
+    {
+      "source": {
+        "type": "EXAMPLE",
+        "requireFail": false,
+        "filename": "build/tests/cct/geojson/example_1_1.yaml",
+        "url": "https://geolabs.github.io/bblocks-eoap-cct/build/tests/cct/geojson/example_1_1.yaml",
+        "exampleIndex": 1,
+        "snippetIndex": 1,
+        "language": "application/x-yaml"
+      },
+      "result": false,
+      "sections": [
+        {
+          "name": "FILES",
+          "title": "Files",
+          "entries": [
+            {
+              "isError": false,
+              "message": "Using examples/point.yaml from examples"
+            }
+          ]
+        },
+        {
+          "name": "UNKNOWN",
+          "title": "Unknown errors",
+          "entries": [
+            {
+              "exception": "AttributeError",
+              "isError": true,
+              "message": "Traceback (most recent call last):\n,  File \"/src/ogc/bblocks/validation/json_.py\", line 200, in validate\n    validate_json(json_doc, schema_validator)\n,  File \"/src/ogc/bblocks/validation/json_.py\", line 44, in validate_json\n    error = jsonschema.exceptions.best_match(validator.iter_errors(instance))\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/exceptions.py\", line 384, in best_match\n    best = next(errors, None)\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/validators.py\", line 288, in iter_errors\n    for error in errors:\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/_validators.py\", line 298, in ref\n    yield from validator.descend(instance, resolved)\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/validators.py\", line 305, in descend\n    for error in self.evolve(schema=schema).iter_errors(instance):\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/validators.py\", line 278, in iter_errors\n    scope = id_of(_schema)\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/validators.py\", line 101, in _id_of\n    return schema.get(\"$id\", \"\")\n,AttributeError: 'list' object has no attribute 'get'\n,\nDuring handling of the above exception, another exception occurred:\n\n,Traceback (most recent call last):\n,  File \"/src/ogc/bblocks/validate.py\", line 301, in _validate_resource\n    result = validator.validate(filename, output_filename, report,\n,  File \"/src/ogc/bblocks/validation/json_.py\", line 221, in validate\n    'errorMessage': e.message,\n,AttributeError: 'AttributeError' object has no attribute 'message'\n"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "source": {
+        "type": "EXAMPLE",
+        "requireFail": false,
+        "filename": "build/tests/cct/geojson/example_2_1.yaml",
+        "url": "https://geolabs.github.io/bblocks-eoap-cct/build/tests/cct/geojson/example_2_1.yaml",
+        "exampleIndex": 2,
+        "snippetIndex": 1,
+        "language": "application/x-yaml"
+      },
+      "result": false,
+      "sections": [
+        {
+          "name": "FILES",
+          "title": "Files",
+          "entries": [
+            {
+              "isError": false,
+              "message": "Using examples/feature.yaml from examples"
+            }
+          ]
+        },
+        {
+          "name": "UNKNOWN",
+          "title": "Unknown errors",
+          "entries": [
+            {
+              "exception": "AttributeError",
+              "isError": true,
+              "message": "Traceback (most recent call last):\n,  File \"/src/ogc/bblocks/validation/json_.py\", line 200, in validate\n    validate_json(json_doc, schema_validator)\n,  File \"/src/ogc/bblocks/validation/json_.py\", line 44, in validate_json\n    error = jsonschema.exceptions.best_match(validator.iter_errors(instance))\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/exceptions.py\", line 384, in best_match\n    best = next(errors, None)\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/validators.py\", line 288, in iter_errors\n    for error in errors:\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/_validators.py\", line 298, in ref\n    yield from validator.descend(instance, resolved)\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/validators.py\", line 305, in descend\n    for error in self.evolve(schema=schema).iter_errors(instance):\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/validators.py\", line 278, in iter_errors\n    scope = id_of(_schema)\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/validators.py\", line 101, in _id_of\n    return schema.get(\"$id\", \"\")\n,AttributeError: 'list' object has no attribute 'get'\n,\nDuring handling of the above exception, another exception occurred:\n\n,Traceback (most recent call last):\n,  File \"/src/ogc/bblocks/validate.py\", line 301, in _validate_resource\n    result = validator.validate(filename, output_filename, report,\n,  File \"/src/ogc/bblocks/validation/json_.py\", line 221, in validate\n    'errorMessage': e.message,\n,AttributeError: 'AttributeError' object has no attribute 'message'\n"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "source": {
+        "type": "EXAMPLE",
+        "requireFail": false,
+        "filename": "build/tests/cct/geojson/example_3_1.yaml",
+        "url": "https://geolabs.github.io/bblocks-eoap-cct/build/tests/cct/geojson/example_3_1.yaml",
+        "exampleIndex": 3,
+        "snippetIndex": 1,
+        "language": "application/x-yaml"
+      },
+      "result": false,
+      "sections": [
+        {
+          "name": "FILES",
+          "title": "Files",
+          "entries": [
+            {
+              "isError": false,
+              "message": "Using examples/polygon.yaml from examples"
+            }
+          ]
+        },
+        {
+          "name": "UNKNOWN",
+          "title": "Unknown errors",
+          "entries": [
+            {
+              "exception": "AttributeError",
+              "isError": true,
+              "message": "Traceback (most recent call last):\n,  File \"/src/ogc/bblocks/validation/json_.py\", line 200, in validate\n    validate_json(json_doc, schema_validator)\n,  File \"/src/ogc/bblocks/validation/json_.py\", line 44, in validate_json\n    error = jsonschema.exceptions.best_match(validator.iter_errors(instance))\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/exceptions.py\", line 384, in best_match\n    best = next(errors, None)\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/validators.py\", line 288, in iter_errors\n    for error in errors:\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/_validators.py\", line 298, in ref\n    yield from validator.descend(instance, resolved)\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/validators.py\", line 305, in descend\n    for error in self.evolve(schema=schema).iter_errors(instance):\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/validators.py\", line 278, in iter_errors\n    scope = id_of(_schema)\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/validators.py\", line 101, in _id_of\n    return schema.get(\"$id\", \"\")\n,AttributeError: 'list' object has no attribute 'get'\n,\nDuring handling of the above exception, another exception occurred:\n\n,Traceback (most recent call last):\n,  File \"/src/ogc/bblocks/validate.py\", line 301, in _validate_resource\n    result = validator.validate(filename, output_filename, report,\n,  File \"/src/ogc/bblocks/validation/json_.py\", line 221, in validate\n    'errorMessage': e.message,\n,AttributeError: 'AttributeError' object has no attribute 'message'\n"
+            }
+          ]
+        }
+      ]
+    }
+  ],
   "globalErrors": {},
   "counts": {
-    "total": 0,
+    "total": 3,
     "passed": 0,
-    "failed": 0
+    "failed": 3
   }
 }

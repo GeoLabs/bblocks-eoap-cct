@@ -8,7 +8,7 @@
   "description": "This building block defines CWL custom types for GeoJSON data structures, enabling Common Workflow Language workflows to handle geospatial vector data. These types provide a bridge between CWL workflow definitions and OGC API - Processes input/output schemas as defined in Table 13 of the OGC API - Processes Part 1 specification.\n\n## Relationship to OGC API - Processes\n\nThese custom types map directly to the schemas defined in Table 13 of OGC API - Processes Part 1 (OGC 18-062r3). When a CWL workflow is deployed as an OGC API - Processes service, these types are automatically converted to the appropriate JSON Schema definitions in the process description.\n\nA CWL input defined as:\n\n```yaml\ninputs:\n  area_of_interest:\n    type: eoap:geojson#Feature\n    doc: \"Area of interest for processing\"\n```\n\nMaps to an OGC API - Processes input schema:\n\n```json\n{\n  \"id\": \"area_of_interest\",\n  \"title\": \"Area of interest for processing\",\n  \"schema\": {\n    \"allOf\":{\n      {\n        \"format\": \"geojson-feature\"\n      },\n      {\n        \"$ref\": \"https://geojson.org/schema/Feature.json\"\n      }\n    }\n  }\n}\n```\n\n## Usage in CWL Workflows\n\nTo use these custom types in a CWL workflow:\n\n```yaml\ncwlVersion: v1.0\nclass: Workflow\n\nrequirements:\n  SchemaDefRequirement:\n    types:\n      - $import: https://eoap.github.io/schemas/cwl/geojson.yaml\n\ninputs:\n  input_feature:\n    type: eoap:geojson#Feature\n    inputBinding:\n      position: 1\n\noutputs:\n  output_collection:\n    type: eoap:geojson#FeatureCollection\n    outputBinding:\n      glob: result.json\n```\n",
   "status": "under-development",
   "dateTimeAddition": "2025-12-17T00:00:00Z",
-  "dateOfLastChange": "2025-12-18",
+  "dateOfLastChange": "2026-08-18",
   "version": "1.0",
   "itemClass": "schema",
   "register": "eoap-cct",
@@ -47,8 +47,8 @@
   },
   "sourceLdContext": "https://geolabs.github.io/bblocks-eoap-cct/_sources/geojson/context.jsonld",
   "sourceFiles": "https://geolabs.github.io/bblocks-eoap-cct/_sources/geojson/",
-  "rdfData": [],
-  "validationPassed": true,
+  "validationPassed": false,
+  "testOutputs": "https://github.com/GeoLabs/bblocks-eoap-cct/blob/master/build/tests/cct/geojson/",
   "examples": [
     {
       "title": "GeoJSON Point",
@@ -56,9 +56,10 @@
       "snippets": [
         {
           "language": "yaml",
-          "ref": "examples/point.yaml",
-          "code": "type: Point\ncoordinates: [125.6, 10.1]\n",
-          "url": "https://geolabs.github.io/bblocks-eoap-cct/build/tests/cct/geojson/example_1_1.yaml"
+          "ref": "https://geolabs.github.io/bblocks-eoap-cct/_sources/geojson/examples/point.yaml",
+          "url": "https://geolabs.github.io/bblocks-eoap-cct/build/tests/cct/geojson/example_1_1.yaml",
+          "sizeBytes": 39,
+          "code": "type: Point\ncoordinates: [125.6, 10.1]\n"
         }
       ]
     },
@@ -68,9 +69,10 @@
       "snippets": [
         {
           "language": "yaml",
-          "ref": "examples/feature.yaml",
-          "code": "type: Feature\nid: point-1\ngeometry:\n  type: Point\n  coordinates: [125.6, 10.1]\nproperties:\n  name: Sample Point\n  description: A point feature example\n",
-          "url": "https://geolabs.github.io/bblocks-eoap-cct/build/tests/cct/geojson/example_2_1.yaml"
+          "ref": "https://geolabs.github.io/bblocks-eoap-cct/_sources/geojson/examples/feature.yaml",
+          "url": "https://geolabs.github.io/bblocks-eoap-cct/build/tests/cct/geojson/example_2_1.yaml",
+          "sizeBytes": 151,
+          "code": "type: Feature\nid: point-1\ngeometry:\n  type: Point\n  coordinates: [125.6, 10.1]\nproperties:\n  name: Sample Point\n  description: A point feature example\n"
         }
       ]
     },
@@ -80,9 +82,10 @@
       "snippets": [
         {
           "language": "yaml",
-          "ref": "examples/polygon.yaml",
-          "code": "type: Polygon\ncoordinates:\n  - - [100.0, 0.0]\n    - [101.0, 0.0]\n    - [101.0, 1.0]\n    - [100.0, 1.0]\n    - [100.0, 0.0]\nbbox: [100.0, 0.0, 101.0, 1.0]\n",
-          "url": "https://geolabs.github.io/bblocks-eoap-cct/build/tests/cct/geojson/example_3_1.yaml"
+          "ref": "https://geolabs.github.io/bblocks-eoap-cct/_sources/geojson/examples/polygon.yaml",
+          "url": "https://geolabs.github.io/bblocks-eoap-cct/build/tests/cct/geojson/example_3_1.yaml",
+          "sizeBytes": 153,
+          "code": "type: Polygon\ncoordinates:\n  - - [100.0, 0.0]\n    - [101.0, 0.0]\n    - [101.0, 1.0]\n    - [100.0, 1.0]\n    - [100.0, 0.0]\nbbox: [100.0, 0.0, 101.0, 1.0]\n"
         }
       ]
     }

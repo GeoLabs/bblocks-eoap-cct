@@ -8,7 +8,7 @@
   "description": "This building block defines CWL custom types for STAC (SpatioTemporal Asset Catalog) metadata structures. These types enable Common Workflow Language workflows to handle Earth Observation product manifests as inputs and outputs, following the patterns described in the OGC Best Practice for Earth Observation Application Package (OGC 20-089r1).\n\n## Relationship to OGC Best Practice 20-089r1\n\nThese types implement the STAC manifest approach described in section 6.2.3 \"Staging Input and Output EO Products\" of the OGC Best Practice for Earth Observation Application Package.\n\n### Input Staging Pattern\n\nWorkflows can reference input data using STAC Catalogs or Items:\n\n```yaml\ninputs:\n  input_scenes:\n    type: eoap:stac#Catalog\n    doc: \"STAC catalog containing input scenes\"\n```\n\nThe workflow execution environment resolves the STAC references and stages the actual data files for processing.\n\n### Output Staging Pattern\n\nWorkflows can produce STAC metadata describing output products:\n\n```yaml\noutputs:\n  output_catalog:\n    type: eoap:stac#Catalog\n    outputBinding:\n      glob: results/catalog.json\n```\n\n## Relationship to OGC API - Processes\n\nWhen deployed as an OGC API - Processes service, these STAC custom types map to complex object schemas in the process description. The process description references STAC schemas to indicate that inputs/outputs conform to STAC specifications.\n\n### Example Process Description\n\n```json\n{\n  \"id\": \"ndvi-processor\",\n  \"inputs\": {\n    \"scenes\": {\n      \"title\": \"Input Scenes\",\n      \"schema\": {\n        \"$ref\": \"https://schemas.stacspec.org/v1.0.0/item-spec/json-schema/item.json\"\n      }\n    }\n  },\n  \"outputs\": {\n    \"result_catalog\": {\n      \"title\": \"Result Catalog\",\n      \"schema\": {\n        \"$ref\": \"https://schemas.stacspec.org/v1.0.0/catalog-spec/json-schema/catalog.json\"\n      }\n    }\n  }\n}\n```\n\n## Usage in CWL Workflows\n\nTo use STAC custom types in a CWL workflow:\n\n```yaml\ncwlVersion: v1.0\nclass: CommandLineTool\n\nrequirements:\n  SchemaDefRequirement:\n    types:\n      - $import: https://eoap.github.io/schemas/cwl/stac.yaml\n\ninputs:\n  input_item:\n    type: eoap:stac#Item\n    doc: \"STAC Item describing the input scene\"\n    inputBinding:\n      position: 1\n      valueFrom: $(self.assets.data.href)\n\noutputs:\n  output_catalog:\n    type: eoap:stac#Catalog\n    doc: \"STAC Catalog of processed results\"\n    outputBinding:\n      glob: results/catalog.json\n```\n",
   "status": "under-development",
   "dateTimeAddition": "2025-12-17T00:00:00Z",
-  "dateOfLastChange": "2025-12-18",
+  "dateOfLastChange": "2026-08-18",
   "version": "1.0",
   "itemClass": "schema",
   "register": "eoap-cct",
@@ -49,8 +49,8 @@
   },
   "sourceLdContext": "https://geolabs.github.io/bblocks-eoap-cct/_sources/stac/context.jsonld",
   "sourceFiles": "https://geolabs.github.io/bblocks-eoap-cct/_sources/stac/",
-  "rdfData": [],
-  "validationPassed": true,
+  "validationPassed": false,
+  "testOutputs": "https://github.com/GeoLabs/bblocks-eoap-cct/blob/master/build/tests/cct/stac/",
   "examples": [
     {
       "title": "STAC Item",
@@ -58,9 +58,10 @@
       "snippets": [
         {
           "language": "yaml",
-          "ref": "examples/item.yaml",
-          "code": "type: Feature\nstac_version: \"1.0.0\"\nid: S2A_MSIL2A_20231201T103421\ngeometry:\n  type: Polygon\n  coordinates:\n    - - [-5.0, 51.0]\n      - [-4.0, 51.0]\n      - [-4.0, 52.0]\n      - [-5.0, 52.0]\n      - [-5.0, 51.0]\nbbox: [-5.0, 51.0, -4.0, 52.0]\nproperties:\n  datetime: \"2023-12-01T10:34:21Z\"\n  platform: sentinel-2a\nlinks:\n  - rel: self\n    href: https://example.com/items/S2A_MSIL2A_20231201T103421.json\n    type: application/json\nassets:\n  thumbnail:\n    href: https://example.com/thumbnails/S2A_MSIL2A_20231201T103421.jpg\n    type: image/jpeg\n    roles: [thumbnail]\n",
-          "url": "https://geolabs.github.io/bblocks-eoap-cct/build/tests/cct/stac/example_1_1.yaml"
+          "ref": "https://geolabs.github.io/bblocks-eoap-cct/_sources/stac/examples/item.yaml",
+          "url": "https://geolabs.github.io/bblocks-eoap-cct/build/tests/cct/stac/example_1_1.yaml",
+          "sizeBytes": 568,
+          "code": "type: Feature\nstac_version: \"1.0.0\"\nid: S2A_MSIL2A_20231201T103421\ngeometry:\n  type: Polygon\n  coordinates:\n    - - [-5.0, 51.0]\n      - [-4.0, 51.0]\n      - [-4.0, 52.0]\n      - [-5.0, 52.0]\n      - [-5.0, 51.0]\nbbox: [-5.0, 51.0, -4.0, 52.0]\nproperties:\n  datetime: \"2023-12-01T10:34:21Z\"\n  platform: sentinel-2a\nlinks:\n  - rel: self\n    href: https://example.com/items/S2A_MSIL2A_20231201T103421.json\n    type: application/json\nassets:\n  thumbnail:\n    href: https://example.com/thumbnails/S2A_MSIL2A_20231201T103421.jpg\n    type: image/jpeg\n    roles: [thumbnail]\n"
         }
       ]
     },
@@ -70,9 +71,10 @@
       "snippets": [
         {
           "language": "yaml",
-          "ref": "examples/catalog.yaml",
-          "code": "type: Catalog\nstac_version: \"1.0.0\"\nid: sentinel-2-catalog\ntitle: Sentinel-2 Data Catalog\ndescription: Catalog of Sentinel-2 satellite imagery\nlinks:\n  - rel: self\n    href: https://example.com/catalogs/sentinel-2/catalog.json\n    type: application/json\n  - rel: root\n    href: https://example.com/catalog.json\n    type: application/json\n",
-          "url": "https://geolabs.github.io/bblocks-eoap-cct/build/tests/cct/stac/example_2_1.yaml"
+          "ref": "https://geolabs.github.io/bblocks-eoap-cct/_sources/stac/examples/catalog.yaml",
+          "url": "https://geolabs.github.io/bblocks-eoap-cct/build/tests/cct/stac/example_2_1.yaml",
+          "sizeBytes": 338,
+          "code": "type: Catalog\nstac_version: \"1.0.0\"\nid: sentinel-2-catalog\ntitle: Sentinel-2 Data Catalog\ndescription: Catalog of Sentinel-2 satellite imagery\nlinks:\n  - rel: self\n    href: https://example.com/catalogs/sentinel-2/catalog.json\n    type: application/json\n  - rel: root\n    href: https://example.com/catalog.json\n    type: application/json\n"
         }
       ]
     }

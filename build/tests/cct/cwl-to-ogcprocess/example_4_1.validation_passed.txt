@@ -1,7 +1,7 @@
 Validation report for eoap.cct.cwl-to-ogcprocess - CWL to OGC API Processes Profile
-Generated 2025-12-18T16:57:32.920072+00:00
+Generated 2026-08-18T23:44:02.932757+00:00
 === Files ===
-Using example_4_1.yaml (example_4_1) from examples
+Using examples/water-bodies-workflow.cwl from examples
 === End Files ===
 
 === JSON Schema ===

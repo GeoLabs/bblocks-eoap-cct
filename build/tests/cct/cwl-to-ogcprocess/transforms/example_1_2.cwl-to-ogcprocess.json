@@ -3,6 +3,21 @@
   "version": "1.0.0",
   "title": "OGC BBox Processing Workflow",
   "description": "Workflow that processes OGC BBox input and generates output",
+  "mutable": true,
+  "metadata": [
+    {
+      "role": "https://schema.org/name",
+      "value": "OGC BBox Processing Workflow"
+    },
+    {
+      "role": "https://schema.org/description",
+      "value": "Workflow that processes OGC BBox input and generates output"
+    },
+    {
+      "role": "https://schema.org/softwareVersion",
+      "value": "1.0.0"
+    }
+  ],
   "inputs": {
     "aoi": {
       "title": "Area of interest",
@@ -57,7 +72,7 @@
   },
   "jobControlOptions": [
     "async-execute",
-    "sync-execute"
+    "dismiss"
   ],
   "outputTransmission": [
     "value",

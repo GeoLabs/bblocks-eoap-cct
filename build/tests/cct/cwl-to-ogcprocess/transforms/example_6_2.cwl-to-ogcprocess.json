@@ -3,32 +3,77 @@
   "version": "1.0.0",
   "title": "CVI Workflow (Dockerized)",
   "description": "This workflow computes the Coastal Vulnerability Index (CVI) for Mediterranean coastal areas.\nIt processes coastline data, generates transects, computes various coastal parameters\n(landcover, slope, erosion, elevation), and calculates the final CVI values.\n",
+  "mutable": true,
+  "keywords": [
+    "CVI",
+    "coastal vulnerability",
+    "Mediterranean",
+    "earth observation"
+  ],
+  "metadata": [
+    {
+      "role": "https://schema.org/name",
+      "value": "CVI Workflow (Dockerized)"
+    },
+    {
+      "role": "https://schema.org/description",
+      "value": "This workflow computes the Coastal Vulnerability Index (CVI) for Mediterranean coastal areas.\nIt processes coastline data, generates transects, computes various coastal parameters\n(landcover, slope, erosion, elevation), and calculates the final CVI values.\n"
+    },
+    {
+      "role": "https://schema.org/author",
+      "value": {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "HARTIS Organization",
+        "url": "https://github.com/hartis-org"
+      }
+    },
+    {
+      "role": "https://schema.org/codeRepository",
+      "value": "https://github.com/hartis-org/cvi-workflow"
+    },
+    {
+      "role": "https://schema.org/dateCreated",
+      "value": "2024-01-01"
+    },
+    {
+      "role": "https://schema.org/license",
+      "value": "https://opensource.org/licenses/MIT"
+    },
+    {
+      "role": "https://schema.org/version",
+      "value": "1.0.0"
+    }
+  ],
   "inputs": {
     "config_stac_item_url": {
       "title": "Configuration STAC item URL",
       "description": "URL of the STAC item containing the configuration JSON file",
       "schema": {
-        "type": "string"
+        "type": "string",
+        "default": "https://eocatalog.p2.csgroup.space/collections/cvi-workflow-resources/items/cvi-scoring-configuration"
       },
-      "minOccurs": 1,
+      "minOccurs": 0,
       "maxOccurs": 1
     },
     "aois_stac_item_url": {
       "title": "AOIs STAC item URL",
       "description": "URL of the STAC item containing the Mediterranean AOIs CSV file",
       "schema": {
-        "type": "string"
+        "type": "string",
+        "default": "https://eocatalog.p2.csgroup.space/collections/cvi-workflow-resources/items/mediterranean-coastal-aois"
       },
-      "minOccurs": 1,
+      "minOccurs": 0,
       "maxOccurs": 1
     },
     "tokens_stac_item_url": {
       "title": "Tokens STAC item URL",
       "description": "URL of the STAC item containing the authentication tokens file",
       "schema": {
-        "type": "string"
+        "type": "string",
+        "default": "https://eocatalog.p2.csgroup.space/collections/cvi-workflow-resources/items/cvi-authentication-template"
       },
-      "minOccurs": 1,
+      "minOccurs": 0,
       "maxOccurs": 1
     }
   },
@@ -100,7 +145,7 @@
   },
   "jobControlOptions": [
     "async-execute",
-    "sync-execute"
+    "dismiss"
   ],
   "outputTransmission": [
     "value",

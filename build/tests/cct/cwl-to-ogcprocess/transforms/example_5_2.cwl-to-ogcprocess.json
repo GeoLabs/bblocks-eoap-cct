@@ -1,8 +1,53 @@
 {
   "id": "mangrove-workflow",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "title": "Mangrove Biomass Workflow",
   "description": "Workflow for Mangrove Biomass Analysis\n  \nThis workflow orchestrates the mangrove biomass estimation process using\nSentinel-2 imagery. It wraps the mangrove_workflow.cwl tool to provide\na reusable workflow for analyzing different study areas.\n",
+  "mutable": true,
+  "keywords": [
+    "OSPD",
+    "mangrove",
+    "biomass"
+  ],
+  "metadata": [
+    {
+      "role": "https://schema.org/name",
+      "value": "Mangrove Biomass Workflow"
+    },
+    {
+      "role": "https://schema.org/description",
+      "value": "Workflow for Mangrove Biomass Analysis\n  \nThis workflow orchestrates the mangrove biomass estimation process using\nSentinel-2 imagery. It wraps the mangrove_workflow.cwl tool to provide\na reusable workflow for analyzing different study areas.\n"
+    },
+    {
+      "role": "https://schema.org/softwareVersion",
+      "value": "0.0.1"
+    },
+    {
+      "role": "https://schema.org/author",
+      "value": {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Cameron Sajedi"
+      }
+    },
+    {
+      "role": "https://schema.org/contributor",
+      "value": {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "G\u00e9rald Fenoy",
+        "identifier": "https://orcid.org/0000-0002-9617-8641"
+      }
+    },
+    {
+      "role": "https://schema.org/codeRepository",
+      "value": "https://github.com/starling-foundries/KindGrove"
+    },
+    {
+      "role": "https://schema.org/license",
+      "value": "https://github.com/starling-foundries/KindGrove?tab=MIT-1-ov-file#readme"
+    }
+  ],
   "inputs": {
     "cloud_cover_max": {
       "title": "Maximum Cloud Cover",
@@ -68,14 +113,55 @@
       "title": "stac",
       "description": "",
       "schema": {
-        "type": "string",
-        "contentMediaType": "application/x-directory"
+        "type": "object",
+        "required": [
+          "type",
+          "stac_version",
+          "id",
+          "description",
+          "license",
+          "extent",
+          "links"
+        ],
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "Collection"
+            ]
+          },
+          "stac_version": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "license": {
+            "type": "string"
+          },
+          "extent": {
+            "type": "object"
+          },
+          "links": {
+            "type": "array"
+          },
+          "assets": {
+            "type": "object"
+          }
+        },
+        "format": "stac-collection"
       }
     }
   },
   "jobControlOptions": [
     "async-execute",
-    "sync-execute"
+    "dismiss"
   ],
   "outputTransmission": [
     "value",

@@ -1,8 +1,23 @@
 {
   "id": "water-bodies",
-  "version": "1.0.0",
+  "version": "1.4.1",
   "title": "Water bodies detection based on NDWI and otsu threshold",
   "description": "Water bodies detection based on NDWI and otsu threshold applied to Sentinel-2 COG STAC items",
+  "mutable": true,
+  "metadata": [
+    {
+      "role": "https://schema.org/name",
+      "value": "Water bodies detection based on NDWI and otsu threshold"
+    },
+    {
+      "role": "https://schema.org/description",
+      "value": "Water bodies detection based on NDWI and otsu threshold applied to Sentinel-2 COG STAC items"
+    },
+    {
+      "role": "https://schema.org/softwareVersion",
+      "value": "1.4.1"
+    }
+  ],
   "inputs": {
     "aoi": {
       "title": "area of interest",
@@ -17,9 +32,10 @@
       "title": "EPSG code",
       "description": "EPSG code",
       "schema": {
-        "type": "string"
+        "type": "string",
+        "default": "EPSG:4326"
       },
-      "minOccurs": 1,
+      "minOccurs": 0,
       "maxOccurs": 1
     },
     "stac_items": {
@@ -41,9 +57,13 @@
         "type": "array",
         "items": {
           "type": "string"
-        }
+        },
+        "default": [
+          "green",
+          "nir"
+        ]
       },
-      "minOccurs": 1,
+      "minOccurs": 0,
       "maxOccurs": 1
     }
   },
@@ -52,14 +72,55 @@
       "title": "stac_catalog",
       "description": "",
       "schema": {
-        "type": "string",
-        "contentMediaType": "application/x-directory"
+        "type": "object",
+        "required": [
+          "type",
+          "stac_version",
+          "id",
+          "description",
+          "license",
+          "extent",
+          "links"
+        ],
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "Collection"
+            ]
+          },
+          "stac_version": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "license": {
+            "type": "string"
+          },
+          "extent": {
+            "type": "object"
+          },
+          "links": {
+            "type": "array"
+          },
+          "assets": {
+            "type": "object"
+          }
+        },
+        "format": "stac-collection"
       }
     }
   },
   "jobControlOptions": [
     "async-execute",
-    "sync-execute"
+    "dismiss"
   ],
   "outputTransmission": [
     "value",

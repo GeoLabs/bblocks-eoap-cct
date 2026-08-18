@@ -2,7 +2,7 @@
   "title": "Validation report for eoap.cct.cwl-to-ogcprocess - CWL to OGC API Processes Profile",
   "bblockName": "CWL to OGC API Processes Profile",
   "bblockId": "eoap.cct.cwl-to-ogcprocess",
-  "generated": "2025-12-18T16:57:34.388611+00:00",
+  "generated": "2026-08-18T23:44:03.761424+00:00",
   "result": true,
   "items": [
     {
@@ -23,7 +23,7 @@
           "entries": [
             {
               "isError": false,
-              "message": "Using example_1_1.yaml (example_1_1) from examples"
+              "message": "Using examples/bbox-workflow.cwl from examples"
             }
           ]
         },
@@ -59,7 +59,7 @@
           "entries": [
             {
               "isError": false,
-              "message": "Using example_1_2.json (example_1_2) from examples"
+              "message": "Using examples/bbox-workflow.json from examples"
             },
             {
               "op": "jsonld-uplift",
@@ -76,7 +76,7 @@
               "op": "ttl-create",
               "empty": false,
               "filename": "example_1_2.ttl",
-              "size": 79,
+              "size": 61,
               "isError": false,
               "message": "Output Turtle example_1_2.ttl created"
             }
@@ -136,7 +136,7 @@
           "entries": [
             {
               "isError": false,
-              "message": "Using example_2_1.yaml (example_2_1) from examples"
+              "message": "Using examples/feature-workflow.cwl from examples"
             }
           ]
         },
@@ -172,7 +172,7 @@
           "entries": [
             {
               "isError": false,
-              "message": "Using example_2_2.json (example_2_2) from examples"
+              "message": "Using examples/feature-workflow.json from examples"
             },
             {
               "op": "jsonld-uplift",
@@ -189,7 +189,7 @@
               "op": "ttl-create",
               "empty": false,
               "filename": "example_2_2.ttl",
-              "size": 75,
+              "size": 61,
               "isError": false,
               "message": "Output Turtle example_2_2.ttl created"
             }
@@ -249,7 +249,7 @@
           "entries": [
             {
               "isError": false,
-              "message": "Using example_3_1.yaml (example_3_1) from examples"
+              "message": "Using examples/item-workflow.cwl from examples"
             }
           ]
         },
@@ -285,7 +285,7 @@
           "entries": [
             {
               "isError": false,
-              "message": "Using example_3_2.json (example_3_2) from examples"
+              "message": "Using examples/item-workflow.json from examples"
             },
             {
               "op": "jsonld-uplift",
@@ -302,7 +302,7 @@
               "op": "ttl-create",
               "empty": false,
               "filename": "example_3_2.ttl",
-              "size": 75,
+              "size": 61,
               "isError": false,
               "message": "Output Turtle example_3_2.ttl created"
             }
@@ -362,7 +362,7 @@
           "entries": [
             {
               "isError": false,
-              "message": "Using example_4_1.yaml (example_4_1) from examples"
+              "message": "Using examples/water-bodies-workflow.cwl from examples"
             }
           ]
         },
@@ -398,7 +398,7 @@
           "entries": [
             {
               "isError": false,
-              "message": "Using example_4_2.json (example_4_2) from examples"
+              "message": "Using examples/water-bodies-workflow.json from examples"
             },
             {
               "op": "jsonld-uplift",
@@ -415,7 +415,7 @@
               "op": "ttl-create",
               "empty": false,
               "filename": "example_4_2.ttl",
-              "size": 296,
+              "size": 272,
               "isError": false,
               "message": "Output Turtle example_4_2.ttl created"
             }
@@ -475,7 +475,7 @@
           "entries": [
             {
               "isError": false,
-              "message": "Using example_5_1.yaml (example_5_1) from examples"
+              "message": "Using examples/mangrove-workflow.cwl from examples"
             }
           ]
         },
@@ -511,7 +511,7 @@
           "entries": [
             {
               "isError": false,
-              "message": "Using example_5_2.json (example_5_2) from examples"
+              "message": "Using examples/mangrove-workflow.json from examples"
             },
             {
               "op": "jsonld-uplift",
@@ -528,7 +528,7 @@
               "op": "ttl-create",
               "empty": false,
               "filename": "example_5_2.ttl",
-              "size": 204,
+              "size": 182,
               "isError": false,
               "message": "Output Turtle example_5_2.ttl created"
             }
@@ -588,7 +588,7 @@
           "entries": [
             {
               "isError": false,
-              "message": "Using example_6_1.yaml (example_6_1) from examples"
+              "message": "Using examples/cvi-workflow.cwl from examples"
             }
           ]
         },
@@ -624,7 +624,7 @@
           "entries": [
             {
               "isError": false,
-              "message": "Using example_6_2.json (example_6_2) from examples"
+              "message": "Using examples/cvi-workflow.json from examples"
             },
             {
               "op": "jsonld-uplift",
@@ -641,7 +641,7 @@
               "op": "ttl-create",
               "empty": false,
               "filename": "example_6_2.ttl",
-              "size": 520,
+              "size": 492,
               "isError": false,
               "message": "Output Turtle example_6_2.ttl created"
             }

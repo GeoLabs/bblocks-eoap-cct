@@ -1,7 +1,7 @@
 Validation report for eoap.cct.cwl-to-ogcprocess - CWL to OGC API Processes Profile
-Generated 2025-12-18T16:57:34.388530+00:00
+Generated 2026-08-18T23:44:03.761343+00:00
 === Files ===
-Using example_6_2.json (example_6_2) from examples
+Using examples/cvi-workflow.json from examples
 JSON-LD context is present - uplifting
 Output JSON-LD example_6_2.jsonld created
 Output Turtle example_6_2.ttl created

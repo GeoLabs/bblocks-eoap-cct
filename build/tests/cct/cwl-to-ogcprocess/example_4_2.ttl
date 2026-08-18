@@ -2,19 +2,129 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix ns1: <rdf:> .
 @prefix ns2: <s:> .
-@prefix ogcproc: <http://www.opengis.net/def/ogcapi/processes/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 [] cwl:cwlVersion <file:///github/workspace/v1.0> ;
-    cwl:graph [ rdfs:label "Water body detection based on NDWI and otsu threshold"^^xsd:string ;
+    cwl:graph [ rdfs:label "Water bodies detection based on NDWI and otsu threshold"^^xsd:string ;
+            dct:identifier <file:///github/workspace/water-bodies> ;
+            rdfs:comment "Water bodies detection based on NDWI and otsu threshold applied to Sentinel-2 COG STAC items"^^xsd:string ;
+            cwl:input ( [ cwl:aoi [ rdfs:label "area of interest"^^xsd:string ;
+                                rdfs:comment "area of interest as a bounding box"^^xsd:string ;
+                                cwl:type <file:///github/workspace/string> ] ;
+                        cwl:bands [ rdfs:label "bands used for the NDWI"^^xsd:string ;
+                                rdfs:comment "bands used for the NDWI"^^xsd:string ;
+                                cwl:default "[\"green\",\"nir\"]"^^rdf:JSON ;
+                                cwl:type <file:///github/workspace/string[]> ] ;
+                        cwl:epsg [ rdfs:label "EPSG code"^^xsd:string ;
+                                rdfs:comment "EPSG code"^^xsd:string ;
+                                cwl:default "\"EPSG:4326\""^^rdf:JSON ;
+                                cwl:type <file:///github/workspace/string> ] ;
+                        cwl:stac_items [ rdfs:label "Sentinel-2 STAC items"^^xsd:string ;
+                                rdfs:comment "list of Sentinel-2 COG STAC items"^^xsd:string ;
+                                cwl:type <file:///github/workspace/string[]> ] ] ) ;
+            cwl:output ( [ dct:identifier <file:///github/workspace/stac_catalog> ;
+                        cwl:outputSource <file:///github/workspace/node_stac/stac_catalog> ;
+                        cwl:type <file:///github/workspace/Directory> ] ) ;
+            cwl:requirements [ ns1:type <file:///github/workspace/SubworkflowFeatureRequirement> ],
+                [ ns1:type <file:///github/workspace/ScatterFeatureRequirement> ],
+                [ cwl:types [ cwl:import <https://raw.githubusercontent.com/eoap/schemas/main/stac.yaml> ] ;
+                    ns1:type <file:///github/workspace/SchemaDefRequirement> ] ;
+            cwl:steps [ cwl:node_stac [ cwl:in [ cwl:item "stac_items" ;
+                                    cwl:rasters [ cwl:source <file:///github/workspace/node_water_bodies/detected_water_body> ] ] ;
+                            cwl:out ( "stac_catalog" ) ;
+                            cwl:run <file:///github/workspace/#stac> ] ;
+                    cwl:node_water_bodies [ cwl:in [ cwl:aoi "aoi" ;
+                                    cwl:bands "bands" ;
+                                    cwl:epsg "epsg" ;
+                                    cwl:item "stac_items" ] ;
+                            cwl:out ( "detected_water_body" ) ;
+                            cwl:run <file:///github/workspace/#detect_water_body> ;
+                            cwl:scatter ( "item" ) ;
+                            cwl:scatterMethod <file:///github/workspace/dotproduct> ] ] ;
+            ns1:type <file:///github/workspace/Workflow> ],
+        [ dct:identifier <file:///github/workspace/stac> ;
+            cwl:arguments () ;
+            cwl:baseCommand "[\"python\",\"-m\",\"app\"]"^^rdf:JSON ;
+            cwl:hints [ cwl:DockerRequirement [ cwl:dockerPull "cr.terradue.com/earthquake-monitoring/stac:latest"^^xsd:string ] ] ;
+            cwl:input ( [ cwl:item [ cwl:type [ cwl:inputBinding [ cwl:prefix "--input-item"^^xsd:string ] ;
+                                        cwl:items <file:///github/workspace/string> ;
+                                        cwl:type <file:///github/workspace/array> ] ] ;
+                        cwl:rasters [ cwl:type [ cwl:inputBinding [ cwl:prefix "--water-body"^^xsd:string ] ;
+                                        cwl:items <file:///github/workspace/File> ;
+                                        cwl:type <file:///github/workspace/array> ] ] ] ) ;
+            cwl:output ( [ cwl:stac_catalog [ cwl:outputBinding [ cwl:glob "."^^xsd:string ] ;
+                                cwl:type <file:///github/workspace/Directory> ] ] ) ;
+            cwl:requirements [ cwl:EnvVarRequirement [ cwl:envDef [ cwl:PATH "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin" ;
+                                    cwl:PYTHONPATH "/app" ] ] ;
+                    cwl:InlineJavascriptRequirement [ ] ;
+                    cwl:ResourceRequirement [ cwl:coresMax 1 ;
+                            cwl:ramMax 512 ] ] ;
+            ns1:type <file:///github/workspace/CommandLineTool> ],
+        [ dct:identifier <file:///github/workspace/otsu> ;
+            cwl:arguments () ;
+            cwl:baseCommand "[\"python\",\"-m\",\"app\"]"^^rdf:JSON ;
+            cwl:hints [ cwl:DockerRequirement [ cwl:dockerPull "cr.terradue.com/earthquake-monitoring/otsu:latest"^^xsd:string ] ] ;
+            cwl:input ( [ cwl:raster [ cwl:inputBinding [ cwl:position "1"^^xsd:int ] ;
+                                cwl:type <file:///github/workspace/File> ] ] ) ;
+            cwl:output ( [ cwl:binary_mask_item [ cwl:outputBinding [ cwl:glob "*.tif"^^xsd:string ] ;
+                                cwl:type <file:///github/workspace/File> ] ] ) ;
+            cwl:requirements [ cwl:EnvVarRequirement [ cwl:envDef [ cwl:PATH "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin" ;
+                                    cwl:PYTHONPATH "/app" ] ] ;
+                    cwl:InlineJavascriptRequirement [ ] ;
+                    cwl:ResourceRequirement [ cwl:coresMax 1 ;
+                            cwl:ramMax 512 ] ] ;
+            ns1:type <file:///github/workspace/CommandLineTool> ],
+        [ dct:identifier <file:///github/workspace/crop> ;
+            cwl:arguments () ;
+            cwl:baseCommand "[\"python\",\"-m\",\"app\"]"^^rdf:JSON ;
+            cwl:hints [ cwl:DockerRequirement [ cwl:dockerPull "cr.terradue.com/earthquake-monitoring/crop:latest"^^xsd:string ] ] ;
+            cwl:input ( [ cwl:aoi [ cwl:inputBinding [ cwl:prefix "--aoi"^^xsd:string ] ;
+                                cwl:type <file:///github/workspace/string> ] ;
+                        cwl:band [ cwl:inputBinding [ cwl:prefix "--band"^^xsd:string ] ;
+                                cwl:type <file:///github/workspace/string> ] ;
+                        cwl:epsg [ cwl:inputBinding [ cwl:prefix "--epsg"^^xsd:string ] ;
+                                cwl:type <file:///github/workspace/string> ] ;
+                        cwl:item [ cwl:inputBinding [ cwl:prefix "--input-item"^^xsd:string ] ;
+                                cwl:type <file:///github/workspace/string> ] ] ) ;
+            cwl:output ( [ cwl:cropped [ cwl:outputBinding [ cwl:glob "*.tif"^^xsd:string ] ;
+                                cwl:type <file:///github/workspace/File> ] ] ) ;
+            cwl:requirements [ cwl:EnvVarRequirement [ cwl:envDef [ cwl:PATH "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin" ;
+                                    cwl:PYTHONPATH "/app" ] ] ;
+                    cwl:InlineJavascriptRequirement [ ] ;
+                    cwl:ResourceRequirement [ cwl:coresMax 1 ;
+                            cwl:ramMax 512 ] ] ;
+            ns1:type <file:///github/workspace/CommandLineTool> ],
+        [ dct:identifier <file:///github/workspace/norm_diff> ;
+            cwl:arguments () ;
+            cwl:baseCommand "[\"python\",\"-m\",\"app\"]"^^rdf:JSON ;
+            cwl:hints [ cwl:DockerRequirement [ cwl:dockerPull "cr.terradue.com/earthquake-monitoring/norm_diff:latest"^^xsd:string ] ] ;
+            cwl:input ( [ cwl:rasters [ cwl:inputBinding [ cwl:position "1"^^xsd:int ] ;
+                                cwl:type <file:///github/workspace/File[]> ] ] ) ;
+            cwl:output ( [ cwl:ndwi [ cwl:outputBinding [ cwl:glob "*.tif"^^xsd:string ] ;
+                                cwl:type <file:///github/workspace/File> ] ] ) ;
+            cwl:requirements [ cwl:EnvVarRequirement [ cwl:envDef [ cwl:PATH "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin" ;
+                                    cwl:PYTHONPATH "/app" ] ] ;
+                    cwl:InlineJavascriptRequirement [ ] ;
+                    cwl:ResourceRequirement [ cwl:coresMax 1 ;
+                            cwl:ramMax 512 ] ] ;
+            ns1:type <file:///github/workspace/CommandLineTool> ],
+        [ rdfs:label "Water body detection based on NDWI and otsu threshold"^^xsd:string ;
             dct:identifier <file:///github/workspace/detect_water_body> ;
-            ogcproc:input _:N3917e8f248c5418eb7864d4f71368d3d ;
-            ogcproc:output _:N7969cf65452447af86c1cba27685f88c ;
             rdfs:comment "Water body detection based on NDWI and otsu threshold"^^xsd:string ;
-            cwl:input _:N3917e8f248c5418eb7864d4f71368d3d ;
-            cwl:output _:N7969cf65452447af86c1cba27685f88c ;
+            cwl:input ( [ cwl:aoi [ rdfs:comment "area of interest as a bounding box"^^xsd:string ;
+                                cwl:type <file:///github/workspace/string> ] ;
+                        cwl:bands [ rdfs:comment "bands used for the NDWI"^^xsd:string ;
+                                cwl:type <file:///github/workspace/string[]> ] ;
+                        cwl:epsg [ rdfs:comment "EPSG code"^^xsd:string ;
+                                cwl:default "\"EPSG:4326\""^^rdf:JSON ;
+                                cwl:type <file:///github/workspace/string> ] ;
+                        cwl:item [ rdfs:comment "STAC item"^^xsd:string ;
+                                cwl:type <file:///github/workspace/string> ] ] ) ;
+            cwl:output ( [ dct:identifier <file:///github/workspace/detected_water_body> ;
+                        cwl:outputSource <file:///github/workspace/node_otsu/binary_mask_item> ;
+                        cwl:type <file:///github/workspace/File> ] ) ;
             cwl:requirements [ ns1:type <file:///github/workspace/ScatterFeatureRequirement> ] ;
             cwl:steps [ cwl:node_crop [ cwl:in [ cwl:aoi "aoi" ;
                                     cwl:band "bands" ;
@@ -30,231 +140,8 @@
                     cwl:node_otsu [ cwl:in [ cwl:raster [ cwl:source <file:///github/workspace/node_normalized_difference/ndwi> ] ] ;
                             cwl:out ( "binary_mask_item" ) ;
                             cwl:run <file:///github/workspace/#otsu> ] ] ;
-            ns1:type <file:///github/workspace/Workflow> ],
-        [ rdfs:label "Water bodies detection based on NDWI and otsu threshold"^^xsd:string ;
-            dct:identifier <file:///github/workspace/water-bodies> ;
-            ogcproc:input _:Ne23ed50c61594efaab050d226ecbbba6 ;
-            ogcproc:output _:N80f430af93e5496d8294357289e0543f ;
-            rdfs:comment "Water bodies detection based on NDWI and otsu threshold applied to Sentinel-2 COG STAC items"^^xsd:string ;
-            cwl:input _:Ne23ed50c61594efaab050d226ecbbba6 ;
-            cwl:output _:N80f430af93e5496d8294357289e0543f ;
-            cwl:requirements [ ns1:type <file:///github/workspace/ScatterFeatureRequirement> ],
-                [ cwl:types [ cwl:import <https://raw.githubusercontent.com/eoap/schemas/main/stac.yaml> ] ;
-                    ns1:type <file:///github/workspace/SchemaDefRequirement> ],
-                [ ns1:type <file:///github/workspace/SubworkflowFeatureRequirement> ] ;
-            cwl:steps [ cwl:node_stac [ cwl:in [ cwl:item "stac_items" ;
-                                    cwl:rasters [ cwl:source <file:///github/workspace/node_water_bodies/detected_water_body> ] ] ;
-                            cwl:out ( "stac_catalog" ) ;
-                            cwl:run <file:///github/workspace/#stac> ] ;
-                    cwl:node_water_bodies [ cwl:in [ cwl:aoi "aoi" ;
-                                    cwl:bands "bands" ;
-                                    cwl:epsg "epsg" ;
-                                    cwl:item "stac_items" ] ;
-                            cwl:out ( "detected_water_body" ) ;
-                            cwl:run <file:///github/workspace/#detect_water_body> ;
-                            cwl:scatter ( "item" ) ;
-                            cwl:scatterMethod <file:///github/workspace/dotproduct> ] ] ;
-            ns1:type <file:///github/workspace/Workflow> ],
-        [ dct:identifier <file:///github/workspace/otsu> ;
-            ogcproc:input _:Naa397ebf3abc46f8a4485340f7dd57f6 ;
-            ogcproc:output _:Nb099e2757de14741bfdc048b07bfcc70 ;
-            cwl:arguments () ;
-            cwl:baseCommand "[\"python\",\"-m\",\"app\"]"^^rdf:JSON ;
-            cwl:hints [ cwl:DockerRequirement [ cwl:dockerPull "cr.terradue.com/earthquake-monitoring/otsu:latest"^^xsd:string ] ] ;
-            cwl:input _:Naa397ebf3abc46f8a4485340f7dd57f6 ;
-            cwl:output _:Nb099e2757de14741bfdc048b07bfcc70 ;
-            cwl:requirements [ cwl:EnvVarRequirement [ cwl:envDef [ cwl:PATH "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin" ;
-                                    cwl:PYTHONPATH "/app" ] ] ;
-                    cwl:InlineJavascriptRequirement [ ] ;
-                    cwl:ResourceRequirement [ cwl:coresMax 1 ;
-                            cwl:ramMax 512 ] ] ;
-            ns1:type <file:///github/workspace/CommandLineTool> ],
-        [ dct:identifier <file:///github/workspace/stac> ;
-            ogcproc:input _:Ne03905699a1845309d9ffce193e3e3dc ;
-            ogcproc:output _:Nbfc43a54839845b6bf123d8e43291b65 ;
-            cwl:arguments () ;
-            cwl:baseCommand "[\"python\",\"-m\",\"app\"]"^^rdf:JSON ;
-            cwl:hints [ cwl:DockerRequirement [ cwl:dockerPull "cr.terradue.com/earthquake-monitoring/stac:latest"^^xsd:string ] ] ;
-            cwl:input _:Ne03905699a1845309d9ffce193e3e3dc ;
-            cwl:output _:Nbfc43a54839845b6bf123d8e43291b65 ;
-            cwl:requirements [ cwl:EnvVarRequirement [ cwl:envDef [ cwl:PATH "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin" ;
-                                    cwl:PYTHONPATH "/app" ] ] ;
-                    cwl:InlineJavascriptRequirement [ ] ;
-                    cwl:ResourceRequirement [ cwl:coresMax 1 ;
-                            cwl:ramMax 512 ] ] ;
-            ns1:type <file:///github/workspace/CommandLineTool> ],
-        [ dct:identifier <file:///github/workspace/norm_diff> ;
-            ogcproc:input _:N19a81b482c974c198cbe57ff263260e1 ;
-            ogcproc:output _:N1a238dddcd7b410088e70f7a88b40ee7 ;
-            cwl:arguments () ;
-            cwl:baseCommand "[\"python\",\"-m\",\"app\"]"^^rdf:JSON ;
-            cwl:hints [ cwl:DockerRequirement [ cwl:dockerPull "cr.terradue.com/earthquake-monitoring/norm_diff:latest"^^xsd:string ] ] ;
-            cwl:input _:N19a81b482c974c198cbe57ff263260e1 ;
-            cwl:output _:N1a238dddcd7b410088e70f7a88b40ee7 ;
-            cwl:requirements [ cwl:EnvVarRequirement [ cwl:envDef [ cwl:PATH "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin" ;
-                                    cwl:PYTHONPATH "/app" ] ] ;
-                    cwl:InlineJavascriptRequirement [ ] ;
-                    cwl:ResourceRequirement [ cwl:coresMax 1 ;
-                            cwl:ramMax 512 ] ] ;
-            ns1:type <file:///github/workspace/CommandLineTool> ],
-        [ dct:identifier <file:///github/workspace/crop> ;
-            ogcproc:input _:N456679cb776f4915b3ab641a4ac169d8 ;
-            ogcproc:output _:N6af66f4e61ad4b3ca8e9b55f6542adb2 ;
-            cwl:arguments () ;
-            cwl:baseCommand "[\"python\",\"-m\",\"app\"]"^^rdf:JSON ;
-            cwl:hints [ cwl:DockerRequirement [ cwl:dockerPull "cr.terradue.com/earthquake-monitoring/crop:latest"^^xsd:string ] ] ;
-            cwl:input _:N456679cb776f4915b3ab641a4ac169d8 ;
-            cwl:output _:N6af66f4e61ad4b3ca8e9b55f6542adb2 ;
-            cwl:requirements [ cwl:EnvVarRequirement [ cwl:envDef [ cwl:PATH "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin" ;
-                                    cwl:PYTHONPATH "/app" ] ] ;
-                    cwl:InlineJavascriptRequirement [ ] ;
-                    cwl:ResourceRequirement [ cwl:coresMax 1 ;
-                            cwl:ramMax 512 ] ] ;
-            ns1:type <file:///github/workspace/CommandLineTool> ] ;
+            ns1:type <file:///github/workspace/Workflow> ] ;
     cwl:namespaces "{\"s\":\"https://schema.org/\"}"^^rdf:JSON ;
     cwl:schemas "http://schema.org/version/9.0/schemaorg-current-http.rdf" ;
     ns2:softwareVersion "1.4.1" .
-
-_:N01780a006f644b5da0e7d6b738a57718 rdfs:comment "EPSG code"^^xsd:string ;
-    cwl:default "\"EPSG:4326\""^^rdf:JSON ;
-    cwl:type <file:///github/workspace/string> .
-
-_:N01dff208193d48ffb4c2c5628ae8c3d3 cwl:inputBinding [ cwl:prefix "--input-item"^^xsd:string ] ;
-    cwl:items <file:///github/workspace/string> ;
-    cwl:type <file:///github/workspace/array> .
-
-_:N026e90b0e07f4bceb65a0aac797d5a30 cwl:rasters [ cwl:inputBinding [ cwl:position "1"^^xsd:int ] ;
-            cwl:type <file:///github/workspace/File[]> ] .
-
-_:N06fb16c394de4db583aef34e16d9b45c cwl:glob "*.tif"^^xsd:string .
-
-_:N0c2e421ad5aa4c1585f8c2b13d916bc5 rdfs:label "bands used for the NDWI"^^xsd:string ;
-    rdfs:comment "bands used for the NDWI"^^xsd:string ;
-    cwl:default "[\"green\",\"nir\"]"^^rdf:JSON ;
-    cwl:type <file:///github/workspace/string[]> .
-
-_:N1353631f048045d1ae4232e64a65a9f9 cwl:stac_catalog [ cwl:outputBinding [ cwl:glob "."^^xsd:string ] ;
-            cwl:type <file:///github/workspace/Directory> ] .
-
-_:N16b35f79369e4213b4e12f6fb9b77582 cwl:glob "*.tif"^^xsd:string .
-
-_:N173a4fd6d5e048cc80ab6f02935ebf03 rdfs:comment "bands used for the NDWI"^^xsd:string ;
-    cwl:type <file:///github/workspace/string[]> .
-
-_:N18bc00985fc74c53b9ada473dee7f020 cwl:outputBinding _:N06fb16c394de4db583aef34e16d9b45c ;
-    cwl:type <file:///github/workspace/File> .
-
-_:N19eca5e9997e4aee99f82add07432d6e cwl:binary_mask_item [ cwl:outputBinding _:N16b35f79369e4213b4e12f6fb9b77582 ;
-            cwl:type <file:///github/workspace/File> ] .
-
-_:N1d2f3176f8d147b4964b88ee5f9516c1 cwl:inputBinding [ cwl:prefix "--epsg"^^xsd:string ] ;
-    cwl:type <file:///github/workspace/string> .
-
-_:N207055ce8c874a4aa3b56d0364b505cd cwl:inputBinding [ cwl:prefix "--water-body"^^xsd:string ] ;
-    cwl:items <file:///github/workspace/File> ;
-    cwl:type <file:///github/workspace/array> .
-
-_:N29951b65ed844f95a5be8851e463d030 cwl:raster [ cwl:inputBinding [ cwl:position "1"^^xsd:int ] ;
-            cwl:type <file:///github/workspace/File> ] .
-
-_:N3054afbeb39d43ccbbc5caa7f6989072 rdfs:label "EPSG code"^^xsd:string ;
-    rdfs:comment "EPSG code"^^xsd:string ;
-    cwl:default "\"EPSG:4326\""^^rdf:JSON ;
-    cwl:type <file:///github/workspace/string> .
-
-_:N392dc008c73f4b30a922a3ff71ca20a0 cwl:inputBinding [ cwl:prefix "--aoi"^^xsd:string ] ;
-    cwl:type <file:///github/workspace/string> .
-
-_:N392e9ef604a649878729b559437e6222 cwl:type _:N207055ce8c874a4aa3b56d0364b505cd .
-
-_:N3ac5ee6a1c6f4c2bb89fdd98885414ec cwl:aoi [ rdfs:label "area of interest"^^xsd:string ;
-            rdfs:comment "area of interest as a bounding box"^^xsd:string ;
-            cwl:type <file:///github/workspace/string> ] ;
-    cwl:bands _:N0c2e421ad5aa4c1585f8c2b13d916bc5 ;
-    cwl:epsg _:N3054afbeb39d43ccbbc5caa7f6989072 ;
-    cwl:stac_items [ rdfs:label "Sentinel-2 STAC items"^^xsd:string ;
-            rdfs:comment "list of Sentinel-2 COG STAC items"^^xsd:string ;
-            cwl:type <file:///github/workspace/string[]> ] .
-
-_:N40320750b1334d03b7215c3aeb519dec dct:identifier <file:///github/workspace/detected_water_body> ;
-    cwl:outputSource <file:///github/workspace/node_otsu/binary_mask_item> ;
-    cwl:type <file:///github/workspace/File> .
-
-_:N4465ea05b0034674a5cb3daa9bd19a81 cwl:outputBinding [ cwl:glob "*.tif"^^xsd:string ] ;
-    cwl:type <file:///github/workspace/File> .
-
-_:N4fb355739b35490e9888501963923e28 cwl:inputBinding [ cwl:prefix "--input-item"^^xsd:string ] ;
-    cwl:type <file:///github/workspace/string> .
-
-_:N585092e5a09f43659be856f3a40871b8 cwl:item [ cwl:type _:N01dff208193d48ffb4c2c5628ae8c3d3 ] ;
-    cwl:rasters _:N392e9ef604a649878729b559437e6222 .
-
-_:N6ecdc2bc0059425d9bcacb9f2b939c1e cwl:ndwi _:N18bc00985fc74c53b9ada473dee7f020 .
-
-_:N9999555f4af64e2b81a8c6287dc40dcc cwl:aoi _:N392dc008c73f4b30a922a3ff71ca20a0 ;
-    cwl:band [ cwl:inputBinding [ cwl:prefix "--band"^^xsd:string ] ;
-            cwl:type <file:///github/workspace/string> ] ;
-    cwl:epsg _:N1d2f3176f8d147b4964b88ee5f9516c1 ;
-    cwl:item _:N4fb355739b35490e9888501963923e28 .
-
-_:N9f577632be544fa28ee5c078e5604170 dct:identifier <file:///github/workspace/stac_catalog> ;
-    cwl:outputSource <file:///github/workspace/node_stac/stac_catalog> ;
-    cwl:type <file:///github/workspace/Directory> .
-
-_:Na011951a30954578b0936e1f0d64574e cwl:aoi [ rdfs:comment "area of interest as a bounding box"^^xsd:string ;
-            cwl:type <file:///github/workspace/string> ] ;
-    cwl:bands _:N173a4fd6d5e048cc80ab6f02935ebf03 ;
-    cwl:epsg _:N01780a006f644b5da0e7d6b738a57718 ;
-    cwl:item [ rdfs:comment "STAC item"^^xsd:string ;
-            cwl:type <file:///github/workspace/string> ] .
-
-_:Nd310422558844bbcaa87979859eb597b cwl:cropped _:N4465ea05b0034674a5cb3daa9bd19a81 .
-
-_:N19a81b482c974c198cbe57ff263260e1 a ogcproc:InputDescription ;
-    rdf:first _:N026e90b0e07f4bceb65a0aac797d5a30 ;
-    rdf:rest () .
-
-_:N1a238dddcd7b410088e70f7a88b40ee7 a ogcproc:OutputDescription ;
-    rdf:first _:N6ecdc2bc0059425d9bcacb9f2b939c1e ;
-    rdf:rest () .
-
-_:N3917e8f248c5418eb7864d4f71368d3d a ogcproc:InputDescription ;
-    rdf:first _:Na011951a30954578b0936e1f0d64574e ;
-    rdf:rest () .
-
-_:N456679cb776f4915b3ab641a4ac169d8 a ogcproc:InputDescription ;
-    rdf:first _:N9999555f4af64e2b81a8c6287dc40dcc ;
-    rdf:rest () .
-
-_:N6af66f4e61ad4b3ca8e9b55f6542adb2 a ogcproc:OutputDescription ;
-    rdf:first _:Nd310422558844bbcaa87979859eb597b ;
-    rdf:rest () .
-
-_:N7969cf65452447af86c1cba27685f88c a ogcproc:OutputDescription ;
-    rdf:first _:N40320750b1334d03b7215c3aeb519dec ;
-    rdf:rest () .
-
-_:N80f430af93e5496d8294357289e0543f a ogcproc:OutputDescription ;
-    rdf:first _:N9f577632be544fa28ee5c078e5604170 ;
-    rdf:rest () .
-
-_:Naa397ebf3abc46f8a4485340f7dd57f6 a ogcproc:InputDescription ;
-    rdf:first _:N29951b65ed844f95a5be8851e463d030 ;
-    rdf:rest () .
-
-_:Nb099e2757de14741bfdc048b07bfcc70 a ogcproc:OutputDescription ;
-    rdf:first _:N19eca5e9997e4aee99f82add07432d6e ;
-    rdf:rest () .
-
-_:Nbfc43a54839845b6bf123d8e43291b65 a ogcproc:OutputDescription ;
-    rdf:first _:N1353631f048045d1ae4232e64a65a9f9 ;
-    rdf:rest () .
-
-_:Ne03905699a1845309d9ffce193e3e3dc a ogcproc:InputDescription ;
-    rdf:first _:N585092e5a09f43659be856f3a40871b8 ;
-    rdf:rest () .
-
-_:Ne23ed50c61594efaab050d226ecbbba6 a ogcproc:InputDescription ;
-    rdf:first _:N3ac5ee6a1c6f4c2bb89fdd98885414ec ;
-    rdf:rest () .
 

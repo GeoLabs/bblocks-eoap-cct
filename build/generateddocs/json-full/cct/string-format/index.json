@@ -8,7 +8,7 @@
   "description": "This building block defines CWL custom types for standard string formats conforming to JSON Schema and OpenAPI specifications. These types enable workflows to validate and document string inputs/outputs with specific format constraints.\n\n## Relationship to OGC API - Processes\n\nWhen CWL workflows using these string format types are deployed as OGC API - Processes services, the format constraints map to JSON Schema format keywords in the process description (extending the Table 13).\n\n### Example Mapping\n\n**CWL Input:**\n```yaml\ninputs:\n  start_date:\n    type: eoap:string-format#DateTime\n    doc: \"Processing start date and time\"\n```\n\n**OGC Process Description:**\n```json\n{\n  \"inputs\": {\n    \"start_date\": {\n      \"title\": \"Processing start date and time\",\n      \"schema\": {\n        \"type\": \"string\",\n        \"format\": \"date-time\"\n      }\n    }\n  }\n}\n```\n\n## Usage in CWL Workflows\n\nTo use string format custom types in a CWL workflow:\n\n```yaml\ncwlVersion: v1.0\nclass: Workflow\n\nrequirements:\n  SchemaDefRequirement:\n    types:\n      - $import: https://eoap.github.io/schemas/cwl/string-format.yaml\n\ninputs:\n  observation_time:\n    type: eoap:string-format#DateTime\n    doc: \"Time of observation\"\n    inputBinding:\n      prefix: --time\n  \n  data_url:\n    type: eoap:string-format#URI\n    doc: \"URL to input data\"\n    inputBinding:\n      prefix: --url\n  \n  processing_duration:\n    type: eoap:string-format#Duration\n    doc: \"Maximum processing duration\"\n    inputBinding:\n      prefix: --timeout\n\n  contact_email:\n    type: eoap:string-format#Email\n    doc: \"Contact email for notifications\"\n    inputBinding:\n      prefix: --notify\n```\n\n",
   "status": "under-development",
   "dateTimeAddition": "2025-12-17T00:00:00Z",
-  "dateOfLastChange": "2025-12-18",
+  "dateOfLastChange": "2026-08-18",
   "version": "1.0",
   "itemClass": "schema",
   "register": "eoap-cct",
@@ -97,8 +97,8 @@
   },
   "sourceLdContext": "https://geolabs.github.io/bblocks-eoap-cct/_sources/string-format/context.jsonld",
   "sourceFiles": "https://geolabs.github.io/bblocks-eoap-cct/_sources/string-format/",
-  "rdfData": [],
-  "validationPassed": true,
+  "validationPassed": false,
+  "testOutputs": "https://github.com/GeoLabs/bblocks-eoap-cct/blob/master/build/tests/cct/string-format/",
   "examples": [
     {
       "title": "Date value",
@@ -106,9 +106,10 @@
       "snippets": [
         {
           "language": "yaml",
-          "ref": "examples/date.yaml",
-          "code": "value: \"2023-12-17\"\n",
-          "url": "https://geolabs.github.io/bblocks-eoap-cct/build/tests/cct/string-format/example_1_1.yaml"
+          "ref": "https://geolabs.github.io/bblocks-eoap-cct/_sources/string-format/examples/date.yaml",
+          "url": "https://geolabs.github.io/bblocks-eoap-cct/build/tests/cct/string-format/example_1_1.yaml",
+          "sizeBytes": 20,
+          "code": "value: \"2023-12-17\"\n"
         }
       ]
     },
@@ -118,9 +119,10 @@
       "snippets": [
         {
           "language": "yaml",
-          "ref": "examples/datetime.yaml",
-          "code": "value: \"2023-12-17T10:30:00Z\"\n",
-          "url": "https://geolabs.github.io/bblocks-eoap-cct/build/tests/cct/string-format/example_2_1.yaml"
+          "ref": "https://geolabs.github.io/bblocks-eoap-cct/_sources/string-format/examples/datetime.yaml",
+          "url": "https://geolabs.github.io/bblocks-eoap-cct/build/tests/cct/string-format/example_2_1.yaml",
+          "sizeBytes": 30,
+          "code": "value: \"2023-12-17T10:30:00Z\"\n"
         }
       ]
     },
@@ -130,9 +132,10 @@
       "snippets": [
         {
           "language": "yaml",
-          "ref": "examples/time.yaml",
-          "code": "value: \"10:30:00\"\n",
-          "url": "https://geolabs.github.io/bblocks-eoap-cct/build/tests/cct/string-format/example_3_1.yaml"
+          "ref": "https://geolabs.github.io/bblocks-eoap-cct/_sources/string-format/examples/time.yaml",
+          "url": "https://geolabs.github.io/bblocks-eoap-cct/build/tests/cct/string-format/example_3_1.yaml",
+          "sizeBytes": 18,
+          "code": "value: \"10:30:00\"\n"
         }
       ]
     },
@@ -142,9 +145,10 @@
       "snippets": [
         {
           "language": "yaml",
-          "ref": "examples/duration.yaml",
-          "code": "value: \"PT30M\"\n",
-          "url": "https://geolabs.github.io/bblocks-eoap-cct/build/tests/cct/string-format/example_4_1.yaml"
+          "ref": "https://geolabs.github.io/bblocks-eoap-cct/_sources/string-format/examples/duration.yaml",
+          "url": "https://geolabs.github.io/bblocks-eoap-cct/build/tests/cct/string-format/example_4_1.yaml",
+          "sizeBytes": 15,
+          "code": "value: \"PT30M\"\n"
         }
       ]
     },
@@ -154,9 +158,10 @@
       "snippets": [
         {
           "language": "yaml",
-          "ref": "examples/uri.yaml",
-          "code": "value: \"https://example.com/data/products\"\n",
-          "url": "https://geolabs.github.io/bblocks-eoap-cct/build/tests/cct/string-format/example_5_1.yaml"
+          "ref": "https://geolabs.github.io/bblocks-eoap-cct/_sources/string-format/examples/uri.yaml",
+          "url": "https://geolabs.github.io/bblocks-eoap-cct/build/tests/cct/string-format/example_5_1.yaml",
+          "sizeBytes": 43,
+          "code": "value: \"https://example.com/data/products\"\n"
         }
       ]
     },
@@ -166,9 +171,10 @@
       "snippets": [
         {
           "language": "yaml",
-          "ref": "examples/uri-reference.yaml",
-          "code": "value: \"/relative/path\"\n",
-          "url": "https://geolabs.github.io/bblocks-eoap-cct/build/tests/cct/string-format/example_6_1.yaml"
+          "ref": "https://geolabs.github.io/bblocks-eoap-cct/_sources/string-format/examples/uri-reference.yaml",
+          "url": "https://geolabs.github.io/bblocks-eoap-cct/build/tests/cct/string-format/example_6_1.yaml",
+          "sizeBytes": 24,
+          "code": "value: \"/relative/path\"\n"
         }
       ]
     },
@@ -178,9 +184,10 @@
       "snippets": [
         {
           "language": "yaml",
-          "ref": "examples/uri-template.yaml",
-          "code": "value: \"https://api.example.com/collections/{id}/items{?limit,bbox}\"\n",
-          "url": "https://geolabs.github.io/bblocks-eoap-cct/build/tests/cct/string-format/example_7_1.yaml"
+          "ref": "https://geolabs.github.io/bblocks-eoap-cct/_sources/string-format/examples/uri-template.yaml",
+          "url": "https://geolabs.github.io/bblocks-eoap-cct/build/tests/cct/string-format/example_7_1.yaml",
+          "sizeBytes": 69,
+          "code": "value: \"https://api.example.com/collections/{id}/items{?limit,bbox}\"\n"
         }
       ]
     },
@@ -190,9 +197,10 @@
       "snippets": [
         {
           "language": "yaml",
-          "ref": "examples/iri.yaml",
-          "code": "value: \"https://\u4f8b\u3048.jp/\u30c7\u30fc\u30bf\"\n",
-          "url": "https://geolabs.github.io/bblocks-eoap-cct/build/tests/cct/string-format/example_8_1.yaml"
+          "ref": "https://geolabs.github.io/bblocks-eoap-cct/_sources/string-format/examples/iri.yaml",
+          "url": "https://geolabs.github.io/bblocks-eoap-cct/build/tests/cct/string-format/example_8_1.yaml",
+          "sizeBytes": 37,
+          "code": "value: \"https://\u4f8b\u3048.jp/\u30c7\u30fc\u30bf\"\n"
         }
       ]
     },
@@ -202,9 +210,10 @@
       "snippets": [
         {
           "language": "yaml",
-          "ref": "examples/email.yaml",
-          "code": "value: \"user@example.com\"\n",
-          "url": "https://geolabs.github.io/bblocks-eoap-cct/build/tests/cct/string-format/example_9_1.yaml"
+          "ref": "https://geolabs.github.io/bblocks-eoap-cct/_sources/string-format/examples/email.yaml",
+          "url": "https://geolabs.github.io/bblocks-eoap-cct/build/tests/cct/string-format/example_9_1.yaml",
+          "sizeBytes": 26,
+          "code": "value: \"user@example.com\"\n"
         }
       ]
     },
@@ -214,9 +223,10 @@
       "snippets": [
         {
           "language": "yaml",
-          "ref": "examples/idn-email.yaml",
-          "code": "value: \"\u7528\u6237@\u4f8b\u3048.jp\"\n",
-          "url": "https://geolabs.github.io/bblocks-eoap-cct/build/tests/cct/string-format/example_10_1.yaml"
+          "ref": "https://geolabs.github.io/bblocks-eoap-cct/_sources/string-format/examples/idn-email.yaml",
+          "url": "https://geolabs.github.io/bblocks-eoap-cct/build/tests/cct/string-format/example_10_1.yaml",
+          "sizeBytes": 26,
+          "code": "value: \"\u7528\u6237@\u4f8b\u3048.jp\"\n"
         }
       ]
     },
@@ -226,9 +236,10 @@
       "snippets": [
         {
           "language": "yaml",
-          "ref": "examples/hostname.yaml",
-          "code": "value: \"api.example.com\"\n",
-          "url": "https://geolabs.github.io/bblocks-eoap-cct/build/tests/cct/string-format/example_11_1.yaml"
+          "ref": "https://geolabs.github.io/bblocks-eoap-cct/_sources/string-format/examples/hostname.yaml",
+          "url": "https://geolabs.github.io/bblocks-eoap-cct/build/tests/cct/string-format/example_11_1.yaml",
+          "sizeBytes": 25,
+          "code": "value: \"api.example.com\"\n"
         }
       ]
     },
@@ -238,9 +249,10 @@
       "snippets": [
         {
           "language": "yaml",
-          "ref": "examples/idn-hostname.yaml",
-          "code": "value: \"\u4f8b\u3048.jp\"\n",
-          "url": "https://geolabs.github.io/bblocks-eoap-cct/build/tests/cct/string-format/example_12_1.yaml"
+          "ref": "https://geolabs.github.io/bblocks-eoap-cct/_sources/string-format/examples/idn-hostname.yaml",
+          "url": "https://geolabs.github.io/bblocks-eoap-cct/build/tests/cct/string-format/example_12_1.yaml",
+          "sizeBytes": 19,
+          "code": "value: \"\u4f8b\u3048.jp\"\n"
         }
       ]
     },
@@ -250,9 +262,10 @@
       "snippets": [
         {
           "language": "yaml",
-          "ref": "examples/ipv4.yaml",
-          "code": "value: \"192.168.1.1\"\n",
-          "url": "https://geolabs.github.io/bblocks-eoap-cct/build/tests/cct/string-format/example_13_1.yaml"
+          "ref": "https://geolabs.github.io/bblocks-eoap-cct/_sources/string-format/examples/ipv4.yaml",
+          "url": "https://geolabs.github.io/bblocks-eoap-cct/build/tests/cct/string-format/example_13_1.yaml",
+          "sizeBytes": 21,
+          "code": "value: \"192.168.1.1\"\n"
         }
       ]
     },
@@ -262,9 +275,10 @@
       "snippets": [
         {
           "language": "yaml",
-          "ref": "examples/ipv6.yaml",
-          "code": "value: \"2001:0db8:85a3:0000:0000:8a2e:0370:7334\"\n",
-          "url": "https://geolabs.github.io/bblocks-eoap-cct/build/tests/cct/string-format/example_14_1.yaml"
+          "ref": "https://geolabs.github.io/bblocks-eoap-cct/_sources/string-format/examples/ipv6.yaml",
+          "url": "https://geolabs.github.io/bblocks-eoap-cct/build/tests/cct/string-format/example_14_1.yaml",
+          "sizeBytes": 49,
+          "code": "value: \"2001:0db8:85a3:0000:0000:8a2e:0370:7334\"\n"
         }
       ]
     },
@@ -274,9 +288,10 @@
       "snippets": [
         {
           "language": "yaml",
-          "ref": "examples/json-pointer.yaml",
-          "code": "value: \"/properties/name\"\n",
-          "url": "https://geolabs.github.io/bblocks-eoap-cct/build/tests/cct/string-format/example_15_1.yaml"
+          "ref": "https://geolabs.github.io/bblocks-eoap-cct/_sources/string-format/examples/json-pointer.yaml",
+          "url": "https://geolabs.github.io/bblocks-eoap-cct/build/tests/cct/string-format/example_15_1.yaml",
+          "sizeBytes": 26,
+          "code": "value: \"/properties/name\"\n"
         }
       ]
     },
@@ -286,9 +301,10 @@
       "snippets": [
         {
           "language": "yaml",
-          "ref": "examples/relative-json-pointer.yaml",
-          "code": "value: \"0/name\"\n",
-          "url": "https://geolabs.github.io/bblocks-eoap-cct/build/tests/cct/string-format/example_16_1.yaml"
+          "ref": "https://geolabs.github.io/bblocks-eoap-cct/_sources/string-format/examples/relative-json-pointer.yaml",
+          "url": "https://geolabs.github.io/bblocks-eoap-cct/build/tests/cct/string-format/example_16_1.yaml",
+          "sizeBytes": 16,
+          "code": "value: \"0/name\"\n"
         }
       ]
     },
@@ -298,9 +314,10 @@
       "snippets": [
         {
           "language": "yaml",
-          "ref": "examples/uuid.yaml",
-          "code": "value: \"123e4567-e89b-12d3-a456-426614174000\"\n",
-          "url": "https://geolabs.github.io/bblocks-eoap-cct/build/tests/cct/string-format/example_17_1.yaml"
+          "ref": "https://geolabs.github.io/bblocks-eoap-cct/_sources/string-format/examples/uuid.yaml",
+          "url": "https://geolabs.github.io/bblocks-eoap-cct/build/tests/cct/string-format/example_17_1.yaml",
+          "sizeBytes": 46,
+          "code": "value: \"123e4567-e89b-12d3-a456-426614174000\"\n"
         }
       ]
     }
