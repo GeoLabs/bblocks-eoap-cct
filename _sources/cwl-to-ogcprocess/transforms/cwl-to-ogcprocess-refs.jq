@@ -1,14 +1,126 @@
-# Unified transform: CWL CommandLineTool/Workflow to OGC API Processes processDescription
+# Unified transform: CWL Workflow to OGC API Processes processDescription
 # Uses reference schemas (allOf + $ref) for EOAP custom types: BBox, GeoJSON, STAC
+# Only the Workflow is described: it is what gets deployed as a process.
+# Preserves the CWL annotations (schema.org and any other declared $namespaces prefix)
+# as OGC API - Processes `metadata` entries, plus `keywords` and `version`.
 
-# Helper function to extract the root element (first Workflow in $graph, or the document itself)
+# All CWL elements of the document: the $graph entries, or the document itself
+def cwlElements:
+  if has("$graph") then ."$graph" else [.] end;
+
+# Identifiers referenced by a step's `run`, i.e. the sub-workflows and the tools.
+# These are implementation details of the process, never the process itself.
+def referencedIds:
+  [ cwlElements[]
+    | .steps
+    | if type == "object" then [.[]] elif type == "array" then . else [] end
+    | .[]
+    | .run
+    | select(type == "string")
+    | sub("^#"; "")
+  ];
+
+# The deployed process is the Workflow, and nothing else: a CommandLineTool is a
+# step implementation, not a process. When several Workflows are packed together,
+# the process is the one no step runs (the sub-workflows are excluded).
 def getRootElement:
-  if has("$graph") then
-    # Find the first Workflow in the $graph array
-    (."$graph" | map(select(.class == "Workflow")) | first) // ."$graph"[0]
+  referencedIds as $referenced |
+  (cwlElements | map(select(.class == "Workflow"))) as $workflows |
+  if ($workflows | length) == 0 then
+    error("No CWL Workflow found: an OGC API - Processes description is derived from the Workflow only")
+  else
+    ( ($workflows | map(select(((.id // "") | sub("^#"; "")) == "main")) | first)
+      // ($workflows | map(select(((.id // "") | sub("^#"; "")) as $i | ($referenced | index($i)) == null)) | first)
+      // $workflows[0] )
+  end;
+
+# --- Namespace / annotation helpers -----------------------------------------
+
+# Prefix declared in $namespaces that matches this key ("s:author" -> "s"), or null
+def matchedPrefix($ns):
+  . as $k |
+  ($ns | keys | map(select(. as $p | $k | startswith($p + ":"))) | first);
+
+# Local part of a prefixed key ("s:author" -> "author"); unprefixed keys are returned as-is
+def localName($ns):
+  . as $k |
+  ($k | matchedPrefix($ns)) as $p |
+  if $p then $k[($p | length) + 1:] else $k end;
+
+# Fully expanded IRI of a prefixed key ("s:author" -> "https://schema.org/author"),
+# or null when the key carries no declared prefix (structural CWL keys, $graph, ...)
+def termIRI($ns):
+  . as $k |
+  ($k | matchedPrefix($ns)) as $p |
+  if $p then ($ns[$p] + $k[($p | length) + 1:]) else null end;
+
+# Recursively turn a CWL annotation value into plain JSON-LD:
+#   { class: "s:Person", "s:name": "..." }
+#     -> { "@context": "https://schema.org", "@type": "Person", "name": "..." }
+def normalizeJsonLd($ns):
+  if type == "object" then
+    (.class // null) as $cls |
+    (if ($cls | type) == "string" then ($cls | matchedPrefix($ns)) else null end) as $clsPrefix |
+    (if $clsPrefix then
+       { "@context": ($ns[$clsPrefix] | sub("/$"; "")),
+         "@type": $cls[($clsPrefix | length) + 1:] }
+     elif ($cls | type) == "string" then
+       { "@type": $cls }
+     else
+       {}
+     end)
+    + ( to_entries
+        | map(select(.key != "class"))
+        | map({ key: (.key | localName($ns)), value: (.value | normalizeJsonLd($ns)) })
+        | from_entries )
+  elif type == "array" then
+    map(normalizeJsonLd($ns))
   else
     .
   end;
+
+# All prefixed annotations of an object as OGC `metadata` entries.
+# `keywords` is excluded: it is surfaced as the top-level `keywords` member instead.
+# List-valued annotations (s:author with two people) yield one entry per element.
+def collectAnnotations($ns):
+  if type == "object" then
+    [ to_entries[]
+      | select((.key | termIRI($ns)) != null)
+      | select((.key | localName($ns)) != "keywords")
+      | (.key | termIRI($ns)) as $role
+      | (if (.value | type) == "array" then .value else [.value] end)
+      | .[]
+      | { role: $role, value: normalizeJsonLd($ns) }
+    ]
+  else
+    []
+  end;
+
+# Value of a single annotation, by local name ("softwareVersion"), or null
+def annotationValue($ns; $name):
+  if type == "object" then
+    [ to_entries[]
+      | select((.key | termIRI($ns)) != null)
+      | select((.key | localName($ns)) == $name)
+      | .value ] | first
+  else
+    null
+  end;
+
+# Keywords, accepting both a YAML list and a comma-separated string
+def collectKeywords($ns):
+  (annotationValue($ns; "keywords")) as $kw |
+  if $kw == null then []
+  elif ($kw | type) == "array" then ($kw | map(tostring))
+  elif ($kw | type) == "string" then
+    ($kw | split(",") | map(sub("^\\s+"; "") | sub("\\s+$"; "")) | map(select(length > 0)))
+  else [ $kw | tostring ]
+  end;
+
+# Order-preserving deduplication
+def dedup: reduce .[] as $x ([]; if (index($x) != null) then . else . + [$x] end);
+
+# --- Type mapping ------------------------------------------------------------
 
 # Map BBox custom type to OGC schema with reference
 def mapBBoxType:
@@ -42,17 +154,6 @@ def mapGeoJSONType:
             }
           ]
         }
-      elif (. | contains("Feature")) then
-        {
-          allOf: [
-            {
-              format: "geojson-feature"
-            },
-            {
-              "$ref": "https://geojson.org/schema/Feature.json"
-            }
-          ]
-        }
       elif (. | contains("FeatureCollection")) then
         {
           allOf: [
@@ -61,6 +162,17 @@ def mapGeoJSONType:
             },
             {
               "$ref": "https://geojson.org/schema/FeatureCollection.json"
+            }
+          ]
+        }
+      elif (. | contains("Feature")) then
+        {
+          allOf: [
+            {
+              format: "geojson-feature"
+            },
+            {
+              "$ref": "https://geojson.org/schema/Feature.json"
             }
           ]
         }
@@ -94,6 +206,19 @@ def mapGeoJSONType:
     null
   end;
 
+# STAC Collection schema, reused for the EOAP stage-out Directory output
+def stacCollectionSchema:
+  {
+    allOf: [
+      {
+        format: "stac-collection"
+      },
+      {
+        "$ref": "https://raw.githubusercontent.com/radiantearth/stac-api-spec/refs/heads/release/v1.0.0/stac-spec/collection-spec/json-schema/collection.json"
+      }
+    ]
+  };
+
 # Map STAC custom types to OGC schemas with references
 def mapSTACType:
   if (. | type) == "string" and (. | contains("stac.yaml#")) then
@@ -109,16 +234,7 @@ def mapSTACType:
         ]
       }
     elif (. | contains("Collection")) then
-      {
-        allOf: [
-          {
-            format: "stac-collection"
-          },
-          {
-            "$ref": "https://raw.githubusercontent.com/radiantearth/stac-api-spec/refs/heads/release/v1.0.0/stac-spec/collection-spec/json-schema/collection.json"
-          }
-        ]
-      }
+      stacCollectionSchema
     elif (. | contains("Catalog")) then
       {
         allOf: [
@@ -198,65 +314,97 @@ def mapDirectoryType:
     null
   end;
 
-# Unified type mapper - tries all type mappings
-def mapType:
-  . as $type |
-  # Check if it's an array type (e.g., "string[]", "int[]", etc.)
-  if ($type | type) == "string" and ($type | endswith("[]")) then
-    # Extract base type by removing "[]" suffix
-    ($type | sub("\\[\\]$"; "")) as $baseType |
-    {
-      type: "array",
-      items: ($baseType | mapType)
-    }
+# Strip the optional marker and the null branch of a union type:
+#   "string?"          -> "string"
+#   ["null", "string"] -> "string"
+def normalizeTypeSpec:
+  if type == "string" then
+    (if endswith("?") then .[0:-1] else . end)
+  elif type == "array" then
+    (map(select(. != "null"))) as $t |
+    (if ($t | length) == 1 then $t[0] else $t end)
   else
-    (mapBBoxType // mapGeoJSONType // mapSTACType // mapStringFormatType // mapFileType // mapDirectoryType // 
-     if ($type | type) == "string" then
-       if $type == "string" then { type: "string" }
-       elif $type == "int" or $type == "long" then { type: "integer" }
-       elif $type == "float" or $type == "double" then { type: "number" }
-       elif $type == "boolean" then { type: "boolean" }
-       else { type: "string" }
-       end
-     else
-       { type: "object" }
-     end
-    )
+    .
   end;
+
+# True when the declared type accepts null (i.e. the parameter is optional)
+def isOptionalType:
+  if type == "string" then endswith("?")
+  elif type == "array" then any(.[]; . == "null")
+  else false
+  end;
+
+# Unified type mapper. $stageOut selects the EOAP convention where a Directory
+# output is the stage-out STAC Collection rather than an opaque directory.
+def mapTypeCtx($stageOut):
+  normalizeTypeSpec as $t |
+  if ($t | type) == "string" then
+    if ($t | endswith("[]")) then
+      { type: "array", items: ($t[0:-2] | mapTypeCtx($stageOut)) }
+    elif $stageOut and $t == "Directory" then
+      stacCollectionSchema
+    else
+      ($t | mapBBoxType) // ($t | mapGeoJSONType) // ($t | mapSTACType)
+        // ($t | mapStringFormatType) // ($t | mapFileType) // ($t | mapDirectoryType)
+        // (if $t == "string" then { type: "string" }
+            elif $t == "int" or $t == "long" then { type: "integer" }
+            elif $t == "float" or $t == "double" then { type: "number" }
+            elif $t == "boolean" then { type: "boolean" }
+            else { type: "string" }
+            end)
+    end
+  elif ($t | type) == "array" then
+    # Union of several non-null types
+    { oneOf: ($t | map(mapTypeCtx($stageOut))) }
+  elif ($t | type) == "object" then
+    if $t.type == "array" then
+      { type: "array", items: ($t.items | mapTypeCtx($stageOut)) }
+    elif $t.type == "enum" then
+      { type: "string", enum: ($t.symbols | map(sub(".*[#/]"; ""))) }
+    elif ($t | has("type")) then
+      ($t.type | mapTypeCtx($stageOut))
+    else
+      { type: "object" }
+    end
+  else
+    { type: "object" }
+  end;
+
+def mapType: mapTypeCtx(false);
+def mapOutputType: mapTypeCtx(true);
+
+# --- Input / output descriptions --------------------------------------------
+
+# Build one OGC input description from a CWL input parameter object
+def inputDescription($id):
+  . as $param |
+  ($param.type) as $t |
+  {
+    title: ($param.label // $id),
+    description: ($param.doc // ""),
+    schema: (($t | mapType) + (if ($param | has("default")) then { default: $param.default } else {} end)),
+    minOccurs: (if ($t | isOptionalType) or ($param | has("default")) then 0 else 1 end),
+    maxOccurs: 1
+  };
+
+# Build one OGC output description from a CWL output parameter object
+def outputDescription($id):
+  . as $param |
+  {
+    title: ($param.label // $id),
+    description: ($param.doc // ""),
+    schema: ($param.type | mapOutputType)
+  };
 
 # Process inputs
 def processInputs:
   if . then
     if (. | type) == "array" then
-      # Workflow style: inputs is an array with id fields
-      map(
-        .type as $inputType |
-        {
-          key: .id,
-          value: {
-            title: (.label // .id),
-            description: (.doc // ""),
-            schema: ($inputType | mapType),
-            minOccurs: 1,
-            maxOccurs: 1
-          }
-        }
-      ) | from_entries
+      # Array form: each entry carries its own id
+      map(.id as $id | { key: $id, value: inputDescription($id) }) | from_entries
     else
-      # CommandLineTool style: inputs is an object
-      to_entries | map(
-        .value.type as $inputType |
-        {
-          key: .key,
-          value: {
-            title: (.value.label // .key),
-            description: (.value.doc // ""),
-            schema: ($inputType | mapType),
-            minOccurs: 1,
-            maxOccurs: 1
-          }
-        }
-      ) | from_entries
+      # Map form: the key is the id
+      to_entries | map(.key as $id | { key: $id, value: (.value | inputDescription($id)) }) | from_entries
     end
   else
     {}
@@ -266,47 +414,63 @@ def processInputs:
 def processOutputs:
   if . then
     if (. | type) == "array" then
-      # Workflow style: outputs is an array with id fields
-      map(
-        .type as $outputType |
-        {
-          key: .id,
-          value: {
-            title: (.label // .id),
-            description: (.doc // ""),
-            schema: ($outputType | mapType)
-          }
-        }
-      ) | from_entries
+      # Array form: each entry carries its own id
+      map(.id as $id | { key: $id, value: outputDescription($id) }) | from_entries
     else
-      # CommandLineTool style: outputs is an object
-      to_entries | map(
-        .value.type as $outputType |
-        {
-          key: .key,
-          value: {
-            title: (.value.label // .key),
-            description: (.value.doc // ""),
-            schema: ($outputType | mapType)
-          }
-        }
-      ) | from_entries
+      # Map form: the key is the id
+      to_entries | map(.key as $id | { key: $id, value: (.value | outputDescription($id)) }) | from_entries
     end
   else
     {}
   end;
 
-# Main transformation
+# --- Main transformation -----------------------------------------------------
+
+. as $doc |
+(($doc["$namespaces"] // {})) as $ns |
 getRootElement as $root |
+
+($root | collectAnnotations($ns)) as $rootMeta |
+($doc | collectAnnotations($ns)) as $docMeta |
+# Workflow-level annotations win over document-level ones for the same role
+($rootMeta + ($docMeta | map(select(.role as $r | ($rootMeta | map(.role) | index($r)) == null)))) as $declaredMeta |
+
+(($root | collectKeywords($ns)) + ($doc | collectKeywords($ns)) | dedup) as $keywords |
+
+(($root | annotationValue($ns; "softwareVersion"))
+  // ($root | annotationValue($ns; "version"))
+  // ($doc | annotationValue($ns; "softwareVersion"))
+  // ($doc | annotationValue($ns; "version"))
+  // "1.0.0") as $version |
+
+(($root.id // "cwl-process") | sub("^#"; "")) as $id |
+($root.label // $id) as $title |
+($root.doc // "Process converted from CWL") as $description |
+
+# Mirror the core descriptive members as schema.org metadata, unless the CWL
+# already declared them explicitly
+($declaredMeta | map(.role)) as $declaredRoles |
+([ { role: "https://schema.org/name", value: $title },
+   { role: "https://schema.org/description", value: $description } ]
+  + (if ($declaredRoles | index("https://schema.org/version")) == null
+     then [ { role: "https://schema.org/softwareVersion", value: $version } ] else [] end)
+  | map(select(.role as $r | ($declaredRoles | index($r)) == null))) as $derivedMeta |
+
 {
-  id: ($root.id // (if ($root.baseCommand | type) == "array" then $root.baseCommand[0] else $root.baseCommand end) // "cwl-process"),
-  version: "1.0.0",
-  title: ($root.label // "CWL Process"),
-  description: ($root.doc // "Process converted from CWL"),
-  
+  id: $id,
+  version: ($version | tostring),
+  title: $title,
+  description: $description,
+  # A CWL process is deployed through OGC API - Processes Part 2, hence replaceable/removable
+  mutable: true
+}
++ (if ($keywords | length) > 0 then { keywords: $keywords } else {} end)
++ { metadata: ($derivedMeta + $declaredMeta) }
++ {
   inputs: ($root.inputs | processInputs),
   outputs: ($root.outputs | processOutputs),
-  
-  jobControlOptions: ["async-execute", "sync-execute"],
+
+  # A deployed CWL process can only be executed asynchronously
+  jobControlOptions: ["async-execute", "dismiss"],
   outputTransmission: ["value", "reference"]
 }

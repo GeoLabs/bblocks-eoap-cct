@@ -4,6 +4,7 @@
 @prefix cwl: <https://w3id.org/cwl/cwl#> .
 @prefix ogcproc: <http://www.opengis.net/def/ogcapi/processes/> .
 @prefix dct: <http://purl.org/dc/terms/> .
+@prefix s: <https://schema.org/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix : <urn:eoap:cwl-to-ogcprocess#> .
 
@@ -18,68 +19,101 @@
             PREFIX ogcproc: <http://www.opengis.net/def/ogcapi/processes/>
             PREFIX dct: <http://purl.org/dc/terms/>
             PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-            
+
             CONSTRUCT {
                 $this a ogcproc:Process ;
                     ogcproc:processID ?id ;
                     ogcproc:title ?label ;
-                    ogcproc:description ?doc ;
-                    ogcproc:version ?version
+                    ogcproc:description ?doc
             }
             WHERE {
                 $this a cwl:Workflow .
                 OPTIONAL { $this dct:identifier ?id }
                 OPTIONAL { $this rdfs:label ?label }
                 OPTIONAL { $this rdfs:comment ?doc }
-                OPTIONAL { $this cwl:cwlVersion ?version }
             }
         """ ;
     ] ;
 .
 
-# Transform CWL CommandLineTool to OGC Process
-:CWLCommandLineToolToOGCProcess
+# Process version.
+# NOTE: this is the version of the *application*, taken from the schema.org
+# annotations. It must not be confused with cwl:cwlVersion, which is the version
+# of the CWL language the document is written in.
+:ProcessVersion
     a sh:NodeShape ;
-    sh:targetClass cwl:CommandLineTool ;
+    sh:targetClass cwl:Workflow ;
     sh:rule [
         a sh:SPARQLRule ;
         sh:construct """
-            PREFIX cwl: <https://w3id.org/cwl/cwl#>
             PREFIX ogcproc: <http://www.opengis.net/def/ogcapi/processes/>
-            PREFIX dct: <http://purl.org/dc/terms/>
-            PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-            
+            PREFIX cwl: <https://w3id.org/cwl/cwl#>
+            PREFIX s: <https://schema.org/>
+
             CONSTRUCT {
-                $this a ogcproc:Process ;
-                    ogcproc:processID ?id ;
-                    ogcproc:title ?label ;
-                    ogcproc:description ?doc ;
-                    ogcproc:version ?version
+                $this ogcproc:version ?version
             }
             WHERE {
-                $this a cwl:CommandLineTool .
-                OPTIONAL { $this dct:identifier ?id }
-                OPTIONAL { $this rdfs:label ?label }
-                OPTIONAL { $this rdfs:comment ?doc }
-                OPTIONAL { $this cwl:cwlVersion ?version }
+                $this a cwl:Workflow .
+                { $this s:softwareVersion ?version }
+                UNION
+                { $this s:version ?version
+                  FILTER NOT EXISTS { $this s:softwareVersion ?sv } }
             }
         """ ;
     ] ;
 .
 
-# Add process execution mode metadata
+# Preserve every schema.org annotation as an OGC API - Processes metadata entry,
+# keyed by the fully expanded IRI of the term. Terms that map onto a dedicated
+# process member (version, keywords) are excluded.
+:ProcessMetadataFromAnnotations
+    a sh:NodeShape ;
+    sh:targetClass cwl:Workflow ;
+    sh:rule [
+        a sh:SPARQLRule ;
+        sh:construct """
+            PREFIX ogcproc: <http://www.opengis.net/def/ogcapi/processes/>
+            PREFIX cwl: <https://w3id.org/cwl/cwl#>
+            PREFIX s: <https://schema.org/>
+
+            CONSTRUCT {
+                $this ogcproc:metadata [
+                    ogcproc:role ?role ;
+                    ogcproc:value ?value
+                ]
+            }
+            WHERE {
+                $this a cwl:Workflow .
+                $this ?role ?value .
+                FILTER(STRSTARTS(STR(?role), "https://schema.org/")
+                    || STRSTARTS(STR(?role), "http://schema.org/"))
+                FILTER(?role NOT IN (s:keywords, s:version, s:softwareVersion))
+            }
+        """ ;
+    ] ;
+.
+
+# Add process execution mode metadata.
+# A CWL process is deployed through OGC API - Processes Part 2 and can only be
+# executed asynchronously: sync-execute is never advertised. A running job can
+# be dismissed, hence the dismiss option.
 :ProcessExecutionMode
     a sh:NodeShape ;
     sh:targetClass cwl:Workflow ;
     sh:rule [
         a sh:SPARQLRule ;
         sh:construct """
-            PREFIX cwl: <https://w3id.org/cwl/cwl#>
             PREFIX ogcproc: <http://www.opengis.net/def/ogcapi/processes/>
-            
+            PREFIX cwl: <https://w3id.org/cwl/cwl#>
+            PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
             CONSTRUCT {
-                $this ogcproc:jobControlOptions "async-execute"^^<http://www.w3.org/2001/XMLSchema#string> ;
-                    ogcproc:outputTransmission "value"^^<http://www.w3.org/2001/XMLSchema#string>
+                $this ogcproc:jobControlOptions "async-execute"^^xsd:string ,
+                        "dismiss"^^xsd:string ;
+                    ogcproc:outputTransmission "value"^^xsd:string ,
+                        "reference"^^xsd:string ;
+                    ogcproc:mutable true
             }
             WHERE {
                 $this a cwl:Workflow
@@ -96,12 +130,12 @@
         a sh:SPARQLRule ;
         sh:construct """
             PREFIX cwl: <https://w3id.org/cwl/cwl#>
-            PREFIX ogcproc: <http://www.opengis.net/def/ogcapi/processes/>
             PREFIX dct: <http://purl.org/dc/terms/>
-            
+
             CONSTRUCT {
                 $this dct:conformsTo <http://www.opengis.net/spec/ogcapi-processes-1/1.0/conf/core> ,
                     <http://www.opengis.net/spec/ogcapi-processes-1/1.0/conf/json> ,
+                    <http://www.opengis.net/spec/ogcapi-processes-2/1.0/conf/deploy-replace-undeploy> ,
                     <https://www.commonwl.org/v1.2/>
             }
             WHERE {
@@ -111,21 +145,27 @@
     ] ;
 .
 
-# Add process keywords from CWL intent
-:ProcessKeywordsFromIntent
+# Process keywords, from the schema.org annotation or from the CWL intent field.
+# NOTE: the previous version of this rule read prov:wasInfluencedBy, a property
+# no CWL document ever carries, so it never produced anything.
+:ProcessKeywords
     a sh:NodeShape ;
-    sh:targetSubjectsOf <http://www.w3.org/ns/prov#wasInfluencedBy> ;
+    sh:targetClass cwl:Workflow ;
     sh:rule [
         a sh:SPARQLRule ;
         sh:construct """
-            PREFIX prov: <http://www.w3.org/ns/prov#>
+            PREFIX cwl: <https://w3id.org/cwl/cwl#>
             PREFIX ogcproc: <http://www.opengis.net/def/ogcapi/processes/>
-            
+            PREFIX s: <https://schema.org/>
+
             CONSTRUCT {
-                $this ogcproc:keywords ?intent
+                $this ogcproc:keywords ?keyword
             }
             WHERE {
-                $this prov:wasInfluencedBy ?intent
+                $this a cwl:Workflow .
+                { $this s:keywords ?keyword }
+                UNION
+                { $this cwl:intent ?keyword }
             }
         """ ;
     ] ;

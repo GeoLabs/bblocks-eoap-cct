@@ -16,8 +16,11 @@
             PREFIX cwl: <https://w3id.org/cwl/cwl#>
             SELECT ?this
             WHERE {
+                ?wf a cwl:Workflow .
+                { ?wf cwl:input ?this } UNION { ?wf cwl:output ?this }
                 ?this cwl:type ?type .
-                FILTER(CONTAINS(STR(?type), "ogc.yaml#BBox"))
+                FILTER(CONTAINS(STR(?type), "ogc.yaml#BBox")
+                    || CONTAINS(STR(?type), "bbox.yaml#BBox"))
             }
         """ ;
     ] ;
@@ -28,7 +31,7 @@
             PREFIX ogcproc: <http://www.opengis.net/def/ogcapi/processes/>
             PREFIX geo: <http://www.opengis.net/ont/geosparql#>
             PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-            
+
             CONSTRUCT {
                 $this ogcproc:schemaType "array"^^<http://www.w3.org/2001/XMLSchema#string> ;
                     ogcproc:itemsType "number"^^<http://www.w3.org/2001/XMLSchema#string> ;
@@ -38,7 +41,8 @@
             }
             WHERE {
                 $this cwl:type ?type .
-                FILTER(CONTAINS(STR(?type), "ogc.yaml#BBox"))
+                FILTER(CONTAINS(STR(?type), "ogc.yaml#BBox")
+                    || CONTAINS(STR(?type), "bbox.yaml#BBox"))
             }
         """ ;
     ] ;
@@ -53,8 +57,11 @@
             PREFIX cwl: <https://w3id.org/cwl/cwl#>
             SELECT ?this
             WHERE {
+                ?wf a cwl:Workflow .
+                { ?wf cwl:input ?this } UNION { ?wf cwl:output ?this }
                 ?this cwl:type ?type .
-                FILTER(CONTAINS(STR(?type), "geojson.yaml#Feature"))
+                FILTER(CONTAINS(STR(?type), "geojson.yaml#Feature")
+                    && !CONTAINS(STR(?type), "geojson.yaml#FeatureCollection"))
             }
         """ ;
     ] ;
@@ -73,7 +80,8 @@
             }
             WHERE {
                 $this cwl:type ?type .
-                FILTER(CONTAINS(STR(?type), "geojson.yaml#Feature"))
+                FILTER(CONTAINS(STR(?type), "geojson.yaml#Feature")
+                    && !CONTAINS(STR(?type), "geojson.yaml#FeatureCollection"))
             }
         """ ;
     ] ;
@@ -88,6 +96,8 @@
             PREFIX cwl: <https://w3id.org/cwl/cwl#>
             SELECT ?this
             WHERE {
+                ?wf a cwl:Workflow .
+                { ?wf cwl:input ?this } UNION { ?wf cwl:output ?this }
                 ?this cwl:type ?type .
                 FILTER(CONTAINS(STR(?type), "geojson.yaml#Point"))
             }
@@ -123,6 +133,8 @@
             PREFIX cwl: <https://w3id.org/cwl/cwl#>
             SELECT ?this
             WHERE {
+                ?wf a cwl:Workflow .
+                { ?wf cwl:input ?this } UNION { ?wf cwl:output ?this }
                 ?this cwl:type ?type .
                 FILTER(CONTAINS(STR(?type), "geojson.yaml#Polygon"))
             }
@@ -158,6 +170,8 @@
             PREFIX cwl: <https://w3id.org/cwl/cwl#>
             SELECT ?this
             WHERE {
+                ?wf a cwl:Workflow .
+                { ?wf cwl:input ?this } UNION { ?wf cwl:output ?this }
                 ?this cwl:type ?type .
                 FILTER(CONTAINS(STR(?type), "stac.yaml#Item"))
             }
@@ -193,6 +207,8 @@
             PREFIX cwl: <https://w3id.org/cwl/cwl#>
             SELECT ?this
             WHERE {
+                ?wf a cwl:Workflow .
+                { ?wf cwl:input ?this } UNION { ?wf cwl:output ?this }
                 ?this cwl:type ?type .
                 FILTER(CONTAINS(STR(?type), "stac.yaml#Catalog"))
             }
@@ -228,8 +244,10 @@
             PREFIX cwl: <https://w3id.org/cwl/cwl#>
             SELECT ?this
             WHERE {
+                ?wf a cwl:Workflow .
+                { ?wf cwl:input ?this } UNION { ?wf cwl:output ?this }
                 ?this cwl:type ?type .
-                FILTER(CONTAINS(STR(?type), "string_format.yaml#"))
+                FILTER(CONTAINS(STR(?type), "string-format.yaml#"))
             }
         """ ;
     ] ;
@@ -246,8 +264,108 @@
             }
             WHERE {
                 $this cwl:type ?type .
-                FILTER(CONTAINS(STR(?type), "string_format.yaml#"))
-                BIND(STRAFTER(STR(?type), "string_format.yaml#") AS ?format)
+                FILTER(CONTAINS(STR(?type), "string-format.yaml#"))
+                BIND(STRAFTER(STR(?type), "string-format.yaml#") AS ?format)
+            }
+        """ ;
+    ] ;
+.
+
+# Map EOAP GeoJSON FeatureCollection type to OGC schema metadata
+:EOAPGeoJSONFeatureCollectionToOGCSchema
+    a sh:NodeShape ;
+    sh:target [
+        a sh:SPARQLTarget ;
+        sh:select """
+            PREFIX cwl: <https://w3id.org/cwl/cwl#>
+            SELECT ?this
+            WHERE {
+                ?wf a cwl:Workflow .
+                { ?wf cwl:input ?this } UNION { ?wf cwl:output ?this }
+                ?this cwl:type ?type .
+                FILTER(CONTAINS(STR(?type), "geojson.yaml#FeatureCollection"))
+            }
+        """ ;
+    ] ;
+    sh:rule [
+        a sh:SPARQLRule ;
+        sh:construct """
+            PREFIX cwl: <https://w3id.org/cwl/cwl#>
+            PREFIX ogcproc: <http://www.opengis.net/def/ogcapi/processes/>
+            PREFIX dct: <http://purl.org/dc/terms/>
+            PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+            CONSTRUCT {
+                $this ogcproc:schemaType "object"^^<http://www.w3.org/2001/XMLSchema#string> ;
+                    dct:format <https://www.iana.org/assignments/media-types/application/geo+json> ;
+                    rdfs:seeAlso <https://purl.org/geojson/vocab#FeatureCollection>
+            }
+            WHERE {
+                $this cwl:type ?type .
+                FILTER(CONTAINS(STR(?type), "geojson.yaml#FeatureCollection"))
+            }
+        """ ;
+    ] ;
+.
+
+# Map EOAP STAC Collection type to OGC schema metadata
+:EOAPSTACCollectionToOGCSchema
+    a sh:NodeShape ;
+    sh:target [
+        a sh:SPARQLTarget ;
+        sh:select """
+            PREFIX cwl: <https://w3id.org/cwl/cwl#>
+            SELECT ?this
+            WHERE {
+                ?wf a cwl:Workflow .
+                { ?wf cwl:input ?this } UNION { ?wf cwl:output ?this }
+                ?this cwl:type ?type .
+                FILTER(CONTAINS(STR(?type), "stac.yaml#Collection"))
+            }
+        """ ;
+    ] ;
+    sh:rule [
+        a sh:SPARQLRule ;
+        sh:construct """
+            PREFIX cwl: <https://w3id.org/cwl/cwl#>
+            PREFIX ogcproc: <http://www.opengis.net/def/ogcapi/processes/>
+            PREFIX dct: <http://purl.org/dc/terms/>
+            PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+            CONSTRUCT {
+                $this ogcproc:schemaType "object"^^<http://www.w3.org/2001/XMLSchema#string> ;
+                    dct:format <https://www.iana.org/assignments/media-types/application/json> ;
+                    rdfs:seeAlso <https://stacspec.org/#collection-spec>
+            }
+            WHERE {
+                $this cwl:type ?type .
+                FILTER(CONTAINS(STR(?type), "stac.yaml#Collection"))
+            }
+        """ ;
+    ] ;
+.
+
+# An output of type Directory is the EOAP stage-out result: it is a STAC
+# Collection, not an opaque directory reference.
+:EOAPStageOutDirectoryToSTACCollection
+    a sh:NodeShape ;
+    sh:targetClass cwl:Workflow ;
+    sh:rule [
+        a sh:SPARQLRule ;
+        sh:construct """
+            PREFIX cwl: <https://w3id.org/cwl/cwl#>
+            PREFIX ogcproc: <http://www.opengis.net/def/ogcapi/processes/>
+            PREFIX dct: <http://purl.org/dc/terms/>
+            PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+            CONSTRUCT {
+                ?outputNode ogcproc:schemaType "object"^^<http://www.w3.org/2001/XMLSchema#string> ;
+                    dct:format <https://www.iana.org/assignments/media-types/application/json> ;
+                    rdfs:seeAlso <https://stacspec.org/#collection-spec>
+            }
+            WHERE {
+                $this cwl:output ?outputNode .
+                ?outputNode cwl:type cwl:Directory
             }
         """ ;
     ] ;

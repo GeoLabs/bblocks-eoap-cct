@@ -10,7 +10,7 @@
 # Transform CWL outputs to OGC Process outputs
 :CWLOutputToOGCOutput
     a sh:NodeShape ;
-    sh:targetSubjectsOf cwl:output ;
+    sh:targetClass cwl:Workflow ;
     sh:rule [
         a sh:SPARQLRule ;
         sh:construct """
@@ -41,7 +41,7 @@
 # Link output formats
 :OutputFormat
     a sh:NodeShape ;
-    sh:targetSubjectsOf cwl:output ;
+    sh:targetClass cwl:Workflow ;
     sh:rule [
         a sh:SPARQLRule ;
         sh:construct """
@@ -63,7 +63,7 @@
 # Mark File outputs as reference transmission
 :FileOutputTransmission
     a sh:NodeShape ;
-    sh:targetSubjectsOf cwl:output ;
+    sh:targetClass cwl:Workflow ;
     sh:rule [
         a sh:SPARQLRule ;
         sh:construct """
@@ -84,7 +84,7 @@
 # Mark Directory outputs as reference transmission
 :DirectoryOutputTransmission
     a sh:NodeShape ;
-    sh:targetSubjectsOf cwl:output ;
+    sh:targetClass cwl:Workflow ;
     sh:rule [
         a sh:SPARQLRule ;
         sh:construct """
@@ -105,7 +105,7 @@
 # Mark primitive type outputs as value transmission
 :ValueOutputTransmission
     a sh:NodeShape ;
-    sh:targetSubjectsOf cwl:output ;
+    sh:targetClass cwl:Workflow ;
     sh:rule [
         a sh:SPARQLRule ;
         sh:construct """
