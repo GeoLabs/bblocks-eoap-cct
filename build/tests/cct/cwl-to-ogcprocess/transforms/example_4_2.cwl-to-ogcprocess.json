@@ -119,8 +119,7 @@
     }
   },
   "jobControlOptions": [
-    "async-execute",
-    "dismiss"
+    "async-execute"
   ],
   "outputTransmission": [
     "value",

@@ -1,5 +1,5 @@
 Validation report for eoap.cct.bbox - eaop-cct:OGC-BoundingBox
-Generated 2026-08-18T23:44:01.761934+00:00
+Generated 2026-08-25T08:45:10.570096+00:00
 === Files ===
 Using examples/bbox-3d.yaml from examples
 === End Files ===

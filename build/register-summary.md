@@ -27,17 +27,17 @@ language, which is based on Apache Avro Schema and extends it with semantic anno
 
 CWL custom type for OGC bounding box with coordinate reference system
 
-### `eoap.cct.geojson` — eaop-cct:GeoJSON
-
-**Type:** schema
-
-CWL custom types for GeoJSON geometries, features, and feature collections
-
 ### `eoap.cct.string-format` — eaop-cct:String-Format
 
 **Type:** schema
 
 CWL custom types for standard string formats (date, datetime, URI, email, etc.)
+
+### `eoap.cct.geojson` — eaop-cct:GeoJSON
+
+**Type:** schema
+
+CWL custom types for GeoJSON geometries, features, and feature collections
 
 ### `eoap.cct.stac` — eaop-cct:STAC
 
@@ -49,5 +49,5 @@ CWL custom types for STAC Catalogs, Items, and Collections
 
 **Type:** model
 
-Profile for converting a CWL Workflow definition to an OGC API - Processes processDescription
+Profile for converting CWL CommandLineTool and Workflow definitions to OGC API Processes processDescriptions
 

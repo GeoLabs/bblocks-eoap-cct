@@ -1,5 +1,5 @@
 Validation report for eoap.cct.geojson - eaop-cct:GeoJSON
-Generated 2026-08-18T23:44:01.842332+00:00
+Generated 2026-08-25T08:45:10.773028+00:00
 === Files ===
 Using examples/polygon.yaml from examples
 === End Files ===

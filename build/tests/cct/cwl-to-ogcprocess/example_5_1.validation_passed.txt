@@ -1,5 +1,5 @@
 Validation report for eoap.cct.cwl-to-ogcprocess - CWL to OGC API Processes Profile
-Generated 2026-08-18T23:44:03.189627+00:00
+Generated 2026-08-25T08:45:12.384598+00:00
 === Files ===
 Using examples/mangrove-workflow.cwl from examples
 === End Files ===

@@ -2,7 +2,7 @@
   "title": "Validation report for eoap.cct.cwl-to-ogcprocess - CWL to OGC API Processes Profile",
   "bblockName": "CWL to OGC API Processes Profile",
   "bblockId": "eoap.cct.cwl-to-ogcprocess",
-  "generated": "2026-08-18T23:44:03.761424+00:00",
+  "generated": "2026-08-25T08:45:13.325333+00:00",
   "result": true,
   "items": [
     {
@@ -76,7 +76,7 @@
               "op": "ttl-create",
               "empty": false,
               "filename": "example_1_2.ttl",
-              "size": 61,
+              "size": 79,
               "isError": false,
               "message": "Output Turtle example_1_2.ttl created"
             }
@@ -189,7 +189,7 @@
               "op": "ttl-create",
               "empty": false,
               "filename": "example_2_2.ttl",
-              "size": 61,
+              "size": 75,
               "isError": false,
               "message": "Output Turtle example_2_2.ttl created"
             }
@@ -302,7 +302,7 @@
               "op": "ttl-create",
               "empty": false,
               "filename": "example_3_2.ttl",
-              "size": 61,
+              "size": 75,
               "isError": false,
               "message": "Output Turtle example_3_2.ttl created"
             }
@@ -415,7 +415,7 @@
               "op": "ttl-create",
               "empty": false,
               "filename": "example_4_2.ttl",
-              "size": 272,
+              "size": 296,
               "isError": false,
               "message": "Output Turtle example_4_2.ttl created"
             }
@@ -528,7 +528,7 @@
               "op": "ttl-create",
               "empty": false,
               "filename": "example_5_2.ttl",
-              "size": 182,
+              "size": 204,
               "isError": false,
               "message": "Output Turtle example_5_2.ttl created"
             }
@@ -641,7 +641,7 @@
               "op": "ttl-create",
               "empty": false,
               "filename": "example_6_2.ttl",
-              "size": 492,
+              "size": 520,
               "isError": false,
               "message": "Output Turtle example_6_2.ttl created"
             }

@@ -1,5 +1,5 @@
 Validation report for eoap.cct.stac - eaop-cct:STAC
-Generated 2026-08-18T23:44:02.034620+00:00
+Generated 2026-08-25T08:45:10.937882+00:00
 === Files ===
 Using examples/catalog.yaml from examples
 === End Files ===

@@ -64,7 +64,7 @@
     <body>
         <div class="container">
             <h1 class="title">Building blocks validation report</h1>
-            <small class="datetime">Generated at 2026-08-18T23:44:03.966864+00:00</small>
+            <small class="datetime">Generated at 2026-08-25T08:45:13.479439+00:00</small>
                 <p class="summary fw-semibold text-danger">
                     Number of passing building blocks: 1 / 5 (20%)
                 </p>
@@ -214,205 +214,6 @@ During handling of the above exception, another exception occurred:
                                 </div>
                             </div>
                         </div>
-                        <div class="accordion-item bblock-report" data-bblock-id="eoap.cct.geojson" id="bblock-eoap.cct.geojson">
-                            <h2 class="accordion-header bblock-title anchor-container">
-                                <button class="accordion-button " type="button"
-                                    data-bs-toggle="collapse"
-                                    data-bs-target="#bblock-collapse-eoap\.cct\.geojson">
-                                    <div class="flex-fill">
-                                        eaop-cct:GeoJSON
-                                        <small class="ms-2 bblock-id">eoap.cct.geojson</small>
-                                        <a class="anchor" href="#bblock-eoap.cct.geojson">¶</a>
-                                    </div>
-
-                                    <span class="badge text-bg-danger me-2">
-                                            Tests Failed
-                                            (0% passed)
-                                    </span>
-                                </button>
-                            </h2>
-                            <div class="accordion-collapse collapse show" id="bblock-collapse-eoap.cct.geojson">
-                                <div class="accordion-body">
-                                        <p class="summary fw-semibold text-danger">
-                                            Test passed: 0 / 3
-                                        </p>
-                                        <div class="card mb-2 validation-item " id="item-eoap.cct.geojson-1">
-                                            <div class="card-body">
-                                                <div class="card-title mb-0 anchor-container">
-                                                    <button type="button" class="btn btn-sm btn-primary collapsed"
-                                                            data-bs-toggle="collapse" data-bs-target="#uid-3"
-                                                            aria-expanded="false" aria-controls="uid-3"
-                                                            style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
-                                                        <i class="bi bi-caret-right-fill caret"></i>
-                                                        Details
-                                                    </button>
-                                                    <a href="cct/geojson/example_1_1.yaml" target="_blank">example_1_1.yaml</a>
-                                                    <span class="badge bg-secondary example">Example</span>
-                                                    <a class="anchor" href="#item-eoap.cct.geojson-1">¶</a>
-                                                    <div class="float-end">
-                                                            <span class="badge text-bg-danger me-2">Failed</span>
-                                                    </div>
-                                                </div>
-                                                <div class="card-text mt-2 validation-text collapse" id="uid-3">
-                                                    <div class="validation-text-inner">
-                                                                    <div class="font-monospace subsection-title mt-2">Files</div>
-                                                                
-                                                                    
-                                                                    <div class="font-monospace entry-message section-files ">Using examples/point.yaml from examples</div>
-                                                                    <div class="font-monospace subsection-title mt-2">Unknown errors</div>
-                                                                
-                                                                    
-                                                                    <div class="font-monospace entry-message section-unknown text-danger">Traceback (most recent call last):
-,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 200, in validate
-    validate_json(json_doc, schema_validator)
-,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 44, in validate_json
-    error = jsonschema.exceptions.best_match(validator.iter_errors(instance))
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/exceptions.py&quot;, line 384, in best_match
-    best = next(errors, None)
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 288, in iter_errors
-    for error in errors:
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/_validators.py&quot;, line 298, in ref
-    yield from validator.descend(instance, resolved)
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 305, in descend
-    for error in self.evolve(schema=schema).iter_errors(instance):
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 278, in iter_errors
-    scope = id_of(_schema)
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 101, in _id_of
-    return schema.get(&quot;$id&quot;, &quot;&quot;)
-,AttributeError: &#x27;list&#x27; object has no attribute &#x27;get&#x27;
-,
-During handling of the above exception, another exception occurred:
-
-,Traceback (most recent call last):
-,  File &quot;/src/ogc/bblocks/validate.py&quot;, line 301, in _validate_resource
-    result = validator.validate(filename, output_filename, report,
-,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 221, in validate
-    &#x27;errorMessage&#x27;: e.message,
-,AttributeError: &#x27;AttributeError&#x27; object has no attribute &#x27;message&#x27;
-</div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="card mb-2 validation-item " id="item-eoap.cct.geojson-2">
-                                            <div class="card-body">
-                                                <div class="card-title mb-0 anchor-container">
-                                                    <button type="button" class="btn btn-sm btn-primary collapsed"
-                                                            data-bs-toggle="collapse" data-bs-target="#uid-4"
-                                                            aria-expanded="false" aria-controls="uid-4"
-                                                            style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
-                                                        <i class="bi bi-caret-right-fill caret"></i>
-                                                        Details
-                                                    </button>
-                                                    <a href="cct/geojson/example_2_1.yaml" target="_blank">example_2_1.yaml</a>
-                                                    <span class="badge bg-secondary example">Example</span>
-                                                    <a class="anchor" href="#item-eoap.cct.geojson-2">¶</a>
-                                                    <div class="float-end">
-                                                            <span class="badge text-bg-danger me-2">Failed</span>
-                                                    </div>
-                                                </div>
-                                                <div class="card-text mt-2 validation-text collapse" id="uid-4">
-                                                    <div class="validation-text-inner">
-                                                                    <div class="font-monospace subsection-title mt-2">Files</div>
-                                                                
-                                                                    
-                                                                    <div class="font-monospace entry-message section-files ">Using examples/feature.yaml from examples</div>
-                                                                    <div class="font-monospace subsection-title mt-2">Unknown errors</div>
-                                                                
-                                                                    
-                                                                    <div class="font-monospace entry-message section-unknown text-danger">Traceback (most recent call last):
-,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 200, in validate
-    validate_json(json_doc, schema_validator)
-,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 44, in validate_json
-    error = jsonschema.exceptions.best_match(validator.iter_errors(instance))
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/exceptions.py&quot;, line 384, in best_match
-    best = next(errors, None)
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 288, in iter_errors
-    for error in errors:
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/_validators.py&quot;, line 298, in ref
-    yield from validator.descend(instance, resolved)
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 305, in descend
-    for error in self.evolve(schema=schema).iter_errors(instance):
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 278, in iter_errors
-    scope = id_of(_schema)
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 101, in _id_of
-    return schema.get(&quot;$id&quot;, &quot;&quot;)
-,AttributeError: &#x27;list&#x27; object has no attribute &#x27;get&#x27;
-,
-During handling of the above exception, another exception occurred:
-
-,Traceback (most recent call last):
-,  File &quot;/src/ogc/bblocks/validate.py&quot;, line 301, in _validate_resource
-    result = validator.validate(filename, output_filename, report,
-,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 221, in validate
-    &#x27;errorMessage&#x27;: e.message,
-,AttributeError: &#x27;AttributeError&#x27; object has no attribute &#x27;message&#x27;
-</div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="card mb-2 validation-item " id="item-eoap.cct.geojson-3">
-                                            <div class="card-body">
-                                                <div class="card-title mb-0 anchor-container">
-                                                    <button type="button" class="btn btn-sm btn-primary collapsed"
-                                                            data-bs-toggle="collapse" data-bs-target="#uid-5"
-                                                            aria-expanded="false" aria-controls="uid-5"
-                                                            style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
-                                                        <i class="bi bi-caret-right-fill caret"></i>
-                                                        Details
-                                                    </button>
-                                                    <a href="cct/geojson/example_3_1.yaml" target="_blank">example_3_1.yaml</a>
-                                                    <span class="badge bg-secondary example">Example</span>
-                                                    <a class="anchor" href="#item-eoap.cct.geojson-3">¶</a>
-                                                    <div class="float-end">
-                                                            <span class="badge text-bg-danger me-2">Failed</span>
-                                                    </div>
-                                                </div>
-                                                <div class="card-text mt-2 validation-text collapse" id="uid-5">
-                                                    <div class="validation-text-inner">
-                                                                    <div class="font-monospace subsection-title mt-2">Files</div>
-                                                                
-                                                                    
-                                                                    <div class="font-monospace entry-message section-files ">Using examples/polygon.yaml from examples</div>
-                                                                    <div class="font-monospace subsection-title mt-2">Unknown errors</div>
-                                                                
-                                                                    
-                                                                    <div class="font-monospace entry-message section-unknown text-danger">Traceback (most recent call last):
-,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 200, in validate
-    validate_json(json_doc, schema_validator)
-,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 44, in validate_json
-    error = jsonschema.exceptions.best_match(validator.iter_errors(instance))
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/exceptions.py&quot;, line 384, in best_match
-    best = next(errors, None)
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 288, in iter_errors
-    for error in errors:
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/_validators.py&quot;, line 298, in ref
-    yield from validator.descend(instance, resolved)
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 305, in descend
-    for error in self.evolve(schema=schema).iter_errors(instance):
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 278, in iter_errors
-    scope = id_of(_schema)
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 101, in _id_of
-    return schema.get(&quot;$id&quot;, &quot;&quot;)
-,AttributeError: &#x27;list&#x27; object has no attribute &#x27;get&#x27;
-,
-During handling of the above exception, another exception occurred:
-
-,Traceback (most recent call last):
-,  File &quot;/src/ogc/bblocks/validate.py&quot;, line 301, in _validate_resource
-    result = validator.validate(filename, output_filename, report,
-,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 221, in validate
-    &#x27;errorMessage&#x27;: e.message,
-,AttributeError: &#x27;AttributeError&#x27; object has no attribute &#x27;message&#x27;
-</div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                </div>
-                            </div>
-                        </div>
                         <div class="accordion-item bblock-report" data-bblock-id="eoap.cct.string-format" id="bblock-eoap.cct.string-format">
                             <h2 class="accordion-header bblock-title anchor-container">
                                 <button class="accordion-button " type="button"
@@ -439,8 +240,8 @@ During handling of the above exception, another exception occurred:
                                             <div class="card-body">
                                                 <div class="card-title mb-0 anchor-container">
                                                     <button type="button" class="btn btn-sm btn-primary collapsed"
-                                                            data-bs-toggle="collapse" data-bs-target="#uid-6"
-                                                            aria-expanded="false" aria-controls="uid-6"
+                                                            data-bs-toggle="collapse" data-bs-target="#uid-3"
+                                                            aria-expanded="false" aria-controls="uid-3"
                                                             style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
                                                         <i class="bi bi-caret-right-fill caret"></i>
                                                         Details
@@ -452,7 +253,7 @@ During handling of the above exception, another exception occurred:
                                                             <span class="badge text-bg-danger me-2">Failed</span>
                                                     </div>
                                                 </div>
-                                                <div class="card-text mt-2 validation-text collapse" id="uid-6">
+                                                <div class="card-text mt-2 validation-text collapse" id="uid-3">
                                                     <div class="validation-text-inner">
                                                                     <div class="font-monospace subsection-title mt-2">Files</div>
                                                                 
@@ -497,8 +298,8 @@ During handling of the above exception, another exception occurred:
                                             <div class="card-body">
                                                 <div class="card-title mb-0 anchor-container">
                                                     <button type="button" class="btn btn-sm btn-primary collapsed"
-                                                            data-bs-toggle="collapse" data-bs-target="#uid-7"
-                                                            aria-expanded="false" aria-controls="uid-7"
+                                                            data-bs-toggle="collapse" data-bs-target="#uid-4"
+                                                            aria-expanded="false" aria-controls="uid-4"
                                                             style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
                                                         <i class="bi bi-caret-right-fill caret"></i>
                                                         Details
@@ -510,7 +311,7 @@ During handling of the above exception, another exception occurred:
                                                             <span class="badge text-bg-danger me-2">Failed</span>
                                                     </div>
                                                 </div>
-                                                <div class="card-text mt-2 validation-text collapse" id="uid-7">
+                                                <div class="card-text mt-2 validation-text collapse" id="uid-4">
                                                     <div class="validation-text-inner">
                                                                     <div class="font-monospace subsection-title mt-2">Files</div>
                                                                 
@@ -555,8 +356,8 @@ During handling of the above exception, another exception occurred:
                                             <div class="card-body">
                                                 <div class="card-title mb-0 anchor-container">
                                                     <button type="button" class="btn btn-sm btn-primary collapsed"
-                                                            data-bs-toggle="collapse" data-bs-target="#uid-8"
-                                                            aria-expanded="false" aria-controls="uid-8"
+                                                            data-bs-toggle="collapse" data-bs-target="#uid-5"
+                                                            aria-expanded="false" aria-controls="uid-5"
                                                             style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
                                                         <i class="bi bi-caret-right-fill caret"></i>
                                                         Details
@@ -568,7 +369,7 @@ During handling of the above exception, another exception occurred:
                                                             <span class="badge text-bg-danger me-2">Failed</span>
                                                     </div>
                                                 </div>
-                                                <div class="card-text mt-2 validation-text collapse" id="uid-8">
+                                                <div class="card-text mt-2 validation-text collapse" id="uid-5">
                                                     <div class="validation-text-inner">
                                                                     <div class="font-monospace subsection-title mt-2">Files</div>
                                                                 
@@ -613,8 +414,8 @@ During handling of the above exception, another exception occurred:
                                             <div class="card-body">
                                                 <div class="card-title mb-0 anchor-container">
                                                     <button type="button" class="btn btn-sm btn-primary collapsed"
-                                                            data-bs-toggle="collapse" data-bs-target="#uid-9"
-                                                            aria-expanded="false" aria-controls="uid-9"
+                                                            data-bs-toggle="collapse" data-bs-target="#uid-6"
+                                                            aria-expanded="false" aria-controls="uid-6"
                                                             style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
                                                         <i class="bi bi-caret-right-fill caret"></i>
                                                         Details
@@ -626,7 +427,7 @@ During handling of the above exception, another exception occurred:
                                                             <span class="badge text-bg-danger me-2">Failed</span>
                                                     </div>
                                                 </div>
-                                                <div class="card-text mt-2 validation-text collapse" id="uid-9">
+                                                <div class="card-text mt-2 validation-text collapse" id="uid-6">
                                                     <div class="validation-text-inner">
                                                                     <div class="font-monospace subsection-title mt-2">Files</div>
                                                                 
@@ -671,8 +472,8 @@ During handling of the above exception, another exception occurred:
                                             <div class="card-body">
                                                 <div class="card-title mb-0 anchor-container">
                                                     <button type="button" class="btn btn-sm btn-primary collapsed"
-                                                            data-bs-toggle="collapse" data-bs-target="#uid-10"
-                                                            aria-expanded="false" aria-controls="uid-10"
+                                                            data-bs-toggle="collapse" data-bs-target="#uid-7"
+                                                            aria-expanded="false" aria-controls="uid-7"
                                                             style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
                                                         <i class="bi bi-caret-right-fill caret"></i>
                                                         Details
@@ -684,7 +485,7 @@ During handling of the above exception, another exception occurred:
                                                             <span class="badge text-bg-danger me-2">Failed</span>
                                                     </div>
                                                 </div>
-                                                <div class="card-text mt-2 validation-text collapse" id="uid-10">
+                                                <div class="card-text mt-2 validation-text collapse" id="uid-7">
                                                     <div class="validation-text-inner">
                                                                     <div class="font-monospace subsection-title mt-2">Files</div>
                                                                 
@@ -729,8 +530,8 @@ During handling of the above exception, another exception occurred:
                                             <div class="card-body">
                                                 <div class="card-title mb-0 anchor-container">
                                                     <button type="button" class="btn btn-sm btn-primary collapsed"
-                                                            data-bs-toggle="collapse" data-bs-target="#uid-11"
-                                                            aria-expanded="false" aria-controls="uid-11"
+                                                            data-bs-toggle="collapse" data-bs-target="#uid-8"
+                                                            aria-expanded="false" aria-controls="uid-8"
                                                             style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
                                                         <i class="bi bi-caret-right-fill caret"></i>
                                                         Details
@@ -742,7 +543,7 @@ During handling of the above exception, another exception occurred:
                                                             <span class="badge text-bg-danger me-2">Failed</span>
                                                     </div>
                                                 </div>
-                                                <div class="card-text mt-2 validation-text collapse" id="uid-11">
+                                                <div class="card-text mt-2 validation-text collapse" id="uid-8">
                                                     <div class="validation-text-inner">
                                                                     <div class="font-monospace subsection-title mt-2">Files</div>
                                                                 
@@ -787,8 +588,8 @@ During handling of the above exception, another exception occurred:
                                             <div class="card-body">
                                                 <div class="card-title mb-0 anchor-container">
                                                     <button type="button" class="btn btn-sm btn-primary collapsed"
-                                                            data-bs-toggle="collapse" data-bs-target="#uid-12"
-                                                            aria-expanded="false" aria-controls="uid-12"
+                                                            data-bs-toggle="collapse" data-bs-target="#uid-9"
+                                                            aria-expanded="false" aria-controls="uid-9"
                                                             style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
                                                         <i class="bi bi-caret-right-fill caret"></i>
                                                         Details
@@ -800,7 +601,7 @@ During handling of the above exception, another exception occurred:
                                                             <span class="badge text-bg-danger me-2">Failed</span>
                                                     </div>
                                                 </div>
-                                                <div class="card-text mt-2 validation-text collapse" id="uid-12">
+                                                <div class="card-text mt-2 validation-text collapse" id="uid-9">
                                                     <div class="validation-text-inner">
                                                                     <div class="font-monospace subsection-title mt-2">Files</div>
                                                                 
@@ -845,8 +646,8 @@ During handling of the above exception, another exception occurred:
                                             <div class="card-body">
                                                 <div class="card-title mb-0 anchor-container">
                                                     <button type="button" class="btn btn-sm btn-primary collapsed"
-                                                            data-bs-toggle="collapse" data-bs-target="#uid-13"
-                                                            aria-expanded="false" aria-controls="uid-13"
+                                                            data-bs-toggle="collapse" data-bs-target="#uid-10"
+                                                            aria-expanded="false" aria-controls="uid-10"
                                                             style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
                                                         <i class="bi bi-caret-right-fill caret"></i>
                                                         Details
@@ -858,7 +659,7 @@ During handling of the above exception, another exception occurred:
                                                             <span class="badge text-bg-danger me-2">Failed</span>
                                                     </div>
                                                 </div>
-                                                <div class="card-text mt-2 validation-text collapse" id="uid-13">
+                                                <div class="card-text mt-2 validation-text collapse" id="uid-10">
                                                     <div class="validation-text-inner">
                                                                     <div class="font-monospace subsection-title mt-2">Files</div>
                                                                 
@@ -903,8 +704,8 @@ During handling of the above exception, another exception occurred:
                                             <div class="card-body">
                                                 <div class="card-title mb-0 anchor-container">
                                                     <button type="button" class="btn btn-sm btn-primary collapsed"
-                                                            data-bs-toggle="collapse" data-bs-target="#uid-14"
-                                                            aria-expanded="false" aria-controls="uid-14"
+                                                            data-bs-toggle="collapse" data-bs-target="#uid-11"
+                                                            aria-expanded="false" aria-controls="uid-11"
                                                             style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
                                                         <i class="bi bi-caret-right-fill caret"></i>
                                                         Details
@@ -916,7 +717,7 @@ During handling of the above exception, another exception occurred:
                                                             <span class="badge text-bg-danger me-2">Failed</span>
                                                     </div>
                                                 </div>
-                                                <div class="card-text mt-2 validation-text collapse" id="uid-14">
+                                                <div class="card-text mt-2 validation-text collapse" id="uid-11">
                                                     <div class="validation-text-inner">
                                                                     <div class="font-monospace subsection-title mt-2">Files</div>
                                                                 
@@ -961,8 +762,8 @@ During handling of the above exception, another exception occurred:
                                             <div class="card-body">
                                                 <div class="card-title mb-0 anchor-container">
                                                     <button type="button" class="btn btn-sm btn-primary collapsed"
-                                                            data-bs-toggle="collapse" data-bs-target="#uid-15"
-                                                            aria-expanded="false" aria-controls="uid-15"
+                                                            data-bs-toggle="collapse" data-bs-target="#uid-12"
+                                                            aria-expanded="false" aria-controls="uid-12"
                                                             style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
                                                         <i class="bi bi-caret-right-fill caret"></i>
                                                         Details
@@ -974,7 +775,7 @@ During handling of the above exception, another exception occurred:
                                                             <span class="badge text-bg-danger me-2">Failed</span>
                                                     </div>
                                                 </div>
-                                                <div class="card-text mt-2 validation-text collapse" id="uid-15">
+                                                <div class="card-text mt-2 validation-text collapse" id="uid-12">
                                                     <div class="validation-text-inner">
                                                                     <div class="font-monospace subsection-title mt-2">Files</div>
                                                                 
@@ -1019,8 +820,8 @@ During handling of the above exception, another exception occurred:
                                             <div class="card-body">
                                                 <div class="card-title mb-0 anchor-container">
                                                     <button type="button" class="btn btn-sm btn-primary collapsed"
-                                                            data-bs-toggle="collapse" data-bs-target="#uid-16"
-                                                            aria-expanded="false" aria-controls="uid-16"
+                                                            data-bs-toggle="collapse" data-bs-target="#uid-13"
+                                                            aria-expanded="false" aria-controls="uid-13"
                                                             style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
                                                         <i class="bi bi-caret-right-fill caret"></i>
                                                         Details
@@ -1032,7 +833,7 @@ During handling of the above exception, another exception occurred:
                                                             <span class="badge text-bg-danger me-2">Failed</span>
                                                     </div>
                                                 </div>
-                                                <div class="card-text mt-2 validation-text collapse" id="uid-16">
+                                                <div class="card-text mt-2 validation-text collapse" id="uid-13">
                                                     <div class="validation-text-inner">
                                                                     <div class="font-monospace subsection-title mt-2">Files</div>
                                                                 
@@ -1077,8 +878,8 @@ During handling of the above exception, another exception occurred:
                                             <div class="card-body">
                                                 <div class="card-title mb-0 anchor-container">
                                                     <button type="button" class="btn btn-sm btn-primary collapsed"
-                                                            data-bs-toggle="collapse" data-bs-target="#uid-17"
-                                                            aria-expanded="false" aria-controls="uid-17"
+                                                            data-bs-toggle="collapse" data-bs-target="#uid-14"
+                                                            aria-expanded="false" aria-controls="uid-14"
                                                             style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
                                                         <i class="bi bi-caret-right-fill caret"></i>
                                                         Details
@@ -1090,7 +891,7 @@ During handling of the above exception, another exception occurred:
                                                             <span class="badge text-bg-danger me-2">Failed</span>
                                                     </div>
                                                 </div>
-                                                <div class="card-text mt-2 validation-text collapse" id="uid-17">
+                                                <div class="card-text mt-2 validation-text collapse" id="uid-14">
                                                     <div class="validation-text-inner">
                                                                     <div class="font-monospace subsection-title mt-2">Files</div>
                                                                 
@@ -1135,8 +936,8 @@ During handling of the above exception, another exception occurred:
                                             <div class="card-body">
                                                 <div class="card-title mb-0 anchor-container">
                                                     <button type="button" class="btn btn-sm btn-primary collapsed"
-                                                            data-bs-toggle="collapse" data-bs-target="#uid-18"
-                                                            aria-expanded="false" aria-controls="uid-18"
+                                                            data-bs-toggle="collapse" data-bs-target="#uid-15"
+                                                            aria-expanded="false" aria-controls="uid-15"
                                                             style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
                                                         <i class="bi bi-caret-right-fill caret"></i>
                                                         Details
@@ -1148,7 +949,7 @@ During handling of the above exception, another exception occurred:
                                                             <span class="badge text-bg-danger me-2">Failed</span>
                                                     </div>
                                                 </div>
-                                                <div class="card-text mt-2 validation-text collapse" id="uid-18">
+                                                <div class="card-text mt-2 validation-text collapse" id="uid-15">
                                                     <div class="validation-text-inner">
                                                                     <div class="font-monospace subsection-title mt-2">Files</div>
                                                                 
@@ -1193,8 +994,8 @@ During handling of the above exception, another exception occurred:
                                             <div class="card-body">
                                                 <div class="card-title mb-0 anchor-container">
                                                     <button type="button" class="btn btn-sm btn-primary collapsed"
-                                                            data-bs-toggle="collapse" data-bs-target="#uid-19"
-                                                            aria-expanded="false" aria-controls="uid-19"
+                                                            data-bs-toggle="collapse" data-bs-target="#uid-16"
+                                                            aria-expanded="false" aria-controls="uid-16"
                                                             style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
                                                         <i class="bi bi-caret-right-fill caret"></i>
                                                         Details
@@ -1206,7 +1007,7 @@ During handling of the above exception, another exception occurred:
                                                             <span class="badge text-bg-danger me-2">Failed</span>
                                                     </div>
                                                 </div>
-                                                <div class="card-text mt-2 validation-text collapse" id="uid-19">
+                                                <div class="card-text mt-2 validation-text collapse" id="uid-16">
                                                     <div class="validation-text-inner">
                                                                     <div class="font-monospace subsection-title mt-2">Files</div>
                                                                 
@@ -1251,8 +1052,8 @@ During handling of the above exception, another exception occurred:
                                             <div class="card-body">
                                                 <div class="card-title mb-0 anchor-container">
                                                     <button type="button" class="btn btn-sm btn-primary collapsed"
-                                                            data-bs-toggle="collapse" data-bs-target="#uid-20"
-                                                            aria-expanded="false" aria-controls="uid-20"
+                                                            data-bs-toggle="collapse" data-bs-target="#uid-17"
+                                                            aria-expanded="false" aria-controls="uid-17"
                                                             style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
                                                         <i class="bi bi-caret-right-fill caret"></i>
                                                         Details
@@ -1264,7 +1065,7 @@ During handling of the above exception, another exception occurred:
                                                             <span class="badge text-bg-danger me-2">Failed</span>
                                                     </div>
                                                 </div>
-                                                <div class="card-text mt-2 validation-text collapse" id="uid-20">
+                                                <div class="card-text mt-2 validation-text collapse" id="uid-17">
                                                     <div class="validation-text-inner">
                                                                     <div class="font-monospace subsection-title mt-2">Files</div>
                                                                 
@@ -1309,8 +1110,8 @@ During handling of the above exception, another exception occurred:
                                             <div class="card-body">
                                                 <div class="card-title mb-0 anchor-container">
                                                     <button type="button" class="btn btn-sm btn-primary collapsed"
-                                                            data-bs-toggle="collapse" data-bs-target="#uid-21"
-                                                            aria-expanded="false" aria-controls="uid-21"
+                                                            data-bs-toggle="collapse" data-bs-target="#uid-18"
+                                                            aria-expanded="false" aria-controls="uid-18"
                                                             style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
                                                         <i class="bi bi-caret-right-fill caret"></i>
                                                         Details
@@ -1322,7 +1123,7 @@ During handling of the above exception, another exception occurred:
                                                             <span class="badge text-bg-danger me-2">Failed</span>
                                                     </div>
                                                 </div>
-                                                <div class="card-text mt-2 validation-text collapse" id="uid-21">
+                                                <div class="card-text mt-2 validation-text collapse" id="uid-18">
                                                     <div class="validation-text-inner">
                                                                     <div class="font-monospace subsection-title mt-2">Files</div>
                                                                 
@@ -1367,8 +1168,8 @@ During handling of the above exception, another exception occurred:
                                             <div class="card-body">
                                                 <div class="card-title mb-0 anchor-container">
                                                     <button type="button" class="btn btn-sm btn-primary collapsed"
-                                                            data-bs-toggle="collapse" data-bs-target="#uid-22"
-                                                            aria-expanded="false" aria-controls="uid-22"
+                                                            data-bs-toggle="collapse" data-bs-target="#uid-19"
+                                                            aria-expanded="false" aria-controls="uid-19"
                                                             style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
                                                         <i class="bi bi-caret-right-fill caret"></i>
                                                         Details
@@ -1380,12 +1181,211 @@ During handling of the above exception, another exception occurred:
                                                             <span class="badge text-bg-danger me-2">Failed</span>
                                                     </div>
                                                 </div>
-                                                <div class="card-text mt-2 validation-text collapse" id="uid-22">
+                                                <div class="card-text mt-2 validation-text collapse" id="uid-19">
                                                     <div class="validation-text-inner">
                                                                     <div class="font-monospace subsection-title mt-2">Files</div>
                                                                 
                                                                     
                                                                     <div class="font-monospace entry-message section-files ">Using examples/uuid.yaml from examples</div>
+                                                                    <div class="font-monospace subsection-title mt-2">Unknown errors</div>
+                                                                
+                                                                    
+                                                                    <div class="font-monospace entry-message section-unknown text-danger">Traceback (most recent call last):
+,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 200, in validate
+    validate_json(json_doc, schema_validator)
+,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 44, in validate_json
+    error = jsonschema.exceptions.best_match(validator.iter_errors(instance))
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/exceptions.py&quot;, line 384, in best_match
+    best = next(errors, None)
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 288, in iter_errors
+    for error in errors:
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/_validators.py&quot;, line 298, in ref
+    yield from validator.descend(instance, resolved)
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 305, in descend
+    for error in self.evolve(schema=schema).iter_errors(instance):
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 278, in iter_errors
+    scope = id_of(_schema)
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 101, in _id_of
+    return schema.get(&quot;$id&quot;, &quot;&quot;)
+,AttributeError: &#x27;list&#x27; object has no attribute &#x27;get&#x27;
+,
+During handling of the above exception, another exception occurred:
+
+,Traceback (most recent call last):
+,  File &quot;/src/ogc/bblocks/validate.py&quot;, line 301, in _validate_resource
+    result = validator.validate(filename, output_filename, report,
+,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 221, in validate
+    &#x27;errorMessage&#x27;: e.message,
+,AttributeError: &#x27;AttributeError&#x27; object has no attribute &#x27;message&#x27;
+</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item bblock-report" data-bblock-id="eoap.cct.geojson" id="bblock-eoap.cct.geojson">
+                            <h2 class="accordion-header bblock-title anchor-container">
+                                <button class="accordion-button " type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#bblock-collapse-eoap\.cct\.geojson">
+                                    <div class="flex-fill">
+                                        eaop-cct:GeoJSON
+                                        <small class="ms-2 bblock-id">eoap.cct.geojson</small>
+                                        <a class="anchor" href="#bblock-eoap.cct.geojson">¶</a>
+                                    </div>
+
+                                    <span class="badge text-bg-danger me-2">
+                                            Tests Failed
+                                            (0% passed)
+                                    </span>
+                                </button>
+                            </h2>
+                            <div class="accordion-collapse collapse show" id="bblock-collapse-eoap.cct.geojson">
+                                <div class="accordion-body">
+                                        <p class="summary fw-semibold text-danger">
+                                            Test passed: 0 / 3
+                                        </p>
+                                        <div class="card mb-2 validation-item " id="item-eoap.cct.geojson-1">
+                                            <div class="card-body">
+                                                <div class="card-title mb-0 anchor-container">
+                                                    <button type="button" class="btn btn-sm btn-primary collapsed"
+                                                            data-bs-toggle="collapse" data-bs-target="#uid-20"
+                                                            aria-expanded="false" aria-controls="uid-20"
+                                                            style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
+                                                        <i class="bi bi-caret-right-fill caret"></i>
+                                                        Details
+                                                    </button>
+                                                    <a href="cct/geojson/example_1_1.yaml" target="_blank">example_1_1.yaml</a>
+                                                    <span class="badge bg-secondary example">Example</span>
+                                                    <a class="anchor" href="#item-eoap.cct.geojson-1">¶</a>
+                                                    <div class="float-end">
+                                                            <span class="badge text-bg-danger me-2">Failed</span>
+                                                    </div>
+                                                </div>
+                                                <div class="card-text mt-2 validation-text collapse" id="uid-20">
+                                                    <div class="validation-text-inner">
+                                                                    <div class="font-monospace subsection-title mt-2">Files</div>
+                                                                
+                                                                    
+                                                                    <div class="font-monospace entry-message section-files ">Using examples/point.yaml from examples</div>
+                                                                    <div class="font-monospace subsection-title mt-2">Unknown errors</div>
+                                                                
+                                                                    
+                                                                    <div class="font-monospace entry-message section-unknown text-danger">Traceback (most recent call last):
+,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 200, in validate
+    validate_json(json_doc, schema_validator)
+,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 44, in validate_json
+    error = jsonschema.exceptions.best_match(validator.iter_errors(instance))
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/exceptions.py&quot;, line 384, in best_match
+    best = next(errors, None)
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 288, in iter_errors
+    for error in errors:
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/_validators.py&quot;, line 298, in ref
+    yield from validator.descend(instance, resolved)
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 305, in descend
+    for error in self.evolve(schema=schema).iter_errors(instance):
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 278, in iter_errors
+    scope = id_of(_schema)
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 101, in _id_of
+    return schema.get(&quot;$id&quot;, &quot;&quot;)
+,AttributeError: &#x27;list&#x27; object has no attribute &#x27;get&#x27;
+,
+During handling of the above exception, another exception occurred:
+
+,Traceback (most recent call last):
+,  File &quot;/src/ogc/bblocks/validate.py&quot;, line 301, in _validate_resource
+    result = validator.validate(filename, output_filename, report,
+,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 221, in validate
+    &#x27;errorMessage&#x27;: e.message,
+,AttributeError: &#x27;AttributeError&#x27; object has no attribute &#x27;message&#x27;
+</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card mb-2 validation-item " id="item-eoap.cct.geojson-2">
+                                            <div class="card-body">
+                                                <div class="card-title mb-0 anchor-container">
+                                                    <button type="button" class="btn btn-sm btn-primary collapsed"
+                                                            data-bs-toggle="collapse" data-bs-target="#uid-21"
+                                                            aria-expanded="false" aria-controls="uid-21"
+                                                            style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
+                                                        <i class="bi bi-caret-right-fill caret"></i>
+                                                        Details
+                                                    </button>
+                                                    <a href="cct/geojson/example_2_1.yaml" target="_blank">example_2_1.yaml</a>
+                                                    <span class="badge bg-secondary example">Example</span>
+                                                    <a class="anchor" href="#item-eoap.cct.geojson-2">¶</a>
+                                                    <div class="float-end">
+                                                            <span class="badge text-bg-danger me-2">Failed</span>
+                                                    </div>
+                                                </div>
+                                                <div class="card-text mt-2 validation-text collapse" id="uid-21">
+                                                    <div class="validation-text-inner">
+                                                                    <div class="font-monospace subsection-title mt-2">Files</div>
+                                                                
+                                                                    
+                                                                    <div class="font-monospace entry-message section-files ">Using examples/feature.yaml from examples</div>
+                                                                    <div class="font-monospace subsection-title mt-2">Unknown errors</div>
+                                                                
+                                                                    
+                                                                    <div class="font-monospace entry-message section-unknown text-danger">Traceback (most recent call last):
+,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 200, in validate
+    validate_json(json_doc, schema_validator)
+,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 44, in validate_json
+    error = jsonschema.exceptions.best_match(validator.iter_errors(instance))
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/exceptions.py&quot;, line 384, in best_match
+    best = next(errors, None)
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 288, in iter_errors
+    for error in errors:
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/_validators.py&quot;, line 298, in ref
+    yield from validator.descend(instance, resolved)
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 305, in descend
+    for error in self.evolve(schema=schema).iter_errors(instance):
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 278, in iter_errors
+    scope = id_of(_schema)
+,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 101, in _id_of
+    return schema.get(&quot;$id&quot;, &quot;&quot;)
+,AttributeError: &#x27;list&#x27; object has no attribute &#x27;get&#x27;
+,
+During handling of the above exception, another exception occurred:
+
+,Traceback (most recent call last):
+,  File &quot;/src/ogc/bblocks/validate.py&quot;, line 301, in _validate_resource
+    result = validator.validate(filename, output_filename, report,
+,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 221, in validate
+    &#x27;errorMessage&#x27;: e.message,
+,AttributeError: &#x27;AttributeError&#x27; object has no attribute &#x27;message&#x27;
+</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card mb-2 validation-item " id="item-eoap.cct.geojson-3">
+                                            <div class="card-body">
+                                                <div class="card-title mb-0 anchor-container">
+                                                    <button type="button" class="btn btn-sm btn-primary collapsed"
+                                                            data-bs-toggle="collapse" data-bs-target="#uid-22"
+                                                            aria-expanded="false" aria-controls="uid-22"
+                                                            style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
+                                                        <i class="bi bi-caret-right-fill caret"></i>
+                                                        Details
+                                                    </button>
+                                                    <a href="cct/geojson/example_3_1.yaml" target="_blank">example_3_1.yaml</a>
+                                                    <span class="badge bg-secondary example">Example</span>
+                                                    <a class="anchor" href="#item-eoap.cct.geojson-3">¶</a>
+                                                    <div class="float-end">
+                                                            <span class="badge text-bg-danger me-2">Failed</span>
+                                                    </div>
+                                                </div>
+                                                <div class="card-text mt-2 validation-text collapse" id="uid-22">
+                                                    <div class="validation-text-inner">
+                                                                    <div class="font-monospace subsection-title mt-2">Files</div>
+                                                                
+                                                                    
+                                                                    <div class="font-monospace entry-message section-files ">Using examples/polygon.yaml from examples</div>
                                                                     <div class="font-monospace subsection-title mt-2">Unknown errors</div>
                                                                 
                                                                     

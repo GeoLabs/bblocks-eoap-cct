@@ -1,5 +1,5 @@
 Validation report for eoap.cct.string-format - eaop-cct:String-Format
-Generated 2026-08-18T23:44:01.920727+00:00
+Generated 2026-08-25T08:45:10.730807+00:00
 === Files ===
 Using examples/hostname.yaml from examples
 === End Files ===

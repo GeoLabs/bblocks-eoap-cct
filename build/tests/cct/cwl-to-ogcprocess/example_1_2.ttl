@@ -1,6 +1,8 @@
 @prefix cwl: <https://w3id.org/cwl/cwl#> .
 @prefix dct: <http://purl.org/dc/terms/> .
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
 @prefix ns1: <rdf:> .
+@prefix ogcproc: <http://www.opengis.net/def/ogcapi/processes/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
@@ -8,10 +10,50 @@
 [] cwl:cwlVersion <file:///github/workspace/v1.2> ;
     cwl:graph [ rdfs:label "Echo OGC BBox"^^xsd:string ;
             dct:identifier <file:///github/workspace/clt> ;
+            ogcproc:input _:N47f1460bbbf046269079fbffc81dd01c ;
+            ogcproc:output _:N46bb1df1afc945b2ad3e4f61f5a09045 ;
             cwl:baseCommand "\"echo\""^^rdf:JSON ;
-            cwl:input ( [ cwl:aoi [ rdfs:label "Area of interest"^^xsd:string ;
-                                rdfs:comment "Area of interest defined as a bounding box"^^xsd:string ;
-                                cwl:inputBinding [ cwl:valueFrom """${
+            cwl:input _:N47f1460bbbf046269079fbffc81dd01c ;
+            cwl:output _:N46bb1df1afc945b2ad3e4f61f5a09045 ;
+            cwl:requirements [ ns1:type <file:///github/workspace/InlineJavascriptRequirement> ],
+                [ cwl:types [ cwl:import <https://raw.githubusercontent.com/eoap/schemas/main/ogc.yaml> ] ;
+                    ns1:type <file:///github/workspace/SchemaDefRequirement> ] ;
+            cwl:stdout "echo_output.txt"^^xsd:string ;
+            ns1:type <file:///github/workspace/CommandLineTool> ],
+        [ rdfs:label "OGC BBox Processing Workflow"^^xsd:string ;
+            dct:identifier <file:///github/workspace/bbox-workflow> ;
+            ogcproc:input _:N12c1171e16424e87b84fbf2b3e1b7aaf ;
+            ogcproc:output _:Nf761cf8b4b354b1498c33034e51545b0 ;
+            rdfs:comment "Workflow that processes OGC BBox input and generates output"^^xsd:string ;
+            cwl:input _:N12c1171e16424e87b84fbf2b3e1b7aaf ;
+            cwl:output _:Nf761cf8b4b354b1498c33034e51545b0 ;
+            cwl:requirements [ ns1:type <file:///github/workspace/InlineJavascriptRequirement> ],
+                [ cwl:types [ cwl:import <https://raw.githubusercontent.com/eoap/schemas/main/ogc.yaml> ] ;
+                    ns1:type <file:///github/workspace/SchemaDefRequirement> ] ;
+            cwl:steps [ cwl:echo_step [ cwl:in [ cwl:aoi "aoi" ] ;
+                            cwl:out ( "echo_output" ) ;
+                            cwl:run <file:///github/workspace/#clt> ] ] ;
+            ns1:type <file:///github/workspace/Workflow> ] .
+
+_:N102418aecbbe4cf280284c11a6ac661c cwl:type <file:///github/workspace/stdout> .
+
+_:N3a71d080b35c4ac3b1ad471122448c0f rdfs:label "Area of interest"^^xsd:string ;
+    dct:identifier <file:///github/workspace/aoi> ;
+    ogcproc:itemsType "number"^^xsd:string ;
+    ogcproc:maxItems 6 ;
+    ogcproc:minItems 4 ;
+    ogcproc:schemaType "array"^^xsd:string ;
+    rdfs:comment "Area of interest defined as a bounding box"^^xsd:string ;
+    rdfs:seeAlso geo:BoundingBox ;
+    cwl:type <https://raw.githubusercontent.com/eoap/schemas/main/ogc.yaml#BBox> .
+
+_:N75e228dd4f5e4f5a9c1e5ee5609127d9 rdfs:label "Echo output"^^xsd:string ;
+    dct:identifier <file:///github/workspace/echo_output> ;
+    rdfs:comment "Echoed BBox information"^^xsd:string ;
+    cwl:outputSource <file:///github/workspace/echo_step/echo_output> ;
+    cwl:type <file:///github/workspace/File> .
+
+_:N950a6acfa52442f79ebc404088f6c6e4 cwl:valueFrom """${
   // Validate the length of bbox to be either 4 or 6
   var bboxLength = inputs.aoi.bbox.length;
   if (bboxLength !== 4 && bboxLength !== 6) {
@@ -20,31 +62,35 @@
   // Convert bbox array to a space-separated string for echo
   return inputs.aoi.bbox.join(' ') + " CRS: " + inputs.aoi.crs;
 }
-"""^^xsd:string ] ;
-                                cwl:type <https://raw.githubusercontent.com/eoap/schemas/main/ogc.yaml#BBox> ] ] ) ;
-            cwl:output ( [ cwl:echo_output [ cwl:type <file:///github/workspace/stdout> ] ] ) ;
-            cwl:requirements [ cwl:types [ cwl:import <https://raw.githubusercontent.com/eoap/schemas/main/ogc.yaml> ] ;
-                    ns1:type <file:///github/workspace/SchemaDefRequirement> ],
-                [ ns1:type <file:///github/workspace/InlineJavascriptRequirement> ] ;
-            cwl:stdout "echo_output.txt"^^xsd:string ;
-            ns1:type <file:///github/workspace/CommandLineTool> ],
-        [ rdfs:label "OGC BBox Processing Workflow"^^xsd:string ;
-            dct:identifier <file:///github/workspace/bbox-workflow> ;
-            rdfs:comment "Workflow that processes OGC BBox input and generates output"^^xsd:string ;
-            cwl:input ( [ rdfs:label "Area of interest"^^xsd:string ;
-                        dct:identifier <file:///github/workspace/aoi> ;
-                        rdfs:comment "Area of interest defined as a bounding box"^^xsd:string ;
-                        cwl:type <https://raw.githubusercontent.com/eoap/schemas/main/ogc.yaml#BBox> ] ) ;
-            cwl:output ( [ rdfs:label "Echo output"^^xsd:string ;
-                        dct:identifier <file:///github/workspace/echo_output> ;
-                        rdfs:comment "Echoed BBox information"^^xsd:string ;
-                        cwl:outputSource <file:///github/workspace/echo_step/echo_output> ;
-                        cwl:type <file:///github/workspace/File> ] ) ;
-            cwl:requirements [ ns1:type <file:///github/workspace/InlineJavascriptRequirement> ],
-                [ cwl:types [ cwl:import <https://raw.githubusercontent.com/eoap/schemas/main/ogc.yaml> ] ;
-                    ns1:type <file:///github/workspace/SchemaDefRequirement> ] ;
-            cwl:steps [ cwl:echo_step [ cwl:in [ cwl:aoi "aoi" ] ;
-                            cwl:out ( "echo_output" ) ;
-                            cwl:run <file:///github/workspace/#clt> ] ] ;
-            ns1:type <file:///github/workspace/Workflow> ] .
+"""^^xsd:string .
+
+_:Nd5fa5ef5f91245e48933889cf0a8116b rdfs:label "Area of interest"^^xsd:string ;
+    ogcproc:itemsType "number"^^xsd:string ;
+    ogcproc:maxItems 6 ;
+    ogcproc:minItems 4 ;
+    ogcproc:schemaType "array"^^xsd:string ;
+    rdfs:comment "Area of interest defined as a bounding box"^^xsd:string ;
+    rdfs:seeAlso geo:BoundingBox ;
+    cwl:inputBinding _:N950a6acfa52442f79ebc404088f6c6e4 ;
+    cwl:type <https://raw.githubusercontent.com/eoap/schemas/main/ogc.yaml#BBox> .
+
+_:Nee1725c157d948ceb9ba79b2019380b6 cwl:echo_output _:N102418aecbbe4cf280284c11a6ac661c .
+
+_:Nfe52e418832a4177b644f46ce6077624 cwl:aoi _:Nd5fa5ef5f91245e48933889cf0a8116b .
+
+_:N12c1171e16424e87b84fbf2b3e1b7aaf a ogcproc:InputDescription ;
+    rdf:first _:N3a71d080b35c4ac3b1ad471122448c0f ;
+    rdf:rest () .
+
+_:N46bb1df1afc945b2ad3e4f61f5a09045 a ogcproc:OutputDescription ;
+    rdf:first _:Nee1725c157d948ceb9ba79b2019380b6 ;
+    rdf:rest () .
+
+_:N47f1460bbbf046269079fbffc81dd01c a ogcproc:InputDescription ;
+    rdf:first _:Nfe52e418832a4177b644f46ce6077624 ;
+    rdf:rest () .
+
+_:Nf761cf8b4b354b1498c33034e51545b0 a ogcproc:OutputDescription ;
+    rdf:first _:N75e228dd4f5e4f5a9c1e5ee5609127d9 ;
+    rdf:rest () .
 
