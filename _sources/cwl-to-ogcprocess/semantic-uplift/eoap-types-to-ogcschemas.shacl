@@ -16,8 +16,6 @@
             PREFIX cwl: <https://w3id.org/cwl/cwl#>
             SELECT ?this
             WHERE {
-                ?wf a cwl:Workflow .
-                { ?wf cwl:input ?this } UNION { ?wf cwl:output ?this }
                 ?this cwl:type ?type .
                 FILTER(CONTAINS(STR(?type), "ogc.yaml#BBox")
                     || CONTAINS(STR(?type), "bbox.yaml#BBox"))
@@ -57,8 +55,6 @@
             PREFIX cwl: <https://w3id.org/cwl/cwl#>
             SELECT ?this
             WHERE {
-                ?wf a cwl:Workflow .
-                { ?wf cwl:input ?this } UNION { ?wf cwl:output ?this }
                 ?this cwl:type ?type .
                 FILTER(CONTAINS(STR(?type), "geojson.yaml#Feature")
                     && !CONTAINS(STR(?type), "geojson.yaml#FeatureCollection"))
@@ -96,8 +92,6 @@
             PREFIX cwl: <https://w3id.org/cwl/cwl#>
             SELECT ?this
             WHERE {
-                ?wf a cwl:Workflow .
-                { ?wf cwl:input ?this } UNION { ?wf cwl:output ?this }
                 ?this cwl:type ?type .
                 FILTER(CONTAINS(STR(?type), "geojson.yaml#Point"))
             }
@@ -133,8 +127,6 @@
             PREFIX cwl: <https://w3id.org/cwl/cwl#>
             SELECT ?this
             WHERE {
-                ?wf a cwl:Workflow .
-                { ?wf cwl:input ?this } UNION { ?wf cwl:output ?this }
                 ?this cwl:type ?type .
                 FILTER(CONTAINS(STR(?type), "geojson.yaml#Polygon"))
             }
@@ -170,8 +162,6 @@
             PREFIX cwl: <https://w3id.org/cwl/cwl#>
             SELECT ?this
             WHERE {
-                ?wf a cwl:Workflow .
-                { ?wf cwl:input ?this } UNION { ?wf cwl:output ?this }
                 ?this cwl:type ?type .
                 FILTER(CONTAINS(STR(?type), "stac.yaml#Item"))
             }
@@ -207,8 +197,6 @@
             PREFIX cwl: <https://w3id.org/cwl/cwl#>
             SELECT ?this
             WHERE {
-                ?wf a cwl:Workflow .
-                { ?wf cwl:input ?this } UNION { ?wf cwl:output ?this }
                 ?this cwl:type ?type .
                 FILTER(CONTAINS(STR(?type), "stac.yaml#Catalog"))
             }
@@ -244,8 +232,6 @@
             PREFIX cwl: <https://w3id.org/cwl/cwl#>
             SELECT ?this
             WHERE {
-                ?wf a cwl:Workflow .
-                { ?wf cwl:input ?this } UNION { ?wf cwl:output ?this }
                 ?this cwl:type ?type .
                 FILTER(CONTAINS(STR(?type), "string-format.yaml#"))
             }
@@ -280,8 +266,6 @@
             PREFIX cwl: <https://w3id.org/cwl/cwl#>
             SELECT ?this
             WHERE {
-                ?wf a cwl:Workflow .
-                { ?wf cwl:input ?this } UNION { ?wf cwl:output ?this }
                 ?this cwl:type ?type .
                 FILTER(CONTAINS(STR(?type), "geojson.yaml#FeatureCollection"))
             }
@@ -317,8 +301,6 @@
             PREFIX cwl: <https://w3id.org/cwl/cwl#>
             SELECT ?this
             WHERE {
-                ?wf a cwl:Workflow .
-                { ?wf cwl:input ?this } UNION { ?wf cwl:output ?this }
                 ?this cwl:type ?type .
                 FILTER(CONTAINS(STR(?type), "stac.yaml#Collection"))
             }
@@ -349,7 +331,7 @@
 # Collection, not an opaque directory reference.
 :EOAPStageOutDirectoryToSTACCollection
     a sh:NodeShape ;
-    sh:targetClass cwl:Workflow ;
+    sh:targetSubjectsOf cwl:output ;
     sh:rule [
         a sh:SPARQLRule ;
         sh:construct """

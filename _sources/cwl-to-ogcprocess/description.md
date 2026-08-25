@@ -1,4 +1,4 @@
-This building block provides a comprehensive transformation profile that converts Common Workflow Language (CWL) definitions into OGC API - Processes processDescription schemas. Only the Workflow is described, along with all EOAP custom types.
+This building block provides a comprehensive transformation profile that converts Common Workflow Language (CWL) definitions into OGC API - Processes processDescription schemas. It supports both CommandLineTool and Workflow classes, along with all EOAP custom types.
 
 ## Purpose
 
@@ -57,7 +57,7 @@ to a **STAC Collection** schema rather than to an opaque directory reference.
 
 The transformation follows these steps:
 
-1. **Select the Workflow**: Handle both direct CWL documents and those with a `$graph`, picking the Workflow that represents the process
+1. **Extract root element**: Handle both direct CWL documents and those with `$graph` structure
 2. **Process metadata**: Extract id, title, description from CWL document
 3. **Preserve annotations**: Convert every prefixed annotation into an OGC `metadata` entry
 4. **Map inputs**: Convert CWL inputs to OGC process inputs with appropriate schemas
@@ -70,21 +70,8 @@ A CWL process reaches the server through OGC API - Processes Part 2
 (Deploy, Replace, Undeploy), which fixes two members regardless of the CWL content:
 
 - `mutable: true` — the process was deployed, so it can be replaced and undeployed
-- `jobControlOptions: ["async-execute", "dismiss"]` — a deployed CWL process cannot
-  be run synchronously, so `sync-execute` is never advertised; a running job can be
-  dismissed
-
-## Only the Workflow is described
-
-The deployed process is the CWL `Workflow`. A `CommandLineTool` is the implementation
-of a step, not a process, and is never described — neither its inputs and outputs nor
-its annotations reach the process description.
-
-When a packed document holds several `Workflow` elements, the process is the one no
-step runs: the sub-workflows referenced through a step's `run` are implementation
-detail. An element whose id is `main` wins outright, following the CWL packing
-convention. A document without any `Workflow` is an error rather than a process
-description built from the wrong element.
+- `jobControlOptions: ["async-execute"]` — a deployed CWL process cannot be run
+  synchronously, so no other execution mode is advertised
 
 ## Annotation preservation
 

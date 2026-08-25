@@ -1,9 +1,9 @@
 transforms:
   - id: cwl-to-ogcprocess
-    description: Converts a CWL Workflow to an OGC API Processes processDescription, with support for all EOAP custom types and preservation of the CWL annotations
+    description: Converts CWL CommandLineTool or Workflow to OGC API Processes processDescription with support for all EOAP custom types
     type: jq
     ref: transforms/cwl-to-ogcprocess.jq
   - id: cwl-to-ogcprocess-refs
-    description: Converts a CWL Workflow to an OGC API Processes processDescription, with support for all EOAP custom types and preservation of the CWL annotations
+    description: Converts CWL CommandLineTool or Workflow to OGC API Processes processDescription with support for all EOAP custom types
     type: jq
     ref: transforms/cwl-to-ogcprocess-refs.jq
