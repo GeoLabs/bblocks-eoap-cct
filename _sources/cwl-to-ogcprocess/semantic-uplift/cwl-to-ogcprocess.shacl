@@ -36,25 +36,51 @@
     ] ;
 .
 
+# Transform CWL CommandLineTool to OGC Process
+:CWLCommandLineToolToOGCProcess
+    a sh:NodeShape ;
+    sh:targetClass cwl:CommandLineTool ;
+    sh:rule [
+        a sh:SPARQLRule ;
+        sh:construct """
+            PREFIX cwl: <https://w3id.org/cwl/cwl#>
+            PREFIX ogcproc: <http://www.opengis.net/def/ogcapi/processes/>
+            PREFIX dct: <http://purl.org/dc/terms/>
+            PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+            CONSTRUCT {
+                $this a ogcproc:Process ;
+                    ogcproc:processID ?id ;
+                    ogcproc:title ?label ;
+                    ogcproc:description ?doc
+            }
+            WHERE {
+                $this a cwl:CommandLineTool .
+                OPTIONAL { $this dct:identifier ?id }
+                OPTIONAL { $this rdfs:label ?label }
+                OPTIONAL { $this rdfs:comment ?doc }
+            }
+        """ ;
+    ] ;
+.
+
 # Process version.
 # NOTE: this is the version of the *application*, taken from the schema.org
 # annotations. It must not be confused with cwl:cwlVersion, which is the version
 # of the CWL language the document is written in.
 :ProcessVersion
     a sh:NodeShape ;
-    sh:targetClass cwl:Workflow ;
+    sh:targetClass cwl:Workflow, cwl:CommandLineTool ;
     sh:rule [
         a sh:SPARQLRule ;
         sh:construct """
             PREFIX ogcproc: <http://www.opengis.net/def/ogcapi/processes/>
-            PREFIX cwl: <https://w3id.org/cwl/cwl#>
             PREFIX s: <https://schema.org/>
 
             CONSTRUCT {
                 $this ogcproc:version ?version
             }
             WHERE {
-                $this a cwl:Workflow .
                 { $this s:softwareVersion ?version }
                 UNION
                 { $this s:version ?version
@@ -69,12 +95,11 @@
 # process member (version, keywords) are excluded.
 :ProcessMetadataFromAnnotations
     a sh:NodeShape ;
-    sh:targetClass cwl:Workflow ;
+    sh:targetClass cwl:Workflow, cwl:CommandLineTool ;
     sh:rule [
         a sh:SPARQLRule ;
         sh:construct """
             PREFIX ogcproc: <http://www.opengis.net/def/ogcapi/processes/>
-            PREFIX cwl: <https://w3id.org/cwl/cwl#>
             PREFIX s: <https://schema.org/>
 
             CONSTRUCT {
@@ -84,7 +109,6 @@
                 ]
             }
             WHERE {
-                $this a cwl:Workflow .
                 $this ?role ?value .
                 FILTER(STRSTARTS(STR(?role), "https://schema.org/")
                     || STRSTARTS(STR(?role), "http://schema.org/"))
@@ -96,27 +120,24 @@
 
 # Add process execution mode metadata.
 # A CWL process is deployed through OGC API - Processes Part 2 and can only be
-# executed asynchronously: sync-execute is never advertised. A running job can
-# be dismissed, hence the dismiss option.
+# executed asynchronously, hence async-execute is the sole job control option.
 :ProcessExecutionMode
     a sh:NodeShape ;
-    sh:targetClass cwl:Workflow ;
+    sh:targetClass cwl:Workflow, cwl:CommandLineTool ;
     sh:rule [
         a sh:SPARQLRule ;
         sh:construct """
             PREFIX ogcproc: <http://www.opengis.net/def/ogcapi/processes/>
-            PREFIX cwl: <https://w3id.org/cwl/cwl#>
             PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
             CONSTRUCT {
-                $this ogcproc:jobControlOptions "async-execute"^^xsd:string ,
-                        "dismiss"^^xsd:string ;
+                $this ogcproc:jobControlOptions "async-execute"^^xsd:string ;
                     ogcproc:outputTransmission "value"^^xsd:string ,
                         "reference"^^xsd:string ;
                     ogcproc:mutable true
             }
             WHERE {
-                $this a cwl:Workflow
+                $this a ?processClass
             }
         """ ;
     ] ;
@@ -125,11 +146,10 @@
 # Link CWL process to OGC conformance classes
 :ProcessConformance
     a sh:NodeShape ;
-    sh:targetClass cwl:Workflow ;
+    sh:targetClass cwl:Workflow, cwl:CommandLineTool ;
     sh:rule [
         a sh:SPARQLRule ;
         sh:construct """
-            PREFIX cwl: <https://w3id.org/cwl/cwl#>
             PREFIX dct: <http://purl.org/dc/terms/>
 
             CONSTRUCT {
@@ -139,7 +159,7 @@
                     <https://www.commonwl.org/v1.2/>
             }
             WHERE {
-                $this a cwl:Workflow
+                $this a ?processClass
             }
         """ ;
     ] ;
@@ -150,7 +170,7 @@
 # no CWL document ever carries, so it never produced anything.
 :ProcessKeywords
     a sh:NodeShape ;
-    sh:targetClass cwl:Workflow ;
+    sh:targetClass cwl:Workflow, cwl:CommandLineTool ;
     sh:rule [
         a sh:SPARQLRule ;
         sh:construct """
@@ -162,7 +182,6 @@
                 $this ogcproc:keywords ?keyword
             }
             WHERE {
-                $this a cwl:Workflow .
                 { $this s:keywords ?keyword }
                 UNION
                 { $this cwl:intent ?keyword }

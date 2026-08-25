@@ -1,11 +1,11 @@
 {
   "$schema": "https://raw.githubusercontent.com/opengeospatial/bblocks-postprocess/master/ogc/bblocks/metadata-schema.yaml",
   "name": "CWL to OGC API Processes Profile",
-  "abstract": "Profile for converting a CWL Workflow definition to an OGC API - Processes processDescription",
-  "description": "This building block provides a transformation profile that converts a Common Workflow Language (CWL) Workflow definition into an OGC API - Processes processDescription schema. Only the Workflow is described: it is what gets deployed as a process, a CommandLineTool being the implementation of a step. It supports all EOAP custom types including BBox, GeoJSON, STAC, and String Formats, as well as standard CWL types, and preserves the schema.org annotations of the CWL document as process metadata. The profile enables automatic mapping of CWL workflow definitions to OGC API - Processes compliant service descriptions, facilitating the deployment of CWL workflows as OGC processes.",
+  "abstract": "Profile for converting CWL CommandLineTool and Workflow definitions to OGC API Processes processDescriptions",
+  "description": "This building block provides a transformation profile that converts Common Workflow Language (CWL) CommandLineTool and Workflow definitions into OGC API - Processes processDescription schemas. It supports all EOAP custom types including BBox, GeoJSON, STAC, and String Formats, as well as standard CWL types. The profile enables automatic mapping of CWL workflow definitions to OGC API - Processes compliant service descriptions, facilitating the deployment of CWL workflows as OGC processes.",
   "status": "under-development",
   "dateTimeAddition": "2025-12-18T00:00:00Z",
-  "dateOfLastChange": "2026-08-19",
+  "dateOfLastChange": "2025-12-18",
   "version": "1.0",
   "itemClass": "model",
   "register": "eoap-cct",
@@ -26,6 +26,7 @@
     "transformation",
     "profile",
     "EOAP",
+    "CommandLineTool",
     "Workflow"
   ],
   "sources": [

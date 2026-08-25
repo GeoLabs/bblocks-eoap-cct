@@ -1,37 +1,15 @@
-# Unified transform: CWL Workflow to OGC API Processes processDescription
+# Unified transform: CWL CommandLineTool/Workflow to OGC API Processes processDescription
 # Supports all EOAP custom types: BBox, GeoJSON, STAC, and String Formats
-# Only the Workflow is described: it is what gets deployed as a process.
 # Preserves the CWL annotations (schema.org and any other declared $namespaces prefix)
 # as OGC API - Processes `metadata` entries, plus `keywords` and `version`.
 
-# All CWL elements of the document: the $graph entries, or the document itself
-def cwlElements:
-  if has("$graph") then ."$graph" else [.] end;
-
-# Identifiers referenced by a step's `run`, i.e. the sub-workflows and the tools.
-# These are implementation details of the process, never the process itself.
-def referencedIds:
-  [ cwlElements[]
-    | .steps
-    | if type == "object" then [.[]] elif type == "array" then . else [] end
-    | .[]
-    | .run
-    | select(type == "string")
-    | sub("^#"; "")
-  ];
-
-# The deployed process is the Workflow, and nothing else: a CommandLineTool is a
-# step implementation, not a process. When several Workflows are packed together,
-# the process is the one no step runs (the sub-workflows are excluded).
+# Helper function to extract the root element (first Workflow in $graph, or the document itself)
 def getRootElement:
-  referencedIds as $referenced |
-  (cwlElements | map(select(.class == "Workflow"))) as $workflows |
-  if ($workflows | length) == 0 then
-    error("No CWL Workflow found: an OGC API - Processes description is derived from the Workflow only")
+  if has("$graph") then
+    # Find the first Workflow in the $graph array
+    (."$graph" | map(select(.class == "Workflow")) | first) // ."$graph"[0]
   else
-    ( ($workflows | map(select(((.id // "") | sub("^#"; "")) == "main")) | first)
-      // ($workflows | map(select(((.id // "") | sub("^#"; "")) as $i | ($referenced | index($i)) == null)) | first)
-      // $workflows[0] )
+    .
   end;
 
 # --- Namespace / annotation helpers -----------------------------------------
@@ -399,10 +377,10 @@ def outputDescription($id):
 def processInputs:
   if . then
     if (. | type) == "array" then
-      # Array form: each entry carries its own id
+      # Workflow style: inputs is an array with id fields
       map(.id as $id | { key: $id, value: inputDescription($id) }) | from_entries
     else
-      # Map form: the key is the id
+      # CommandLineTool style: inputs is an object
       to_entries | map(.key as $id | { key: $id, value: (.value | inputDescription($id)) }) | from_entries
     end
   else
@@ -413,10 +391,10 @@ def processInputs:
 def processOutputs:
   if . then
     if (. | type) == "array" then
-      # Array form: each entry carries its own id
+      # Workflow style: outputs is an array with id fields
       map(.id as $id | { key: $id, value: outputDescription($id) }) | from_entries
     else
-      # Map form: the key is the id
+      # CommandLineTool style: outputs is an object
       to_entries | map(.key as $id | { key: $id, value: (.value | outputDescription($id)) }) | from_entries
     end
   else
@@ -442,8 +420,8 @@ getRootElement as $root |
   // ($doc | annotationValue($ns; "version"))
   // "1.0.0") as $version |
 
-(($root.id // "cwl-process") | sub("^#"; "")) as $id |
-($root.label // $id) as $title |
+($root.id // (if ($root.baseCommand | type) == "array" then $root.baseCommand[0] else $root.baseCommand end) // "cwl-process") as $id |
+($root.label // $root.id // "CWL Process") as $title |
 ($root.doc // "Process converted from CWL") as $description |
 
 # Mirror the core descriptive members as schema.org metadata, unless the CWL
@@ -470,6 +448,6 @@ getRootElement as $root |
   outputs: ($root.outputs | processOutputs),
 
   # A deployed CWL process can only be executed asynchronously
-  jobControlOptions: ["async-execute", "dismiss"],
+  jobControlOptions: ["async-execute"],
   outputTransmission: ["value", "reference"]
 }
