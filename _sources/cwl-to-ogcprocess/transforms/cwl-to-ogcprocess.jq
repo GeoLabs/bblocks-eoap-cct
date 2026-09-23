@@ -291,6 +291,94 @@ def mapDirectoryType:
     null
   end;
 
+# --- CWL `format` -> OGC API - Processes media type (M-01/M-02) ------------
+#
+# CWL declares acceptable media types for a File/Directory input or output as
+# a sibling `format:` field (a single IRI, or a list of IRIs when more than
+# one is accepted), not as part of `type`. The type mapper above never sees
+# it, by design (it only ever receives the bare type expression, so it can
+# recurse cleanly through `?`, arrays and unions). These helpers resolve
+# `format` separately and `applyFormat` splices the result back into the
+# schema the type mapper already produced, wherever it left its
+# "application/octet-stream" placeholder (mapFileType's sentinel for "this is
+# a File/stdout/stderr, format unresolved").
+
+# Expand a single CWL format value ("iana:image/png") through $namespaces,
+# the same prefix expansion used for annotation keys (matchedPrefix). A
+# format with no declared prefix, or already a full IRI, is returned as-is.
+def expandFormat($ns):
+  . as $f |
+  ($f | matchedPrefix($ns)) as $p |
+  if $p then ($ns[$p] + $f[($p | length) + 1:]) else $f end;
+
+# Resolve one already-expanded format IRI to an OGC API - Processes media
+# type, or null when not recognised.
+#
+# IANA media-type IRIs resolve mechanically: under
+# https://www.iana.org/assignments/media-types/, the path *is* the media
+# type (RFC 6838 registry convention), e.g. .../image/jp2 -> "image/jp2".
+#
+# OGC media-type IRIs do NOT encode their media type in the IRI. Each
+# concept under http://www.opengis.net/def/media-type/ogc/1.0/<slug>
+# publishes it as a `skos:notation` on the OGC Definitions Server (verified
+# 2026-09-23: .../geotiff -> skos:notation "image/tiff; application=geotiff"
+# typed <https://www.iana.org/assignments/media-types>). jq has no HTTP
+# client, so this table is a manually maintained mirror of that register;
+# extend it as OGC defines further media types. An unrecognised slug (or an
+# unrecognised namespace altogether) resolves to null, which
+# mapFileFormat/applyFormat drop silently rather than fail the transform.
+def resolveMediaType:
+  ("https://www.iana.org/assignments/media-types/") as $iana |
+  ("http://www.opengis.net/def/media-type/ogc/1.0/") as $ogc |
+  if startswith($iana) then
+    .[($iana | length):]
+  elif startswith($ogc) then
+    (.[($ogc | length):]) as $slug |
+    ({ "geotiff": "image/tiff; application=geotiff" }[$slug])
+  else
+    null
+  end;
+
+# CWL `format` (a string, a list, or null/absent) -> the OGC API - Processes
+# Part 1 binary-input schema fragment for it: a single {contentMediaType},
+# or `oneOf` of one binary schema per accepted media type when more than one
+# resolves. The `oneOf` shape is carried over from how this project's own
+# consumers were already correcting this by hand (Q-M02 in
+# GeoLabs/bblocks-process-profiles remains open on whether `oneOf` or
+# `anyOf` is the better fit, since the branches differ only by annotation).
+# Returns null when `format` is absent or none of its values resolve, so
+# callers leave the type mapper's own placeholder in place.
+def mapFileFormat($ns):
+  . as $format |
+  if $format == null then null else
+    ($format
+     | (if type == "array" then . else [.] end)
+     | map(expandFormat($ns) | resolveMediaType)
+     | map(select(. != null))
+     | dedup) as $media |
+    if ($media | length) == 0 then null
+    elif ($media | length) == 1 then
+      { type: "string", contentMediaType: $media[0], contentEncoding: "binary" }
+    else
+      # No sibling `type` here: each oneOf branch already declares its own
+      # `type: "string"`, matching the shape this project's own consumers
+      # were already producing by hand.
+      { oneOf: ($media | map({ type: "string", contentMediaType: ., contentEncoding: "binary" })) }
+    end
+  end;
+
+# Splice a resolved format schema into whatever the type mapper produced, at
+# any depth: inside `items` for a File[] parameter, inside each `oneOf`
+# branch for a union type. Every node the type mapper left as
+# "application/octet-stream" is a File/stdout/stderr leaf and a valid splice
+# point; a Directory leaf ("application/x-directory") is never touched,
+# since CWL `format` does not apply to directories.
+def applyFormat($formatSchema):
+  if $formatSchema == null then . else
+    walk(if (type == "object" and .contentMediaType == "application/octet-stream")
+         then $formatSchema else . end)
+  end;
+
 # Strip the optional marker and the null branch of a union type:
 #   "string?"          -> "string"
 #   ["null", "string"] -> "string"
@@ -353,49 +441,52 @@ def mapOutputType: mapTypeCtx(true);
 # --- Input / output descriptions --------------------------------------------
 
 # Build one OGC input description from a CWL input parameter object
-def inputDescription($id):
+def inputDescription($id; $ns):
   . as $param |
   ($param.type) as $t |
+  ($param.format | mapFileFormat($ns)) as $formatSchema |
   {
     title: ($param.label // $id),
     description: ($param.doc // ""),
-    schema: (($t | mapType) + (if ($param | has("default")) then { default: $param.default } else {} end)),
+    schema: ((($t | mapType) | applyFormat($formatSchema))
+             + (if ($param | has("default")) then { default: $param.default } else {} end)),
     minOccurs: (if ($t | isOptionalType) or ($param | has("default")) then 0 else 1 end),
     maxOccurs: 1
   };
 
 # Build one OGC output description from a CWL output parameter object
-def outputDescription($id):
+def outputDescription($id; $ns):
   . as $param |
+  ($param.format | mapFileFormat($ns)) as $formatSchema |
   {
     title: ($param.label // $id),
     description: ($param.doc // ""),
-    schema: ($param.type | mapOutputType)
+    schema: (($param.type | mapOutputType) | applyFormat($formatSchema))
   };
 
 # Process inputs
-def processInputs:
+def processInputs($ns):
   if . then
     if (. | type) == "array" then
       # Workflow style: inputs is an array with id fields
-      map(.id as $id | { key: $id, value: inputDescription($id) }) | from_entries
+      map(.id as $id | { key: $id, value: inputDescription($id; $ns) }) | from_entries
     else
       # CommandLineTool style: inputs is an object
-      to_entries | map(.key as $id | { key: $id, value: (.value | inputDescription($id)) }) | from_entries
+      to_entries | map(.key as $id | { key: $id, value: (.value | inputDescription($id; $ns)) }) | from_entries
     end
   else
     {}
   end;
 
 # Process outputs
-def processOutputs:
+def processOutputs($ns):
   if . then
     if (. | type) == "array" then
       # Workflow style: outputs is an array with id fields
-      map(.id as $id | { key: $id, value: outputDescription($id) }) | from_entries
+      map(.id as $id | { key: $id, value: outputDescription($id; $ns) }) | from_entries
     else
       # CommandLineTool style: outputs is an object
-      to_entries | map(.key as $id | { key: $id, value: (.value | outputDescription($id)) }) | from_entries
+      to_entries | map(.key as $id | { key: $id, value: (.value | outputDescription($id; $ns)) }) | from_entries
     end
   else
     {}
@@ -444,8 +535,8 @@ getRootElement as $root |
 + (if ($keywords | length) > 0 then { keywords: $keywords } else {} end)
 + { metadata: ($derivedMeta + $declaredMeta) }
 + {
-  inputs: ($root.inputs | processInputs),
-  outputs: ($root.outputs | processOutputs),
+  inputs: ($root.inputs | processInputs($ns)),
+  outputs: ($root.outputs | processOutputs($ns)),
 
   # A deployed CWL process can only be executed asynchronously
   jobControlOptions: ["async-execute"],
