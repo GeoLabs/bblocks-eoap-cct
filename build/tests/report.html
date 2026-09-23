@@ -64,7 +64,7 @@
     <body>
         <div class="container">
             <h1 class="title">Building blocks validation report</h1>
-            <small class="datetime">Generated at 2026-08-25T08:45:13.479439+00:00</small>
+            <small class="datetime">Generated at 2026-09-23T16:07:33.349076+00:00</small>
                 <p class="summary fw-semibold text-danger">
                     Number of passing building blocks: 1 / 5 (20%)
                 </p>
@@ -118,37 +118,10 @@
                                                                 
                                                                     
                                                                     <div class="font-monospace entry-message section-files ">Using examples/bbox-2d.yaml from examples</div>
-                                                                    <div class="font-monospace subsection-title mt-2">Unknown errors</div>
+                                                                    <div class="font-monospace subsection-title mt-2">JSON Schema</div>
                                                                 
                                                                     
-                                                                    <div class="font-monospace entry-message section-unknown text-danger">Traceback (most recent call last):
-,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 200, in validate
-    validate_json(json_doc, schema_validator)
-,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 44, in validate_json
-    error = jsonschema.exceptions.best_match(validator.iter_errors(instance))
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/exceptions.py&quot;, line 384, in best_match
-    best = next(errors, None)
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 288, in iter_errors
-    for error in errors:
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/_validators.py&quot;, line 298, in ref
-    yield from validator.descend(instance, resolved)
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 305, in descend
-    for error in self.evolve(schema=schema).iter_errors(instance):
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 278, in iter_errors
-    scope = id_of(_schema)
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 101, in _id_of
-    return schema.get(&quot;$id&quot;, &quot;&quot;)
-,AttributeError: &#x27;list&#x27; object has no attribute &#x27;get&#x27;
-,
-During handling of the above exception, another exception occurred:
-
-,Traceback (most recent call last):
-,  File &quot;/src/ogc/bblocks/validate.py&quot;, line 301, in _validate_resource
-    result = validator.validate(filename, output_filename, report,
-,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 221, in validate
-    &#x27;errorMessage&#x27;: e.message,
-,AttributeError: &#x27;AttributeError&#x27; object has no attribute &#x27;message&#x27;
-</div>
+                                                                    <div class="font-monospace entry-message section-json_schema text-danger">AttributeError: &#x27;list&#x27; object has no attribute &#x27;get&#x27;</div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -176,37 +149,10 @@ During handling of the above exception, another exception occurred:
                                                                 
                                                                     
                                                                     <div class="font-monospace entry-message section-files ">Using examples/bbox-3d.yaml from examples</div>
-                                                                    <div class="font-monospace subsection-title mt-2">Unknown errors</div>
+                                                                    <div class="font-monospace subsection-title mt-2">JSON Schema</div>
                                                                 
                                                                     
-                                                                    <div class="font-monospace entry-message section-unknown text-danger">Traceback (most recent call last):
-,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 200, in validate
-    validate_json(json_doc, schema_validator)
-,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 44, in validate_json
-    error = jsonschema.exceptions.best_match(validator.iter_errors(instance))
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/exceptions.py&quot;, line 384, in best_match
-    best = next(errors, None)
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 288, in iter_errors
-    for error in errors:
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/_validators.py&quot;, line 298, in ref
-    yield from validator.descend(instance, resolved)
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 305, in descend
-    for error in self.evolve(schema=schema).iter_errors(instance):
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 278, in iter_errors
-    scope = id_of(_schema)
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 101, in _id_of
-    return schema.get(&quot;$id&quot;, &quot;&quot;)
-,AttributeError: &#x27;list&#x27; object has no attribute &#x27;get&#x27;
-,
-During handling of the above exception, another exception occurred:
-
-,Traceback (most recent call last):
-,  File &quot;/src/ogc/bblocks/validate.py&quot;, line 301, in _validate_resource
-    result = validator.validate(filename, output_filename, report,
-,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 221, in validate
-    &#x27;errorMessage&#x27;: e.message,
-,AttributeError: &#x27;AttributeError&#x27; object has no attribute &#x27;message&#x27;
-</div>
+                                                                    <div class="font-monospace entry-message section-json_schema text-danger">AttributeError: &#x27;list&#x27; object has no attribute &#x27;get&#x27;</div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -259,37 +205,10 @@ During handling of the above exception, another exception occurred:
                                                                 
                                                                     
                                                                     <div class="font-monospace entry-message section-files ">Using examples/date.yaml from examples</div>
-                                                                    <div class="font-monospace subsection-title mt-2">Unknown errors</div>
+                                                                    <div class="font-monospace subsection-title mt-2">JSON Schema</div>
                                                                 
                                                                     
-                                                                    <div class="font-monospace entry-message section-unknown text-danger">Traceback (most recent call last):
-,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 200, in validate
-    validate_json(json_doc, schema_validator)
-,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 44, in validate_json
-    error = jsonschema.exceptions.best_match(validator.iter_errors(instance))
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/exceptions.py&quot;, line 384, in best_match
-    best = next(errors, None)
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 288, in iter_errors
-    for error in errors:
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/_validators.py&quot;, line 298, in ref
-    yield from validator.descend(instance, resolved)
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 305, in descend
-    for error in self.evolve(schema=schema).iter_errors(instance):
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 278, in iter_errors
-    scope = id_of(_schema)
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 101, in _id_of
-    return schema.get(&quot;$id&quot;, &quot;&quot;)
-,AttributeError: &#x27;list&#x27; object has no attribute &#x27;get&#x27;
-,
-During handling of the above exception, another exception occurred:
-
-,Traceback (most recent call last):
-,  File &quot;/src/ogc/bblocks/validate.py&quot;, line 301, in _validate_resource
-    result = validator.validate(filename, output_filename, report,
-,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 221, in validate
-    &#x27;errorMessage&#x27;: e.message,
-,AttributeError: &#x27;AttributeError&#x27; object has no attribute &#x27;message&#x27;
-</div>
+                                                                    <div class="font-monospace entry-message section-json_schema text-danger">AttributeError: &#x27;list&#x27; object has no attribute &#x27;get&#x27;</div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -317,37 +236,10 @@ During handling of the above exception, another exception occurred:
                                                                 
                                                                     
                                                                     <div class="font-monospace entry-message section-files ">Using examples/datetime.yaml from examples</div>
-                                                                    <div class="font-monospace subsection-title mt-2">Unknown errors</div>
+                                                                    <div class="font-monospace subsection-title mt-2">JSON Schema</div>
                                                                 
                                                                     
-                                                                    <div class="font-monospace entry-message section-unknown text-danger">Traceback (most recent call last):
-,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 200, in validate
-    validate_json(json_doc, schema_validator)
-,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 44, in validate_json
-    error = jsonschema.exceptions.best_match(validator.iter_errors(instance))
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/exceptions.py&quot;, line 384, in best_match
-    best = next(errors, None)
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 288, in iter_errors
-    for error in errors:
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/_validators.py&quot;, line 298, in ref
-    yield from validator.descend(instance, resolved)
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 305, in descend
-    for error in self.evolve(schema=schema).iter_errors(instance):
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 278, in iter_errors
-    scope = id_of(_schema)
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 101, in _id_of
-    return schema.get(&quot;$id&quot;, &quot;&quot;)
-,AttributeError: &#x27;list&#x27; object has no attribute &#x27;get&#x27;
-,
-During handling of the above exception, another exception occurred:
-
-,Traceback (most recent call last):
-,  File &quot;/src/ogc/bblocks/validate.py&quot;, line 301, in _validate_resource
-    result = validator.validate(filename, output_filename, report,
-,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 221, in validate
-    &#x27;errorMessage&#x27;: e.message,
-,AttributeError: &#x27;AttributeError&#x27; object has no attribute &#x27;message&#x27;
-</div>
+                                                                    <div class="font-monospace entry-message section-json_schema text-danger">AttributeError: &#x27;list&#x27; object has no attribute &#x27;get&#x27;</div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -375,37 +267,10 @@ During handling of the above exception, another exception occurred:
                                                                 
                                                                     
                                                                     <div class="font-monospace entry-message section-files ">Using examples/time.yaml from examples</div>
-                                                                    <div class="font-monospace subsection-title mt-2">Unknown errors</div>
+                                                                    <div class="font-monospace subsection-title mt-2">JSON Schema</div>
                                                                 
                                                                     
-                                                                    <div class="font-monospace entry-message section-unknown text-danger">Traceback (most recent call last):
-,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 200, in validate
-    validate_json(json_doc, schema_validator)
-,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 44, in validate_json
-    error = jsonschema.exceptions.best_match(validator.iter_errors(instance))
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/exceptions.py&quot;, line 384, in best_match
-    best = next(errors, None)
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 288, in iter_errors
-    for error in errors:
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/_validators.py&quot;, line 298, in ref
-    yield from validator.descend(instance, resolved)
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 305, in descend
-    for error in self.evolve(schema=schema).iter_errors(instance):
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 278, in iter_errors
-    scope = id_of(_schema)
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 101, in _id_of
-    return schema.get(&quot;$id&quot;, &quot;&quot;)
-,AttributeError: &#x27;list&#x27; object has no attribute &#x27;get&#x27;
-,
-During handling of the above exception, another exception occurred:
-
-,Traceback (most recent call last):
-,  File &quot;/src/ogc/bblocks/validate.py&quot;, line 301, in _validate_resource
-    result = validator.validate(filename, output_filename, report,
-,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 221, in validate
-    &#x27;errorMessage&#x27;: e.message,
-,AttributeError: &#x27;AttributeError&#x27; object has no attribute &#x27;message&#x27;
-</div>
+                                                                    <div class="font-monospace entry-message section-json_schema text-danger">AttributeError: &#x27;list&#x27; object has no attribute &#x27;get&#x27;</div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -433,37 +298,10 @@ During handling of the above exception, another exception occurred:
                                                                 
                                                                     
                                                                     <div class="font-monospace entry-message section-files ">Using examples/duration.yaml from examples</div>
-                                                                    <div class="font-monospace subsection-title mt-2">Unknown errors</div>
+                                                                    <div class="font-monospace subsection-title mt-2">JSON Schema</div>
                                                                 
                                                                     
-                                                                    <div class="font-monospace entry-message section-unknown text-danger">Traceback (most recent call last):
-,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 200, in validate
-    validate_json(json_doc, schema_validator)
-,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 44, in validate_json
-    error = jsonschema.exceptions.best_match(validator.iter_errors(instance))
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/exceptions.py&quot;, line 384, in best_match
-    best = next(errors, None)
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 288, in iter_errors
-    for error in errors:
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/_validators.py&quot;, line 298, in ref
-    yield from validator.descend(instance, resolved)
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 305, in descend
-    for error in self.evolve(schema=schema).iter_errors(instance):
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 278, in iter_errors
-    scope = id_of(_schema)
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 101, in _id_of
-    return schema.get(&quot;$id&quot;, &quot;&quot;)
-,AttributeError: &#x27;list&#x27; object has no attribute &#x27;get&#x27;
-,
-During handling of the above exception, another exception occurred:
-
-,Traceback (most recent call last):
-,  File &quot;/src/ogc/bblocks/validate.py&quot;, line 301, in _validate_resource
-    result = validator.validate(filename, output_filename, report,
-,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 221, in validate
-    &#x27;errorMessage&#x27;: e.message,
-,AttributeError: &#x27;AttributeError&#x27; object has no attribute &#x27;message&#x27;
-</div>
+                                                                    <div class="font-monospace entry-message section-json_schema text-danger">AttributeError: &#x27;list&#x27; object has no attribute &#x27;get&#x27;</div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -491,37 +329,10 @@ During handling of the above exception, another exception occurred:
                                                                 
                                                                     
                                                                     <div class="font-monospace entry-message section-files ">Using examples/uri.yaml from examples</div>
-                                                                    <div class="font-monospace subsection-title mt-2">Unknown errors</div>
+                                                                    <div class="font-monospace subsection-title mt-2">JSON Schema</div>
                                                                 
                                                                     
-                                                                    <div class="font-monospace entry-message section-unknown text-danger">Traceback (most recent call last):
-,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 200, in validate
-    validate_json(json_doc, schema_validator)
-,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 44, in validate_json
-    error = jsonschema.exceptions.best_match(validator.iter_errors(instance))
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/exceptions.py&quot;, line 384, in best_match
-    best = next(errors, None)
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 288, in iter_errors
-    for error in errors:
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/_validators.py&quot;, line 298, in ref
-    yield from validator.descend(instance, resolved)
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 305, in descend
-    for error in self.evolve(schema=schema).iter_errors(instance):
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 278, in iter_errors
-    scope = id_of(_schema)
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 101, in _id_of
-    return schema.get(&quot;$id&quot;, &quot;&quot;)
-,AttributeError: &#x27;list&#x27; object has no attribute &#x27;get&#x27;
-,
-During handling of the above exception, another exception occurred:
-
-,Traceback (most recent call last):
-,  File &quot;/src/ogc/bblocks/validate.py&quot;, line 301, in _validate_resource
-    result = validator.validate(filename, output_filename, report,
-,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 221, in validate
-    &#x27;errorMessage&#x27;: e.message,
-,AttributeError: &#x27;AttributeError&#x27; object has no attribute &#x27;message&#x27;
-</div>
+                                                                    <div class="font-monospace entry-message section-json_schema text-danger">AttributeError: &#x27;list&#x27; object has no attribute &#x27;get&#x27;</div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -549,37 +360,10 @@ During handling of the above exception, another exception occurred:
                                                                 
                                                                     
                                                                     <div class="font-monospace entry-message section-files ">Using examples/uri-reference.yaml from examples</div>
-                                                                    <div class="font-monospace subsection-title mt-2">Unknown errors</div>
+                                                                    <div class="font-monospace subsection-title mt-2">JSON Schema</div>
                                                                 
                                                                     
-                                                                    <div class="font-monospace entry-message section-unknown text-danger">Traceback (most recent call last):
-,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 200, in validate
-    validate_json(json_doc, schema_validator)
-,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 44, in validate_json
-    error = jsonschema.exceptions.best_match(validator.iter_errors(instance))
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/exceptions.py&quot;, line 384, in best_match
-    best = next(errors, None)
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 288, in iter_errors
-    for error in errors:
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/_validators.py&quot;, line 298, in ref
-    yield from validator.descend(instance, resolved)
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 305, in descend
-    for error in self.evolve(schema=schema).iter_errors(instance):
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 278, in iter_errors
-    scope = id_of(_schema)
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 101, in _id_of
-    return schema.get(&quot;$id&quot;, &quot;&quot;)
-,AttributeError: &#x27;list&#x27; object has no attribute &#x27;get&#x27;
-,
-During handling of the above exception, another exception occurred:
-
-,Traceback (most recent call last):
-,  File &quot;/src/ogc/bblocks/validate.py&quot;, line 301, in _validate_resource
-    result = validator.validate(filename, output_filename, report,
-,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 221, in validate
-    &#x27;errorMessage&#x27;: e.message,
-,AttributeError: &#x27;AttributeError&#x27; object has no attribute &#x27;message&#x27;
-</div>
+                                                                    <div class="font-monospace entry-message section-json_schema text-danger">AttributeError: &#x27;list&#x27; object has no attribute &#x27;get&#x27;</div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -607,37 +391,10 @@ During handling of the above exception, another exception occurred:
                                                                 
                                                                     
                                                                     <div class="font-monospace entry-message section-files ">Using examples/uri-template.yaml from examples</div>
-                                                                    <div class="font-monospace subsection-title mt-2">Unknown errors</div>
+                                                                    <div class="font-monospace subsection-title mt-2">JSON Schema</div>
                                                                 
                                                                     
-                                                                    <div class="font-monospace entry-message section-unknown text-danger">Traceback (most recent call last):
-,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 200, in validate
-    validate_json(json_doc, schema_validator)
-,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 44, in validate_json
-    error = jsonschema.exceptions.best_match(validator.iter_errors(instance))
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/exceptions.py&quot;, line 384, in best_match
-    best = next(errors, None)
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 288, in iter_errors
-    for error in errors:
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/_validators.py&quot;, line 298, in ref
-    yield from validator.descend(instance, resolved)
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 305, in descend
-    for error in self.evolve(schema=schema).iter_errors(instance):
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 278, in iter_errors
-    scope = id_of(_schema)
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 101, in _id_of
-    return schema.get(&quot;$id&quot;, &quot;&quot;)
-,AttributeError: &#x27;list&#x27; object has no attribute &#x27;get&#x27;
-,
-During handling of the above exception, another exception occurred:
-
-,Traceback (most recent call last):
-,  File &quot;/src/ogc/bblocks/validate.py&quot;, line 301, in _validate_resource
-    result = validator.validate(filename, output_filename, report,
-,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 221, in validate
-    &#x27;errorMessage&#x27;: e.message,
-,AttributeError: &#x27;AttributeError&#x27; object has no attribute &#x27;message&#x27;
-</div>
+                                                                    <div class="font-monospace entry-message section-json_schema text-danger">AttributeError: &#x27;list&#x27; object has no attribute &#x27;get&#x27;</div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -665,37 +422,10 @@ During handling of the above exception, another exception occurred:
                                                                 
                                                                     
                                                                     <div class="font-monospace entry-message section-files ">Using examples/iri.yaml from examples</div>
-                                                                    <div class="font-monospace subsection-title mt-2">Unknown errors</div>
+                                                                    <div class="font-monospace subsection-title mt-2">JSON Schema</div>
                                                                 
                                                                     
-                                                                    <div class="font-monospace entry-message section-unknown text-danger">Traceback (most recent call last):
-,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 200, in validate
-    validate_json(json_doc, schema_validator)
-,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 44, in validate_json
-    error = jsonschema.exceptions.best_match(validator.iter_errors(instance))
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/exceptions.py&quot;, line 384, in best_match
-    best = next(errors, None)
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 288, in iter_errors
-    for error in errors:
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/_validators.py&quot;, line 298, in ref
-    yield from validator.descend(instance, resolved)
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 305, in descend
-    for error in self.evolve(schema=schema).iter_errors(instance):
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 278, in iter_errors
-    scope = id_of(_schema)
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 101, in _id_of
-    return schema.get(&quot;$id&quot;, &quot;&quot;)
-,AttributeError: &#x27;list&#x27; object has no attribute &#x27;get&#x27;
-,
-During handling of the above exception, another exception occurred:
-
-,Traceback (most recent call last):
-,  File &quot;/src/ogc/bblocks/validate.py&quot;, line 301, in _validate_resource
-    result = validator.validate(filename, output_filename, report,
-,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 221, in validate
-    &#x27;errorMessage&#x27;: e.message,
-,AttributeError: &#x27;AttributeError&#x27; object has no attribute &#x27;message&#x27;
-</div>
+                                                                    <div class="font-monospace entry-message section-json_schema text-danger">AttributeError: &#x27;list&#x27; object has no attribute &#x27;get&#x27;</div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -723,37 +453,10 @@ During handling of the above exception, another exception occurred:
                                                                 
                                                                     
                                                                     <div class="font-monospace entry-message section-files ">Using examples/email.yaml from examples</div>
-                                                                    <div class="font-monospace subsection-title mt-2">Unknown errors</div>
+                                                                    <div class="font-monospace subsection-title mt-2">JSON Schema</div>
                                                                 
                                                                     
-                                                                    <div class="font-monospace entry-message section-unknown text-danger">Traceback (most recent call last):
-,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 200, in validate
-    validate_json(json_doc, schema_validator)
-,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 44, in validate_json
-    error = jsonschema.exceptions.best_match(validator.iter_errors(instance))
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/exceptions.py&quot;, line 384, in best_match
-    best = next(errors, None)
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 288, in iter_errors
-    for error in errors:
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/_validators.py&quot;, line 298, in ref
-    yield from validator.descend(instance, resolved)
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 305, in descend
-    for error in self.evolve(schema=schema).iter_errors(instance):
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 278, in iter_errors
-    scope = id_of(_schema)
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 101, in _id_of
-    return schema.get(&quot;$id&quot;, &quot;&quot;)
-,AttributeError: &#x27;list&#x27; object has no attribute &#x27;get&#x27;
-,
-During handling of the above exception, another exception occurred:
-
-,Traceback (most recent call last):
-,  File &quot;/src/ogc/bblocks/validate.py&quot;, line 301, in _validate_resource
-    result = validator.validate(filename, output_filename, report,
-,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 221, in validate
-    &#x27;errorMessage&#x27;: e.message,
-,AttributeError: &#x27;AttributeError&#x27; object has no attribute &#x27;message&#x27;
-</div>
+                                                                    <div class="font-monospace entry-message section-json_schema text-danger">AttributeError: &#x27;list&#x27; object has no attribute &#x27;get&#x27;</div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -781,37 +484,10 @@ During handling of the above exception, another exception occurred:
                                                                 
                                                                     
                                                                     <div class="font-monospace entry-message section-files ">Using examples/idn-email.yaml from examples</div>
-                                                                    <div class="font-monospace subsection-title mt-2">Unknown errors</div>
+                                                                    <div class="font-monospace subsection-title mt-2">JSON Schema</div>
                                                                 
                                                                     
-                                                                    <div class="font-monospace entry-message section-unknown text-danger">Traceback (most recent call last):
-,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 200, in validate
-    validate_json(json_doc, schema_validator)
-,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 44, in validate_json
-    error = jsonschema.exceptions.best_match(validator.iter_errors(instance))
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/exceptions.py&quot;, line 384, in best_match
-    best = next(errors, None)
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 288, in iter_errors
-    for error in errors:
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/_validators.py&quot;, line 298, in ref
-    yield from validator.descend(instance, resolved)
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 305, in descend
-    for error in self.evolve(schema=schema).iter_errors(instance):
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 278, in iter_errors
-    scope = id_of(_schema)
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 101, in _id_of
-    return schema.get(&quot;$id&quot;, &quot;&quot;)
-,AttributeError: &#x27;list&#x27; object has no attribute &#x27;get&#x27;
-,
-During handling of the above exception, another exception occurred:
-
-,Traceback (most recent call last):
-,  File &quot;/src/ogc/bblocks/validate.py&quot;, line 301, in _validate_resource
-    result = validator.validate(filename, output_filename, report,
-,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 221, in validate
-    &#x27;errorMessage&#x27;: e.message,
-,AttributeError: &#x27;AttributeError&#x27; object has no attribute &#x27;message&#x27;
-</div>
+                                                                    <div class="font-monospace entry-message section-json_schema text-danger">AttributeError: &#x27;list&#x27; object has no attribute &#x27;get&#x27;</div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -839,37 +515,10 @@ During handling of the above exception, another exception occurred:
                                                                 
                                                                     
                                                                     <div class="font-monospace entry-message section-files ">Using examples/hostname.yaml from examples</div>
-                                                                    <div class="font-monospace subsection-title mt-2">Unknown errors</div>
+                                                                    <div class="font-monospace subsection-title mt-2">JSON Schema</div>
                                                                 
                                                                     
-                                                                    <div class="font-monospace entry-message section-unknown text-danger">Traceback (most recent call last):
-,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 200, in validate
-    validate_json(json_doc, schema_validator)
-,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 44, in validate_json
-    error = jsonschema.exceptions.best_match(validator.iter_errors(instance))
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/exceptions.py&quot;, line 384, in best_match
-    best = next(errors, None)
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 288, in iter_errors
-    for error in errors:
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/_validators.py&quot;, line 298, in ref
-    yield from validator.descend(instance, resolved)
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 305, in descend
-    for error in self.evolve(schema=schema).iter_errors(instance):
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 278, in iter_errors
-    scope = id_of(_schema)
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 101, in _id_of
-    return schema.get(&quot;$id&quot;, &quot;&quot;)
-,AttributeError: &#x27;list&#x27; object has no attribute &#x27;get&#x27;
-,
-During handling of the above exception, another exception occurred:
-
-,Traceback (most recent call last):
-,  File &quot;/src/ogc/bblocks/validate.py&quot;, line 301, in _validate_resource
-    result = validator.validate(filename, output_filename, report,
-,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 221, in validate
-    &#x27;errorMessage&#x27;: e.message,
-,AttributeError: &#x27;AttributeError&#x27; object has no attribute &#x27;message&#x27;
-</div>
+                                                                    <div class="font-monospace entry-message section-json_schema text-danger">AttributeError: &#x27;list&#x27; object has no attribute &#x27;get&#x27;</div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -897,37 +546,10 @@ During handling of the above exception, another exception occurred:
                                                                 
                                                                     
                                                                     <div class="font-monospace entry-message section-files ">Using examples/idn-hostname.yaml from examples</div>
-                                                                    <div class="font-monospace subsection-title mt-2">Unknown errors</div>
+                                                                    <div class="font-monospace subsection-title mt-2">JSON Schema</div>
                                                                 
                                                                     
-                                                                    <div class="font-monospace entry-message section-unknown text-danger">Traceback (most recent call last):
-,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 200, in validate
-    validate_json(json_doc, schema_validator)
-,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 44, in validate_json
-    error = jsonschema.exceptions.best_match(validator.iter_errors(instance))
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/exceptions.py&quot;, line 384, in best_match
-    best = next(errors, None)
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 288, in iter_errors
-    for error in errors:
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/_validators.py&quot;, line 298, in ref
-    yield from validator.descend(instance, resolved)
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 305, in descend
-    for error in self.evolve(schema=schema).iter_errors(instance):
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 278, in iter_errors
-    scope = id_of(_schema)
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 101, in _id_of
-    return schema.get(&quot;$id&quot;, &quot;&quot;)
-,AttributeError: &#x27;list&#x27; object has no attribute &#x27;get&#x27;
-,
-During handling of the above exception, another exception occurred:
-
-,Traceback (most recent call last):
-,  File &quot;/src/ogc/bblocks/validate.py&quot;, line 301, in _validate_resource
-    result = validator.validate(filename, output_filename, report,
-,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 221, in validate
-    &#x27;errorMessage&#x27;: e.message,
-,AttributeError: &#x27;AttributeError&#x27; object has no attribute &#x27;message&#x27;
-</div>
+                                                                    <div class="font-monospace entry-message section-json_schema text-danger">AttributeError: &#x27;list&#x27; object has no attribute &#x27;get&#x27;</div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -955,37 +577,10 @@ During handling of the above exception, another exception occurred:
                                                                 
                                                                     
                                                                     <div class="font-monospace entry-message section-files ">Using examples/ipv4.yaml from examples</div>
-                                                                    <div class="font-monospace subsection-title mt-2">Unknown errors</div>
+                                                                    <div class="font-monospace subsection-title mt-2">JSON Schema</div>
                                                                 
                                                                     
-                                                                    <div class="font-monospace entry-message section-unknown text-danger">Traceback (most recent call last):
-,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 200, in validate
-    validate_json(json_doc, schema_validator)
-,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 44, in validate_json
-    error = jsonschema.exceptions.best_match(validator.iter_errors(instance))
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/exceptions.py&quot;, line 384, in best_match
-    best = next(errors, None)
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 288, in iter_errors
-    for error in errors:
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/_validators.py&quot;, line 298, in ref
-    yield from validator.descend(instance, resolved)
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 305, in descend
-    for error in self.evolve(schema=schema).iter_errors(instance):
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 278, in iter_errors
-    scope = id_of(_schema)
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 101, in _id_of
-    return schema.get(&quot;$id&quot;, &quot;&quot;)
-,AttributeError: &#x27;list&#x27; object has no attribute &#x27;get&#x27;
-,
-During handling of the above exception, another exception occurred:
-
-,Traceback (most recent call last):
-,  File &quot;/src/ogc/bblocks/validate.py&quot;, line 301, in _validate_resource
-    result = validator.validate(filename, output_filename, report,
-,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 221, in validate
-    &#x27;errorMessage&#x27;: e.message,
-,AttributeError: &#x27;AttributeError&#x27; object has no attribute &#x27;message&#x27;
-</div>
+                                                                    <div class="font-monospace entry-message section-json_schema text-danger">AttributeError: &#x27;list&#x27; object has no attribute &#x27;get&#x27;</div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -1013,37 +608,10 @@ During handling of the above exception, another exception occurred:
                                                                 
                                                                     
                                                                     <div class="font-monospace entry-message section-files ">Using examples/ipv6.yaml from examples</div>
-                                                                    <div class="font-monospace subsection-title mt-2">Unknown errors</div>
+                                                                    <div class="font-monospace subsection-title mt-2">JSON Schema</div>
                                                                 
                                                                     
-                                                                    <div class="font-monospace entry-message section-unknown text-danger">Traceback (most recent call last):
-,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 200, in validate
-    validate_json(json_doc, schema_validator)
-,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 44, in validate_json
-    error = jsonschema.exceptions.best_match(validator.iter_errors(instance))
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/exceptions.py&quot;, line 384, in best_match
-    best = next(errors, None)
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 288, in iter_errors
-    for error in errors:
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/_validators.py&quot;, line 298, in ref
-    yield from validator.descend(instance, resolved)
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 305, in descend
-    for error in self.evolve(schema=schema).iter_errors(instance):
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 278, in iter_errors
-    scope = id_of(_schema)
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 101, in _id_of
-    return schema.get(&quot;$id&quot;, &quot;&quot;)
-,AttributeError: &#x27;list&#x27; object has no attribute &#x27;get&#x27;
-,
-During handling of the above exception, another exception occurred:
-
-,Traceback (most recent call last):
-,  File &quot;/src/ogc/bblocks/validate.py&quot;, line 301, in _validate_resource
-    result = validator.validate(filename, output_filename, report,
-,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 221, in validate
-    &#x27;errorMessage&#x27;: e.message,
-,AttributeError: &#x27;AttributeError&#x27; object has no attribute &#x27;message&#x27;
-</div>
+                                                                    <div class="font-monospace entry-message section-json_schema text-danger">AttributeError: &#x27;list&#x27; object has no attribute &#x27;get&#x27;</div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -1071,37 +639,10 @@ During handling of the above exception, another exception occurred:
                                                                 
                                                                     
                                                                     <div class="font-monospace entry-message section-files ">Using examples/json-pointer.yaml from examples</div>
-                                                                    <div class="font-monospace subsection-title mt-2">Unknown errors</div>
+                                                                    <div class="font-monospace subsection-title mt-2">JSON Schema</div>
                                                                 
                                                                     
-                                                                    <div class="font-monospace entry-message section-unknown text-danger">Traceback (most recent call last):
-,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 200, in validate
-    validate_json(json_doc, schema_validator)
-,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 44, in validate_json
-    error = jsonschema.exceptions.best_match(validator.iter_errors(instance))
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/exceptions.py&quot;, line 384, in best_match
-    best = next(errors, None)
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 288, in iter_errors
-    for error in errors:
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/_validators.py&quot;, line 298, in ref
-    yield from validator.descend(instance, resolved)
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 305, in descend
-    for error in self.evolve(schema=schema).iter_errors(instance):
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 278, in iter_errors
-    scope = id_of(_schema)
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 101, in _id_of
-    return schema.get(&quot;$id&quot;, &quot;&quot;)
-,AttributeError: &#x27;list&#x27; object has no attribute &#x27;get&#x27;
-,
-During handling of the above exception, another exception occurred:
-
-,Traceback (most recent call last):
-,  File &quot;/src/ogc/bblocks/validate.py&quot;, line 301, in _validate_resource
-    result = validator.validate(filename, output_filename, report,
-,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 221, in validate
-    &#x27;errorMessage&#x27;: e.message,
-,AttributeError: &#x27;AttributeError&#x27; object has no attribute &#x27;message&#x27;
-</div>
+                                                                    <div class="font-monospace entry-message section-json_schema text-danger">AttributeError: &#x27;list&#x27; object has no attribute &#x27;get&#x27;</div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -1129,37 +670,10 @@ During handling of the above exception, another exception occurred:
                                                                 
                                                                     
                                                                     <div class="font-monospace entry-message section-files ">Using examples/relative-json-pointer.yaml from examples</div>
-                                                                    <div class="font-monospace subsection-title mt-2">Unknown errors</div>
+                                                                    <div class="font-monospace subsection-title mt-2">JSON Schema</div>
                                                                 
                                                                     
-                                                                    <div class="font-monospace entry-message section-unknown text-danger">Traceback (most recent call last):
-,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 200, in validate
-    validate_json(json_doc, schema_validator)
-,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 44, in validate_json
-    error = jsonschema.exceptions.best_match(validator.iter_errors(instance))
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/exceptions.py&quot;, line 384, in best_match
-    best = next(errors, None)
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 288, in iter_errors
-    for error in errors:
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/_validators.py&quot;, line 298, in ref
-    yield from validator.descend(instance, resolved)
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 305, in descend
-    for error in self.evolve(schema=schema).iter_errors(instance):
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 278, in iter_errors
-    scope = id_of(_schema)
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 101, in _id_of
-    return schema.get(&quot;$id&quot;, &quot;&quot;)
-,AttributeError: &#x27;list&#x27; object has no attribute &#x27;get&#x27;
-,
-During handling of the above exception, another exception occurred:
-
-,Traceback (most recent call last):
-,  File &quot;/src/ogc/bblocks/validate.py&quot;, line 301, in _validate_resource
-    result = validator.validate(filename, output_filename, report,
-,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 221, in validate
-    &#x27;errorMessage&#x27;: e.message,
-,AttributeError: &#x27;AttributeError&#x27; object has no attribute &#x27;message&#x27;
-</div>
+                                                                    <div class="font-monospace entry-message section-json_schema text-danger">AttributeError: &#x27;list&#x27; object has no attribute &#x27;get&#x27;</div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -1187,37 +701,10 @@ During handling of the above exception, another exception occurred:
                                                                 
                                                                     
                                                                     <div class="font-monospace entry-message section-files ">Using examples/uuid.yaml from examples</div>
-                                                                    <div class="font-monospace subsection-title mt-2">Unknown errors</div>
+                                                                    <div class="font-monospace subsection-title mt-2">JSON Schema</div>
                                                                 
                                                                     
-                                                                    <div class="font-monospace entry-message section-unknown text-danger">Traceback (most recent call last):
-,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 200, in validate
-    validate_json(json_doc, schema_validator)
-,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 44, in validate_json
-    error = jsonschema.exceptions.best_match(validator.iter_errors(instance))
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/exceptions.py&quot;, line 384, in best_match
-    best = next(errors, None)
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 288, in iter_errors
-    for error in errors:
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/_validators.py&quot;, line 298, in ref
-    yield from validator.descend(instance, resolved)
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 305, in descend
-    for error in self.evolve(schema=schema).iter_errors(instance):
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 278, in iter_errors
-    scope = id_of(_schema)
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 101, in _id_of
-    return schema.get(&quot;$id&quot;, &quot;&quot;)
-,AttributeError: &#x27;list&#x27; object has no attribute &#x27;get&#x27;
-,
-During handling of the above exception, another exception occurred:
-
-,Traceback (most recent call last):
-,  File &quot;/src/ogc/bblocks/validate.py&quot;, line 301, in _validate_resource
-    result = validator.validate(filename, output_filename, report,
-,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 221, in validate
-    &#x27;errorMessage&#x27;: e.message,
-,AttributeError: &#x27;AttributeError&#x27; object has no attribute &#x27;message&#x27;
-</div>
+                                                                    <div class="font-monospace entry-message section-json_schema text-danger">AttributeError: &#x27;list&#x27; object has no attribute &#x27;get&#x27;</div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -1270,37 +757,10 @@ During handling of the above exception, another exception occurred:
                                                                 
                                                                     
                                                                     <div class="font-monospace entry-message section-files ">Using examples/point.yaml from examples</div>
-                                                                    <div class="font-monospace subsection-title mt-2">Unknown errors</div>
+                                                                    <div class="font-monospace subsection-title mt-2">JSON Schema</div>
                                                                 
                                                                     
-                                                                    <div class="font-monospace entry-message section-unknown text-danger">Traceback (most recent call last):
-,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 200, in validate
-    validate_json(json_doc, schema_validator)
-,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 44, in validate_json
-    error = jsonschema.exceptions.best_match(validator.iter_errors(instance))
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/exceptions.py&quot;, line 384, in best_match
-    best = next(errors, None)
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 288, in iter_errors
-    for error in errors:
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/_validators.py&quot;, line 298, in ref
-    yield from validator.descend(instance, resolved)
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 305, in descend
-    for error in self.evolve(schema=schema).iter_errors(instance):
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 278, in iter_errors
-    scope = id_of(_schema)
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 101, in _id_of
-    return schema.get(&quot;$id&quot;, &quot;&quot;)
-,AttributeError: &#x27;list&#x27; object has no attribute &#x27;get&#x27;
-,
-During handling of the above exception, another exception occurred:
-
-,Traceback (most recent call last):
-,  File &quot;/src/ogc/bblocks/validate.py&quot;, line 301, in _validate_resource
-    result = validator.validate(filename, output_filename, report,
-,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 221, in validate
-    &#x27;errorMessage&#x27;: e.message,
-,AttributeError: &#x27;AttributeError&#x27; object has no attribute &#x27;message&#x27;
-</div>
+                                                                    <div class="font-monospace entry-message section-json_schema text-danger">AttributeError: &#x27;list&#x27; object has no attribute &#x27;get&#x27;</div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -1328,37 +788,10 @@ During handling of the above exception, another exception occurred:
                                                                 
                                                                     
                                                                     <div class="font-monospace entry-message section-files ">Using examples/feature.yaml from examples</div>
-                                                                    <div class="font-monospace subsection-title mt-2">Unknown errors</div>
+                                                                    <div class="font-monospace subsection-title mt-2">JSON Schema</div>
                                                                 
                                                                     
-                                                                    <div class="font-monospace entry-message section-unknown text-danger">Traceback (most recent call last):
-,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 200, in validate
-    validate_json(json_doc, schema_validator)
-,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 44, in validate_json
-    error = jsonschema.exceptions.best_match(validator.iter_errors(instance))
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/exceptions.py&quot;, line 384, in best_match
-    best = next(errors, None)
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 288, in iter_errors
-    for error in errors:
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/_validators.py&quot;, line 298, in ref
-    yield from validator.descend(instance, resolved)
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 305, in descend
-    for error in self.evolve(schema=schema).iter_errors(instance):
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 278, in iter_errors
-    scope = id_of(_schema)
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 101, in _id_of
-    return schema.get(&quot;$id&quot;, &quot;&quot;)
-,AttributeError: &#x27;list&#x27; object has no attribute &#x27;get&#x27;
-,
-During handling of the above exception, another exception occurred:
-
-,Traceback (most recent call last):
-,  File &quot;/src/ogc/bblocks/validate.py&quot;, line 301, in _validate_resource
-    result = validator.validate(filename, output_filename, report,
-,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 221, in validate
-    &#x27;errorMessage&#x27;: e.message,
-,AttributeError: &#x27;AttributeError&#x27; object has no attribute &#x27;message&#x27;
-</div>
+                                                                    <div class="font-monospace entry-message section-json_schema text-danger">AttributeError: &#x27;list&#x27; object has no attribute &#x27;get&#x27;</div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -1386,37 +819,10 @@ During handling of the above exception, another exception occurred:
                                                                 
                                                                     
                                                                     <div class="font-monospace entry-message section-files ">Using examples/polygon.yaml from examples</div>
-                                                                    <div class="font-monospace subsection-title mt-2">Unknown errors</div>
+                                                                    <div class="font-monospace subsection-title mt-2">JSON Schema</div>
                                                                 
                                                                     
-                                                                    <div class="font-monospace entry-message section-unknown text-danger">Traceback (most recent call last):
-,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 200, in validate
-    validate_json(json_doc, schema_validator)
-,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 44, in validate_json
-    error = jsonschema.exceptions.best_match(validator.iter_errors(instance))
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/exceptions.py&quot;, line 384, in best_match
-    best = next(errors, None)
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 288, in iter_errors
-    for error in errors:
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/_validators.py&quot;, line 298, in ref
-    yield from validator.descend(instance, resolved)
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 305, in descend
-    for error in self.evolve(schema=schema).iter_errors(instance):
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 278, in iter_errors
-    scope = id_of(_schema)
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 101, in _id_of
-    return schema.get(&quot;$id&quot;, &quot;&quot;)
-,AttributeError: &#x27;list&#x27; object has no attribute &#x27;get&#x27;
-,
-During handling of the above exception, another exception occurred:
-
-,Traceback (most recent call last):
-,  File &quot;/src/ogc/bblocks/validate.py&quot;, line 301, in _validate_resource
-    result = validator.validate(filename, output_filename, report,
-,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 221, in validate
-    &#x27;errorMessage&#x27;: e.message,
-,AttributeError: &#x27;AttributeError&#x27; object has no attribute &#x27;message&#x27;
-</div>
+                                                                    <div class="font-monospace entry-message section-json_schema text-danger">AttributeError: &#x27;list&#x27; object has no attribute &#x27;get&#x27;</div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -1469,37 +875,10 @@ During handling of the above exception, another exception occurred:
                                                                 
                                                                     
                                                                     <div class="font-monospace entry-message section-files ">Using examples/item.yaml from examples</div>
-                                                                    <div class="font-monospace subsection-title mt-2">Unknown errors</div>
+                                                                    <div class="font-monospace subsection-title mt-2">JSON Schema</div>
                                                                 
                                                                     
-                                                                    <div class="font-monospace entry-message section-unknown text-danger">Traceback (most recent call last):
-,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 200, in validate
-    validate_json(json_doc, schema_validator)
-,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 44, in validate_json
-    error = jsonschema.exceptions.best_match(validator.iter_errors(instance))
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/exceptions.py&quot;, line 384, in best_match
-    best = next(errors, None)
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 288, in iter_errors
-    for error in errors:
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/_validators.py&quot;, line 298, in ref
-    yield from validator.descend(instance, resolved)
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 305, in descend
-    for error in self.evolve(schema=schema).iter_errors(instance):
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 278, in iter_errors
-    scope = id_of(_schema)
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 101, in _id_of
-    return schema.get(&quot;$id&quot;, &quot;&quot;)
-,AttributeError: &#x27;list&#x27; object has no attribute &#x27;get&#x27;
-,
-During handling of the above exception, another exception occurred:
-
-,Traceback (most recent call last):
-,  File &quot;/src/ogc/bblocks/validate.py&quot;, line 301, in _validate_resource
-    result = validator.validate(filename, output_filename, report,
-,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 221, in validate
-    &#x27;errorMessage&#x27;: e.message,
-,AttributeError: &#x27;AttributeError&#x27; object has no attribute &#x27;message&#x27;
-</div>
+                                                                    <div class="font-monospace entry-message section-json_schema text-danger">AttributeError: &#x27;list&#x27; object has no attribute &#x27;get&#x27;</div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -1527,37 +906,10 @@ During handling of the above exception, another exception occurred:
                                                                 
                                                                     
                                                                     <div class="font-monospace entry-message section-files ">Using examples/catalog.yaml from examples</div>
-                                                                    <div class="font-monospace subsection-title mt-2">Unknown errors</div>
+                                                                    <div class="font-monospace subsection-title mt-2">JSON Schema</div>
                                                                 
                                                                     
-                                                                    <div class="font-monospace entry-message section-unknown text-danger">Traceback (most recent call last):
-,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 200, in validate
-    validate_json(json_doc, schema_validator)
-,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 44, in validate_json
-    error = jsonschema.exceptions.best_match(validator.iter_errors(instance))
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/exceptions.py&quot;, line 384, in best_match
-    best = next(errors, None)
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 288, in iter_errors
-    for error in errors:
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/_validators.py&quot;, line 298, in ref
-    yield from validator.descend(instance, resolved)
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 305, in descend
-    for error in self.evolve(schema=schema).iter_errors(instance):
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 278, in iter_errors
-    scope = id_of(_schema)
-,  File &quot;/venv/lib/python3.10/site-packages/jsonschema/validators.py&quot;, line 101, in _id_of
-    return schema.get(&quot;$id&quot;, &quot;&quot;)
-,AttributeError: &#x27;list&#x27; object has no attribute &#x27;get&#x27;
-,
-During handling of the above exception, another exception occurred:
-
-,Traceback (most recent call last):
-,  File &quot;/src/ogc/bblocks/validate.py&quot;, line 301, in _validate_resource
-    result = validator.validate(filename, output_filename, report,
-,  File &quot;/src/ogc/bblocks/validation/json_.py&quot;, line 221, in validate
-    &#x27;errorMessage&#x27;: e.message,
-,AttributeError: &#x27;AttributeError&#x27; object has no attribute &#x27;message&#x27;
-</div>
+                                                                    <div class="font-monospace entry-message section-json_schema text-danger">AttributeError: &#x27;list&#x27; object has no attribute &#x27;get&#x27;</div>
                                                     </div>
                                                 </div>
                                             </div>

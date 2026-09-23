@@ -10,34 +10,57 @@
 [] cwl:cwlVersion <file:///github/workspace/v1.2> ;
     cwl:graph [ rdfs:label "Echo OGC BBox"^^xsd:string ;
             dct:identifier <file:///github/workspace/clt> ;
-            ogcproc:input _:N47f1460bbbf046269079fbffc81dd01c ;
-            ogcproc:output _:N46bb1df1afc945b2ad3e4f61f5a09045 ;
+            ogcproc:input _:Nb64b90bf775949ba996b2e902c42b760 ;
+            ogcproc:output _:N59ffde89263748e0adb8d80c85581208 ;
             cwl:baseCommand "\"echo\""^^rdf:JSON ;
-            cwl:input _:N47f1460bbbf046269079fbffc81dd01c ;
-            cwl:output _:N46bb1df1afc945b2ad3e4f61f5a09045 ;
-            cwl:requirements [ ns1:type <file:///github/workspace/InlineJavascriptRequirement> ],
-                [ cwl:types [ cwl:import <https://raw.githubusercontent.com/eoap/schemas/main/ogc.yaml> ] ;
-                    ns1:type <file:///github/workspace/SchemaDefRequirement> ] ;
+            cwl:input _:Nb64b90bf775949ba996b2e902c42b760 ;
+            cwl:output _:N59ffde89263748e0adb8d80c85581208 ;
+            cwl:requirements [ cwl:types [ cwl:import <https://raw.githubusercontent.com/eoap/schemas/main/ogc.yaml> ] ;
+                    ns1:type <file:///github/workspace/SchemaDefRequirement> ],
+                [ ns1:type <file:///github/workspace/InlineJavascriptRequirement> ] ;
             cwl:stdout "echo_output.txt"^^xsd:string ;
             ns1:type <file:///github/workspace/CommandLineTool> ],
         [ rdfs:label "OGC BBox Processing Workflow"^^xsd:string ;
             dct:identifier <file:///github/workspace/bbox-workflow> ;
-            ogcproc:input _:N12c1171e16424e87b84fbf2b3e1b7aaf ;
-            ogcproc:output _:Nf761cf8b4b354b1498c33034e51545b0 ;
+            ogcproc:input _:N3f53c0a08547468fa51713b391b0e5e3 ;
+            ogcproc:output _:N5293fd96f8a14304998963a365c55227 ;
             rdfs:comment "Workflow that processes OGC BBox input and generates output"^^xsd:string ;
-            cwl:input _:N12c1171e16424e87b84fbf2b3e1b7aaf ;
-            cwl:output _:Nf761cf8b4b354b1498c33034e51545b0 ;
-            cwl:requirements [ ns1:type <file:///github/workspace/InlineJavascriptRequirement> ],
-                [ cwl:types [ cwl:import <https://raw.githubusercontent.com/eoap/schemas/main/ogc.yaml> ] ;
-                    ns1:type <file:///github/workspace/SchemaDefRequirement> ] ;
+            cwl:input _:N3f53c0a08547468fa51713b391b0e5e3 ;
+            cwl:output _:N5293fd96f8a14304998963a365c55227 ;
+            cwl:requirements [ cwl:types [ cwl:import <https://raw.githubusercontent.com/eoap/schemas/main/ogc.yaml> ] ;
+                    ns1:type <file:///github/workspace/SchemaDefRequirement> ],
+                [ ns1:type <file:///github/workspace/InlineJavascriptRequirement> ] ;
             cwl:steps [ cwl:echo_step [ cwl:in [ cwl:aoi "aoi" ] ;
                             cwl:out ( "echo_output" ) ;
                             cwl:run <file:///github/workspace/#clt> ] ] ;
             ns1:type <file:///github/workspace/Workflow> ] .
 
-_:N102418aecbbe4cf280284c11a6ac661c cwl:type <file:///github/workspace/stdout> .
+_:N093331efa2eb489e9904c3cb376ed701 rdfs:label "Echo output"^^xsd:string ;
+    dct:identifier <file:///github/workspace/echo_output> ;
+    rdfs:comment "Echoed BBox information"^^xsd:string ;
+    cwl:outputSource <file:///github/workspace/echo_step/echo_output> ;
+    cwl:type <file:///github/workspace/File> .
 
-_:N3a71d080b35c4ac3b1ad471122448c0f rdfs:label "Area of interest"^^xsd:string ;
+_:N5000a33bcbf046978bcfc8a187bc455a rdfs:label "Area of interest"^^xsd:string ;
+    ogcproc:itemsType "number"^^xsd:string ;
+    ogcproc:maxItems 6 ;
+    ogcproc:minItems 4 ;
+    ogcproc:schemaType "array"^^xsd:string ;
+    rdfs:comment "Area of interest defined as a bounding box"^^xsd:string ;
+    rdfs:seeAlso geo:BoundingBox ;
+    cwl:inputBinding [ cwl:valueFrom """${
+  // Validate the length of bbox to be either 4 or 6
+  var bboxLength = inputs.aoi.bbox.length;
+  if (bboxLength !== 4 && bboxLength !== 6) {
+    throw "Invalid bbox length: bbox must have either 4 or 6 elements.";
+  }
+  // Convert bbox array to a space-separated string for echo
+  return inputs.aoi.bbox.join(' ') + " CRS: " + inputs.aoi.crs;
+}
+"""^^xsd:string ] ;
+    cwl:type <https://raw.githubusercontent.com/eoap/schemas/main/ogc.yaml#BBox> .
+
+_:N544e0ca5fd5340cabdeb3953a1488214 rdfs:label "Area of interest"^^xsd:string ;
     dct:identifier <file:///github/workspace/aoi> ;
     ogcproc:itemsType "number"^^xsd:string ;
     ogcproc:maxItems 6 ;
@@ -47,50 +70,23 @@ _:N3a71d080b35c4ac3b1ad471122448c0f rdfs:label "Area of interest"^^xsd:string ;
     rdfs:seeAlso geo:BoundingBox ;
     cwl:type <https://raw.githubusercontent.com/eoap/schemas/main/ogc.yaml#BBox> .
 
-_:N75e228dd4f5e4f5a9c1e5ee5609127d9 rdfs:label "Echo output"^^xsd:string ;
-    dct:identifier <file:///github/workspace/echo_output> ;
-    rdfs:comment "Echoed BBox information"^^xsd:string ;
-    cwl:outputSource <file:///github/workspace/echo_step/echo_output> ;
-    cwl:type <file:///github/workspace/File> .
+_:N9281243e49a240ff9e93bf6c00df37df cwl:echo_output [ cwl:type <file:///github/workspace/stdout> ] .
 
-_:N950a6acfa52442f79ebc404088f6c6e4 cwl:valueFrom """${
-  // Validate the length of bbox to be either 4 or 6
-  var bboxLength = inputs.aoi.bbox.length;
-  if (bboxLength !== 4 && bboxLength !== 6) {
-    throw "Invalid bbox length: bbox must have either 4 or 6 elements.";
-  }
-  // Convert bbox array to a space-separated string for echo
-  return inputs.aoi.bbox.join(' ') + " CRS: " + inputs.aoi.crs;
-}
-"""^^xsd:string .
+_:Ndec99f15a5a94634b535dc7cfc954f9d cwl:aoi _:N5000a33bcbf046978bcfc8a187bc455a .
 
-_:Nd5fa5ef5f91245e48933889cf0a8116b rdfs:label "Area of interest"^^xsd:string ;
-    ogcproc:itemsType "number"^^xsd:string ;
-    ogcproc:maxItems 6 ;
-    ogcproc:minItems 4 ;
-    ogcproc:schemaType "array"^^xsd:string ;
-    rdfs:comment "Area of interest defined as a bounding box"^^xsd:string ;
-    rdfs:seeAlso geo:BoundingBox ;
-    cwl:inputBinding _:N950a6acfa52442f79ebc404088f6c6e4 ;
-    cwl:type <https://raw.githubusercontent.com/eoap/schemas/main/ogc.yaml#BBox> .
-
-_:Nee1725c157d948ceb9ba79b2019380b6 cwl:echo_output _:N102418aecbbe4cf280284c11a6ac661c .
-
-_:Nfe52e418832a4177b644f46ce6077624 cwl:aoi _:Nd5fa5ef5f91245e48933889cf0a8116b .
-
-_:N12c1171e16424e87b84fbf2b3e1b7aaf a ogcproc:InputDescription ;
-    rdf:first _:N3a71d080b35c4ac3b1ad471122448c0f ;
+_:N3f53c0a08547468fa51713b391b0e5e3 a ogcproc:InputDescription ;
+    rdf:first _:N544e0ca5fd5340cabdeb3953a1488214 ;
     rdf:rest () .
 
-_:N46bb1df1afc945b2ad3e4f61f5a09045 a ogcproc:OutputDescription ;
-    rdf:first _:Nee1725c157d948ceb9ba79b2019380b6 ;
+_:N5293fd96f8a14304998963a365c55227 a ogcproc:OutputDescription ;
+    rdf:first _:N093331efa2eb489e9904c3cb376ed701 ;
     rdf:rest () .
 
-_:N47f1460bbbf046269079fbffc81dd01c a ogcproc:InputDescription ;
-    rdf:first _:Nfe52e418832a4177b644f46ce6077624 ;
+_:N59ffde89263748e0adb8d80c85581208 a ogcproc:OutputDescription ;
+    rdf:first _:N9281243e49a240ff9e93bf6c00df37df ;
     rdf:rest () .
 
-_:Nf761cf8b4b354b1498c33034e51545b0 a ogcproc:OutputDescription ;
-    rdf:first _:N75e228dd4f5e4f5a9c1e5ee5609127d9 ;
+_:Nb64b90bf775949ba996b2e902c42b760 a ogcproc:InputDescription ;
+    rdf:first _:Ndec99f15a5a94634b535dc7cfc954f9d ;
     rdf:rest () .
 

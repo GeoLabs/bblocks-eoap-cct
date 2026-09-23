@@ -20,15 +20,17 @@
     rdfs:label "CWL to OGC API Processes Profile" ;
     dct:abstract "Profile for converting CWL CommandLineTool and Workflow definitions to OGC API Processes processDescriptions"^^<https://www.w3.org/ns/iana/media-types/text/markdown> ;
     dct:created "2025-12-18T00:00:00+00:00"^^xsd:dateTime ;
-    dct:description [ dct:format "application/json" ;
-            rdfs:isDefinedBy <https://geolabs.github.io/bblocks-eoap-cct/build/generateddocs/json-full/cct/cwl-to-ogcprocess/index.json> ],
-        [ dct:format "text/html" ;
+    dct:description [ dct:format "text/html" ;
             rdfs:isDefinedBy <https://geolabs.github.io/bblocks-eoap-cct/bblock/eoap.cct.cwl-to-ogcprocess> ],
+        [ dct:format "application/json" ;
+            rdfs:isDefinedBy <https://geolabs.github.io/bblocks-eoap-cct/build/generateddocs/json-full/cct/cwl-to-ogcprocess/index.json> ],
         [ dct:format "text/markdown" ;
             rdfs:isDefinedBy <https://geolabs.github.io/bblocks-eoap-cct/build/generateddocs/markdown/cct/cwl-to-ogcprocess/index.md> ],
         "This building block provides a transformation profile that converts Common Workflow Language (CWL) CommandLineTool and Workflow definitions into OGC API - Processes processDescription schemas. It supports all EOAP custom types including BBox, GeoJSON, STAC, and String Formats, as well as standard CWL types. The profile enables automatic mapping of CWL workflow definitions to OGC API - Processes compliant service descriptions, facilitating the deployment of CWL workflows as OGC processes."^^<https://www.w3.org/ns/iana/media-types/text/markdown> ;
     dct:hasVersion "1.0" ;
-    dct:modified "2026-08-25"^^xsd:date ;
+    dct:license [ rdfs:label "Apache-2.0" ;
+            rdfs:seeAlso <https://geolabs.github.io/bblocks-eoap-cct/LICENSE> ] ;
+    dct:modified "2026-09-23"^^xsd:date ;
     dct:source <https://docs.ogc.org/bp/20-089r1.html>,
         <https://docs.ogc.org/is/18-062r2/18-062r2.html>,
         <https://github.com/eoap/schemas>,
@@ -45,17 +47,17 @@
         "processDescription",
         "profile",
         "transformation" ;
-    prof:hasResource [ dct:conformsTo <https://www.w3.org/TR/json-ld11/> ;
+    prof:hasResource [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
+            dct:format "application/yaml" ;
+            prof:hasArtifact <https://geolabs.github.io/bblocks-eoap-cct/build/annotated/cct/cwl-to-ogcprocess/schema.yaml> ;
+            prof:hasRole role:schema ],
+        [ dct:conformsTo <https://www.w3.org/TR/json-ld11/> ;
             dct:format "application/ld+json" ;
             prof:hasArtifact <https://geolabs.github.io/bblocks-eoap-cct/build/annotated/cct/cwl-to-ogcprocess/context.jsonld> ;
             prof:hasRole role:mapping ],
         [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
             dct:format "application/json" ;
             prof:hasArtifact <https://geolabs.github.io/bblocks-eoap-cct/build/annotated/cct/cwl-to-ogcprocess/schema.json> ;
-            prof:hasRole role:schema ],
-        [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
-            dct:format "application/yaml" ;
-            prof:hasArtifact <https://geolabs.github.io/bblocks-eoap-cct/build/annotated/cct/cwl-to-ogcprocess/schema.yaml> ;
             prof:hasRole role:schema ] ;
     bblocks:dependsOn <bblocks://eoap.cct.bbox>,
         <bblocks://eoap.cct.geojson>,
@@ -78,18 +80,18 @@
 
 <https://geolabs.github.io/bblocks-eoap-cct/build/bblocks.ttl> a prov:Entity ;
     dct:format "text/turtle" ;
-    prov:wasAttributedTo _:N3a95919b34af4c21ac6b9d3780eb05e3 ;
+    prov:wasAttributedTo _:N29eba24a1c3a4291b61937a7eef4cf43 ;
     prov:wasGeneratedBy [ a prov:Activity ;
-            prov:endedAtTime "2026-08-25T08:45:13.693882"^^xsd:dateTime ;
-            prov:startedAtTime "2026-08-25T08:45:13.483685"^^xsd:dateTime ;
+            prov:endedAtTime "2026-09-23T16:07:33.504925"^^xsd:dateTime ;
+            prov:startedAtTime "2026-09-23T16:07:33.354472"^^xsd:dateTime ;
             prov:used [ a prov:Entity ;
-                    dct:format "application/yaml" ;
-                    rdfs:seeAlso <file:///src/ogc/bblocks/register-context.yaml> ],
-                [ a prov:Entity ;
                     dct:format "application/json" ;
-                    dct:hasVersion "git:09159bb35e77a766b534f3ec4a303794e876f795" ;
-                    rdfs:seeAlso <https://geolabs.github.io/bblocks-eoap-cct/build/register.json> ] ;
-            prov:wasAssociatedWith _:N3a95919b34af4c21ac6b9d3780eb05e3 ] .
+                    dct:hasVersion "git:1971e8d78b7c4591ab84728cb26337f050ea01b2" ;
+                    rdfs:seeAlso <https://geolabs.github.io/bblocks-eoap-cct/build/register.json> ],
+                [ a prov:Entity ;
+                    dct:format "application/yaml" ;
+                    rdfs:seeAlso <file:///src/ogc/bblocks/register-context.yaml> ] ;
+            prov:wasAssociatedWith _:N29eba24a1c3a4291b61937a7eef4cf43 ] .
 
 <https://github.com/eoap/schemas> rdfs:label "Earth Observation Application Package (EOAP) CWL Custom Types" .
 
@@ -146,7 +148,9 @@
             rdfs:isDefinedBy <https://geolabs.github.io/bblocks-eoap-cct/bblock/eoap.cct.bbox> ],
         "Defines a CWL custom type for OGC bounding boxes conforming to OGC API standards. The BoundingBox type represents spatial extents with bbox coordinates and an optional CRS specification. Maps to the bbox schema defined in Table 13 of OGC API - Processes Part 2."^^<https://www.w3.org/ns/iana/media-types/text/markdown> ;
     dct:hasVersion "1.0" ;
-    dct:modified "2026-08-25"^^xsd:date ;
+    dct:license [ rdfs:label "Apache-2.0" ;
+            rdfs:seeAlso <https://geolabs.github.io/bblocks-eoap-cct/LICENSE> ] ;
+    dct:modified "2026-09-23"^^xsd:date ;
     dct:source <http://www.opengis.net/def/crs/OGC/1.3/CRS84>,
         <https://docs.ogc.org/DRAFTS/18-062r3.html#_921c9ed7-3bf5-8c1d-a5be-f1ca4d0d5351>,
         <https://docs.ogc.org/is/17-069r4/17-069r4.html#_parameter_bbox>,
@@ -162,17 +166,17 @@
         "bounding box",
         "spatial extent" ;
     prof:hasResource [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
-            dct:format "application/yaml" ;
-            prof:hasArtifact <https://geolabs.github.io/bblocks-eoap-cct/build/annotated/cct/bbox/schema.yaml> ;
-            prof:hasRole role:schema ],
-        [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
             dct:format "application/json" ;
             prof:hasArtifact <https://geolabs.github.io/bblocks-eoap-cct/build/annotated/cct/bbox/schema.json> ;
             prof:hasRole role:schema ],
         [ dct:conformsTo <https://www.w3.org/TR/json-ld11/> ;
             dct:format "application/ld+json" ;
             prof:hasArtifact <https://geolabs.github.io/bblocks-eoap-cct/build/annotated/cct/bbox/context.jsonld> ;
-            prof:hasRole role:mapping ] ;
+            prof:hasRole role:mapping ],
+        [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
+            dct:format "application/yaml" ;
+            prof:hasArtifact <https://geolabs.github.io/bblocks-eoap-cct/build/annotated/cct/bbox/schema.yaml> ;
+            prof:hasRole role:schema ] ;
     bblocks:hasSourceJsonLdContext <https://geolabs.github.io/bblocks-eoap-cct/_sources/bbox/context.jsonld> ;
     bblocks:scope <http://www.opengis.net/def/bblocks/scope/dev> ;
     bblocks:status <http://www.opengis.net/def/status/under-development> ;
@@ -187,13 +191,15 @@
     dct:created "2025-12-17T00:00:00+00:00"^^xsd:dateTime ;
     dct:description [ dct:format "text/html" ;
             rdfs:isDefinedBy <https://geolabs.github.io/bblocks-eoap-cct/bblock/eoap.cct.stac> ],
-        [ dct:format "text/markdown" ;
-            rdfs:isDefinedBy <https://geolabs.github.io/bblocks-eoap-cct/build/generateddocs/markdown/cct/stac/index.md> ],
         [ dct:format "application/json" ;
             rdfs:isDefinedBy <https://geolabs.github.io/bblocks-eoap-cct/build/generateddocs/json-full/cct/stac/index.json> ],
+        [ dct:format "text/markdown" ;
+            rdfs:isDefinedBy <https://geolabs.github.io/bblocks-eoap-cct/build/generateddocs/markdown/cct/stac/index.md> ],
         "Defines CWL custom types for STAC (SpatioTemporal Asset Catalog) metadata structures including Catalog, Item, and Collection. These types enable CWL workflows to handle EO product manifests and map to OGC API - Processes input/output schemas for STAC resources as defined in OGC Best Practice for Earth Observation Application Package (section 6.2.3)."^^<https://www.w3.org/ns/iana/media-types/text/markdown> ;
     dct:hasVersion "1.0" ;
-    dct:modified "2026-08-25"^^xsd:date ;
+    dct:license [ rdfs:label "Apache-2.0" ;
+            rdfs:seeAlso <https://geolabs.github.io/bblocks-eoap-cct/LICENSE> ] ;
+    dct:modified "2026-09-23"^^xsd:date ;
     dct:source <https://docs.ogc.org/bp/20-089r1.html>,
         <https://github.com/radiantearth/stac-spec>,
         <https://raw.githubusercontent.com/eoap/schemas/refs/heads/main/stac.yaml> ;
@@ -231,15 +237,17 @@
     rdfs:label "eaop-cct:String-Format" ;
     dct:abstract "CWL custom types for standard string formats (date, datetime, URI, email, etc.)"^^<https://www.w3.org/ns/iana/media-types/text/markdown> ;
     dct:created "2025-12-17T00:00:00+00:00"^^xsd:dateTime ;
-    dct:description [ dct:format "text/html" ;
-            rdfs:isDefinedBy <https://geolabs.github.io/bblocks-eoap-cct/bblock/eoap.cct.string-format> ],
+    dct:description [ dct:format "application/json" ;
+            rdfs:isDefinedBy <https://geolabs.github.io/bblocks-eoap-cct/build/generateddocs/json-full/cct/string-format/index.json> ],
         [ dct:format "text/markdown" ;
             rdfs:isDefinedBy <https://geolabs.github.io/bblocks-eoap-cct/build/generateddocs/markdown/cct/string-format/index.md> ],
-        [ dct:format "application/json" ;
-            rdfs:isDefinedBy <https://geolabs.github.io/bblocks-eoap-cct/build/generateddocs/json-full/cct/string-format/index.json> ],
+        [ dct:format "text/html" ;
+            rdfs:isDefinedBy <https://geolabs.github.io/bblocks-eoap-cct/bblock/eoap.cct.string-format> ],
         "Defines CWL custom types for standard string formats conforming to JSON Schema and OpenAPI specifications. These types enable workflows to validate and document string inputs/outputs with specific format constraints (datetime, URI, email, UUID, etc.). Maps to string format constraints in OGC API - Processes schemas (Table 13)."^^<https://www.w3.org/ns/iana/media-types/text/markdown> ;
     dct:hasVersion "1.0" ;
-    dct:modified "2026-08-25"^^xsd:date ;
+    dct:license [ rdfs:label "Apache-2.0" ;
+            rdfs:seeAlso <https://geolabs.github.io/bblocks-eoap-cct/LICENSE> ] ;
+    dct:modified "2026-09-23"^^xsd:date ;
     dct:source <https://docs.ogc.org/DRAFTS/18-062r3.html#_921c9ed7-3bf5-8c1d-a5be-f1ca4d0d5351>,
         <https://json-schema.org/understanding-json-schema/reference/string.html#format>,
         <https://raw.githubusercontent.com/eoap/schemas/refs/heads/main/string_format.yaml>,
@@ -266,18 +274,18 @@
         "email",
         "string format",
         "validation" ;
-    prof:hasResource [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
+    prof:hasResource [ dct:conformsTo <https://www.w3.org/TR/json-ld11/> ;
+            dct:format "application/ld+json" ;
+            prof:hasArtifact <https://geolabs.github.io/bblocks-eoap-cct/build/annotated/cct/string-format/context.jsonld> ;
+            prof:hasRole role:mapping ],
+        [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
             dct:format "application/json" ;
             prof:hasArtifact <https://geolabs.github.io/bblocks-eoap-cct/build/annotated/cct/string-format/schema.json> ;
             prof:hasRole role:schema ],
         [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
             dct:format "application/yaml" ;
             prof:hasArtifact <https://geolabs.github.io/bblocks-eoap-cct/build/annotated/cct/string-format/schema.yaml> ;
-            prof:hasRole role:schema ],
-        [ dct:conformsTo <https://www.w3.org/TR/json-ld11/> ;
-            dct:format "application/ld+json" ;
-            prof:hasArtifact <https://geolabs.github.io/bblocks-eoap-cct/build/annotated/cct/string-format/context.jsonld> ;
-            prof:hasRole role:mapping ] ;
+            prof:hasRole role:schema ] ;
     bblocks:hasSourceJsonLdContext <https://geolabs.github.io/bblocks-eoap-cct/_sources/string-format/context.jsonld> ;
     bblocks:scope <http://www.opengis.net/def/bblocks/scope/dev> ;
     bblocks:status <http://www.opengis.net/def/status/under-development> ;
@@ -292,15 +300,17 @@
     rdfs:label "eaop-cct:GeoJSON" ;
     dct:abstract "CWL custom types for GeoJSON geometries, features, and feature collections"^^<https://www.w3.org/ns/iana/media-types/text/markdown> ;
     dct:created "2025-12-17T00:00:00+00:00"^^xsd:dateTime ;
-    dct:description [ dct:format "text/html" ;
-            rdfs:isDefinedBy <https://geolabs.github.io/bblocks-eoap-cct/bblock/eoap.cct.geojson> ],
+    dct:description [ dct:format "text/markdown" ;
+            rdfs:isDefinedBy <https://geolabs.github.io/bblocks-eoap-cct/build/generateddocs/markdown/cct/geojson/index.md> ],
         [ dct:format "application/json" ;
             rdfs:isDefinedBy <https://geolabs.github.io/bblocks-eoap-cct/build/generateddocs/json-full/cct/geojson/index.json> ],
-        [ dct:format "text/markdown" ;
-            rdfs:isDefinedBy <https://geolabs.github.io/bblocks-eoap-cct/build/generateddocs/markdown/cct/geojson/index.md> ],
+        [ dct:format "text/html" ;
+            rdfs:isDefinedBy <https://geolabs.github.io/bblocks-eoap-cct/bblock/eoap.cct.geojson> ],
         "Defines CWL custom types for GeoJSON data structures including Point, LineString, Polygon, MultiPoint, MultiLineString, MultiPolygon, Feature, FeatureCollection, and GeometryCollection. These types enable CWL workflows to handle geospatial vector data and map to OGC API - Processes input/output schemas (Table 13)."^^<https://www.w3.org/ns/iana/media-types/text/markdown> ;
     dct:hasVersion "1.0" ;
-    dct:modified "2026-08-25"^^xsd:date ;
+    dct:license [ rdfs:label "Apache-2.0" ;
+            rdfs:seeAlso <https://geolabs.github.io/bblocks-eoap-cct/LICENSE> ] ;
+    dct:modified "2026-09-23"^^xsd:date ;
     dct:source <https://datatracker.ietf.org/doc/html/rfc7946>,
         <https://docs.ogc.org/DRAFTS/18-062r3.html#_921c9ed7-3bf5-8c1d-a5be-f1ca4d0d5351>,
         <https://raw.githubusercontent.com/eoap/schemas/refs/heads/main/geojson.yaml> ;
@@ -314,12 +324,12 @@
         "geometry",
         "geospatial" ;
     prof:hasResource [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
-            dct:format "application/json" ;
-            prof:hasArtifact <https://geolabs.github.io/bblocks-eoap-cct/build/annotated/cct/geojson/schema.json> ;
-            prof:hasRole role:schema ],
-        [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
             dct:format "application/yaml" ;
             prof:hasArtifact <https://geolabs.github.io/bblocks-eoap-cct/build/annotated/cct/geojson/schema.yaml> ;
+            prof:hasRole role:schema ],
+        [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
+            dct:format "application/json" ;
+            prof:hasArtifact <https://geolabs.github.io/bblocks-eoap-cct/build/annotated/cct/geojson/schema.json> ;
             prof:hasRole role:schema ],
         [ dct:conformsTo <https://www.w3.org/TR/json-ld11/> ;
             dct:format "application/ld+json" ;
@@ -353,7 +363,9 @@ in Table 13 of OGC API - Processes Part 1: Core ([OGC 18-062r3](https://docs.ogc
 The JSON Schemas provided are translations for documentation purposes. CWL uses Schema Salad as its schema 
 language, which is based on Apache Avro Schema and extends it with semantic annotations for linked data.
 """^^<https://www.w3.org/ns/iana/media-types/text/markdown> ;
-    dct:modified "2026-08-25T08:45:05.900821"^^xsd:dateTime ;
+    dct:license [ rdfs:label "Apache-2.0" ;
+            rdfs:seeAlso <https://geolabs.github.io/bblocks-eoap-cct/LICENSE> ] ;
+    dct:modified "2026-09-23T16:07:26.781230"^^xsd:dateTime ;
     owl:imports <https://ogcincubator.github.io/bblocks-cwl/build/register.json>,
         <https://ogcincubator.github.io/bblocks-ogcapi-processes/build/register.json>,
         <https://ogcincubator.github.io/bblocks-ogcapi-records/build/register.json>,
@@ -365,14 +377,14 @@ language, which is based on Apache Avro Schema and extends it with semantic anno
         <bblocks://eoap.cct.stac>,
         <bblocks://eoap.cct.string-format> ;
     skos:prefLabel "Building Blocks - EOAP CWL Custom Types Building Blocks" ;
-    prof:hasResource [ rdfs:label "This Building Blocks Register in JSON format" ;
-            dct:type "application/json" ;
-            ns2:relation <http://www.iana.org/assignments/relation/self> ;
-            ns1:hasTarget <https://geolabs.github.io/bblocks-eoap-cct/build/register.json> ],
-        [ rdfs:label "This Building Blocks Register in JSON-LD format" ;
+    prof:hasResource [ rdfs:label "This Building Blocks Register in JSON-LD format" ;
             dct:type "application/ld+json" ;
             ns2:relation <http://www.iana.org/assignments/relation/self> ;
             ns1:hasTarget <https://geolabs.github.io/bblocks-eoap-cct/build/bblocks.jsonld> ],
+        [ rdfs:label "This Building Blocks Register in JSON format" ;
+            dct:type "application/json" ;
+            ns2:relation <http://www.iana.org/assignments/relation/self> ;
+            ns1:hasTarget <https://geolabs.github.io/bblocks-eoap-cct/build/register.json> ],
         [ rdfs:label "This Building Blocks Register in RDF Turtle format" ;
             dct:type "text/turtle" ;
             ns2:relation <http://www.iana.org/assignments/relation/self> ;
@@ -380,9 +392,9 @@ language, which is based on Apache Avro Schema and extends it with semantic anno
     foaf:homepage <https://geolabs.github.io/bblocks-eoap-cct/> ;
     bblocks:hasValidationReport <https://geolabs.github.io/bblocks-eoap-cct/build/tests/report.html> .
 
-_:N3a95919b34af4c21ac6b9d3780eb05e3 a prov:Agent,
+_:N29eba24a1c3a4291b61937a7eef4cf43 a prov:Agent,
         schema:SoftwareApplication ;
     rdfs:label "OGC-NA tools" ;
-    dct:hasVersion "0.5.33" ;
+    dct:hasVersion "0.5.35.dev2+g67607e7aa" ;
     rdfs:seeAlso <https://github.com/opengeospatial/ogc-na-tools> .
 

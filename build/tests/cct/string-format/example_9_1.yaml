@@ -1,1 +1,3 @@
-value: "user@example.com"
+{
+  "value": "user@example.com"
+}

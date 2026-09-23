@@ -1,39 +1,12 @@
 Validation report for eoap.cct.string-format - eaop-cct:String-Format
-Generated 2026-08-25T08:45:10.719681+00:00
+Generated 2026-09-23T16:07:29.968892+00:00
 === Files ===
 Using examples/datetime.yaml from examples
 === End Files ===
 
-=== Unknown errors ===
+=== JSON Schema ===
 
 ** Validation error **
-Traceback (most recent call last):
-,  File "/src/ogc/bblocks/validation/json_.py", line 200, in validate
-    validate_json(json_doc, schema_validator)
-,  File "/src/ogc/bblocks/validation/json_.py", line 44, in validate_json
-    error = jsonschema.exceptions.best_match(validator.iter_errors(instance))
-,  File "/venv/lib/python3.10/site-packages/jsonschema/exceptions.py", line 384, in best_match
-    best = next(errors, None)
-,  File "/venv/lib/python3.10/site-packages/jsonschema/validators.py", line 288, in iter_errors
-    for error in errors:
-,  File "/venv/lib/python3.10/site-packages/jsonschema/_validators.py", line 298, in ref
-    yield from validator.descend(instance, resolved)
-,  File "/venv/lib/python3.10/site-packages/jsonschema/validators.py", line 305, in descend
-    for error in self.evolve(schema=schema).iter_errors(instance):
-,  File "/venv/lib/python3.10/site-packages/jsonschema/validators.py", line 278, in iter_errors
-    scope = id_of(_schema)
-,  File "/venv/lib/python3.10/site-packages/jsonschema/validators.py", line 101, in _id_of
-    return schema.get("$id", "")
-,AttributeError: 'list' object has no attribute 'get'
-,
-During handling of the above exception, another exception occurred:
-
-,Traceback (most recent call last):
-,  File "/src/ogc/bblocks/validate.py", line 301, in _validate_resource
-    result = validator.validate(filename, output_filename, report,
-,  File "/src/ogc/bblocks/validation/json_.py", line 221, in validate
-    'errorMessage': e.message,
-,AttributeError: 'AttributeError' object has no attribute 'message'
-
-=== End Unknown errors ===
+AttributeError: 'list' object has no attribute 'get'
+=== End JSON Schema ===
 

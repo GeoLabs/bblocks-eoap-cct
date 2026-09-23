@@ -10,7 +10,7 @@
       "title": "Validation report for eoap.cct.bbox - eaop-cct:OGC-BoundingBox",
       "bblockName": "eaop-cct:OGC-BoundingBox",
       "bblockId": "eoap.cct.bbox",
-      "generated": "2026-08-25T08:45:10.570151+00:00",
+      "generated": "2026-09-23T16:07:29.941066+00:00",
       "result": false,
       "items": [
         {
@@ -36,13 +36,16 @@
               ]
             },
             {
-              "name": "UNKNOWN",
-              "title": "Unknown errors",
+              "name": "JSON_SCHEMA",
+              "title": "JSON Schema",
               "entries": [
                 {
+                  "op": "validation",
+                  "result": false,
                   "exception": "AttributeError",
+                  "errorMessage": "'list' object has no attribute 'get'",
                   "isError": true,
-                  "message": "Traceback (most recent call last):\n,  File \"/src/ogc/bblocks/validation/json_.py\", line 200, in validate\n    validate_json(json_doc, schema_validator)\n,  File \"/src/ogc/bblocks/validation/json_.py\", line 44, in validate_json\n    error = jsonschema.exceptions.best_match(validator.iter_errors(instance))\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/exceptions.py\", line 384, in best_match\n    best = next(errors, None)\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/validators.py\", line 288, in iter_errors\n    for error in errors:\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/_validators.py\", line 298, in ref\n    yield from validator.descend(instance, resolved)\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/validators.py\", line 305, in descend\n    for error in self.evolve(schema=schema).iter_errors(instance):\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/validators.py\", line 278, in iter_errors\n    scope = id_of(_schema)\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/validators.py\", line 101, in _id_of\n    return schema.get(\"$id\", \"\")\n,AttributeError: 'list' object has no attribute 'get'\n,\nDuring handling of the above exception, another exception occurred:\n\n,Traceback (most recent call last):\n,  File \"/src/ogc/bblocks/validate.py\", line 301, in _validate_resource\n    result = validator.validate(filename, output_filename, report,\n,  File \"/src/ogc/bblocks/validation/json_.py\", line 221, in validate\n    'errorMessage': e.message,\n,AttributeError: 'AttributeError' object has no attribute 'message'\n"
+                  "message": "AttributeError: 'list' object has no attribute 'get'"
                 }
               ]
             }
@@ -71,13 +74,16 @@
               ]
             },
             {
-              "name": "UNKNOWN",
-              "title": "Unknown errors",
+              "name": "JSON_SCHEMA",
+              "title": "JSON Schema",
               "entries": [
                 {
+                  "op": "validation",
+                  "result": false,
                   "exception": "AttributeError",
+                  "errorMessage": "'list' object has no attribute 'get'",
                   "isError": true,
-                  "message": "Traceback (most recent call last):\n,  File \"/src/ogc/bblocks/validation/json_.py\", line 200, in validate\n    validate_json(json_doc, schema_validator)\n,  File \"/src/ogc/bblocks/validation/json_.py\", line 44, in validate_json\n    error = jsonschema.exceptions.best_match(validator.iter_errors(instance))\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/exceptions.py\", line 384, in best_match\n    best = next(errors, None)\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/validators.py\", line 288, in iter_errors\n    for error in errors:\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/_validators.py\", line 298, in ref\n    yield from validator.descend(instance, resolved)\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/validators.py\", line 305, in descend\n    for error in self.evolve(schema=schema).iter_errors(instance):\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/validators.py\", line 278, in iter_errors\n    scope = id_of(_schema)\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/validators.py\", line 101, in _id_of\n    return schema.get(\"$id\", \"\")\n,AttributeError: 'list' object has no attribute 'get'\n,\nDuring handling of the above exception, another exception occurred:\n\n,Traceback (most recent call last):\n,  File \"/src/ogc/bblocks/validate.py\", line 301, in _validate_resource\n    result = validator.validate(filename, output_filename, report,\n,  File \"/src/ogc/bblocks/validation/json_.py\", line 221, in validate\n    'errorMessage': e.message,\n,AttributeError: 'AttributeError' object has no attribute 'message'\n"
+                  "message": "AttributeError: 'list' object has no attribute 'get'"
                 }
               ]
             }
@@ -95,7 +101,7 @@
       "title": "Validation report for eoap.cct.string-format - eaop-cct:String-Format",
       "bblockName": "eaop-cct:String-Format",
       "bblockId": "eoap.cct.string-format",
-      "generated": "2026-08-25T08:45:10.737711+00:00",
+      "generated": "2026-09-23T16:07:29.982300+00:00",
       "result": false,
       "items": [
         {
@@ -121,13 +127,16 @@
               ]
             },
             {
-              "name": "UNKNOWN",
-              "title": "Unknown errors",
+              "name": "JSON_SCHEMA",
+              "title": "JSON Schema",
               "entries": [
                 {
+                  "op": "validation",
+                  "result": false,
                   "exception": "AttributeError",
+                  "errorMessage": "'list' object has no attribute 'get'",
                   "isError": true,
-                  "message": "Traceback (most recent call last):\n,  File \"/src/ogc/bblocks/validation/json_.py\", line 200, in validate\n    validate_json(json_doc, schema_validator)\n,  File \"/src/ogc/bblocks/validation/json_.py\", line 44, in validate_json\n    error = jsonschema.exceptions.best_match(validator.iter_errors(instance))\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/exceptions.py\", line 384, in best_match\n    best = next(errors, None)\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/validators.py\", line 288, in iter_errors\n    for error in errors:\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/_validators.py\", line 298, in ref\n    yield from validator.descend(instance, resolved)\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/validators.py\", line 305, in descend\n    for error in self.evolve(schema=schema).iter_errors(instance):\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/validators.py\", line 278, in iter_errors\n    scope = id_of(_schema)\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/validators.py\", line 101, in _id_of\n    return schema.get(\"$id\", \"\")\n,AttributeError: 'list' object has no attribute 'get'\n,\nDuring handling of the above exception, another exception occurred:\n\n,Traceback (most recent call last):\n,  File \"/src/ogc/bblocks/validate.py\", line 301, in _validate_resource\n    result = validator.validate(filename, output_filename, report,\n,  File \"/src/ogc/bblocks/validation/json_.py\", line 221, in validate\n    'errorMessage': e.message,\n,AttributeError: 'AttributeError' object has no attribute 'message'\n"
+                  "message": "AttributeError: 'list' object has no attribute 'get'"
                 }
               ]
             }
@@ -156,13 +165,16 @@
               ]
             },
             {
-              "name": "UNKNOWN",
-              "title": "Unknown errors",
+              "name": "JSON_SCHEMA",
+              "title": "JSON Schema",
               "entries": [
                 {
+                  "op": "validation",
+                  "result": false,
                   "exception": "AttributeError",
+                  "errorMessage": "'list' object has no attribute 'get'",
                   "isError": true,
-                  "message": "Traceback (most recent call last):\n,  File \"/src/ogc/bblocks/validation/json_.py\", line 200, in validate\n    validate_json(json_doc, schema_validator)\n,  File \"/src/ogc/bblocks/validation/json_.py\", line 44, in validate_json\n    error = jsonschema.exceptions.best_match(validator.iter_errors(instance))\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/exceptions.py\", line 384, in best_match\n    best = next(errors, None)\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/validators.py\", line 288, in iter_errors\n    for error in errors:\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/_validators.py\", line 298, in ref\n    yield from validator.descend(instance, resolved)\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/validators.py\", line 305, in descend\n    for error in self.evolve(schema=schema).iter_errors(instance):\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/validators.py\", line 278, in iter_errors\n    scope = id_of(_schema)\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/validators.py\", line 101, in _id_of\n    return schema.get(\"$id\", \"\")\n,AttributeError: 'list' object has no attribute 'get'\n,\nDuring handling of the above exception, another exception occurred:\n\n,Traceback (most recent call last):\n,  File \"/src/ogc/bblocks/validate.py\", line 301, in _validate_resource\n    result = validator.validate(filename, output_filename, report,\n,  File \"/src/ogc/bblocks/validation/json_.py\", line 221, in validate\n    'errorMessage': e.message,\n,AttributeError: 'AttributeError' object has no attribute 'message'\n"
+                  "message": "AttributeError: 'list' object has no attribute 'get'"
                 }
               ]
             }
@@ -191,13 +203,16 @@
               ]
             },
             {
-              "name": "UNKNOWN",
-              "title": "Unknown errors",
+              "name": "JSON_SCHEMA",
+              "title": "JSON Schema",
               "entries": [
                 {
+                  "op": "validation",
+                  "result": false,
                   "exception": "AttributeError",
+                  "errorMessage": "'list' object has no attribute 'get'",
                   "isError": true,
-                  "message": "Traceback (most recent call last):\n,  File \"/src/ogc/bblocks/validation/json_.py\", line 200, in validate\n    validate_json(json_doc, schema_validator)\n,  File \"/src/ogc/bblocks/validation/json_.py\", line 44, in validate_json\n    error = jsonschema.exceptions.best_match(validator.iter_errors(instance))\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/exceptions.py\", line 384, in best_match\n    best = next(errors, None)\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/validators.py\", line 288, in iter_errors\n    for error in errors:\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/_validators.py\", line 298, in ref\n    yield from validator.descend(instance, resolved)\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/validators.py\", line 305, in descend\n    for error in self.evolve(schema=schema).iter_errors(instance):\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/validators.py\", line 278, in iter_errors\n    scope = id_of(_schema)\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/validators.py\", line 101, in _id_of\n    return schema.get(\"$id\", \"\")\n,AttributeError: 'list' object has no attribute 'get'\n,\nDuring handling of the above exception, another exception occurred:\n\n,Traceback (most recent call last):\n,  File \"/src/ogc/bblocks/validate.py\", line 301, in _validate_resource\n    result = validator.validate(filename, output_filename, report,\n,  File \"/src/ogc/bblocks/validation/json_.py\", line 221, in validate\n    'errorMessage': e.message,\n,AttributeError: 'AttributeError' object has no attribute 'message'\n"
+                  "message": "AttributeError: 'list' object has no attribute 'get'"
                 }
               ]
             }
@@ -226,13 +241,16 @@
               ]
             },
             {
-              "name": "UNKNOWN",
-              "title": "Unknown errors",
+              "name": "JSON_SCHEMA",
+              "title": "JSON Schema",
               "entries": [
                 {
+                  "op": "validation",
+                  "result": false,
                   "exception": "AttributeError",
+                  "errorMessage": "'list' object has no attribute 'get'",
                   "isError": true,
-                  "message": "Traceback (most recent call last):\n,  File \"/src/ogc/bblocks/validation/json_.py\", line 200, in validate\n    validate_json(json_doc, schema_validator)\n,  File \"/src/ogc/bblocks/validation/json_.py\", line 44, in validate_json\n    error = jsonschema.exceptions.best_match(validator.iter_errors(instance))\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/exceptions.py\", line 384, in best_match\n    best = next(errors, None)\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/validators.py\", line 288, in iter_errors\n    for error in errors:\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/_validators.py\", line 298, in ref\n    yield from validator.descend(instance, resolved)\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/validators.py\", line 305, in descend\n    for error in self.evolve(schema=schema).iter_errors(instance):\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/validators.py\", line 278, in iter_errors\n    scope = id_of(_schema)\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/validators.py\", line 101, in _id_of\n    return schema.get(\"$id\", \"\")\n,AttributeError: 'list' object has no attribute 'get'\n,\nDuring handling of the above exception, another exception occurred:\n\n,Traceback (most recent call last):\n,  File \"/src/ogc/bblocks/validate.py\", line 301, in _validate_resource\n    result = validator.validate(filename, output_filename, report,\n,  File \"/src/ogc/bblocks/validation/json_.py\", line 221, in validate\n    'errorMessage': e.message,\n,AttributeError: 'AttributeError' object has no attribute 'message'\n"
+                  "message": "AttributeError: 'list' object has no attribute 'get'"
                 }
               ]
             }
@@ -261,13 +279,16 @@
               ]
             },
             {
-              "name": "UNKNOWN",
-              "title": "Unknown errors",
+              "name": "JSON_SCHEMA",
+              "title": "JSON Schema",
               "entries": [
                 {
+                  "op": "validation",
+                  "result": false,
                   "exception": "AttributeError",
+                  "errorMessage": "'list' object has no attribute 'get'",
                   "isError": true,
-                  "message": "Traceback (most recent call last):\n,  File \"/src/ogc/bblocks/validation/json_.py\", line 200, in validate\n    validate_json(json_doc, schema_validator)\n,  File \"/src/ogc/bblocks/validation/json_.py\", line 44, in validate_json\n    error = jsonschema.exceptions.best_match(validator.iter_errors(instance))\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/exceptions.py\", line 384, in best_match\n    best = next(errors, None)\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/validators.py\", line 288, in iter_errors\n    for error in errors:\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/_validators.py\", line 298, in ref\n    yield from validator.descend(instance, resolved)\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/validators.py\", line 305, in descend\n    for error in self.evolve(schema=schema).iter_errors(instance):\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/validators.py\", line 278, in iter_errors\n    scope = id_of(_schema)\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/validators.py\", line 101, in _id_of\n    return schema.get(\"$id\", \"\")\n,AttributeError: 'list' object has no attribute 'get'\n,\nDuring handling of the above exception, another exception occurred:\n\n,Traceback (most recent call last):\n,  File \"/src/ogc/bblocks/validate.py\", line 301, in _validate_resource\n    result = validator.validate(filename, output_filename, report,\n,  File \"/src/ogc/bblocks/validation/json_.py\", line 221, in validate\n    'errorMessage': e.message,\n,AttributeError: 'AttributeError' object has no attribute 'message'\n"
+                  "message": "AttributeError: 'list' object has no attribute 'get'"
                 }
               ]
             }
@@ -296,13 +317,16 @@
               ]
             },
             {
-              "name": "UNKNOWN",
-              "title": "Unknown errors",
+              "name": "JSON_SCHEMA",
+              "title": "JSON Schema",
               "entries": [
                 {
+                  "op": "validation",
+                  "result": false,
                   "exception": "AttributeError",
+                  "errorMessage": "'list' object has no attribute 'get'",
                   "isError": true,
-                  "message": "Traceback (most recent call last):\n,  File \"/src/ogc/bblocks/validation/json_.py\", line 200, in validate\n    validate_json(json_doc, schema_validator)\n,  File \"/src/ogc/bblocks/validation/json_.py\", line 44, in validate_json\n    error = jsonschema.exceptions.best_match(validator.iter_errors(instance))\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/exceptions.py\", line 384, in best_match\n    best = next(errors, None)\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/validators.py\", line 288, in iter_errors\n    for error in errors:\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/_validators.py\", line 298, in ref\n    yield from validator.descend(instance, resolved)\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/validators.py\", line 305, in descend\n    for error in self.evolve(schema=schema).iter_errors(instance):\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/validators.py\", line 278, in iter_errors\n    scope = id_of(_schema)\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/validators.py\", line 101, in _id_of\n    return schema.get(\"$id\", \"\")\n,AttributeError: 'list' object has no attribute 'get'\n,\nDuring handling of the above exception, another exception occurred:\n\n,Traceback (most recent call last):\n,  File \"/src/ogc/bblocks/validate.py\", line 301, in _validate_resource\n    result = validator.validate(filename, output_filename, report,\n,  File \"/src/ogc/bblocks/validation/json_.py\", line 221, in validate\n    'errorMessage': e.message,\n,AttributeError: 'AttributeError' object has no attribute 'message'\n"
+                  "message": "AttributeError: 'list' object has no attribute 'get'"
                 }
               ]
             }
@@ -331,13 +355,16 @@
               ]
             },
             {
-              "name": "UNKNOWN",
-              "title": "Unknown errors",
+              "name": "JSON_SCHEMA",
+              "title": "JSON Schema",
               "entries": [
                 {
+                  "op": "validation",
+                  "result": false,
                   "exception": "AttributeError",
+                  "errorMessage": "'list' object has no attribute 'get'",
                   "isError": true,
-                  "message": "Traceback (most recent call last):\n,  File \"/src/ogc/bblocks/validation/json_.py\", line 200, in validate\n    validate_json(json_doc, schema_validator)\n,  File \"/src/ogc/bblocks/validation/json_.py\", line 44, in validate_json\n    error = jsonschema.exceptions.best_match(validator.iter_errors(instance))\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/exceptions.py\", line 384, in best_match\n    best = next(errors, None)\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/validators.py\", line 288, in iter_errors\n    for error in errors:\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/_validators.py\", line 298, in ref\n    yield from validator.descend(instance, resolved)\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/validators.py\", line 305, in descend\n    for error in self.evolve(schema=schema).iter_errors(instance):\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/validators.py\", line 278, in iter_errors\n    scope = id_of(_schema)\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/validators.py\", line 101, in _id_of\n    return schema.get(\"$id\", \"\")\n,AttributeError: 'list' object has no attribute 'get'\n,\nDuring handling of the above exception, another exception occurred:\n\n,Traceback (most recent call last):\n,  File \"/src/ogc/bblocks/validate.py\", line 301, in _validate_resource\n    result = validator.validate(filename, output_filename, report,\n,  File \"/src/ogc/bblocks/validation/json_.py\", line 221, in validate\n    'errorMessage': e.message,\n,AttributeError: 'AttributeError' object has no attribute 'message'\n"
+                  "message": "AttributeError: 'list' object has no attribute 'get'"
                 }
               ]
             }
@@ -366,13 +393,16 @@
               ]
             },
             {
-              "name": "UNKNOWN",
-              "title": "Unknown errors",
+              "name": "JSON_SCHEMA",
+              "title": "JSON Schema",
               "entries": [
                 {
+                  "op": "validation",
+                  "result": false,
                   "exception": "AttributeError",
+                  "errorMessage": "'list' object has no attribute 'get'",
                   "isError": true,
-                  "message": "Traceback (most recent call last):\n,  File \"/src/ogc/bblocks/validation/json_.py\", line 200, in validate\n    validate_json(json_doc, schema_validator)\n,  File \"/src/ogc/bblocks/validation/json_.py\", line 44, in validate_json\n    error = jsonschema.exceptions.best_match(validator.iter_errors(instance))\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/exceptions.py\", line 384, in best_match\n    best = next(errors, None)\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/validators.py\", line 288, in iter_errors\n    for error in errors:\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/_validators.py\", line 298, in ref\n    yield from validator.descend(instance, resolved)\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/validators.py\", line 305, in descend\n    for error in self.evolve(schema=schema).iter_errors(instance):\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/validators.py\", line 278, in iter_errors\n    scope = id_of(_schema)\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/validators.py\", line 101, in _id_of\n    return schema.get(\"$id\", \"\")\n,AttributeError: 'list' object has no attribute 'get'\n,\nDuring handling of the above exception, another exception occurred:\n\n,Traceback (most recent call last):\n,  File \"/src/ogc/bblocks/validate.py\", line 301, in _validate_resource\n    result = validator.validate(filename, output_filename, report,\n,  File \"/src/ogc/bblocks/validation/json_.py\", line 221, in validate\n    'errorMessage': e.message,\n,AttributeError: 'AttributeError' object has no attribute 'message'\n"
+                  "message": "AttributeError: 'list' object has no attribute 'get'"
                 }
               ]
             }
@@ -401,13 +431,16 @@
               ]
             },
             {
-              "name": "UNKNOWN",
-              "title": "Unknown errors",
+              "name": "JSON_SCHEMA",
+              "title": "JSON Schema",
               "entries": [
                 {
+                  "op": "validation",
+                  "result": false,
                   "exception": "AttributeError",
+                  "errorMessage": "'list' object has no attribute 'get'",
                   "isError": true,
-                  "message": "Traceback (most recent call last):\n,  File \"/src/ogc/bblocks/validation/json_.py\", line 200, in validate\n    validate_json(json_doc, schema_validator)\n,  File \"/src/ogc/bblocks/validation/json_.py\", line 44, in validate_json\n    error = jsonschema.exceptions.best_match(validator.iter_errors(instance))\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/exceptions.py\", line 384, in best_match\n    best = next(errors, None)\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/validators.py\", line 288, in iter_errors\n    for error in errors:\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/_validators.py\", line 298, in ref\n    yield from validator.descend(instance, resolved)\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/validators.py\", line 305, in descend\n    for error in self.evolve(schema=schema).iter_errors(instance):\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/validators.py\", line 278, in iter_errors\n    scope = id_of(_schema)\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/validators.py\", line 101, in _id_of\n    return schema.get(\"$id\", \"\")\n,AttributeError: 'list' object has no attribute 'get'\n,\nDuring handling of the above exception, another exception occurred:\n\n,Traceback (most recent call last):\n,  File \"/src/ogc/bblocks/validate.py\", line 301, in _validate_resource\n    result = validator.validate(filename, output_filename, report,\n,  File \"/src/ogc/bblocks/validation/json_.py\", line 221, in validate\n    'errorMessage': e.message,\n,AttributeError: 'AttributeError' object has no attribute 'message'\n"
+                  "message": "AttributeError: 'list' object has no attribute 'get'"
                 }
               ]
             }
@@ -436,13 +469,16 @@
               ]
             },
             {
-              "name": "UNKNOWN",
-              "title": "Unknown errors",
+              "name": "JSON_SCHEMA",
+              "title": "JSON Schema",
               "entries": [
                 {
+                  "op": "validation",
+                  "result": false,
                   "exception": "AttributeError",
+                  "errorMessage": "'list' object has no attribute 'get'",
                   "isError": true,
-                  "message": "Traceback (most recent call last):\n,  File \"/src/ogc/bblocks/validation/json_.py\", line 200, in validate\n    validate_json(json_doc, schema_validator)\n,  File \"/src/ogc/bblocks/validation/json_.py\", line 44, in validate_json\n    error = jsonschema.exceptions.best_match(validator.iter_errors(instance))\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/exceptions.py\", line 384, in best_match\n    best = next(errors, None)\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/validators.py\", line 288, in iter_errors\n    for error in errors:\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/_validators.py\", line 298, in ref\n    yield from validator.descend(instance, resolved)\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/validators.py\", line 305, in descend\n    for error in self.evolve(schema=schema).iter_errors(instance):\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/validators.py\", line 278, in iter_errors\n    scope = id_of(_schema)\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/validators.py\", line 101, in _id_of\n    return schema.get(\"$id\", \"\")\n,AttributeError: 'list' object has no attribute 'get'\n,\nDuring handling of the above exception, another exception occurred:\n\n,Traceback (most recent call last):\n,  File \"/src/ogc/bblocks/validate.py\", line 301, in _validate_resource\n    result = validator.validate(filename, output_filename, report,\n,  File \"/src/ogc/bblocks/validation/json_.py\", line 221, in validate\n    'errorMessage': e.message,\n,AttributeError: 'AttributeError' object has no attribute 'message'\n"
+                  "message": "AttributeError: 'list' object has no attribute 'get'"
                 }
               ]
             }
@@ -471,13 +507,16 @@
               ]
             },
             {
-              "name": "UNKNOWN",
-              "title": "Unknown errors",
+              "name": "JSON_SCHEMA",
+              "title": "JSON Schema",
               "entries": [
                 {
+                  "op": "validation",
+                  "result": false,
                   "exception": "AttributeError",
+                  "errorMessage": "'list' object has no attribute 'get'",
                   "isError": true,
-                  "message": "Traceback (most recent call last):\n,  File \"/src/ogc/bblocks/validation/json_.py\", line 200, in validate\n    validate_json(json_doc, schema_validator)\n,  File \"/src/ogc/bblocks/validation/json_.py\", line 44, in validate_json\n    error = jsonschema.exceptions.best_match(validator.iter_errors(instance))\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/exceptions.py\", line 384, in best_match\n    best = next(errors, None)\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/validators.py\", line 288, in iter_errors\n    for error in errors:\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/_validators.py\", line 298, in ref\n    yield from validator.descend(instance, resolved)\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/validators.py\", line 305, in descend\n    for error in self.evolve(schema=schema).iter_errors(instance):\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/validators.py\", line 278, in iter_errors\n    scope = id_of(_schema)\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/validators.py\", line 101, in _id_of\n    return schema.get(\"$id\", \"\")\n,AttributeError: 'list' object has no attribute 'get'\n,\nDuring handling of the above exception, another exception occurred:\n\n,Traceback (most recent call last):\n,  File \"/src/ogc/bblocks/validate.py\", line 301, in _validate_resource\n    result = validator.validate(filename, output_filename, report,\n,  File \"/src/ogc/bblocks/validation/json_.py\", line 221, in validate\n    'errorMessage': e.message,\n,AttributeError: 'AttributeError' object has no attribute 'message'\n"
+                  "message": "AttributeError: 'list' object has no attribute 'get'"
                 }
               ]
             }
@@ -506,13 +545,16 @@
               ]
             },
             {
-              "name": "UNKNOWN",
-              "title": "Unknown errors",
+              "name": "JSON_SCHEMA",
+              "title": "JSON Schema",
               "entries": [
                 {
+                  "op": "validation",
+                  "result": false,
                   "exception": "AttributeError",
+                  "errorMessage": "'list' object has no attribute 'get'",
                   "isError": true,
-                  "message": "Traceback (most recent call last):\n,  File \"/src/ogc/bblocks/validation/json_.py\", line 200, in validate\n    validate_json(json_doc, schema_validator)\n,  File \"/src/ogc/bblocks/validation/json_.py\", line 44, in validate_json\n    error = jsonschema.exceptions.best_match(validator.iter_errors(instance))\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/exceptions.py\", line 384, in best_match\n    best = next(errors, None)\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/validators.py\", line 288, in iter_errors\n    for error in errors:\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/_validators.py\", line 298, in ref\n    yield from validator.descend(instance, resolved)\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/validators.py\", line 305, in descend\n    for error in self.evolve(schema=schema).iter_errors(instance):\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/validators.py\", line 278, in iter_errors\n    scope = id_of(_schema)\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/validators.py\", line 101, in _id_of\n    return schema.get(\"$id\", \"\")\n,AttributeError: 'list' object has no attribute 'get'\n,\nDuring handling of the above exception, another exception occurred:\n\n,Traceback (most recent call last):\n,  File \"/src/ogc/bblocks/validate.py\", line 301, in _validate_resource\n    result = validator.validate(filename, output_filename, report,\n,  File \"/src/ogc/bblocks/validation/json_.py\", line 221, in validate\n    'errorMessage': e.message,\n,AttributeError: 'AttributeError' object has no attribute 'message'\n"
+                  "message": "AttributeError: 'list' object has no attribute 'get'"
                 }
               ]
             }
@@ -541,13 +583,16 @@
               ]
             },
             {
-              "name": "UNKNOWN",
-              "title": "Unknown errors",
+              "name": "JSON_SCHEMA",
+              "title": "JSON Schema",
               "entries": [
                 {
+                  "op": "validation",
+                  "result": false,
                   "exception": "AttributeError",
+                  "errorMessage": "'list' object has no attribute 'get'",
                   "isError": true,
-                  "message": "Traceback (most recent call last):\n,  File \"/src/ogc/bblocks/validation/json_.py\", line 200, in validate\n    validate_json(json_doc, schema_validator)\n,  File \"/src/ogc/bblocks/validation/json_.py\", line 44, in validate_json\n    error = jsonschema.exceptions.best_match(validator.iter_errors(instance))\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/exceptions.py\", line 384, in best_match\n    best = next(errors, None)\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/validators.py\", line 288, in iter_errors\n    for error in errors:\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/_validators.py\", line 298, in ref\n    yield from validator.descend(instance, resolved)\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/validators.py\", line 305, in descend\n    for error in self.evolve(schema=schema).iter_errors(instance):\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/validators.py\", line 278, in iter_errors\n    scope = id_of(_schema)\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/validators.py\", line 101, in _id_of\n    return schema.get(\"$id\", \"\")\n,AttributeError: 'list' object has no attribute 'get'\n,\nDuring handling of the above exception, another exception occurred:\n\n,Traceback (most recent call last):\n,  File \"/src/ogc/bblocks/validate.py\", line 301, in _validate_resource\n    result = validator.validate(filename, output_filename, report,\n,  File \"/src/ogc/bblocks/validation/json_.py\", line 221, in validate\n    'errorMessage': e.message,\n,AttributeError: 'AttributeError' object has no attribute 'message'\n"
+                  "message": "AttributeError: 'list' object has no attribute 'get'"
                 }
               ]
             }
@@ -576,13 +621,16 @@
               ]
             },
             {
-              "name": "UNKNOWN",
-              "title": "Unknown errors",
+              "name": "JSON_SCHEMA",
+              "title": "JSON Schema",
               "entries": [
                 {
+                  "op": "validation",
+                  "result": false,
                   "exception": "AttributeError",
+                  "errorMessage": "'list' object has no attribute 'get'",
                   "isError": true,
-                  "message": "Traceback (most recent call last):\n,  File \"/src/ogc/bblocks/validation/json_.py\", line 200, in validate\n    validate_json(json_doc, schema_validator)\n,  File \"/src/ogc/bblocks/validation/json_.py\", line 44, in validate_json\n    error = jsonschema.exceptions.best_match(validator.iter_errors(instance))\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/exceptions.py\", line 384, in best_match\n    best = next(errors, None)\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/validators.py\", line 288, in iter_errors\n    for error in errors:\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/_validators.py\", line 298, in ref\n    yield from validator.descend(instance, resolved)\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/validators.py\", line 305, in descend\n    for error in self.evolve(schema=schema).iter_errors(instance):\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/validators.py\", line 278, in iter_errors\n    scope = id_of(_schema)\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/validators.py\", line 101, in _id_of\n    return schema.get(\"$id\", \"\")\n,AttributeError: 'list' object has no attribute 'get'\n,\nDuring handling of the above exception, another exception occurred:\n\n,Traceback (most recent call last):\n,  File \"/src/ogc/bblocks/validate.py\", line 301, in _validate_resource\n    result = validator.validate(filename, output_filename, report,\n,  File \"/src/ogc/bblocks/validation/json_.py\", line 221, in validate\n    'errorMessage': e.message,\n,AttributeError: 'AttributeError' object has no attribute 'message'\n"
+                  "message": "AttributeError: 'list' object has no attribute 'get'"
                 }
               ]
             }
@@ -611,13 +659,16 @@
               ]
             },
             {
-              "name": "UNKNOWN",
-              "title": "Unknown errors",
+              "name": "JSON_SCHEMA",
+              "title": "JSON Schema",
               "entries": [
                 {
+                  "op": "validation",
+                  "result": false,
                   "exception": "AttributeError",
+                  "errorMessage": "'list' object has no attribute 'get'",
                   "isError": true,
-                  "message": "Traceback (most recent call last):\n,  File \"/src/ogc/bblocks/validation/json_.py\", line 200, in validate\n    validate_json(json_doc, schema_validator)\n,  File \"/src/ogc/bblocks/validation/json_.py\", line 44, in validate_json\n    error = jsonschema.exceptions.best_match(validator.iter_errors(instance))\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/exceptions.py\", line 384, in best_match\n    best = next(errors, None)\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/validators.py\", line 288, in iter_errors\n    for error in errors:\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/_validators.py\", line 298, in ref\n    yield from validator.descend(instance, resolved)\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/validators.py\", line 305, in descend\n    for error in self.evolve(schema=schema).iter_errors(instance):\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/validators.py\", line 278, in iter_errors\n    scope = id_of(_schema)\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/validators.py\", line 101, in _id_of\n    return schema.get(\"$id\", \"\")\n,AttributeError: 'list' object has no attribute 'get'\n,\nDuring handling of the above exception, another exception occurred:\n\n,Traceback (most recent call last):\n,  File \"/src/ogc/bblocks/validate.py\", line 301, in _validate_resource\n    result = validator.validate(filename, output_filename, report,\n,  File \"/src/ogc/bblocks/validation/json_.py\", line 221, in validate\n    'errorMessage': e.message,\n,AttributeError: 'AttributeError' object has no attribute 'message'\n"
+                  "message": "AttributeError: 'list' object has no attribute 'get'"
                 }
               ]
             }
@@ -646,13 +697,16 @@
               ]
             },
             {
-              "name": "UNKNOWN",
-              "title": "Unknown errors",
+              "name": "JSON_SCHEMA",
+              "title": "JSON Schema",
               "entries": [
                 {
+                  "op": "validation",
+                  "result": false,
                   "exception": "AttributeError",
+                  "errorMessage": "'list' object has no attribute 'get'",
                   "isError": true,
-                  "message": "Traceback (most recent call last):\n,  File \"/src/ogc/bblocks/validation/json_.py\", line 200, in validate\n    validate_json(json_doc, schema_validator)\n,  File \"/src/ogc/bblocks/validation/json_.py\", line 44, in validate_json\n    error = jsonschema.exceptions.best_match(validator.iter_errors(instance))\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/exceptions.py\", line 384, in best_match\n    best = next(errors, None)\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/validators.py\", line 288, in iter_errors\n    for error in errors:\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/_validators.py\", line 298, in ref\n    yield from validator.descend(instance, resolved)\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/validators.py\", line 305, in descend\n    for error in self.evolve(schema=schema).iter_errors(instance):\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/validators.py\", line 278, in iter_errors\n    scope = id_of(_schema)\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/validators.py\", line 101, in _id_of\n    return schema.get(\"$id\", \"\")\n,AttributeError: 'list' object has no attribute 'get'\n,\nDuring handling of the above exception, another exception occurred:\n\n,Traceback (most recent call last):\n,  File \"/src/ogc/bblocks/validate.py\", line 301, in _validate_resource\n    result = validator.validate(filename, output_filename, report,\n,  File \"/src/ogc/bblocks/validation/json_.py\", line 221, in validate\n    'errorMessage': e.message,\n,AttributeError: 'AttributeError' object has no attribute 'message'\n"
+                  "message": "AttributeError: 'list' object has no attribute 'get'"
                 }
               ]
             }
@@ -681,13 +735,16 @@
               ]
             },
             {
-              "name": "UNKNOWN",
-              "title": "Unknown errors",
+              "name": "JSON_SCHEMA",
+              "title": "JSON Schema",
               "entries": [
                 {
+                  "op": "validation",
+                  "result": false,
                   "exception": "AttributeError",
+                  "errorMessage": "'list' object has no attribute 'get'",
                   "isError": true,
-                  "message": "Traceback (most recent call last):\n,  File \"/src/ogc/bblocks/validation/json_.py\", line 200, in validate\n    validate_json(json_doc, schema_validator)\n,  File \"/src/ogc/bblocks/validation/json_.py\", line 44, in validate_json\n    error = jsonschema.exceptions.best_match(validator.iter_errors(instance))\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/exceptions.py\", line 384, in best_match\n    best = next(errors, None)\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/validators.py\", line 288, in iter_errors\n    for error in errors:\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/_validators.py\", line 298, in ref\n    yield from validator.descend(instance, resolved)\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/validators.py\", line 305, in descend\n    for error in self.evolve(schema=schema).iter_errors(instance):\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/validators.py\", line 278, in iter_errors\n    scope = id_of(_schema)\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/validators.py\", line 101, in _id_of\n    return schema.get(\"$id\", \"\")\n,AttributeError: 'list' object has no attribute 'get'\n,\nDuring handling of the above exception, another exception occurred:\n\n,Traceback (most recent call last):\n,  File \"/src/ogc/bblocks/validate.py\", line 301, in _validate_resource\n    result = validator.validate(filename, output_filename, report,\n,  File \"/src/ogc/bblocks/validation/json_.py\", line 221, in validate\n    'errorMessage': e.message,\n,AttributeError: 'AttributeError' object has no attribute 'message'\n"
+                  "message": "AttributeError: 'list' object has no attribute 'get'"
                 }
               ]
             }
@@ -705,7 +762,7 @@
       "title": "Validation report for eoap.cct.geojson - eaop-cct:GeoJSON",
       "bblockName": "eaop-cct:GeoJSON",
       "bblockId": "eoap.cct.geojson",
-      "generated": "2026-08-25T08:45:10.773068+00:00",
+      "generated": "2026-09-23T16:07:30.017656+00:00",
       "result": false,
       "items": [
         {
@@ -731,13 +788,16 @@
               ]
             },
             {
-              "name": "UNKNOWN",
-              "title": "Unknown errors",
+              "name": "JSON_SCHEMA",
+              "title": "JSON Schema",
               "entries": [
                 {
+                  "op": "validation",
+                  "result": false,
                   "exception": "AttributeError",
+                  "errorMessage": "'list' object has no attribute 'get'",
                   "isError": true,
-                  "message": "Traceback (most recent call last):\n,  File \"/src/ogc/bblocks/validation/json_.py\", line 200, in validate\n    validate_json(json_doc, schema_validator)\n,  File \"/src/ogc/bblocks/validation/json_.py\", line 44, in validate_json\n    error = jsonschema.exceptions.best_match(validator.iter_errors(instance))\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/exceptions.py\", line 384, in best_match\n    best = next(errors, None)\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/validators.py\", line 288, in iter_errors\n    for error in errors:\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/_validators.py\", line 298, in ref\n    yield from validator.descend(instance, resolved)\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/validators.py\", line 305, in descend\n    for error in self.evolve(schema=schema).iter_errors(instance):\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/validators.py\", line 278, in iter_errors\n    scope = id_of(_schema)\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/validators.py\", line 101, in _id_of\n    return schema.get(\"$id\", \"\")\n,AttributeError: 'list' object has no attribute 'get'\n,\nDuring handling of the above exception, another exception occurred:\n\n,Traceback (most recent call last):\n,  File \"/src/ogc/bblocks/validate.py\", line 301, in _validate_resource\n    result = validator.validate(filename, output_filename, report,\n,  File \"/src/ogc/bblocks/validation/json_.py\", line 221, in validate\n    'errorMessage': e.message,\n,AttributeError: 'AttributeError' object has no attribute 'message'\n"
+                  "message": "AttributeError: 'list' object has no attribute 'get'"
                 }
               ]
             }
@@ -766,13 +826,16 @@
               ]
             },
             {
-              "name": "UNKNOWN",
-              "title": "Unknown errors",
+              "name": "JSON_SCHEMA",
+              "title": "JSON Schema",
               "entries": [
                 {
+                  "op": "validation",
+                  "result": false,
                   "exception": "AttributeError",
+                  "errorMessage": "'list' object has no attribute 'get'",
                   "isError": true,
-                  "message": "Traceback (most recent call last):\n,  File \"/src/ogc/bblocks/validation/json_.py\", line 200, in validate\n    validate_json(json_doc, schema_validator)\n,  File \"/src/ogc/bblocks/validation/json_.py\", line 44, in validate_json\n    error = jsonschema.exceptions.best_match(validator.iter_errors(instance))\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/exceptions.py\", line 384, in best_match\n    best = next(errors, None)\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/validators.py\", line 288, in iter_errors\n    for error in errors:\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/_validators.py\", line 298, in ref\n    yield from validator.descend(instance, resolved)\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/validators.py\", line 305, in descend\n    for error in self.evolve(schema=schema).iter_errors(instance):\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/validators.py\", line 278, in iter_errors\n    scope = id_of(_schema)\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/validators.py\", line 101, in _id_of\n    return schema.get(\"$id\", \"\")\n,AttributeError: 'list' object has no attribute 'get'\n,\nDuring handling of the above exception, another exception occurred:\n\n,Traceback (most recent call last):\n,  File \"/src/ogc/bblocks/validate.py\", line 301, in _validate_resource\n    result = validator.validate(filename, output_filename, report,\n,  File \"/src/ogc/bblocks/validation/json_.py\", line 221, in validate\n    'errorMessage': e.message,\n,AttributeError: 'AttributeError' object has no attribute 'message'\n"
+                  "message": "AttributeError: 'list' object has no attribute 'get'"
                 }
               ]
             }
@@ -801,13 +864,16 @@
               ]
             },
             {
-              "name": "UNKNOWN",
-              "title": "Unknown errors",
+              "name": "JSON_SCHEMA",
+              "title": "JSON Schema",
               "entries": [
                 {
+                  "op": "validation",
+                  "result": false,
                   "exception": "AttributeError",
+                  "errorMessage": "'list' object has no attribute 'get'",
                   "isError": true,
-                  "message": "Traceback (most recent call last):\n,  File \"/src/ogc/bblocks/validation/json_.py\", line 200, in validate\n    validate_json(json_doc, schema_validator)\n,  File \"/src/ogc/bblocks/validation/json_.py\", line 44, in validate_json\n    error = jsonschema.exceptions.best_match(validator.iter_errors(instance))\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/exceptions.py\", line 384, in best_match\n    best = next(errors, None)\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/validators.py\", line 288, in iter_errors\n    for error in errors:\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/_validators.py\", line 298, in ref\n    yield from validator.descend(instance, resolved)\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/validators.py\", line 305, in descend\n    for error in self.evolve(schema=schema).iter_errors(instance):\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/validators.py\", line 278, in iter_errors\n    scope = id_of(_schema)\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/validators.py\", line 101, in _id_of\n    return schema.get(\"$id\", \"\")\n,AttributeError: 'list' object has no attribute 'get'\n,\nDuring handling of the above exception, another exception occurred:\n\n,Traceback (most recent call last):\n,  File \"/src/ogc/bblocks/validate.py\", line 301, in _validate_resource\n    result = validator.validate(filename, output_filename, report,\n,  File \"/src/ogc/bblocks/validation/json_.py\", line 221, in validate\n    'errorMessage': e.message,\n,AttributeError: 'AttributeError' object has no attribute 'message'\n"
+                  "message": "AttributeError: 'list' object has no attribute 'get'"
                 }
               ]
             }
@@ -825,7 +891,7 @@
       "title": "Validation report for eoap.cct.stac - eaop-cct:STAC",
       "bblockName": "eaop-cct:STAC",
       "bblockId": "eoap.cct.stac",
-      "generated": "2026-08-25T08:45:10.937926+00:00",
+      "generated": "2026-09-23T16:07:30.048654+00:00",
       "result": false,
       "items": [
         {
@@ -851,13 +917,16 @@
               ]
             },
             {
-              "name": "UNKNOWN",
-              "title": "Unknown errors",
+              "name": "JSON_SCHEMA",
+              "title": "JSON Schema",
               "entries": [
                 {
+                  "op": "validation",
+                  "result": false,
                   "exception": "AttributeError",
+                  "errorMessage": "'list' object has no attribute 'get'",
                   "isError": true,
-                  "message": "Traceback (most recent call last):\n,  File \"/src/ogc/bblocks/validation/json_.py\", line 200, in validate\n    validate_json(json_doc, schema_validator)\n,  File \"/src/ogc/bblocks/validation/json_.py\", line 44, in validate_json\n    error = jsonschema.exceptions.best_match(validator.iter_errors(instance))\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/exceptions.py\", line 384, in best_match\n    best = next(errors, None)\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/validators.py\", line 288, in iter_errors\n    for error in errors:\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/_validators.py\", line 298, in ref\n    yield from validator.descend(instance, resolved)\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/validators.py\", line 305, in descend\n    for error in self.evolve(schema=schema).iter_errors(instance):\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/validators.py\", line 278, in iter_errors\n    scope = id_of(_schema)\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/validators.py\", line 101, in _id_of\n    return schema.get(\"$id\", \"\")\n,AttributeError: 'list' object has no attribute 'get'\n,\nDuring handling of the above exception, another exception occurred:\n\n,Traceback (most recent call last):\n,  File \"/src/ogc/bblocks/validate.py\", line 301, in _validate_resource\n    result = validator.validate(filename, output_filename, report,\n,  File \"/src/ogc/bblocks/validation/json_.py\", line 221, in validate\n    'errorMessage': e.message,\n,AttributeError: 'AttributeError' object has no attribute 'message'\n"
+                  "message": "AttributeError: 'list' object has no attribute 'get'"
                 }
               ]
             }
@@ -886,13 +955,16 @@
               ]
             },
             {
-              "name": "UNKNOWN",
-              "title": "Unknown errors",
+              "name": "JSON_SCHEMA",
+              "title": "JSON Schema",
               "entries": [
                 {
+                  "op": "validation",
+                  "result": false,
                   "exception": "AttributeError",
+                  "errorMessage": "'list' object has no attribute 'get'",
                   "isError": true,
-                  "message": "Traceback (most recent call last):\n,  File \"/src/ogc/bblocks/validation/json_.py\", line 200, in validate\n    validate_json(json_doc, schema_validator)\n,  File \"/src/ogc/bblocks/validation/json_.py\", line 44, in validate_json\n    error = jsonschema.exceptions.best_match(validator.iter_errors(instance))\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/exceptions.py\", line 384, in best_match\n    best = next(errors, None)\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/validators.py\", line 288, in iter_errors\n    for error in errors:\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/_validators.py\", line 298, in ref\n    yield from validator.descend(instance, resolved)\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/validators.py\", line 305, in descend\n    for error in self.evolve(schema=schema).iter_errors(instance):\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/validators.py\", line 278, in iter_errors\n    scope = id_of(_schema)\n,  File \"/venv/lib/python3.10/site-packages/jsonschema/validators.py\", line 101, in _id_of\n    return schema.get(\"$id\", \"\")\n,AttributeError: 'list' object has no attribute 'get'\n,\nDuring handling of the above exception, another exception occurred:\n\n,Traceback (most recent call last):\n,  File \"/src/ogc/bblocks/validate.py\", line 301, in _validate_resource\n    result = validator.validate(filename, output_filename, report,\n,  File \"/src/ogc/bblocks/validation/json_.py\", line 221, in validate\n    'errorMessage': e.message,\n,AttributeError: 'AttributeError' object has no attribute 'message'\n"
+                  "message": "AttributeError: 'list' object has no attribute 'get'"
                 }
               ]
             }
@@ -910,7 +982,7 @@
       "title": "Validation report for eoap.cct.cwl-to-ogcprocess - CWL to OGC API Processes Profile",
       "bblockName": "CWL to OGC API Processes Profile",
       "bblockId": "eoap.cct.cwl-to-ogcprocess",
-      "generated": "2026-08-25T08:45:13.325333+00:00",
+      "generated": "2026-09-23T16:07:33.117772+00:00",
       "result": true,
       "items": [
         {

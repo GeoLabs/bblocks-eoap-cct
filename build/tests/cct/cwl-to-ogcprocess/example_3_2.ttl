@@ -9,11 +9,11 @@
 [] cwl:cwlVersion <file:///github/workspace/v1.2> ;
     cwl:graph [ rdfs:label "STAC Item Processing Workflow"^^xsd:string ;
             dct:identifier <file:///github/workspace/item-workflow> ;
-            ogcproc:input _:Nea532eb6b0934395a23a3acf499956bf ;
-            ogcproc:output _:Na52d3848858744d2b83846216787fdbd ;
+            ogcproc:input _:Nd0542b084bb741ee8c9e632c1a3de471 ;
+            ogcproc:output _:N04249f75677f41a5b19c421243434151 ;
             rdfs:comment "Workflow that processes STAC Item input and generates output"^^xsd:string ;
-            cwl:input _:Nea532eb6b0934395a23a3acf499956bf ;
-            cwl:output _:Na52d3848858744d2b83846216787fdbd ;
+            cwl:input _:Nd0542b084bb741ee8c9e632c1a3de471 ;
+            cwl:output _:N04249f75677f41a5b19c421243434151 ;
             cwl:requirements [ cwl:types [ cwl:import <https://raw.githubusercontent.com/eoap/schemas/main/stac.yaml> ] ;
                     ns1:type <file:///github/workspace/SchemaDefRequirement> ],
                 [ ns1:type <file:///github/workspace/InlineJavascriptRequirement> ] ;
@@ -23,39 +23,31 @@
             ns1:type <file:///github/workspace/Workflow> ],
         [ rdfs:label "Process STAC Item"^^xsd:string ;
             dct:identifier <file:///github/workspace/clt> ;
-            ogcproc:input _:N208a2039636a4c9fa47a82ebdd805f41 ;
-            ogcproc:output _:Nbeea2f75cad14693a0643d1ae7db114a ;
+            ogcproc:input _:Nd42ae7a6bc6b432d86ce0b2a9b4e73ae ;
+            ogcproc:output _:N941feac5baf449f1ae11b7317fb9345a ;
             cwl:baseCommand "\"echo\""^^rdf:JSON ;
-            cwl:input _:N208a2039636a4c9fa47a82ebdd805f41 ;
-            cwl:output _:Nbeea2f75cad14693a0643d1ae7db114a ;
-            cwl:requirements [ cwl:types [ cwl:import <https://raw.githubusercontent.com/eoap/schemas/main/stac.yaml> ] ;
-                    ns1:type <file:///github/workspace/SchemaDefRequirement> ],
-                [ ns1:type <file:///github/workspace/InlineJavascriptRequirement> ] ;
+            cwl:input _:Nd42ae7a6bc6b432d86ce0b2a9b4e73ae ;
+            cwl:output _:N941feac5baf449f1ae11b7317fb9345a ;
+            cwl:requirements [ ns1:type <file:///github/workspace/InlineJavascriptRequirement> ],
+                [ cwl:types [ cwl:import <https://raw.githubusercontent.com/eoap/schemas/main/stac.yaml> ] ;
+                    ns1:type <file:///github/workspace/SchemaDefRequirement> ] ;
             cwl:stdout "result.txt"^^xsd:string ;
             ns1:type <file:///github/workspace/CommandLineTool> ] .
 
-_:N2af517802aed4d1d903eb89dba7db54c cwl:result [ cwl:type <file:///github/workspace/stdout> ] .
+_:N0f52c055a660420db59e4f4d840d3603 cwl:result [ cwl:type <file:///github/workspace/stdout> ] .
 
-_:N53761522b9214ff0b4ca2df09317f4bd rdfs:label "Process result"^^xsd:string ;
-    dct:identifier <file:///github/workspace/result> ;
-    rdfs:comment "Processed STAC Item information"^^xsd:string ;
-    cwl:outputSource <file:///github/workspace/process_step/result> ;
-    cwl:type <file:///github/workspace/File> .
-
-_:N5b54743d008240729ffb393fa3d4ec63 cwl:valueFrom """${
-  return "STAC Item ID: " + inputs.stac_item.id;
-}
-"""^^xsd:string .
-
-_:N966fe77cfad945c88bfe7a28d6ba4119 rdfs:label "STAC Item"^^xsd:string ;
+_:N145fa53adfc04460826d66e312ad0934 rdfs:label "STAC Item"^^xsd:string ;
     dct:format <https://www.iana.org/assignments/media-types/application/json> ;
     ogcproc:schemaType "object"^^xsd:string ;
     rdfs:comment "STAC Item representing a geospatial asset"^^xsd:string ;
     rdfs:seeAlso <https://stacspec.org/#item-spec> ;
-    cwl:inputBinding _:N5b54743d008240729ffb393fa3d4ec63 ;
+    cwl:inputBinding [ cwl:valueFrom """${
+  return "STAC Item ID: " + inputs.stac_item.id;
+}
+"""^^xsd:string ] ;
     cwl:type <https://raw.githubusercontent.com/eoap/schemas/main/stac.yaml#Item> .
 
-_:Nc314aa80783a4119a958c33da95de69b rdfs:label "STAC Item"^^xsd:string ;
+_:N6b4a30c3a1f14ea3bf6ecda209764874 rdfs:label "STAC Item"^^xsd:string ;
     dct:format <https://www.iana.org/assignments/media-types/application/json> ;
     dct:identifier <file:///github/workspace/stac_item> ;
     ogcproc:schemaType "object"^^xsd:string ;
@@ -63,21 +55,27 @@ _:Nc314aa80783a4119a958c33da95de69b rdfs:label "STAC Item"^^xsd:string ;
     rdfs:seeAlso <https://stacspec.org/#item-spec> ;
     cwl:type <https://raw.githubusercontent.com/eoap/schemas/main/stac.yaml#Item> .
 
-_:Ne8f2dedfb8de43b29d28cf2662a8d275 cwl:stac_item _:N966fe77cfad945c88bfe7a28d6ba4119 .
+_:Na6d1125981b041bf9f3f40aa4504899e cwl:stac_item _:N145fa53adfc04460826d66e312ad0934 .
 
-_:N208a2039636a4c9fa47a82ebdd805f41 a ogcproc:InputDescription ;
-    rdf:first _:Ne8f2dedfb8de43b29d28cf2662a8d275 ;
+_:Nd79d98a988794b1ebf9ab267bb1aad7c rdfs:label "Process result"^^xsd:string ;
+    dct:identifier <file:///github/workspace/result> ;
+    rdfs:comment "Processed STAC Item information"^^xsd:string ;
+    cwl:outputSource <file:///github/workspace/process_step/result> ;
+    cwl:type <file:///github/workspace/File> .
+
+_:N04249f75677f41a5b19c421243434151 a ogcproc:OutputDescription ;
+    rdf:first _:Nd79d98a988794b1ebf9ab267bb1aad7c ;
     rdf:rest () .
 
-_:Na52d3848858744d2b83846216787fdbd a ogcproc:OutputDescription ;
-    rdf:first _:N53761522b9214ff0b4ca2df09317f4bd ;
+_:N941feac5baf449f1ae11b7317fb9345a a ogcproc:OutputDescription ;
+    rdf:first _:N0f52c055a660420db59e4f4d840d3603 ;
     rdf:rest () .
 
-_:Nbeea2f75cad14693a0643d1ae7db114a a ogcproc:OutputDescription ;
-    rdf:first _:N2af517802aed4d1d903eb89dba7db54c ;
+_:Nd0542b084bb741ee8c9e632c1a3de471 a ogcproc:InputDescription ;
+    rdf:first _:N6b4a30c3a1f14ea3bf6ecda209764874 ;
     rdf:rest () .
 
-_:Nea532eb6b0934395a23a3acf499956bf a ogcproc:InputDescription ;
-    rdf:first _:Nc314aa80783a4119a958c33da95de69b ;
+_:Nd42ae7a6bc6b432d86ce0b2a9b4e73ae a ogcproc:InputDescription ;
+    rdf:first _:Na6d1125981b041bf9f3f40aa4504899e ;
     rdf:rest () .
 

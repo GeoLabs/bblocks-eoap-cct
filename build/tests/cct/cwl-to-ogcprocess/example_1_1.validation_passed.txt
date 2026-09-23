@@ -1,5 +1,5 @@
 Validation report for eoap.cct.cwl-to-ogcprocess - CWL to OGC API Processes Profile
-Generated 2026-08-25T08:45:11.050840+00:00
+Generated 2026-09-23T16:07:30.189514+00:00
 === Files ===
 Using examples/bbox-workflow.cwl from examples
 === End Files ===

@@ -1,1 +1,3 @@
-value: "api.example.com"
+{
+  "value": "api.example.com"
+}

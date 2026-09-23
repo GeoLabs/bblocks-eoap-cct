@@ -8,7 +8,7 @@
   "description": "This building block defines CWL custom types for STAC (SpatioTemporal Asset Catalog) metadata structures. These types enable Common Workflow Language workflows to handle Earth Observation product manifests as inputs and outputs, following the patterns described in the OGC Best Practice for Earth Observation Application Package (OGC 20-089r1).\n\n## Relationship to OGC Best Practice 20-089r1\n\nThese types implement the STAC manifest approach described in section 6.2.3 \"Staging Input and Output EO Products\" of the OGC Best Practice for Earth Observation Application Package.\n\n### Input Staging Pattern\n\nWorkflows can reference input data using STAC Catalogs or Items:\n\n```yaml\ninputs:\n  input_scenes:\n    type: eoap:stac#Catalog\n    doc: \"STAC catalog containing input scenes\"\n```\n\nThe workflow execution environment resolves the STAC references and stages the actual data files for processing.\n\n### Output Staging Pattern\n\nWorkflows can produce STAC metadata describing output products:\n\n```yaml\noutputs:\n  output_catalog:\n    type: eoap:stac#Catalog\n    outputBinding:\n      glob: results/catalog.json\n```\n\n## Relationship to OGC API - Processes\n\nWhen deployed as an OGC API - Processes service, these STAC custom types map to complex object schemas in the process description. The process description references STAC schemas to indicate that inputs/outputs conform to STAC specifications.\n\n### Example Process Description\n\n```json\n{\n  \"id\": \"ndvi-processor\",\n  \"inputs\": {\n    \"scenes\": {\n      \"title\": \"Input Scenes\",\n      \"schema\": {\n        \"$ref\": \"https://schemas.stacspec.org/v1.0.0/item-spec/json-schema/item.json\"\n      }\n    }\n  },\n  \"outputs\": {\n    \"result_catalog\": {\n      \"title\": \"Result Catalog\",\n      \"schema\": {\n        \"$ref\": \"https://schemas.stacspec.org/v1.0.0/catalog-spec/json-schema/catalog.json\"\n      }\n    }\n  }\n}\n```\n\n## Usage in CWL Workflows\n\nTo use STAC custom types in a CWL workflow:\n\n```yaml\ncwlVersion: v1.0\nclass: CommandLineTool\n\nrequirements:\n  SchemaDefRequirement:\n    types:\n      - $import: https://eoap.github.io/schemas/cwl/stac.yaml\n\ninputs:\n  input_item:\n    type: eoap:stac#Item\n    doc: \"STAC Item describing the input scene\"\n    inputBinding:\n      position: 1\n      valueFrom: $(self.assets.data.href)\n\noutputs:\n  output_catalog:\n    type: eoap:stac#Catalog\n    doc: \"STAC Catalog of processed results\"\n    outputBinding:\n      glob: results/catalog.json\n```\n",
   "status": "under-development",
   "dateTimeAddition": "2025-12-17T00:00:00Z",
-  "dateOfLastChange": "2026-08-25",
+  "dateOfLastChange": "2026-09-23",
   "version": "1.0",
   "itemClass": "schema",
   "register": "eoap-cct",
@@ -43,6 +43,10 @@
   "maturity": "development",
   "group": "EOAP",
   "shaclShapes": {},
+  "license": {
+    "name": "Apache-2.0",
+    "url": "https://geolabs.github.io/bblocks-eoap-cct/LICENSE"
+  },
   "schema": {
     "application/yaml": "https://geolabs.github.io/bblocks-eoap-cct/build/annotated/cct/stac/schema.yaml",
     "application/json": "https://geolabs.github.io/bblocks-eoap-cct/build/annotated/cct/stac/schema.json"

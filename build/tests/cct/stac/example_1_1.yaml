@@ -1,24 +1,58 @@
-type: Feature
-stac_version: "1.0.0"
-id: S2A_MSIL2A_20231201T103421
-geometry:
-  type: Polygon
-  coordinates:
-    - - [-5.0, 51.0]
-      - [-4.0, 51.0]
-      - [-4.0, 52.0]
-      - [-5.0, 52.0]
-      - [-5.0, 51.0]
-bbox: [-5.0, 51.0, -4.0, 52.0]
-properties:
-  datetime: "2023-12-01T10:34:21Z"
-  platform: sentinel-2a
-links:
-  - rel: self
-    href: https://example.com/items/S2A_MSIL2A_20231201T103421.json
-    type: application/json
-assets:
-  thumbnail:
-    href: https://example.com/thumbnails/S2A_MSIL2A_20231201T103421.jpg
-    type: image/jpeg
-    roles: [thumbnail]
+{
+  "type": "Feature",
+  "stac_version": "1.0.0",
+  "id": "S2A_MSIL2A_20231201T103421",
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          -5.0,
+          51.0
+        ],
+        [
+          -4.0,
+          51.0
+        ],
+        [
+          -4.0,
+          52.0
+        ],
+        [
+          -5.0,
+          52.0
+        ],
+        [
+          -5.0,
+          51.0
+        ]
+      ]
+    ]
+  },
+  "bbox": [
+    -5.0,
+    51.0,
+    -4.0,
+    52.0
+  ],
+  "properties": {
+    "datetime": "2023-12-01T10:34:21Z",
+    "platform": "sentinel-2a"
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://example.com/items/S2A_MSIL2A_20231201T103421.json",
+      "type": "application/json"
+    }
+  ],
+  "assets": {
+    "thumbnail": {
+      "href": "https://example.com/thumbnails/S2A_MSIL2A_20231201T103421.jpg",
+      "type": "image/jpeg",
+      "roles": [
+        "thumbnail"
+      ]
+    }
+  }
+}
